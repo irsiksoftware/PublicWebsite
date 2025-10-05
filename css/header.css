@@ -78,21 +78,36 @@
   width: 100%;
 }
 
-/* Responsive behavior */
-@media (max-width: 768px) {
+/* Responsive adjustments for header with search bar */
+@media (max-width: 968px) {
   .header__container {
     flex-wrap: wrap;
     gap: 1rem;
   }
 
   .header__logo {
-    font-size: 1.25rem;
+    flex: 0 0 auto;
   }
 
   .header__nav {
     order: 3;
-    width: 100%;
+    flex: 1 0 100%;
     justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .search-bar {
+    flex: 1;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header__container {
+    padding: 1rem;
+  }
+
+  .header__nav {
     gap: 1rem;
   }
 

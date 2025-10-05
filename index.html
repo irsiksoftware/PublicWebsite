@@ -19,8 +19,8 @@
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/search-bar.css">
+  <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/search.css">
   <link rel="stylesheet" href="css/roster.css">
   <link rel="stylesheet" href="css/statistics-counter.css">
@@ -35,15 +35,9 @@
   <link rel="stylesheet" href="css/missions.css">
   <link rel="stylesheet" href="css/mission-logs.css">
   <link rel="stylesheet" href="css/team-builder.css">
-  <link rel="stylesheet" href="css/tabs.css">
   <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/parallax.css">
 </head>
 <body>
-  <!-- Parallax Background Layers -->
-  <div class="parallax-back"></div>
-  <div class="parallax-mid"></div>
-  <div class="parallax-front"></div>
   <!-- Header -->
   <header class="header">
     <div class="header__container">
@@ -54,9 +48,10 @@
         <a href="#gallery" class="header__link">Missions</a>
         <a href="#stats" class="header__link">Archive</a>
       </nav>
+      <!-- Search Bar Component -->
       <div class="search-bar search-bar--compact">
         <span class="search-bar__icon">🔍</span>
-        <input type="text" class="search-bar__input" placeholder="Search intelligence...">
+        <input type="text" class="search-bar__input" placeholder="Search database..." aria-label="Search">
         <button class="search-bar__clear" aria-label="Clear search">&times;</button>
       </div>
     </div>
@@ -200,77 +195,6 @@
           <h3 class="roster__card-name">Clint Barton</h3>
           <span class="roster__card-codename">Hawkeye</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Organization Tabs (CSS-only) -->
-  <section class="tabs" id="team-tabs">
-    <h2 class="tabs__title">Team Organization</h2>
-
-    <!-- Radio inputs (hidden) -->
-    <input type="radio" name="team-tab" id="tab-alpha" class="tabs__input" checked>
-    <input type="radio" name="team-tab" id="tab-beta" class="tabs__input">
-    <input type="radio" name="team-tab" id="tab-gamma" class="tabs__input">
-    <input type="radio" name="team-tab" id="tab-reserve" class="tabs__input">
-
-    <!-- Tab labels -->
-    <div class="tabs__labels">
-      <label for="tab-alpha" class="tabs__label">Team Alpha</label>
-      <label for="tab-beta" class="tabs__label">Team Beta</label>
-      <label for="tab-gamma" class="tabs__label">Team Gamma</label>
-      <label for="tab-reserve" class="tabs__label">Reserve Members</label>
-    </div>
-
-    <!-- Tab content panels -->
-    <div class="tabs__panels">
-      <div class="tabs__content">
-        <h3>Team Alpha - Primary Strike Force</h3>
-        <p>Elite frontline team specializing in high-threat response and world-level crisis intervention.</p>
-        <ul>
-          <li><strong>Tony Stark (Iron Man)</strong> - Tech genius and armored avenger</li>
-          <li><strong>Steve Rogers (Captain America)</strong> - Super soldier and tactical leader</li>
-          <li><strong>Thor Odinson</strong> - Asgardian god of thunder with cosmic power</li>
-        </ul>
-        <p><strong>Mission Focus:</strong> Global threat neutralization, alien invasion response, tech-based crisis management</p>
-        <p><strong>Specialization:</strong> Heavy assault, leadership, advanced technology deployment</p>
-      </div>
-
-      <div class="tabs__content">
-        <h3>Team Beta - Tactical Operations</h3>
-        <p>Versatile team combining raw power with tactical precision for complex operations.</p>
-        <ul>
-          <li><strong>Bruce Banner (Hulk)</strong> - Scientific genius with gamma-powered strength</li>
-          <li><strong>Natasha Romanoff (Black Widow)</strong> - Master spy and infiltration specialist</li>
-          <li><strong>Peter Parker (Spider-Man)</strong> - Enhanced agility and strategic problem-solving</li>
-        </ul>
-        <p><strong>Mission Focus:</strong> Covert operations, scientific threats, urban combat scenarios</p>
-        <p><strong>Specialization:</strong> Espionage, scientific analysis, adaptable combat tactics</p>
-      </div>
-
-      <div class="tabs__content">
-        <h3>Team Gamma - Special Operations</h3>
-        <p>Specialized unit handling unique threats requiring precision and specialized skills.</p>
-        <ul>
-          <li><strong>Clint Barton (Hawkeye)</strong> - Master archer and tactical coordinator</li>
-          <li><strong>Dr. Stephen Strange</strong> - Sorcerer Supreme with mystic abilities</li>
-          <li><strong>Wanda Maximoff (Scarlet Witch)</strong> - Reality manipulation and chaos magic</li>
-        </ul>
-        <p><strong>Mission Focus:</strong> Mystical threats, precision strikes, reality-based anomalies</p>
-        <p><strong>Specialization:</strong> Magic and sorcery, long-range support, dimensional threats</p>
-      </div>
-
-      <div class="tabs__content">
-        <h3>Reserve Members - Strategic Backup</h3>
-        <p>Highly skilled operatives available for deployment during surge operations or specialized missions.</p>
-        <ul>
-          <li><strong>Sam Wilson (Falcon)</strong> - Aerial combat and reconnaissance specialist</li>
-          <li><strong>James Rhodes (War Machine)</strong> - Heavy weapons and tactical air support</li>
-          <li><strong>Carol Danvers (Captain Marvel)</strong> - Cosmic-powered heavy hitter</li>
-          <li><strong>T'Challa (Black Panther)</strong> - Wakandan king and advanced tech warrior</li>
-        </ul>
-        <p><strong>Mission Focus:</strong> Reinforcement operations, cosmic threats, technological superiority</p>
-        <p><strong>Specialization:</strong> Flexible deployment, rapid response, force multiplication</p>
       </div>
     </div>
   </section>
