@@ -1,5 +1,5 @@
 {
-  "total_issues": 44,
+  "total_issues": 36,
   "broken_dependencies": [],
   "missing_priority": [],
   "multiple_priorities": [],
@@ -10,6 +10,7 @@
       "title": "Create comprehensive feature test page",
       "labels": [
         "LOW",
+        "wip",
         "feature",
         "testing"
       ],
@@ -92,19 +93,11 @@
       "problems": []
     },
     {
-      "number": 127,
-      "title": "Add Tetris UI panels and game over screen",
-      "labels": [
-        "MEDIUM",
-        "feature"
-      ],
-      "problems": []
-    },
-    {
       "number": 126,
       "title": "Implement Tetris line clearing and scoring",
       "labels": [
         "MEDIUM",
+        "wip",
         "feature"
       ],
       "problems": []
@@ -120,19 +113,11 @@
       "problems": []
     },
     {
-      "number": 121,
-      "title": "Implement form validation with real-time feedback",
-      "labels": [
-        "MEDIUM",
-        "feature"
-      ],
-      "problems": []
-    },
-    {
       "number": 120,
       "title": "Build tab switching with keyboard navigation",
       "labels": [
         "MEDIUM",
+        "wip",
         "feature"
       ],
       "problems": []
@@ -152,15 +137,7 @@
       "title": "Add parallax scrolling effect on layers",
       "labels": [
         "MEDIUM",
-        "feature"
-      ],
-      "problems": []
-    },
-    {
-      "number": 116,
-      "title": "Implement statistics counter animation with easing",
-      "labels": [
-        "MEDIUM",
+        "wip",
         "feature"
       ],
       "problems": []
@@ -170,6 +147,7 @@
       "title": "Create lazy loading with Intersection Observer",
       "labels": [
         "MEDIUM",
+        "wip",
         "feature"
       ],
       "problems": []
@@ -205,19 +183,11 @@
       "problems": []
     },
     {
-      "number": 110,
-      "title": "Add table of contents with smooth scroll navigation",
-      "labels": [
-        "MEDIUM",
-        "feature"
-      ],
-      "problems": []
-    },
-    {
       "number": 109,
       "title": "Design alert banner component with slide animation",
       "labels": [
         "MEDIUM",
+        "wip",
         "feature"
       ],
       "problems": []
@@ -271,15 +241,6 @@
       "problems": []
     },
     {
-      "number": 102,
-      "title": "Create parallax background layer structure",
-      "labels": [
-        "MEDIUM",
-        "feature"
-      ],
-      "problems": []
-    },
-    {
       "number": 101,
       "title": "Add responsive breakpoints with comprehensive media queries",
       "labels": [
@@ -295,15 +256,6 @@
       "title": "Build notification badge system with pulse animation",
       "labels": [
         "LOW",
-        "feature"
-      ],
-      "problems": []
-    },
-    {
-      "number": 99,
-      "title": "Create search bar with icon and focus glow",
-      "labels": [
-        "MEDIUM",
         "wip",
         "feature"
       ],
@@ -314,15 +266,6 @@
       "title": "Add custom scrollbar styling for theme consistency",
       "labels": [
         "LOW",
-        "feature"
-      ],
-      "problems": []
-    },
-    {
-      "number": 97,
-      "title": "Implement CSS-only tabbed interface for teams",
-      "labels": [
-        "MEDIUM",
         "wip",
         "feature"
       ],
@@ -372,6 +315,7 @@
       "title": "Add CSS filters for dramatic image effects",
       "labels": [
         "LOW",
+        "wip",
         "feature"
       ],
       "problems": []
@@ -382,15 +326,6 @@
       "labels": [
         "MEDIUM",
         "wip",
-        "feature"
-      ],
-      "problems": []
-    },
-    {
-      "number": 90,
-      "title": "Implement S.H.I.E.L.D. loading screen with CSS animation",
-      "labels": [
-        "LOW",
         "feature"
       ],
       "problems": []
