@@ -15,6 +15,7 @@
   <!-- CSS Foundation -->
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/header.css">
@@ -23,6 +24,7 @@
   <link rel="stylesheet" href="css/gallery.css">
   <link rel="stylesheet" href="css/stats.css">
   <link rel="stylesheet" href="css/threat-level.css">
+  <link rel="stylesheet" href="css/modal.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -57,6 +59,7 @@
         <div class="roster__card-overlay">
           <h3 class="roster__card-name">Tony Stark</h3>
           <span class="roster__card-codename">Iron Man</span>
+          <button class="roster__card-details modal-trigger" data-modal="detailModal">View Details</button>
         </div>
       </div>
       <div class="roster__card" data-animate-child>
@@ -234,8 +237,23 @@
     </div>
   </section>
 
+  <!-- Modal Dialog -->
+  <div class="modal" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <button class="modal__close" aria-label="Close modal">&times;</button>
+      <h2 id="modalTitle" class="modal__title">Agent Details</h2>
+      <div class="modal__body">
+        <p>Modal content goes here...</p>
+        <input type="text" placeholder="First focusable element" class="modal__input">
+        <button class="modal__button">Action Button</button>
+      </div>
+    </div>
+  </div>
+
   <!-- JavaScript -->
   <script src="js/smooth-scroll.js"></script>
   <script src="js/scroll-animations.js"></script>
+  <script src="js/modal.js"></script>
 </body>
 </html>
