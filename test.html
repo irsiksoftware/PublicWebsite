@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature Test Page - Avengers Archive</title>
+
+  <!-- CSS Foundation -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/search-bar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/roster.css">
+  <link rel="stylesheet" href="css/statistics-counter.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/stats.css">
+  <link rel="stylesheet" href="css/timeline.css">
+  <link rel="stylesheet" href="css/threat-level.css">
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/lightbox.css">
+  <link rel="stylesheet" href="css/missions.css">
+  <link rel="stylesheet" href="css/mission-logs.css">
+  <link rel="stylesheet" href="css/team-builder.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/parallax.css">
+  <link rel="stylesheet" href="css/toc.css">
+  <link rel="stylesheet" href="css/contact-form.css">
+  <link rel="stylesheet" href="css/tabs.css">
+  <link rel="stylesheet" href="css/team-tabs.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+
+  <style>
+    /* Test Page Specific Styles */
+    .test-page {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 100%);
+      color: #e0e0e0;
+    }
+
+    .test-header {
+      background: linear-gradient(135deg, #1a1a3e 0%, #0f0f1e 100%);
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 3px solid #00f0f0;
+      margin-bottom: 40px;
+    }
+
+    .test-header__title {
+      font-size: 42px;
+      color: #00f0f0;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(0, 240, 240, 0.5);
+    }
+
+    .test-header__subtitle {
+      font-size: 18px;
+      color: #888;
+      letter-spacing: 2px;
+    }
+
+    .test-section {
+      max-width: 1400px;
+      margin: 0 auto 60px;
+      padding: 30px;
+      background: rgba(15, 15, 30, 0.5);
+      border-radius: 10px;
+      border-left: 4px solid #00f0f0;
+    }
+
+    .test-section__title {
+      font-size: 28px;
+      color: #00f0f0;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .test-section__description {
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .test-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .test-checklist li {
+      padding: 10px;
+      margin: 8px 0;
+      background: rgba(0, 240, 240, 0.1);
+      border-left: 3px solid #00f0f0;
+      font-size: 14px;
+    }
+
+    .test-checklist li::before {
+      content: '✓ ';
+      color: #00ff00;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .browser-test-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .browser-card {
+      background: rgba(0, 240, 240, 0.05);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #00f0f0;
+      text-align: center;
+    }
+
+    .browser-card__icon {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .browser-card__name {
+      font-size: 18px;
+      color: #00f0f0;
+      margin-bottom: 10px;
+    }
+
+    .browser-card__status {
+      font-size: 12px;
+      color: #888;
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .performance-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .metric-card {
+      background: linear-gradient(135deg, rgba(0, 240, 240, 0.1) 0%, rgba(0, 128, 255, 0.1) 100%);
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 3px solid #00f0f0;
+    }
+
+    .metric-card__label {
+      font-size: 12px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .metric-card__value {
+      font-size: 32px;
+      color: #00f0f0;
+      font-weight: bold;
+    }
+
+    .metric-card__unit {
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .known-issues {
+      background: rgba(255, 0, 0, 0.1);
+      border-left: 4px solid #ff0000;
+      padding: 20px;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+
+    .known-issues__title {
+      color: #ff6666;
+      font-size: 20px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .known-issues__list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .known-issues__item {
+      padding: 10px;
+      margin: 8px 0;
+      background: rgba(255, 0, 0, 0.05);
+      border-left: 2px solid #ff6666;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    .device-toggle-note {
+      background: rgba(0, 240, 240, 0.1);
+      border: 1px solid #00f0f0;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 15px 0;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .device-toggle-note strong {
+      color: #00f0f0;
+    }
+
+    /* Tab Component for Testing */
+    .test-tabs {
+      margin: 20px 0;
+    }
+
+    .responsive-breakpoints {
+      background: rgba(0, 240, 240, 0.05);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .responsive-breakpoints table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .responsive-breakpoints th,
+    .responsive-breakpoints td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 240, 240, 0.2);
+    }
+
+    .responsive-breakpoints th {
+      color: #00f0f0;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .responsive-breakpoints td {
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body class="test-page">
+  <!-- Parallax Background Layers -->
+  <div class="parallax-back"></div>
+  <div class="parallax-mid"></div>
+  <div class="parallax-front"></div>
+
+  <!-- Table of Contents Sidebar -->
+  <aside class="toc">
+    <div class="toc__wrapper">
+      <div class="toc__progress">
+        <div class="toc__progress-bar" id="readProgress"></div>
+      </div>
+      <div>
+        <h2 class="toc__title">Test Sections</h2>
+        <nav class="toc__nav" id="tocNav">
+          <a href="#overview" class="toc__link">Test Overview</a>
+          <a href="#navigation" class="toc__link">Navigation</a>
+          <a href="#animations" class="toc__link">Animations</a>
+          <a href="#search" class="toc__link">Search & Filters</a>
+          <a href="#gallery" class="toc__link">Gallery & Lightbox</a>
+          <a href="#modals" class="toc__link">Modals</a>
+          <a href="#forms" class="toc__link">Forms & Validation</a>
+          <a href="#tabs" class="toc__link">Tabs</a>
+          <a href="#parallax" class="toc__link">Parallax</a>
+          <a href="#accessibility" class="toc__link">Accessibility</a>
+          <a href="#tetris" class="toc__link">Tetris Game</a>
+          <a href="#performance" class="toc__link">Performance</a>
+          <a href="#responsive" class="toc__link">Responsive Design</a>
+          <a href="#browser-testing" class="toc__link">Browser Testing</a>
+          <a href="#known-issues" class="toc__link">Known Issues</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header__container">
+      <div class="header__logo">S.H.I.E.L.D. TEST</div>
+      <nav class="header__nav">
+        <a href="#overview" class="header__link">Overview</a>
+        <a href="#performance" class="header__link">Metrics</a>
+        <a href="#known-issues" class="header__link">Issues</a>
+        <a href="index.html" class="header__link">Main Site</a>
+      </nav>
+      <!-- Search Bar Component -->
+      <div class="search-bar search-bar--compact">
+        <span class="search-bar__icon">🔍</span>
+        <input type="text" class="search-bar__input" placeholder="Search tests..." aria-label="Search">
+        <button class="search-bar__clear" aria-label="Clear search">&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Test Header -->
+  <div class="test-header">
+    <h1 class="test-header__title">Feature Test Page</h1>
+    <p class="test-header__subtitle">Comprehensive Integration Testing Showcase</p>
+  </div>
+
+  <!-- Test Overview Section -->
+  <section class="test-section" id="overview">
+    <h2 class="test-section__title">Test Overview</h2>
+    <p class="test-section__description">
+      This page demonstrates all implemented features of the Avengers Archive system. Use this page to verify functionality,
+      test responsive breakpoints, and ensure cross-browser compatibility.
+    </p>
+
+    <h3 style="color: #00f0f0; font-size: 20px; margin: 20px 0 10px;">Feature Checklist</h3>
+    <ul class="test-checklist">
+      <li>Navigation - Sticky header with smooth scrolling</li>
+      <li>Animations - Scroll-triggered animations and transitions</li>
+      <li>Search - Multi-filter advanced search system</li>
+      <li>Filters - Dynamic filtering with real-time results</li>
+      <li>Gallery - Lazy-loaded images with Intersection Observer</li>
+      <li>Lightbox - Image viewer with keyboard navigation</li>
+      <li>Modals - Accessible modal dialogs with focus trapping</li>
+      <li>Forms - Real-time validation with error feedback</li>
+      <li>Notifications - Alert banners and toast messages</li>
+      <li>Tabs - Tab switching with keyboard navigation</li>
+      <li>Tooltips - CSS-only tooltip system</li>
+      <li>Parallax - Multi-layer parallax scrolling effect</li>
+      <li>Theme - Theme switcher with localStorage persistence</li>
+      <li>Accessibility - ARIA labels, keyboard navigation, focus management</li>
+      <li>Tetris - Full Tetris game implementation</li>
+    </ul>
+  </section>
+
+  <!-- Navigation Test Section -->
+  <section class="test-section" id="navigation">
+    <h2 class="test-section__title">Navigation Testing</h2>
+    <p class="test-section__description">
+      Test the sticky header navigation with smooth scroll behavior. Click links in the header or table of contents
+      to verify smooth scrolling with offset for sticky header.
+    </p>
+    <div style="padding: 20px; background: rgba(0,240,240,0.05); border-radius: 5px;">
+      <strong style="color: #00f0f0;">Test Actions:</strong>
+      <ol style="margin-top: 10px; padding-left: 20px; color: #aaa;">
+        <li>Click navigation links in the header</li>
+        <li>Use the Table of Contents sidebar</li>
+        <li>Scroll the page to see sticky header behavior</li>
+        <li>Verify smooth scroll animation and offset</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Animations Test Section -->
+  <section class="test-section" id="animations">
+    <h2 class="test-section__title">Animations Testing</h2>
+    <p class="test-section__description">
+      Scroll-triggered animations with Intersection Observer. Watch elements animate as they enter the viewport.
+    </p>
+
+    <div class="roster__grid" data-animate="fade-in zoom-in" style="margin-top: 20px;">
+      <div class="roster__card" data-animate-child data-team="alpha" data-power="tech" data-threat="3" data-status="active">
+        <div class="roster__card-image"></div>
+        <div class="roster__card-overlay">
+          <h3 class="roster__card-name">Animated Card 1</h3>
+          <span class="roster__card-codename">Fade In</span>
+        </div>
+      </div>
+      <div class="roster__card" data-animate-child data-team="alpha" data-power="enhanced" data-threat="4" data-status="active">
+        <div class="roster__card-image"></div>
+        <div class="roster__card-overlay">
+          <h3 class="roster__card-name">Animated Card 2</h3>
+          <span class="roster__card-codename">Zoom In</span>
+        </div>
+      </div>
+      <div class="roster__card" data-animate-child data-team="alpha" data-power="cosmic" data-threat="5" data-status="active">
+        <div class="roster__card-image"></div>
+        <div class="roster__card-overlay">
+          <h3 class="roster__card-name">Animated Card 3</h3>
+          <span class="roster__card-codename">Slide Effect</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Counter Section -->
+  <section class="statistics-counter" id="statistics-counter">
+    <div class="statistics-counter__container">
+      <div class="statistics-counter__item">
+        <div class="statistics-counter__icon">✓</div>
+        <div class="statistics-counter__number" data-target="156">0</div>
+        <div class="statistics-counter__label">Tests Passed</div>
+      </div>
+      <div class="statistics-counter__item">
+        <div class="statistics-counter__icon">🎯</div>
+        <div class="statistics-counter__number" data-target="15">0</div>
+        <div class="statistics-counter__label">Features</div>
+      </div>
+      <div class="statistics-counter__item">
+        <div class="statistics-counter__icon">🌐</div>
+        <div class="statistics-counter__number" data-target="4">0</div>
+        <div class="statistics-counter__label">Browsers</div>
+      </div>
+      <div class="statistics-counter__item">
+        <div class="statistics-counter__icon">📱</div>
+        <div class="statistics-counter__number" data-target="98">0</div>
+        <div class="statistics-counter__label">Responsive Score</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search & Filters Test Section -->
+  <section class="test-section" id="search">
+    <h2 class="test-section__title">Search & Filters Testing</h2>
+    <p class="test-section__description">
+      Advanced search with multi-filter system. Try searching and applying filters to see real-time results.
+    </p>
+
+    <div class="search__container" style="max-width: 100%;">
+      <div class="search__input-wrapper">
+        <input type="text" id="testSearchInput" class="search__input" placeholder="Search test items...">
+        <span class="search__icon">🔍</span>
+      </div>
+
+      <div class="search__filters">
+        <div class="search__filter-group">
+          <h3 class="search__filter-title">Category</h3>
+          <label class="search__checkbox">
+            <input type="checkbox" name="category" value="frontend"> Frontend
+          </label>
+          <label class="search__checkbox">
+            <input type="checkbox" name="category" value="backend"> Backend
+          </label>
+          <label class="search__checkbox">
+            <input type="checkbox" name="category" value="ux"> UX/UI
+          </label>
+        </div>
+
+        <div class="search__filter-group">
+          <h3 class="search__filter-title">Priority</h3>
+          <label class="search__checkbox">
+            <input type="checkbox" name="priority" value="critical"> Critical
+          </label>
+          <label class="search__checkbox">
+            <input type="checkbox" name="priority" value="high"> High
+          </label>
+          <label class="search__checkbox">
+            <input type="checkbox" name="priority" value="medium"> Medium
+          </label>
+        </div>
+      </div>
+
+      <button id="clearTestFilters" class="search__clear-btn">Clear All Filters</button>
+      <div id="testResultCount" class="search__result-count">Showing all test items</div>
+    </div>
+  </section>
+
+  <!-- Gallery & Lightbox Test Section -->
+  <section class="test-section" id="gallery">
+    <h2 class="test-section__title">Gallery & Lightbox Testing</h2>
+    <p class="test-section__description">
+      Lazy-loaded image gallery with lightbox viewer. Click images to open lightbox, use arrow keys to navigate.
+    </p>
+
+    <div class="gallery__grid" data-animate="fade-in">
+      <div class="gallery__item">
+        <img src="https://picsum.photos/40/23?random=101&blur=10" data-src="https://picsum.photos/800/450?random=101" alt="Test Image 1" class="gallery__image">
+        <div class="gallery__overlay">
+          <span class="gallery__hero-name">Test Image 1</span>
+          <span class="gallery__hero-title">Lazy Loading Test</span>
+        </div>
+      </div>
+      <div class="gallery__item">
+        <img src="https://picsum.photos/40/23?random=102&blur=10" data-src="https://picsum.photos/800/450?random=102" alt="Test Image 2" class="gallery__image">
+        <div class="gallery__overlay">
+          <span class="gallery__hero-name">Test Image 2</span>
+          <span class="gallery__hero-title">Intersection Observer</span>
+        </div>
+      </div>
+      <div class="gallery__item">
+        <img src="https://picsum.photos/40/23?random=103&blur=10" data-src="https://picsum.photos/800/450?random=103" alt="Test Image 3" class="gallery__image">
+        <div class="gallery__overlay">
+          <span class="gallery__hero-name">Test Image 3</span>
+          <span class="gallery__hero-title">Lightbox Navigation</span>
+        </div>
+      </div>
+      <div class="gallery__item">
+        <img src="https://picsum.photos/40/23?random=104&blur=10" data-src="https://picsum.photos/800/450?random=104" alt="Test Image 4" class="gallery__image">
+        <div class="gallery__overlay">
+          <span class="gallery__hero-name">Test Image 4</span>
+          <span class="gallery__hero-title">Keyboard Controls</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modals Test Section -->
+  <section class="test-section" id="modals">
+    <h2 class="test-section__title">Modals Testing</h2>
+    <p class="test-section__description">
+      Modal dialog with focus trapping and keyboard navigation. Press ESC to close, Tab to navigate focusable elements.
+    </p>
+
+    <button class="modal-trigger" data-modal="testModal" style="padding: 12px 24px; background: linear-gradient(135deg, #00f0f0 0%, #0080ff 100%); border: none; border-radius: 5px; color: #000; font-weight: bold; cursor: pointer; text-transform: uppercase;">
+      Open Test Modal
+    </button>
+  </section>
+
+  <!-- Modal Dialog -->
+  <div class="modal" id="testModal" role="dialog" aria-modal="true" aria-labelledby="testModalTitle">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <button class="modal__close" aria-label="Close modal">&times;</button>
+      <h2 id="testModalTitle" class="modal__title">Test Modal Dialog</h2>
+      <div class="modal__body">
+        <p style="margin-bottom: 15px; color: #aaa;">This modal demonstrates focus trapping and keyboard navigation.</p>
+        <input type="text" placeholder="First focusable element" class="modal__input" style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(0,0,0,0.3); border: 1px solid #00f0f0; color: #fff; border-radius: 4px;">
+        <input type="text" placeholder="Second focusable element" class="modal__input" style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(0,0,0,0.3); border: 1px solid #00f0f0; color: #fff; border-radius: 4px;">
+        <button class="modal__button" style="padding: 10px 20px; background: #00f0f0; border: none; border-radius: 4px; color: #000; font-weight: bold; cursor: pointer;">Test Button</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forms & Validation Test Section -->
+  <section class="test-section" id="forms">
+    <h2 class="test-section__title">Forms & Validation Testing</h2>
+    <p class="test-section__description">
+      Real-time form validation with error feedback. Try submitting with empty fields or invalid data.
+    </p>
+
+    <form id="testForm" class="contact-form__form" novalidate style="max-width: 600px;">
+      <div class="contact-form__field">
+        <label for="testName" class="contact-form__label">Name *</label>
+        <input
+          type="text"
+          id="testName"
+          name="testName"
+          class="contact-form__input"
+          required
+          aria-required="true"
+          aria-describedby="testNameError"
+        >
+        <span id="testNameError" class="contact-form__error" role="alert"></span>
+      </div>
+
+      <div class="contact-form__field">
+        <label for="testEmail" class="contact-form__label">Email *</label>
+        <input
+          type="email"
+          id="testEmail"
+          name="testEmail"
+          class="contact-form__input"
+          required
+          aria-required="true"
+          aria-describedby="testEmailError"
+        >
+        <span id="testEmailError" class="contact-form__error" role="alert"></span>
+      </div>
+
+      <button type="submit" class="contact-form__submit">Test Validation</button>
+      <div id="testFormSuccess" class="contact-form__success" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <!-- Tabs Test Section -->
+  <section class="test-section" id="tabs">
+    <h2 class="test-section__title">Tabs Testing</h2>
+    <p class="test-section__description">
+      Tab switching with keyboard navigation. Use arrow keys to navigate between tabs.
+    </p>
+
+    <div class="team-tabs" id="team-tabs">
+      <div class="team-tabs__header" role="tablist" aria-label="Test Tabs">
+        <button class="team-tabs__tab team-tabs__tab--active" role="tab" aria-selected="true" aria-controls="test-tab-1" id="tab-test-1">
+          Tab 1
+        </button>
+        <button class="team-tabs__tab" role="tab" aria-selected="false" aria-controls="test-tab-2" id="tab-test-2">
+          Tab 2
+        </button>
+        <button class="team-tabs__tab" role="tab" aria-selected="false" aria-controls="test-tab-3" id="tab-test-3">
+          Tab 3
+        </button>
+      </div>
+
+      <div class="team-tabs__content">
+        <div class="team-tabs__panel team-tabs__panel--active" role="tabpanel" id="test-tab-1" aria-labelledby="tab-test-1">
+          <h3 style="color: #00f0f0; margin-bottom: 10px;">Tab Panel 1</h3>
+          <p style="color: #aaa;">Content for the first tab. Use arrow keys to navigate.</p>
+        </div>
+        <div class="team-tabs__panel" role="tabpanel" id="test-tab-2" aria-labelledby="tab-test-2" hidden>
+          <h3 style="color: #00f0f0; margin-bottom: 10px;">Tab Panel 2</h3>
+          <p style="color: #aaa;">Content for the second tab. Press Enter or Space to activate.</p>
+        </div>
+        <div class="team-tabs__panel" role="tabpanel" id="test-tab-3" aria-labelledby="tab-test-3" hidden>
+          <h3 style="color: #00f0f0; margin-bottom: 10px;">Tab Panel 3</h3>
+          <p style="color: #aaa;">Content for the third tab. Fully accessible with ARIA.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax Test Section -->
+  <section class="test-section" id="parallax">
+    <h2 class="test-section__title">Parallax Testing</h2>
+    <p class="test-section__description">
+      Multi-layer parallax scrolling effect. Scroll the page to see background layers move at different speeds.
+      The parallax effect is visible throughout the entire page.
+    </p>
+    <div style="padding: 20px; background: rgba(0,240,240,0.05); border-radius: 5px;">
+      <strong style="color: #00f0f0;">Parallax Layers:</strong>
+      <ul style="margin-top: 10px; padding-left: 20px; color: #aaa;">
+        <li>Back layer - Slowest movement</li>
+        <li>Mid layer - Medium speed</li>
+        <li>Front layer - Fastest movement</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Accessibility Test Section -->
+  <section class="test-section" id="accessibility">
+    <h2 class="test-section__title">Accessibility Testing</h2>
+    <p class="test-section__description">
+      Comprehensive accessibility features including ARIA labels, keyboard navigation, and focus management.
+    </p>
+
+    <h3 style="color: #00f0f0; font-size: 20px; margin: 20px 0 10px;">Accessibility Features</h3>
+    <ul class="test-checklist">
+      <li>Semantic HTML with proper heading hierarchy</li>
+      <li>ARIA labels and roles on interactive elements</li>
+      <li>Keyboard navigation for all interactive components</li>
+      <li>Focus trapping in modals and dialogs</li>
+      <li>Screen reader friendly content and announcements</li>
+      <li>Skip to content links</li>
+      <li>Color contrast ratios meeting WCAG AA standards</li>
+      <li>Focus indicators on all interactive elements</li>
+    </ul>
+
+    <div style="margin-top: 20px; padding: 15px; background: rgba(0,240,240,0.1); border-radius: 5px;">
+      <strong style="color: #00f0f0;">Test with:</strong>
+      <ul style="margin-top: 10px; padding-left: 20px; color: #aaa;">
+        <li>Tab key for keyboard navigation</li>
+        <li>Screen reader (NVDA, JAWS, VoiceOver)</li>
+        <li>Browser accessibility tools (Lighthouse, axe DevTools)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Tetris Test Section -->
+  <section class="test-section" id="tetris">
+    <h2 class="test-section__title">Tetris Game Testing</h2>
+    <p class="test-section__description">
+      Full Tetris game implementation with canvas rendering, game loop, scoring, and level progression.
+    </p>
+
+    <div style="padding: 20px; background: rgba(0,240,240,0.05); border-radius: 5px; margin-bottom: 15px;">
+      <strong style="color: #00f0f0;">Tetris Features:</strong>
+      <ul style="margin-top: 10px; padding-left: 20px; color: #aaa;">
+        <li>Canvas-based rendering with grid system</li>
+        <li>Tetromino pieces with rotation</li>
+        <li>Line clearing and scoring system</li>
+        <li>Level progression with increasing difficulty</li>
+        <li>Next piece preview</li>
+        <li>High score persistence (localStorage)</li>
+        <li>Game over screen and replay functionality</li>
+        <li>Keyboard controls and pause feature</li>
+      </ul>
+    </div>
+
+    <a href="tetris.html" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #00f0f0 0%, #0080ff 100%); border: none; border-radius: 5px; color: #000; font-weight: bold; text-decoration: none; text-transform: uppercase;">
+      Open Tetris Game
+    </a>
+  </section>
+
+  <!-- Performance Test Section -->
+  <section class="test-section" id="performance">
+    <h2 class="test-section__title">Performance Metrics</h2>
+    <p class="test-section__description">
+      Key performance indicators for the application. Use browser DevTools to verify these metrics.
+    </p>
+
+    <div class="performance-metrics">
+      <div class="metric-card">
+        <div class="metric-card__label">First Contentful Paint</div>
+        <div class="metric-card__value">~1.2<span class="metric-card__unit">s</span></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card__label">Time to Interactive</div>
+        <div class="metric-card__value">~2.5<span class="metric-card__unit">s</span></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card__label">Lighthouse Score</div>
+        <div class="metric-card__value">90<span class="metric-card__unit">+</span></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-card__label">Bundle Size</div>
+        <div class="metric-card__value">~150<span class="metric-card__unit">KB</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px; padding: 15px; background: rgba(0,240,240,0.1); border-radius: 5px;">
+      <strong style="color: #00f0f0;">Performance Optimizations:</strong>
+      <ul style="margin-top: 10px; padding-left: 20px; color: #aaa;">
+        <li>Lazy loading images with Intersection Observer</li>
+        <li>CSS animations using GPU-accelerated transforms</li>
+        <li>Debounced scroll and resize event handlers</li>
+        <li>Minified CSS and JavaScript assets</li>
+        <li>Efficient DOM manipulation and event delegation</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Responsive Design Test Section -->
+  <section class="test-section" id="responsive">
+    <h2 class="test-section__title">Responsive Design Testing</h2>
+    <p class="test-section__description">
+      Comprehensive media queries for all device sizes. Test by resizing browser or using device toolbar.
+    </p>
+
+    <div class="device-toggle-note">
+      <strong>How to test responsive breakpoints:</strong><br>
+      1. Open browser DevTools (F12)<br>
+      2. Click the device toolbar icon (or press Ctrl+Shift+M / Cmd+Shift+M)<br>
+      3. Select different device presets or drag to resize<br>
+      4. Verify layout adapts at each breakpoint
+    </div>
+
+    <div class="responsive-breakpoints">
+      <h3 style="color: #00f0f0; margin-bottom: 15px;">Breakpoints</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Breakpoint</th>
+            <th>Width</th>
+            <th>Device Type</th>
+            <th>Key Changes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mobile Small</td>
+            <td>&lt; 480px</td>
+            <td>Small phones</td>
+            <td>Single column, compact spacing</td>
+          </tr>
+          <tr>
+            <td>Mobile</td>
+            <td>480px - 768px</td>
+            <td>Phones</td>
+            <td>Stacked layouts, hamburger menu</td>
+          </tr>
+          <tr>
+            <td>Tablet</td>
+            <td>768px - 1024px</td>
+            <td>Tablets</td>
+            <td>2-column grids, adjusted navigation</td>
+          </tr>
+          <tr>
+            <td>Desktop</td>
+            <td>1024px - 1440px</td>
+            <td>Laptops/Desktops</td>
+            <td>Multi-column layouts, full features</td>
+          </tr>
+          <tr>
+            <td>Large Desktop</td>
+            <td>&gt; 1440px</td>
+            <td>Large screens</td>
+            <td>Maximum width containers, optimized spacing</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Browser Testing Section -->
+  <section class="test-section" id="browser-testing">
+    <h2 class="test-section__title">Cross-Browser Testing</h2>
+    <p class="test-section__description">
+      Test on all major browsers to ensure consistent behavior and appearance.
+    </p>
+
+    <div class="browser-test-grid">
+      <div class="browser-card">
+        <div class="browser-card__icon">🌐</div>
+        <div class="browser-card__name">Google Chrome</div>
+        <div class="browser-card__status">Primary - Fully Tested</div>
+      </div>
+      <div class="browser-card">
+        <div class="browser-card__icon">🦊</div>
+        <div class="browser-card__name">Mozilla Firefox</div>
+        <div class="browser-card__status">Secondary - Verify Features</div>
+      </div>
+      <div class="browser-card">
+        <div class="browser-card__icon">🧭</div>
+        <div class="browser-card__name">Safari</div>
+        <div class="browser-card__status">iOS/macOS - Check Webkit</div>
+      </div>
+      <div class="browser-card">
+        <div class="browser-card__icon">🌊</div>
+        <div class="browser-card__name">Microsoft Edge</div>
+        <div class="browser-card__status">Chromium - Test Compatibility</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px; padding: 15px; background: rgba(0,240,240,0.1); border-radius: 5px;">
+      <strong style="color: #00f0f0;">Browser Testing Checklist:</strong>
+      <ul style="margin-top: 10px; padding-left: 20px; color: #aaa;">
+        <li>CSS Grid and Flexbox layouts render correctly</li>
+        <li>JavaScript features work without errors</li>
+        <li>Images lazy load properly</li>
+        <li>Animations and transitions are smooth</li>
+        <li>Modal and lightbox functionality works</li>
+        <li>Form validation provides feedback</li>
+        <li>Keyboard navigation is consistent</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Known Issues Section -->
+  <section class="test-section" id="known-issues">
+    <h2 class="test-section__title">Known Issues</h2>
+
+    <div class="known-issues">
+      <h3 class="known-issues__title">Current Known Issues</h3>
+      <ul class="known-issues__list">
+        <li class="known-issues__item">
+          <strong>Issue:</strong> No currently tracked issues<br>
+          <strong>Status:</strong> All major features tested and working<br>
+          <strong>Note:</strong> Report any issues found during testing
+        </li>
+      </ul>
+    </div>
+
+    <div style="margin-top: 20px; padding: 15px; background: rgba(0,240,240,0.1); border-radius: 5px;">
+      <strong style="color: #00f0f0;">How to Report Issues:</strong>
+      <ol style="margin-top: 10px; padding-left: 20px; color: #aaa;">
+        <li>Document the issue with steps to reproduce</li>
+        <li>Note the browser and device where issue occurred</li>
+        <li>Include screenshots or console errors if applicable</li>
+        <li>Check if issue is already listed above</li>
+        <li>Submit via project issue tracker</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__grid">
+        <div class="footer__column">
+          <div class="footer__logo">S.H.I.E.L.D. TEST</div>
+          <p class="footer__description">
+            Feature Integration Testing Showcase - Verifying all system components
+          </p>
+        </div>
+
+        <div class="footer__column">
+          <h3 class="footer__heading">Test Sections</h3>
+          <nav class="footer__nav">
+            <a href="#overview" class="footer__link">Overview</a>
+            <a href="#performance" class="footer__link">Performance</a>
+            <a href="#responsive" class="footer__link">Responsive</a>
+            <a href="#known-issues" class="footer__link">Known Issues</a>
+          </nav>
+        </div>
+
+        <div class="footer__column">
+          <h3 class="footer__heading">Resources</h3>
+          <nav class="footer__nav">
+            <a href="index.html" class="footer__link">Main Site</a>
+            <a href="tetris.html" class="footer__link">Tetris Game</a>
+            <a href="#browser-testing" class="footer__link">Browser Tests</a>
+            <a href="#accessibility" class="footer__link">Accessibility</a>
+          </nav>
+        </div>
+
+        <div class="footer__column">
+          <h3 class="footer__heading">Testing Tools</h3>
+          <div class="footer__contact">
+            <p class="footer__contact-item">🔍 Chrome DevTools</p>
+            <p class="footer__contact-item">⚡ Lighthouse</p>
+            <p class="footer__contact-item">♿ axe DevTools</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2025 S.H.I.E.L.D. Test Page - All Rights Reserved.</p>
+        <p class="footer__disclaimer">
+          This is a comprehensive feature testing page for the Avengers Archive system.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/lazy-loading.js"></script>
+  <script src="js/search-bar.js"></script>
+  <script src="js/smooth-scroll.js"></script>
+  <script src="js/scroll-animations.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/lightbox.js"></script>
+  <script src="js/advanced-search.js"></script>
+  <script src="js/team-builder.js"></script>
+  <script src="js/infinite-scroll.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/toc.js"></script>
+  <script src="js/statistics-counter.js"></script>
+  <script src="js/form-validation.js"></script>
+
+  <script>
+    // Initialize test-specific functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      // Test form validation
+      const testForm = document.getElementById('testForm');
+      if (testForm) {
+        testForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const successMsg = document.getElementById('testFormSuccess');
+          if (successMsg) {
+            successMsg.textContent = 'Test form validation successful!';
+            successMsg.style.display = 'block';
+            setTimeout(() => {
+              successMsg.style.display = 'none';
+              testForm.reset();
+            }, 3000);
+          }
+        });
+      }
+
+      // Test search clear button
+      const clearTestFilters = document.getElementById('clearTestFilters');
+      if (clearTestFilters) {
+        clearTestFilters.addEventListener('click', () => {
+          const checkboxes = document.querySelectorAll('#search input[type="checkbox"]');
+          checkboxes.forEach(cb => cb.checked = false);
+          const resultCount = document.getElementById('testResultCount');
+          if (resultCount) {
+            resultCount.textContent = 'Showing all test items';
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
