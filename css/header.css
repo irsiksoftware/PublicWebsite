@@ -66,3 +66,13 @@
 .header__link:hover::after {
   width: 100%;
 }
+
+/* Active link state */
+.header__link--active {
+  color: var(--color-primary, #d4af37);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+.header__link--active::after {
+  width: 100%;
+}
