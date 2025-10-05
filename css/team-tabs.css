@@ -1,0 +1,251 @@
+/* Team Organization Tabs - CSS-Only Tabbed Interface (#97) */
+
+/* Container */
+.team-tabs {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  position: relative;
+}
+
+.team-tabs__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-tabs__title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+/* Hide Radio Inputs */
+.team-tabs__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Tab Labels */
+.team-tabs__labels {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.team-tabs__label {
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 8px;
+}
+
+.team-tabs__label:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Active Tab State with Background Gradient and Indicator Line */
+#tab-alpha:checked ~ .team-tabs__labels label[for="tab-alpha"],
+#tab-beta:checked ~ .team-tabs__labels label[for="tab-beta"],
+#tab-gamma:checked ~ .team-tabs__labels label[for="tab-gamma"],
+#tab-reserve:checked ~ .team-tabs__labels label[for="tab-reserve"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-color: #667eea;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Active Indicator Line */
+#tab-alpha:checked ~ .team-tabs__labels label[for="tab-alpha"]::after,
+#tab-beta:checked ~ .team-tabs__labels label[for="tab-beta"]::after,
+#tab-gamma:checked ~ .team-tabs__labels label[for="tab-gamma"]::after,
+#tab-reserve:checked ~ .team-tabs__labels label[for="tab-reserve"]::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 3px 3px 0 0;
+}
+
+/* Tab Content Container */
+.team-tabs__content {
+  position: relative;
+  min-height: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Tab Panels - Hidden by Default */
+.team-tabs__panel {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show Active Panel with Smooth Opacity Transition */
+#tab-alpha:checked ~ .team-tabs__content #content-alpha,
+#tab-beta:checked ~ .team-tabs__content #content-beta,
+#tab-gamma:checked ~ .team-tabs__content #content-gamma,
+#tab-reserve:checked ~ .team-tabs__content #content-reserve {
+  display: block;
+  opacity: 1;
+}
+
+/* Panel Title */
+.team-tabs__panel-title {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Panel Grid */
+.team-tabs__panel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* Team Member Cards */
+.team-tabs__member {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.team-tabs__member:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(102, 126, 234, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.team-tabs__member-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.team-tabs__member-name {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.team-tabs__member-role {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive: Vertical Tabs on Mobile */
+@media (max-width: 768px) {
+  .team-tabs__labels {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .team-tabs__label {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Adjust indicator line for vertical layout */
+  #tab-alpha:checked ~ .team-tabs__labels label[for="tab-alpha"]::after,
+  #tab-beta:checked ~ .team-tabs__labels label[for="tab-beta"]::after,
+  #tab-gamma:checked ~ .team-tabs__labels label[for="tab-gamma"]::after,
+  #tab-reserve:checked ~ .team-tabs__labels label[for="tab-reserve"]::after {
+    bottom: auto;
+    right: -2px;
+    left: auto;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .team-tabs__title {
+    font-size: 2rem;
+  }
+
+  .team-tabs__panel-title {
+    font-size: 1.4rem;
+  }
+
+  .team-tabs__content {
+    padding: 25px;
+  }
+
+  .team-tabs__panel-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-tabs {
+    padding: 60px 15px;
+  }
+
+  .team-tabs__title {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+  }
+
+  .team-tabs__label {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  .team-tabs__content {
+    padding: 20px;
+    min-height: 300px;
+  }
+
+  .team-tabs__panel-title {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .team-tabs__member {
+    padding: 20px;
+  }
+
+  .team-tabs__member-icon {
+    font-size: 2.5rem;
+  }
+
+  .team-tabs__member-name {
+    font-size: 1.1rem;
+  }
+}
