@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/search-bar.css">
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/search.css">
   <link rel="stylesheet" href="css/roster.css">
@@ -47,6 +48,12 @@
         <a href="#gallery" class="header__link">Missions</a>
         <a href="#stats" class="header__link">Archive</a>
       </nav>
+      <!-- Search Bar Component -->
+      <div class="search-bar search-bar--compact">
+        <span class="search-bar__icon">🔍</span>
+        <input type="text" class="search-bar__input" placeholder="Search database..." aria-label="Search">
+        <button class="search-bar__clear" aria-label="Clear search">&times;</button>
+      </div>
     </div>
   </header>
 
@@ -724,6 +731,7 @@
   </footer>
 
   <!-- JavaScript -->
+  <script src="js/search-bar.js"></script>
   <script src="js/smooth-scroll.js"></script>
   <script src="js/scroll-animations.js"></script>
   <script src="js/modal.js"></script>

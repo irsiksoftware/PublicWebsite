@@ -1,0 +1,119 @@
+/* Search Bar Component with Icon and Focus Glow */
+/* Implements Issue #99 requirements */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+}
+
+.search-bar__icon {
+  font-size: 1.25rem;
+  color: var(--text-light, #e2e8f0);
+  opacity: 0.8;
+  flex-shrink: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.search-bar__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--text-light, #e2e8f0);
+  color: var(--text-light, #e2e8f0);
+  padding: 0.5rem 2rem 0.5rem 0;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar__input::placeholder {
+  font-style: italic;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.search-bar__input:focus {
+  outline: none;
+  border-color: var(--arc-reactor, #00a3e0);
+  box-shadow: 0 4px 12px rgba(0, 163, 224, 0.4);
+}
+
+.search-bar__input:focus::placeholder {
+  opacity: 0.4;
+}
+
+.search-bar__clear {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-light, #e2e8f0);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar__clear:hover {
+  color: var(--arc-reactor, #00a3e0);
+}
+
+.search-bar__clear:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+.search-bar__input:not(:placeholder-shown) ~ .search-bar__clear {
+  opacity: 0.8;
+  visibility: visible;
+}
+
+.search-bar__input:focus ~ .search-bar__clear {
+  opacity: 1;
+}
+
+/* Variant: Compact (for navigation/header) */
+.search-bar--compact {
+  max-width: 300px;
+}
+
+.search-bar--compact .search-bar__input {
+  font-size: 0.9rem;
+  padding: 0.4rem 2rem 0.4rem 0;
+}
+
+.search-bar--compact .search-bar__icon {
+  font-size: 1.1rem;
+}
+
+/* Variant: Full Width (for search sections) */
+.search-bar--full {
+  max-width: 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .search-bar {
+    max-width: 100%;
+  }
+
+  .search-bar__input {
+    font-size: 0.95rem;
+  }
+
+  .search-bar__icon {
+    font-size: 1.1rem;
+  }
+}

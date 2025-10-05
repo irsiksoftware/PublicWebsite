@@ -20,6 +20,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
 }
 
 .header__logo {
@@ -75,4 +76,42 @@
 
 .header__link--active::after {
   width: 100%;
+}
+
+/* Responsive adjustments for header with search bar */
+@media (max-width: 968px) {
+  .header__container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .header__logo {
+    flex: 0 0 auto;
+  }
+
+  .header__nav {
+    order: 3;
+    flex: 1 0 100%;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .search-bar {
+    flex: 1;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header__container {
+    padding: 1rem;
+  }
+
+  .header__nav {
+    gap: 1rem;
+  }
+
+  .header__link {
+    font-size: 0.8rem;
+  }
 }
