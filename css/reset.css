@@ -1,15 +1,23 @@
-/* Modern CSS Reset */
-/* Box sizing rules */
+/* CSS Reset - Modern baseline styles for consistent rendering */
+
+/* Apply border-box sizing to all elements for easier layout calculations */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Remove default margin and padding */
+/* Remove default margin and padding from all elements */
 * {
   margin: 0;
   padding: 0;
+}
+
+/* Prevent font size inflation on mobile devices */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 /* Set core body defaults */
@@ -19,6 +27,36 @@ body {
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Set shorter line heights on headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* Remove list styles on ul, ol elements with a list role */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
 }
 
 /* Make images easier to work with */
@@ -37,6 +75,19 @@ select {
   font: inherit;
 }
 
+/* Remove default button styles */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Remove default link styling */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Remove animations for people who've turned them off */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -47,16 +98,4 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* Remove list styles */
-ul,
-ol {
-  list-style: none;
-}
-
-/* Remove default link styling */
-a {
-  text-decoration: none;
-  color: inherit;
 }
