@@ -1,0 +1,36 @@
+/* Hero Section - CSS Grid with Diagonal Gradient */
+
+.hero {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-red), var(--dark-bg));
+  transform: skewY(-3deg);
+  transform-origin: 0;
+  overflow: hidden;
+}
+
+.hero__content {
+  transform: skewY(3deg);
+  text-align: center;
+  color: var(--text-light);
+  padding: 2rem;
+}
+
+.hero__title {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7),
+               0 8px 24px rgba(200, 16, 46, 0.5);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.hero__subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  opacity: 0.9;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
