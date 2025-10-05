@@ -1,0 +1,22 @@
+/* CSS Custom Properties - Avengers Archive Theme */
+
+:root {
+  /* Primary Colors - Avengers Theme */
+  --primary-red: #C8102E;        /* Iron Man / Avengers primary red */
+  --shield-blue: #0057B8;         /* S.H.I.E.L.D. signature blue */
+  --arc-reactor: #00D4FF;         /* Arc reactor cyan glow */
+  --hulk-green: #6AC259;          /* Hulk green */
+  --gold: #FFD700;                /* Thanos / Loki gold accent */
+
+  /* Background and Text Colors */
+  --dark-bg: #1a1a1a;             /* Dark background for classified feel */
+  --text-light: #f0f0f0;          /* Light text for dark backgrounds */
+
+  /* Font Families - System Font Stack for Performance */
+  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                  'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
+                  'Segoe UI Emoji', 'Segoe UI Symbol';
+
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono',
+               Consolas, 'Courier New', monospace;
+}
