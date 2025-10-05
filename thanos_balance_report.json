@@ -1,0 +1,35 @@
+{
+  "judgment_timestamp": "2025-10-05T14:30:00Z",
+  "decisions": [
+    {
+      "agent_name": "Thor (PR Reviewer)",
+      "verdict": "MERCY",
+      "reasoning": "5 consecutive empty runs due to environmental factors (no PRs available to review). Agent is functioning correctly but has no work to do. Keeping disabled until PRs exist to prevent resource waste.",
+      "productivity": "0/5 runs (0%)",
+      "streak": 5,
+      "action": "Reset offense streak, remain disabled until work available"
+    },
+    {
+      "agent_name": "Cyclops (PR Fixer)",
+      "verdict": "DISABLE",
+      "reasoning": "6 consecutive ghost runs claiming 'Fixed PR but no commits'. This is a systemic flaw - agent produces no measurable output despite claiming work done. Chronic waste of resources.",
+      "productivity": "0/6 runs (0%)",
+      "streak": 6,
+      "action": "Remain permanently disabled until code is fixed"
+    }
+  ],
+  "swarm_health": {
+    "total_agents": 5,
+    "productive_agents": 2,
+    "timed_out": 0,
+    "disabled": 2,
+    "swarm_productivity": 0.5556,
+    "details": {
+      "black_widow": "100% productive (1/1)",
+      "bruce_banner": "80% productive (4/5)",
+      "thor": "0% productive - MERCY granted (environmental)",
+      "cyclops": "0% productive - DISABLED (systemic failure)",
+      "iron_man": "No runs yet"
+    }
+  }
+}

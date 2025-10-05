@@ -1,0 +1,199 @@
+/* Accessibility Enhancements for WCAG AA Compliance */
+
+/* Skip to Content Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--shield-blue);
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  z-index: 10000;
+  font-weight: 600;
+  border-radius: 0 0 4px 0;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--arc-reactor);
+  outline-offset: 2px;
+}
+
+/* Enhanced Focus Styles - Visible Focus Indicator */
+*:focus-visible {
+  outline: 3px solid var(--arc-reactor);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Header Navigation Focus */
+.header__link:focus-visible {
+  outline: 3px solid var(--arc-reactor);
+  outline-offset: 4px;
+  background-color: rgba(0, 212, 255, 0.1);
+}
+
+/* Roster Cards Focus */
+.roster__card:focus-visible {
+  outline: 3px solid var(--arc-reactor);
+  outline-offset: 4px;
+  transform: translateY(-8px);
+}
+
+/* Gallery Items Focus */
+.gallery__item:focus-visible {
+  outline: 3px solid var(--arc-reactor);
+  outline-offset: 4px;
+}
+
+/* Stats Cards Focus */
+.stats__card:focus-visible {
+  outline: 3px solid var(--arc-reactor);
+  outline-offset: 4px;
+  transform: translateY(-4px);
+}
+
+/* Threat Level Bars Focus */
+.threat-level__bar:focus-visible {
+  outline: 3px solid var(--arc-reactor);
+  outline-offset: 4px;
+}
+
+/* Keyboard Navigation - Tab Order */
+.header__link,
+.roster__card,
+.gallery__item,
+.stats__card,
+.threat-level__bar {
+  position: relative;
+}
+
+/* Make interactive elements keyboard accessible */
+.roster__card,
+.gallery__item,
+.stats__card,
+.threat-level__bar {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure tabindex elements are focusable */
+[tabindex]:not([tabindex="-1"]) {
+  cursor: pointer;
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Color Contrast Improvements */
+/* Ensure all text meets WCAG AA 4.5:1 ratio */
+
+/* Enhanced contrast for light text on dark backgrounds */
+body {
+  background: var(--dark-bg);
+  color: var(--text-light);
+}
+
+/* Links with sufficient contrast */
+a {
+  color: var(--arc-reactor);
+  text-decoration-skip-ink: auto;
+}
+
+a:hover,
+a:focus {
+  color: #33e0ff;
+  text-decoration: underline;
+}
+
+/* Button and Interactive Element Contrast */
+button,
+[role="button"] {
+  min-height: 44px; /* WCAG touch target size */
+  min-width: 44px;
+}
+
+/* High Contrast Focus for Buttons */
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid var(--arc-reactor);
+  outline-offset: 3px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .skip-link {
+    transition: none;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  * {
+    border-color: currentColor !important;
+  }
+
+  *:focus-visible {
+    outline-width: 4px;
+    outline-offset: 3px;
+  }
+}
+
+/* Dark Mode Enhancements (already default, but explicit) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--dark-bg);
+    color: var(--text-light);
+  }
+}
+
+/* Ensure sufficient line height for readability */
+body {
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3;
+}
+
+/* Touch Target Sizing - Minimum 44x44 pixels */
+a,
+button,
+.header__link,
+.roster__card,
+.gallery__item,
+.stats__card,
+.threat-level__bar {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Exception for small decorative elements */
+.stats__icon,
+.shield-logo {
+  min-height: auto;
+  min-width: auto;
+}

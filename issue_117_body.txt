@@ -1,0 +1,7 @@
+ConvertFrom-Json : Invalid JSON primitive: Issue.
+At line:1 char:33
++ gh issue view 117 --json body | ConvertFrom-Json | Select-Object -Exp ...
++                                 ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [ConvertFrom-Json], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.Commands.ConvertFromJsonCommand
+ 

@@ -1,0 +1,10 @@
+Issue #104: Add SVG icon integration and sizing system
+State: OPEN
+Labels: HIGH, feature
+Assignees: unassigned
+Created: 2025-10-05T05:13:11Z
+Updated: 2025-10-05T09:05:43Z
+URL: https://github.com/irsiksoftware/TestForAI/issues/104
+
+--- Description ---
+Set up SVG icon library.\n\n**Requirements:**\n- Create /assets/icons folder\n- Inline SVG icons: shield; star; alert; user; search; menu; close; arrow; lightning\n- Proper viewBox; fill='currentColor'; stroke where needed\n- CSS classes: .icon-sm (16px); .icon-md (24px); .icon-lg (48px)\n- Color controlled by parent color or CSS variable\n\n**Depends on:** #1 (folder structure)

@@ -1,0 +1,10 @@
+Issue #117: Build image lightbox with keyboard navigation
+State: OPEN
+Labels: HIGH, wip, feature
+Assignees: unassigned
+Created: 2025-10-05T05:13:29Z
+Updated: 2025-10-05T13:28:12Z
+URL: https://github.com/irsiksoftware/TestForAI/issues/117
+
+--- Description ---
+Create fullscreen image viewer.\n\n**Requirements:**\n- Click image opens modal overlay with full-size image\n- Navigation: prev/next arrows; image counter '3 / 12'\n- Keyboard support: Esc closes; Left/Right arrows navigate\n- Prevent body scroll: body.style.overflow = 'hidden'\n- CSS transitions for slide effects\n- Preload adjacent images for smooth navigation\n- Click outside image closes\n\n**Depends on:** #38 (JS); #13 (gallery)

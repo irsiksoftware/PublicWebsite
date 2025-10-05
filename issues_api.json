@@ -1,0 +1,8 @@
+At line:1 char:44
++ gh api repos/:owner/:repo/issues?state=open&per_page=100 | ConvertTo- ...
++                                            ~
+The ampersand (&) character is not allowed. The & operator is reserved for future use; wrap an ampersand in double 
+quotation marks ("&") to pass it as part of a string.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : AmpersandNotAllowed
+ 

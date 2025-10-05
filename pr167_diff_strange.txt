@@ -1,0 +1,802 @@
+diff --git a/css/footer.css b/css/footer.css
+new file mode 100644
+index 0000000..19399a2
+--- /dev/null
++++ b/css/footer.css
+@@ -0,0 +1,236 @@
++/* Footer Section - Multi-column grid with social links */
++
++.footer {
++  background: var(--dark-bg);
++  color: var(--text-light);
++  padding: 60px 20px 30px;
++  border-top: 2px solid rgba(0, 112, 243, 0.3);
++  position: relative;
++}
++
++.footer::before {
++  content: '';
++  position: absolute;
++  top: 0;
++  left: 0;
++  right: 0;
++  bottom: 0;
++  background:
++    radial-gradient(circle at 10% 20%, rgba(0, 112, 243, 0.05) 0%, transparent 50%),
++    radial-gradient(circle at 90% 80%, rgba(227, 6, 19, 0.05) 0%, transparent 50%);
++  pointer-events: none;
++}
++
++.footer__container {
++  max-width: 1200px;
++  margin: 0 auto;
++  position: relative;
++  z-index: 1;
++}
++
++.footer__grid {
++  display: grid;
++  grid-template-columns: repeat(4, 1fr);
++  gap: 40px;
++  padding-bottom: 40px;
++  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
++}
++
++.footer__column {
++  display: flex;
++  flex-direction: column;
++  gap: 15px;
++  padding: 0 15px;
++  border-right: 1px solid rgba(255, 255, 255, 0.1);
++}
++
++.footer__column:last-child {
++  border-right: none;
++}
++
++.footer__logo {
++  font-size: 1.8rem;
++  font-weight: 700;
++  color: var(--primary-color);
++  text-transform: uppercase;
++  letter-spacing: 3px;
++  margin-bottom: 10px;
++  text-shadow: 0 0 20px rgba(0, 112, 243, 0.5);
++}
++
++.footer__description {
++  color: rgba(255, 255, 255, 0.6);
++  line-height: 1.6;
++  font-size: 0.9rem;
++}
++
++.footer__heading {
++  font-size: 1.1rem;
++  font-weight: 600;
++  color: var(--text-light);
++  text-transform: uppercase;
++  letter-spacing: 1px;
++  margin-bottom: 5px;
++}
++
++.footer__nav {
++  display: flex;
++  flex-direction: column;
++  gap: 10px;
++}
++
++.footer__link {
++  color: rgba(255, 255, 255, 0.7);
++  text-decoration: none;
++  font-size: 0.9rem;
++  transition: all 0.3s ease;
++  position: relative;
++  padding-left: 15px;
++}
++
++.footer__link::before {
++  content: '▸';
++  position: absolute;
++  left: 0;
++  color: var(--primary-color);
++  opacity: 0;
++  transform: translateX(-5px);
++  transition: all 0.3s ease;
++}
++
++.footer__link:hover {
++  color: var(--primary-color);
++  transform: translateX(5px);
++  text-decoration: underline;
++}
++
++.footer__link:hover::before {
++  opacity: 1;
++  transform: translateX(0);
++}
++
++.footer__contact {
++  display: flex;
++  flex-direction: column;
++  gap: 8px;
++  margin-bottom: 15px;
++}
++
++.footer__contact-item {
++  color: rgba(255, 255, 255, 0.7);
++  font-size: 0.9rem;
++  line-height: 1.6;
++}
++
++.footer__social {
++  display: flex;
++  gap: 15px;
++  margin-top: 10px;
++}
++
++.footer__social-link {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  width: 40px;
++  height: 40px;
++  background: rgba(255, 255, 255, 0.05);
++  border: 1px solid rgba(0, 112, 243, 0.3);
++  border-radius: 50%;
++  color: var(--text-light);
++  text-decoration: none;
++  font-size: 1.2rem;
++  transition: all 0.3s ease;
++}
++
++.footer__social-link:hover {
++  background: var(--primary-color);
++  border-color: var(--primary-color);
++  color: #fff;
++  transform: translateY(-3px) scale(1.1);
++  box-shadow: 0 5px 15px rgba(0, 112, 243, 0.4);
++}
++
++.footer__bottom {
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  gap: 10px;
++  padding-top: 30px;
++  text-align: center;
++}
++
++.footer__copyright {
++  color: rgba(255, 255, 255, 0.5);
++  font-size: 0.85rem;
++  letter-spacing: 0.5px;
++}
++
++.footer__disclaimer {
++  color: rgba(255, 255, 255, 0.4);
++  font-size: 0.75rem;
++  font-style: italic;
++  max-width: 600px;
++  line-height: 1.4;
++}
++
++/* Responsive Design - Stack on mobile */
++@media (max-width: 992px) {
++  .footer__grid {
++    grid-template-columns: repeat(2, 1fr);
++    gap: 30px;
++  }
++
++  .footer__column {
++    border-right: none;
++    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
++    padding-bottom: 20px;
++  }
++
++  .footer__column:nth-last-child(-n+2) {
++    border-bottom: none;
++  }
++}
++
++@media (max-width: 768px) {
++  .footer {
++    padding: 40px 15px 20px;
++  }
++
++  .footer__grid {
++    grid-template-columns: 1fr;
++    gap: 25px;
++  }
++
++  .footer__column {
++    padding: 0;
++    border-right: none;
++    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
++    padding-bottom: 20px;
++  }
++
++  .footer__column:last-child {
++    border-bottom: none;
++  }
++
++  .footer__logo {
++    font-size: 1.5rem;
++    text-align: center;
++  }
++
++  .footer__description {
++    text-align: center;
++  }
++
++  .footer__heading {
++    font-size: 1rem;
++  }
++
++  .footer__social {
++    justify-content: center;
++  }
++
++  .footer__bottom {
++    padding-top: 20px;
++  }
++}
+diff --git a/css/mission-logs.css b/css/mission-logs.css
+new file mode 100644
+index 0000000..60e3115
+--- /dev/null
++++ b/css/mission-logs.css
+@@ -0,0 +1,218 @@
++/* Mission Logs Section - Infinite Scroll Table */
++
++.mission-logs {
++  padding: 80px 20px;
++  background-color: var(--dark-bg);
++  min-height: 600px;
++}
++
++.mission-logs__container {
++  max-width: 1200px;
++  margin: 0 auto;
++  position: relative;
++}
++
++.mission-logs__title {
++  font-family: var(--font-heading);
++  font-size: 3rem;
++  text-align: center;
++  color: var(--text-light);
++  margin-bottom: 50px;
++  text-transform: uppercase;
++  letter-spacing: 3px;
++}
++
++.mission-logs__table-wrapper {
++  background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
++  border: 2px solid #333;
++  border-radius: 12px;
++  overflow-x: auto;
++  max-height: 600px;
++  overflow-y: auto;
++  position: relative;
++}
++
++.mission-logs__table {
++  width: 100%;
++  border-collapse: collapse;
++  font-family: var(--font-body);
++}
++
++.mission-logs__table thead {
++  position: sticky;
++  top: 0;
++  background: linear-gradient(135deg, var(--primary-red), var(--arc-reactor));
++  z-index: 10;
++}
++
++.mission-logs__table th {
++  padding: 15px 20px;
++  text-align: left;
++  color: #fff;
++  font-family: var(--font-heading);
++  font-size: 0.95rem;
++  text-transform: uppercase;
++  letter-spacing: 1px;
++  border-bottom: 2px solid var(--gold);
++}
++
++.mission-logs__table tbody tr {
++  border-bottom: 1px solid #333;
++  transition: background-color 0.3s ease;
++}
++
++.mission-logs__table tbody tr:hover {
++  background-color: rgba(0, 212, 255, 0.1);
++}
++
++.mission-logs__table td {
++  padding: 12px 20px;
++  color: var(--text-light);
++  font-size: 0.9rem;
++}
++
++.mission-logs__table td:first-child {
++  color: var(--arc-reactor);
++  font-weight: bold;
++}
++
++/* Status Badges */
++.mission-logs__status {
++  display: inline-block;
++  padding: 4px 10px;
++  border-radius: 4px;
++  font-size: 0.8rem;
++  font-weight: bold;
++  text-transform: uppercase;
++}
++
++.mission-logs__status--completed {
++  background-color: #4caf50;
++  color: #fff;
++}
++
++.mission-logs__status--active {
++  background-color: #ff9800;
++  color: #fff;
++}
++
++.mission-logs__status--failed {
++  background-color: #f44336;
++  color: #fff;
++}
++
++.mission-logs__status--pending {
++  background-color: #2196f3;
++  color: #fff;
++}
++
++/* Priority Badges */
++.mission-logs__priority {
++  display: inline-block;
++  padding: 4px 10px;
++  border-radius: 4px;
++  font-size: 0.8rem;
++  font-weight: bold;
++  text-transform: uppercase;
++}
++
++.mission-logs__priority--critical {
++  background-color: #d32f2f;
++  color: #fff;
++}
++
++.mission-logs__priority--high {
++  background-color: #ff6f00;
++  color: #fff;
++}
++
++.mission-logs__priority--medium {
++  background-color: #fbc02d;
++  color: #000;
++}
++
++.mission-logs__priority--low {
++  background-color: #388e3c;
++  color: #fff;
++}
++
++/* Sentinel Element (invisible trigger for IntersectionObserver) */
++.mission-logs__sentinel {
++  height: 20px;
++  background: transparent;
++}
++
++/* Loading Spinner */
++.mission-logs__loader {
++  text-align: center;
++  padding: 30px;
++  color: var(--text-light);
++}
++
++.mission-logs__spinner {
++  width: 40px;
++  height: 40px;
++  border: 4px solid rgba(0, 212, 255, 0.3);
++  border-top-color: var(--arc-reactor);
++  border-radius: 50%;
++  margin: 0 auto 15px;
++  animation: spin 1s linear infinite;
++}
++
++@keyframes spin {
++  to {
++    transform: rotate(360deg);
++  }
++}
++
++/* Back to Top Button */
++.mission-logs__back-to-top {
++  position: fixed;
++  bottom: 30px;
++  right: 30px;
++  background: linear-gradient(135deg, var(--primary-red), var(--arc-reactor));
++  color: #fff;
++  border: none;
++  border-radius: 50%;
++  width: 60px;
++  height: 60px;
++  font-size: 1.5rem;
++  font-weight: bold;
++  cursor: pointer;
++  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.5);
++  transition: transform 0.3s ease, box-shadow 0.3s ease;
++  z-index: 1000;
++}
++
++.mission-logs__back-to-top:hover {
++  transform: translateY(-5px);
++  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.7);
++}
++
++.mission-logs__back-to-top:active {
++  transform: translateY(-2px);
++}
++
++/* Responsive Design */
++@media (max-width: 768px) {
++  .mission-logs__table {
++    font-size: 0.85rem;
++  }
++
++  .mission-logs__table th,
++  .mission-logs__table td {
++    padding: 10px 12px;
++  }
++
++  .mission-logs__title {
++    font-size: 2rem;
++  }
++
++  .mission-logs__back-to-top {
++    width: 50px;
++    height: 50px;
++    font-size: 1.2rem;
++    bottom: 20px;
++    right: 20px;
++  }
++}
+diff --git a/index.html b/index.html
+index 39ed01b..d33cf59 100644
+--- a/index.html
++++ b/index.html
+@@ -32,7 +32,9 @@
+   <link rel="stylesheet" href="css/responsive.css">
+   <link rel="stylesheet" href="css/lightbox.css">
+   <link rel="stylesheet" href="css/missions.css">
++  <link rel="stylesheet" href="css/mission-logs.css">
+   <link rel="stylesheet" href="css/team-builder.css">
++  <link rel="stylesheet" href="css/footer.css">
+ </head>
+ <body>
+   <!-- Header -->
+@@ -498,6 +500,38 @@ <h3 class="missions__name">Multiverse Anomaly</h3>
+     </div>
+   </section>
+ 
++  <!-- Mission Logs Section with Infinite Scroll -->
++  <section class="mission-logs">
++    <div class="mission-logs__container">
++      <h2 class="mission-logs__title">Mission Logs</h2>
++      <div class="mission-logs__table-wrapper">
++        <table class="mission-logs__table">
++          <thead>
++            <tr>
++              <th>ID</th>
++              <th>Mission Name</th>
++              <th>Date</th>
++              <th>Agent</th>
++              <th>Status</th>
++              <th>Priority</th>
++            </tr>
++          </thead>
++          <tbody id="missionLogsTableBody">
++            <!-- Initial rows will be loaded here -->
++          </tbody>
++        </table>
++        <div id="missionLogsSentinel" class="mission-logs__sentinel"></div>
++        <div id="missionLogsLoader" class="mission-logs__loader" style="display: none;">
++          <div class="mission-logs__spinner"></div>
++          <p>Loading more missions...</p>
++        </div>
++      </div>
++      <button id="backToTop" class="mission-logs__back-to-top" style="display: none;">
++        ↑ Back to Top
++      </button>
++    </div>
++  </section>
++
+   <!-- Team Builder Section -->
+   <section class="team-builder">
+     <div class="team-builder__container">
+@@ -626,6 +660,69 @@ <h2 id="modalTitle" class="modal__title">Agent Details</h2>
+     </div>
+   </div>
+ 
++  <!-- Footer -->
++  <footer class="footer">
++    <div class="footer__container">
++      <div class="footer__grid">
++        <!-- About Section -->
++        <div class="footer__column">
++          <div class="footer__logo">S.H.I.E.L.D.</div>
++          <p class="footer__description">
++            Strategic Homeland Intervention, Enforcement and Logistics Division. Protecting Earth from threats beyond comprehension.
++          </p>
++        </div>
++
++        <!-- Quick Links Section -->
++        <div class="footer__column">
++          <h3 class="footer__heading">Quick Links</h3>
++          <nav class="footer__nav">
++            <a href="#hero" class="footer__link">Intelligence</a>
++            <a href="#roster" class="footer__link">Avengers Roster</a>
++            <a href="#gallery" class="footer__link">Mission Gallery</a>
++            <a href="#stats" class="footer__link">Operations Dashboard</a>
++            <a href="#timeline" class="footer__link">History Timeline</a>
++            <a href="#faq" class="footer__link">FAQ</a>
++          </nav>
++        </div>
++
++        <!-- Legal Section -->
++        <div class="footer__column">
++          <h3 class="footer__heading">Legal</h3>
++          <nav class="footer__nav">
++            <a href="#privacy" class="footer__link">Privacy Policy</a>
++            <a href="#terms" class="footer__link">Terms of Service</a>
++            <a href="#clearance" class="footer__link">Clearance Protocols</a>
++            <a href="#disclosure" class="footer__link">Information Disclosure</a>
++          </nav>
++        </div>
++
++        <!-- Contact Section -->
++        <div class="footer__column">
++          <h3 class="footer__heading">Contact</h3>
++          <div class="footer__contact">
++            <p class="footer__contact-item">📞 1-800-SHIELD-1</p>
++            <p class="footer__contact-item">📧 contact@shield.gov</p>
++            <p class="footer__contact-item">📍 New York, NY</p>
++          </div>
++          <div class="footer__social">
++            <a href="#twitter" class="footer__social-link" aria-label="Twitter">𝕏</a>
++            <a href="#facebook" class="footer__social-link" aria-label="Facebook">f</a>
++            <a href="#instagram" class="footer__social-link" aria-label="Instagram">📷</a>
++            <a href="#linkedin" class="footer__social-link" aria-label="LinkedIn">in</a>
++          </div>
++        </div>
++      </div>
++
++      <!-- Copyright and Disclaimer -->
++      <div class="footer__bottom">
++        <p class="footer__copyright">&copy; 2025 S.H.I.E.L.D. All Rights Reserved.</p>
++        <p class="footer__disclaimer">
++          This is a fictional website created for demonstration purposes. All characters and events are property of Marvel Entertainment.
++        </p>
++      </div>
++    </div>
++  </footer>
++
+   <!-- JavaScript -->
+   <script src="js/smooth-scroll.js"></script>
+   <script src="js/scroll-animations.js"></script>
+@@ -633,5 +730,6 @@ <h2 id="modalTitle" class="modal__title">Agent Details</h2>
+   <script src="js/lightbox.js"></script>
+   <script src="js/advanced-search.js"></script>
+   <script src="js/team-builder.js"></script>
++  <script src="js/infinite-scroll.js"></script>
+ </body>
+ </html>
+diff --git a/js/infinite-scroll.js b/js/infinite-scroll.js
+new file mode 100644
+index 0000000..8b428a1
+--- /dev/null
++++ b/js/infinite-scroll.js
+@@ -0,0 +1,200 @@
++/**
++ * Infinite Scroll for Mission Logs
++ * Uses IntersectionObserver to lazy load table rows
++ */
++
++(function() {
++  'use strict';
++
++  // Configuration
++  const ROWS_PER_LOAD = 20;
++  const LOAD_DELAY = 800; // Simulate network delay
++  const BACK_TO_TOP_THRESHOLD = 500; // px scrolled before showing button
++  const TOTAL_MISSIONS = 200; // Total available missions
++
++  // State
++  let currentPage = 0;
++  let isLoading = false;
++  let hasMoreData = true;
++
++  // DOM Elements
++  const tableBody = document.getElementById('missionLogsTableBody');
++  const sentinel = document.getElementById('missionLogsSentinel');
++  const loader = document.getElementById('missionLogsLoader');
++  const backToTopBtn = document.getElementById('backToTop');
++  const tableWrapper = document.querySelector('.mission-logs__table-wrapper');
++
++  // Sample mission data generator
++  const missionNames = [
++    'Battle of New York', 'Sokovia Incident', 'Infinity War', 'Endgame Operation',
++    'Hydra Facility Raid', 'Multiverse Anomaly', 'Quantum Realm Exploration',
++    'Chitauri Invasion', 'Ultron Crisis', 'Civil War Conflict', 'Wakanda Defense',
++    'Titan Assault', 'Asgard Evacuation', 'Dark Dimension Breach', 'Kree Conflict',
++    'Skrull Infiltration', 'Time Heist', 'Decimation Recovery', 'Snap Reversal',
++    'Vormir Mission', 'Garden Reconnaissance', 'Compound Defense', 'New York Sanctum',
++    'Kamar-Taj Protection', 'Ancient Artifact Recovery', 'Tesseract Retrieval'
++  ];
++
++  const agents = [
++    'Tony Stark', 'Steve Rogers', 'Thor Odinson', 'Bruce Banner', 'Natasha Romanoff',
++    'Clint Barton', 'Wanda Maximoff', 'Vision', 'Sam Wilson', 'Bucky Barnes',
++    'T\'Challa', 'Peter Parker', 'Stephen Strange', 'Carol Danvers', 'Scott Lang',
++    'Hope van Dyne', 'Nick Fury', 'Maria Hill', 'Phil Coulson', 'James Rhodes'
++  ];
++
++  const statuses = [
++    { name: 'Completed', class: 'completed' },
++    { name: 'Active', class: 'active' },
++    { name: 'Failed', class: 'failed' },
++    { name: 'Pending', class: 'pending' }
++  ];
++
++  const priorities = [
++    { name: 'CRITICAL', class: 'critical' },
++    { name: 'HIGH', class: 'high' },
++    { name: 'MEDIUM', class: 'medium' },
++    { name: 'LOW', class: 'low' }
++  ];
++
++  /**
++   * Generate a mission row
++   */
++  function generateMission(id) {
++    const missionName = missionNames[Math.floor(Math.random() * missionNames.length)];
++    const agent = agents[Math.floor(Math.random() * agents.length)];
++    const status = statuses[Math.floor(Math.random() * statuses.length)];
++    const priority = priorities[Math.floor(Math.random() * priorities.length)];
++
++    // Generate random date within last 5 years
++    const date = new Date();
++    date.setDate(date.getDate() - Math.floor(Math.random() * 1825));
++    const formattedDate = date.toISOString().split('T')[0];
++
++    return {
++      id,
++      missionName,
++      date: formattedDate,
++      agent,
++      status,
++      priority
++    };
++  }
++
++  /**
++   * Create table row element
++   */
++  function createTableRow(mission) {
++    const tr = document.createElement('tr');
++    tr.innerHTML = `
++      <td>${mission.id}</td>
++      <td>${mission.missionName}</td>
++      <td>${mission.date}</td>
++      <td>${mission.agent}</td>
++      <td><span class="mission-logs__status mission-logs__status--${mission.status.class}">${mission.status.name}</span></td>
++      <td><span class="mission-logs__priority mission-logs__priority--${mission.priority.class}">${mission.priority.name}</span></td>
++    `;
++    return tr;
++  }
++
++  /**
++   * Load next batch of missions
++   */
++  function loadMoreMissions() {
++    if (isLoading || !hasMoreData) return;
++
++    isLoading = true;
++    loader.style.display = 'block';
++
++    // Simulate network request
++    setTimeout(() => {
++      const startId = currentPage * ROWS_PER_LOAD + 1;
++      const endId = startId + ROWS_PER_LOAD;
++
++      // Generate and append new rows
++      const fragment = document.createDocumentFragment();
++      for (let i = startId; i < endId && i <= TOTAL_MISSIONS; i++) {
++        const mission = generateMission(i);
++        const row = createTableRow(mission);
++        fragment.appendChild(row);
++      }
++
++      tableBody.appendChild(fragment);
++      currentPage++;
++
++      // Check if we've loaded all data
++      if (currentPage * ROWS_PER_LOAD >= TOTAL_MISSIONS) {
++        hasMoreData = false;
++        observer.unobserve(sentinel);
++        loader.innerHTML = '<p style="color: var(--text-light); padding: 20px;">No more missions to load</p>';
++      } else {
++        loader.style.display = 'none';
++      }
++
++      isLoading = false;
++    }, LOAD_DELAY);
++  }
++
++  /**
++   * Initialize IntersectionObserver for sentinel element
++   */
++  const observer = new IntersectionObserver(
++    (entries) => {
++      entries.forEach(entry => {
++        if (entry.isIntersecting && hasMoreData) {
++          loadMoreMissions();
++        }
++      });
++    },
++    {
++      root: tableWrapper,
++      rootMargin: '100px',
++      threshold: 0.1
++    }
++  );
++
++  /**
++   * Back to top button functionality
++   */
++  function handleScroll() {
++    if (tableWrapper.scrollTop > BACK_TO_TOP_THRESHOLD) {
++      backToTopBtn.style.display = 'block';
++    } else {
++      backToTopBtn.style.display = 'none';
++    }
++  }
++
++  function scrollToTop() {
++    tableWrapper.scrollTo({
++      top: 0,
++      behavior: 'smooth'
++    });
++  }
++
++  /**
++   * Initialize
++   */
++  function init() {
++    if (!tableBody || !sentinel || !loader || !backToTopBtn || !tableWrapper) {
++      console.error('Mission logs elements not found');
++      return;
++    }
++
++    // Load initial batch
++    loadMoreMissions();
++
++    // Start observing sentinel
++    observer.observe(sentinel);
++
++    // Back to top button
++    tableWrapper.addEventListener('scroll', handleScroll);
++    backToTopBtn.addEventListener('click', scrollToTop);
++  }
++
++  // Initialize when DOM is ready
++  if (document.readyState === 'loading') {
++    document.addEventListener('DOMContentLoaded', init);
++  } else {
++    init();
++  }
++
++})();

@@ -1,0 +1,7 @@
+ConvertFrom-Json : Invalid JSON primitive: h: Not Found (HTTP 404).
+At line:1 char:54
++ ... epos/swedenhill/TestForAI/pulls?state=open | ConvertFrom-Json | Conve ...
++                                                  ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [ConvertFrom-Json], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.Commands.ConvertFromJsonCommand
+ 

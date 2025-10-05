@@ -1,0 +1,10 @@
+﻿Issue #77: Design hero section with CSS Grid and diagonal gradient
+State: OPEN
+Labels: URGENT, feature
+Assignees: unassigned
+Created: 2025-10-05T05:12:35Z
+Updated: 2025-10-05T10:17:47Z
+URL: https://github.com/irsiksoftware/TestForAI/issues/77
+
+--- Description ---
+Create visually striking hero section using CSS Grid.\n\n**Requirements:**\n- Full viewport height (100vh)\n- Diagonal gradient background (primary-red to dark-bg at 135deg)\n- Center-aligned heading 'AVENGERS INITIATIVE' with dramatic text-shadow and letter-spacing: 0.3em\n- Subheading 'Classified Intelligence Archive - Clearance Level: OMEGA'\n- Use transform: skewY(-3deg) for dynamic angle; counter-skew content\n\n**Depends on:** #3 (CSS variables)

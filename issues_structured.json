@@ -1,0 +1,546 @@
+﻿[
+    {
+        "number":  138,
+        "title":  "Create comprehensive feature test page",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature",
+                       "testing"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  137,
+        "title":  "Implement WebGL particle background effect",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  136,
+        "title":  "Add Web Animations API for complex effects",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  135,
+        "title":  "Build service worker for offline PWA support",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  134,
+        "title":  "Create performance monitoring dashboard",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  133,
+        "title":  "Add comprehensive accessibility improvements",
+        "state":  "open",
+        "labels":  [
+                       "HIGH",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  132,
+        "title":  "Implement theme switcher with localStorage",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  131,
+        "title":  "Add drag-and-drop team builder interface",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  130,
+        "title":  "Build infinite scroll for mission logs",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  129,
+        "title":  "Create advanced search with multi-filter system",
+        "state":  "open",
+        "labels":  [
+                       "HIGH",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  128,
+        "title":  "Implement Tetris hold piece and preview features",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  127,
+        "title":  "Add Tetris UI panels and game over screen",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  126,
+        "title":  "Implement Tetris line clearing and scoring",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  125,
+        "title":  "Add Tetris game loop with gravity and level system",
+        "state":  "open",
+        "labels":  [
+                       "HIGH",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  124,
+        "title":  "Implement Tetris piece movement and collision",
+        "state":  "open",
+        "labels":  [
+                       "HIGH",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  123,
+        "title":  "Create Tetris game canvas and grid setup",
+        "state":  "open",
+        "labels":  [
+                       "CRITICAL",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  121,
+        "title":  "Implement form validation with real-time feedback",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  120,
+        "title":  "Build tab switching with keyboard navigation",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  119,
+        "title":  "Create dynamic search filtering functionality",
+        "state":  "open",
+        "labels":  [
+                       "HIGH",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  118,
+        "title":  "Add parallax scrolling effect on layers",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  117,
+        "title":  "Build image lightbox with keyboard navigation",
+        "state":  "open",
+        "labels":  [
+                       "HIGH",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  116,
+        "title":  "Implement statistics counter animation with easing",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  114,
+        "title":  "Create lazy loading with Intersection Observer",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  113,
+        "title":  "Build hamburger menu toggle with animation",
+        "state":  "open",
+        "labels":  [
+                       "HIGH",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  112,
+        "title":  "Implement smooth scroll with offset for sticky header",
+        "state":  "open",
+        "labels":  [
+                       "HIGH",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  111,
+        "title":  "Add basic JavaScript module setup and utilities",
+        "state":  "open",
+        "labels":  [
+                       "CRITICAL",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  110,
+        "title":  "Add table of contents with smooth scroll navigation",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  109,
+        "title":  "Design alert banner component with slide animation",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  108,
+        "title":  "Create CSS-only tooltip system with arrows",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  107,
+        "title":  "Add CSS blend modes for creative image effects",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  106,
+        "title":  "Build skill progress bars with animated gradients",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  105,
+        "title":  "Implement mission log table with sticky header",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  103,
+        "title":  "Design modal overlay with backdrop blur",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  102,
+        "title":  "Create parallax background layer structure",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  101,
+        "title":  "Add responsive breakpoints with comprehensive media queries",
+        "state":  "open",
+        "labels":  [
+                       "HIGH",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  100,
+        "title":  "Build notification badge system with pulse animation",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  99,
+        "title":  "Create search bar with icon and focus glow",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  98,
+        "title":  "Add custom scrollbar styling for theme consistency",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  97,
+        "title":  "Implement CSS-only tabbed interface for teams",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  96,
+        "title":  "Create intel classification badges with glow effects",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  95,
+        "title":  "Add CSS classes for scroll-triggered animations",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  94,
+        "title":  "Build team stats dashboard with CSS Grid and gradients",
+        "state":  "open",
+        "labels":  [
+                       "HIGH",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  93,
+        "title":  "Design mission briefing cards with glassmorphism",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  92,
+        "title":  "Add CSS filters for dramatic image effects",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  91,
+        "title":  "Create footer with multi-column grid and social links",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  90,
+        "title":  "Implement S.H.I.E.L.D. loading screen with CSS animation",
+        "state":  "open",
+        "labels":  [
+                       "LOW",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  89,
+        "title":  "Add profile cards with clip-path masking and blend modes",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  87,
+        "title":  "Create timeline with CSS pseudo-elements and connecting lines",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  85,
+        "title":  "Implement CSS-only accordion for FAQ section",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  84,
+        "title":  "Build mission cards with complex hover effects",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  83,
+        "title":  "Create animated statistics counter section with large numbers",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  82,
+        "title":  "Add custom fonts with @font-face and font-display",
+        "state":  "open",
+        "labels":  [
+                       "MEDIUM",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    },
+    {
+        "number":  79,
+        "title":  "Create responsive navigation with flexbox and hover effects",
+        "state":  "open",
+        "labels":  [
+                       "HIGH",
+                       "wip",
+                       "feature"
+                   ],
+        "is_pr":  false
+    }
+]

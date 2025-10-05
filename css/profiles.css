@@ -1,0 +1,288 @@
+/* Profile Cards Section - Advanced CSS with clip-path and blend modes */
+
+.profiles {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.profiles::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(0, 112, 243, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(227, 6, 19, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.profiles__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.profiles__title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 60px;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 30px rgba(0, 112, 243, 0.6);
+}
+
+.profiles__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  padding: 20px;
+}
+
+.profiles__card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(0, 112, 243, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  /* Use clip-path for hexagon shape */
+  clip-path: polygon(
+    15% 0%, 85% 0%,
+    100% 25%, 100% 75%,
+    85% 100%, 15% 100%,
+    0% 75%, 0% 25%
+  );
+}
+
+.profiles__card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 80px rgba(0, 112, 243, 0.4);
+  border-color: rgba(0, 112, 243, 0.6);
+}
+
+.profiles__photo {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(0, 112, 243, 0.2) 0%, rgba(227, 6, 19, 0.2) 100%);
+}
+
+.profiles__photo-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  /* Apply blend mode for color tint effect */
+  background-blend-mode: multiply;
+  transition: transform 0.6s ease;
+}
+
+.profiles__card:hover .profiles__photo-bg {
+  transform: scale(1.1);
+}
+
+.profiles__content {
+  padding: 30px 25px;
+  /* Internal CSS Grid layout for content sections */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 15px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.profiles__name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-light);
+  margin: 0;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(0, 112, 243, 0.5);
+}
+
+.profiles__codename {
+  display: block;
+  font-size: 1rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.profiles__abilities {
+  margin: 10px 0;
+}
+
+.profiles__abilities h4 {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.profiles__abilities ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profiles__abilities li {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  padding: 5px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.profiles__abilities li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.profiles__stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.profiles__stat {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  gap: 15px;
+}
+
+.profiles__stat-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.profiles__stat-bar {
+  position: relative;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.profiles__stat-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  /* Use linear-gradient for fill percentage */
+  width: attr(data-percentage);
+  background: linear-gradient(90deg,
+    var(--primary-color) 0%,
+    rgba(0, 112, 243, 0.8) 50%,
+    rgba(227, 6, 19, 0.8) 100%
+  );
+  border-radius: 10px;
+  transition: width 1s ease;
+  box-shadow: 0 0 10px rgba(0, 112, 243, 0.5);
+}
+
+/* Dynamic width based on data-percentage attribute */
+.profiles__stat-bar[data-percentage="100"]::after { width: 100%; }
+.profiles__stat-bar[data-percentage="95"]::after { width: 95%; }
+.profiles__stat-bar[data-percentage="90"]::after { width: 90%; }
+.profiles__stat-bar[data-percentage="85"]::after { width: 85%; }
+.profiles__stat-bar[data-percentage="80"]::after { width: 80%; }
+.profiles__stat-bar[data-percentage="75"]::after { width: 75%; }
+.profiles__stat-bar[data-percentage="70"]::after { width: 70%; }
+.profiles__stat-bar[data-percentage="60"]::after { width: 60%; }
+.profiles__stat-bar[data-percentage="55"]::after { width: 55%; }
+
+/* Alternative shield shape clip-path (commented - can be swapped) */
+/*
+.profiles__card {
+  clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
+}
+*/
+
+/* Enhanced glow effect on hover */
+.profiles__card:hover .profiles__name {
+  text-shadow: 0 0 20px rgba(0, 112, 243, 0.8);
+}
+
+.profiles__card:hover .profiles__codename {
+  text-shadow: 0 0 15px rgba(227, 6, 19, 0.6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profiles {
+    padding: 60px 15px;
+  }
+
+  .profiles__title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .profiles__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 10px;
+  }
+
+  .profiles__photo {
+    height: 300px;
+  }
+
+  .profiles__content {
+    padding: 25px 20px;
+  }
+
+  .profiles__name {
+    font-size: 1.5rem;
+  }
+
+  .profiles__stat {
+    grid-template-columns: 100px 1fr;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profiles__title {
+    font-size: 1.5rem;
+  }
+
+  .profiles__photo {
+    height: 250px;
+  }
+
+  .profiles__stat {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .profiles__stat-label {
+    font-size: 0.75rem;
+  }
+}

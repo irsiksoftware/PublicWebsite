@@ -1,0 +1,32 @@
+﻿[
+    {
+        "number":  148,
+        "title":  "Fixes #81: Design Avengers roster grid with modern CSS Grid",
+        "ageHours":  4.07,
+        "headRef":  "feature/issue-81",
+        "mergeable":  "UNKNOWN",
+        "updatedAt":  "2025-10-05T11:09:50Z",
+        "createdAt":  "2025-10-05T11:09:50Z",
+        "isDraft":  false
+    },
+    {
+        "number":  147,
+        "title":  "Fixes #80: Implement sticky header with glassmorphism effect",
+        "ageHours":  4.11,
+        "headRef":  "feature/issue-80",
+        "mergeable":  "UNKNOWN",
+        "updatedAt":  "2025-10-05T11:07:40Z",
+        "createdAt":  "2025-10-05T11:07:40Z",
+        "isDraft":  false
+    },
+    {
+        "number":  146,
+        "title":  "Fixes #77: Design hero section with CSS Grid and diagonal gradient",
+        "ageHours":  4.82,
+        "headRef":  "feature/issue-77",
+        "mergeable":  "UNKNOWN",
+        "updatedAt":  "2025-10-05T11:03:30Z",
+        "createdAt":  "2025-10-05T10:24:53Z",
+        "isDraft":  false
+    }
+]
