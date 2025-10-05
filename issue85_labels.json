@@ -1,0 +1,20 @@
+﻿[
+    {
+        "id":  9404303998,
+        "node_id":  "LA_kwDOP8ZvO88AAAACMIpKfg",
+        "url":  "https://api.github.com/repos/irsiksoftware/TestForAI/labels/MEDIUM",
+        "name":  "MEDIUM",
+        "color":  "C5DEF5",
+        "default":  false,
+        "description":  "Standard priority"
+    },
+    {
+        "id":  9404985255,
+        "node_id":  "LA_kwDOP8ZvO88AAAACMJSvpw",
+        "url":  "https://api.github.com/repos/irsiksoftware/TestForAI/labels/feature",
+        "name":  "feature",
+        "color":  "a2eeef",
+        "default":  false,
+        "description":  "New feature or enhancement"
+    }
+]

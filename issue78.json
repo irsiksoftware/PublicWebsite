@@ -1,0 +1,10 @@
+﻿Issue #78: Add animated glowing S.H.I.E.L.D. logo with keyframes
+State: OPEN
+Labels: URGENT, feature
+Assignees: unassigned
+Created: 2025-10-05T05:12:37Z
+Updated: 2025-10-05T10:18:40Z
+URL: https://github.com/irsiksoftware/TestForAI/issues/78
+
+--- Description ---
+Create animated logo using pure CSS.\n\n**Requirements:**\n- Circular logo using border-radius: 50%; width/height: 200px\n- Multiple box-shadows for glowing effect (0 0 20px; 0 0 40px; 0 0 80px in shield-blue)\n- @keyframes 'pulse' animation: 0% opacity 0.6; 50% opacity 1; shadow spread varies\n- animation: pulse 2s ease-in-out infinite\n- Center above heading in hero section\n\n**Depends on:** #4 (hero section)

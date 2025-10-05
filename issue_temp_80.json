@@ -1,0 +1,11 @@
+﻿Issue #80: Implement sticky header with glassmorphism effect
+State: OPEN
+Labels: HIGH, feature
+Assignees: unassigned
+Created: 2025-10-05T05:12:40Z
+Updated: 2025-10-05T09:06:23Z
+URL: https://github.com/irsiksoftware/TestForAI/issues/80
+
+--- Description ---
+Make header sticky with modern glassmorphism.\n\n**Requirements:**\n- position: sticky; top: 0; z-index: 1000\n- backdrop-filter: blur(10px) saturate(180%)\n- Semi-transparent background: rgba(26; 26; 26; 0.8)\n- Add class .scrolled via CSS (JS will toggle later) for box-shadow when scrolled\n- Smooth transition: all 0.3s ease\n\n**Depends on:** #6 (navigation structure)
+

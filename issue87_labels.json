@@ -1,0 +1,10 @@
+Issue #87: Create timeline with CSS pseudo-elements and connecting lines
+State: OPEN
+Labels: MEDIUM, wip, feature
+Assignees: unassigned
+Created: 2025-10-05T05:12:49Z
+Updated: 2025-10-05T13:18:07Z
+URL: https://github.com/irsiksoftware/TestForAI/issues/87
+
+--- Description ---
+Build 'Avengers History Timeline' using advanced CSS.\n\n**Requirements:**\n- Events: 2008-Iron Man; 2011-Thor; 2012-Battle of NY; 2014-Ultron; 2018-Infinity War; 2023-Endgame\n- Alternating left/right layout using :nth-child(odd/even)\n- ::before pseudo-element: vertical connecting line (border-left; position: absolute)\n- ::after pseudo-element: circle markers (border-radius: 50%; background: gradient)\n- Timeline years in large bold text\n\n**Depends on:** #3 (variables)

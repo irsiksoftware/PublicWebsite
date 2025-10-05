@@ -1,0 +1,3 @@
+{"message":"Invalid request.\n\n\"title\" wasn't supplied.","documentation_url":"https://docs.github.com/rest/issues/issues#create-an-issue","status":"422"}gh: Invalid request.
+
+"title" wasn't supplied. (HTTP 422)

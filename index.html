@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,8 +36,41 @@
   <link rel="stylesheet" href="css/mission-logs.css">
   <link rel="stylesheet" href="css/team-builder.css">
   <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/parallax.css">
+  <link rel="stylesheet" href="css/toc.css">
 </head>
 <body>
+  <!-- Parallax Background Layers -->
+  <div class="parallax-back"></div>
+  <div class="parallax-mid"></div>
+  <div class="parallax-front"></div>
+
+  <!-- Table of Contents Sidebar -->
+  <aside class="toc">
+    <div class="toc__wrapper">
+      <div class="toc__progress">
+        <div class="toc__progress-bar" id="readProgress"></div>
+      </div>
+      <div>
+        <h2 class="toc__title">Navigation</h2>
+        <nav class="toc__nav" id="tocNav">
+          <a href="#hero" class="toc__link">Avengers Initiative</a>
+          <a href="#search" class="toc__link">Advanced Search</a>
+          <a href="#roster" class="toc__link">Meet the Team</a>
+          <a href="#team-tabs" class="toc__link">Team Organization</a>
+          <a href="#gallery" class="toc__link">Mission Gallery</a>
+          <a href="#stats" class="toc__link">Operational Dashboard</a>
+          <a href="#timeline" class="toc__link">Avengers History Timeline</a>
+          <a href="#threat-level" class="toc__link">Global Threat Assessment</a>
+          <a href="#faq" class="toc__link">Frequently Asked Questions</a>
+          <a href="#missions" class="toc__link">Recent Missions</a>
+          <a href="#mission-logs" class="toc__link">Mission Logs</a>
+          <a href="#team-builder" class="toc__link">Assemble Your Team</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
   <!-- Header -->
   <header class="header">
     <div class="header__container">
@@ -385,7 +418,7 @@
   </section>
 
   <!-- Threat Level Indicator -->
-  <section class="threat-level">
+  <section class="threat-level" id="threat-level">
     <div class="threat-level__container">
       <h2 class="threat-level__title" data-animate="fade-in rotate-in">Global Threat Assessment</h2>
       <div class="threat-level__grid" data-animate="fade-in">
@@ -414,7 +447,7 @@
   </section>
 
   <!-- FAQ Section -->
-  <section class="faq">
+  <section class="faq" id="faq">
     <div class="faq__container">
       <h2 class="faq__title">Frequently Asked Questions</h2>
       <div class="faq__items">
@@ -463,7 +496,7 @@
   </section>
 
   <!-- Recent Missions Section -->
-  <section class="missions">
+  <section class="missions" id="missions">
     <div class="missions__container">
       <h2 class="missions__title">Recent Missions</h2>
       <div class="missions__grid">
@@ -508,7 +541,7 @@
   </section>
 
   <!-- Mission Logs Section with Infinite Scroll -->
-  <section class="mission-logs">
+  <section class="mission-logs" id="mission-logs">
     <div class="mission-logs__container">
       <h2 class="mission-logs__title">Mission Logs</h2>
       <div class="mission-logs__table-wrapper">
@@ -540,7 +573,7 @@
   </section>
 
   <!-- Team Builder Section -->
-  <section class="team-builder">
+  <section class="team-builder" id="team-builder">
     <div class="team-builder__container">
       <h2 class="team-builder__title">Assemble Your Team</h2>
       <p class="team-builder__subtitle">Drag Avengers to build your perfect strike team (Max 6 members)</p>
@@ -739,5 +772,6 @@
   <script src="js/advanced-search.js"></script>
   <script src="js/team-builder.js"></script>
   <script src="js/infinite-scroll.js"></script>
+  <script src="js/toc.js"></script>
 </body>
 </html>

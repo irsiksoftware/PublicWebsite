@@ -1,0 +1,132 @@
+diff --git a/css/statistics-counter.css b/css/statistics-counter.css
+new file mode 100644
+index 0000000..03188ff
+--- /dev/null
++++ b/css/statistics-counter.css
+@@ -0,0 +1,81 @@
++/* Statistics Counter Section */
++.statistics-counter {
++  padding: 80px 20px;
++  background: var(--dark-bg);
++  background-image: repeating-linear-gradient(
++    45deg,
++    transparent,
++    transparent 20px,
++    rgba(255, 255, 255, 0.02) 20px,
++    rgba(255, 255, 255, 0.02) 40px
++  );
++  position: relative;
++}
++
++.statistics-counter__container {
++  max-width: 1200px;
++  margin: 0 auto;
++  display: flex;
++  flex-wrap: wrap;
++  gap: 40px;
++  justify-content: center;
++}
++
++.statistics-counter__item {
++  text-align: center;
++  flex: 1 1 200px;
++  min-width: 200px;
++  padding: 20px;
++}
++
++.statistics-counter__icon {
++  font-size: 3rem;
++  margin-bottom: 15px;
++  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
++}
++
++.statistics-counter__number {
++  font-size: 4rem;
++  font-weight: 900;
++  font-family: var(--font-heading);
++  color: var(--arc-reactor);
++  line-height: 1;
++  margin-bottom: 10px;
++  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
++}
++
++.statistics-counter__label {
++  font-family: var(--font-body);
++  font-size: 1.2rem;
++  color: var(--text-light);
++  text-transform: uppercase;
++  letter-spacing: 2px;
++}
++
++/* Mobile Responsiveness */
++@media (max-width: 768px) {
++  .statistics-counter {
++    padding: 60px 15px;
++  }
++
++  .statistics-counter__container {
++    flex-direction: column;
++    gap: 30px;
++  }
++
++  .statistics-counter__item {
++    flex: 1 1 100%;
++  }
++
++  .statistics-counter__number {
++    font-size: 3rem;
++  }
++
++  .statistics-counter__icon {
++    font-size: 2.5rem;
++  }
++
++  .statistics-counter__label {
++    font-size: 1rem;
++  }
++}
+diff --git a/index.html b/index.html
+index 1211da2..0330eda 100644
+--- a/index.html
++++ b/index.html
+@@ -22,6 +22,7 @@
+   <link rel="stylesheet" href="css/hero.css">
+   <link rel="stylesheet" href="css/search.css">
+   <link rel="stylesheet" href="css/roster.css">
++  <link rel="stylesheet" href="css/statistics-counter.css">
+   <link rel="stylesheet" href="css/gallery.css">
+   <link rel="stylesheet" href="css/stats.css">
+   <link rel="stylesheet" href="css/timeline.css">
+@@ -186,6 +187,32 @@ <h3 class="roster__card-name">Clint Barton</h3>
+     </div>
+   </section>
+ 
++  <!-- Statistics Counter Section -->
++  <section class="statistics-counter">
++    <div class="statistics-counter__container">
++      <div class="statistics-counter__item">
++        <div class="statistics-counter__icon">⚡</div>
++        <div class="statistics-counter__number">1,247</div>
++        <div class="statistics-counter__label">Missions Completed</div>
++      </div>
++      <div class="statistics-counter__item">
++        <div class="statistics-counter__icon">🛡️</div>
++        <div class="statistics-counter__number">892</div>
++        <div class="statistics-counter__label">Threats Neutralized</div>
++      </div>
++      <div class="statistics-counter__item">
++        <div class="statistics-counter__icon">👥</div>
++        <div class="statistics-counter__number">2.4M</div>
++        <div class="statistics-counter__label">Civilians Saved</div>
++      </div>
++      <div class="statistics-counter__item">
++        <div class="statistics-counter__icon">🎯</div>
++        <div class="statistics-counter__number">12</div>
++        <div class="statistics-counter__label">Team Members</div>
++      </div>
++    </div>
++  </section>
++
+   <!-- Hero Image Gallery -->
+   <section class="gallery" id="gallery">
+     <h2 class="gallery__title" data-animate="fade-in slide-right">Mission Gallery</h2>

@@ -1,0 +1,10 @@
+﻿Issue #93: Design mission briefing cards with glassmorphism
+State: OPEN
+Labels: MEDIUM, wip, feature
+Assignees: unassigned
+Created: 2025-10-05T05:12:57Z
+Updated: 2025-10-05T15:41:13Z
+URL: https://github.com/irsiksoftware/TestForAI/issues/93
+
+--- Description ---
+Create immersive mission briefing cards.\n\n**Requirements:**\n- Semi-transparent background: rgba(255;255;255;0.1)\n- backdrop-filter: blur(10px) saturate(180%)\n- border: 1px solid; border-image: linear-gradient(135deg; gold; primary-red) 1\n- Content: mission objective; asset list; threat assessment; timeline\n- Flexbox internal layout\n- Subtle border glow animation on hover using box-shadow keyframes\n\n**Depends on:** #11 (mission cards foundation)

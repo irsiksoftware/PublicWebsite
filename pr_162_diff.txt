@@ -1,0 +1,496 @@
+diff --git a/css/stats.css b/css/stats.css
+new file mode 100644
+index 0000000..e469f2b
+--- /dev/null
++++ b/css/stats.css
+@@ -0,0 +1,229 @@
++/* Animated Statistics Counter Section */
++.stats-counter {
++  padding: 80px 20px;
++  background: linear-block(135deg, #1a1a2e 0%, #16213e 100%);
++  background-image: repeating-linear-gradient(
++    45deg,
++    transparent,
++    transparent 10px,
++    rgba(255, 255, 255, 0.02) 10px,
++    rgba(255, 255, 255, 0.02) 20px
++  );
++  position: relative;
++  overflow: hidden;
++}
++
++.stats-counter__container {
++  max-width: 1200px;
++  margin: 0 auto;
++}
++
++.stats-counter__title {
++  text-align: center;
++  font-size: 2.5rem;
++  margin-bottom: 60px;
++  color: #e94560;
++  text-transform: uppercase;
++  letter-spacing: 3px;
++}
++
++.stats-counter__grid {
++  display: flex;
++  flex-wrap: wrap;
++  gap: 40px;
++  justify-content: center;
++  align-items: center;
++}
++
++.stats-counter__item {
++  flex: 1;
++  min-width: 250px;
++  text-align: center;
++  padding: 30px;
++  background: rgba(255, 255, 255, 0.03);
++  border-radius: 12px;
++  transition: transform 0.3s ease, background 0.3s ease;
++}
++
++.stats-counter__item:hover {
++  transform: translateY(-5px);
++  background: rgba(255, 255, 255, 0.05);
++}
++
++.stats-counter__icon {
++  font-size: 3rem;
++  margin-bottom: 20px;
++  display: block;
++  filter: drop-shadow(0 0 10px rgba(233, 69, 96, 0.5));
++}
++
++.stats-counter__number {
++  font-size: 4rem;
++  font-weight: 900;
++  color: #e94560;
++  line-height: 1;
++  margin-bottom: 10px;
++  font-family: 'Bebas Neue', 'Arial Black', sans-serif;
++  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
++}
++
++.stats-counter__label {
++  font-size: 1.1rem;
++  color: #a8a8a8;
++  text-transform: uppercase;
++  letter-spacing: 2px;
++  font-weight: 500;
++}
++
++/* Mobile responsive */
++@media (max-width: 768px) {
++  .stats-counter__grid {
++    flex-direction: column;
++  }
++
++  .stats-counter__item {
++    min-width: 100%;
++  }
++
++  .stats-counter__number {
++    font-size: 3rem;
++  }
++
++  .stats-counter__title {
++    font-size: 2rem;
++  }
++}
++
++/* Existing Team Stats Dashboard Styles */
++.stats {
++  padding: 80px 20px;
++  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
++}
++
++.stats__container {
++  max-width: 1200px;
++  margin: 0 auto;
++}
++
++.stats__title {
++  font-size: 2.5rem;
++  text-align: center;
++  margin-bottom: 60px;
++  color: #e94560;
++  text-transform: uppercase;
++  letter-spacing: 3px;
++}
++
++.stats__grid {
++  display: grid;
++  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
++  gap: 30px;
++}
++
++.stats__card {
++  background: rgba(255, 255, 255, 0.05);
++  border-radius: 12px;
++  padding: 30px;
++  text-align: center;
++  border: 2px solid transparent;
++  transition: all 0.3s ease;
++  position: relative;
++  overflow: hidden;
++}
++
++.stats__card::before {
++  content: '';
++  position: absolute;
++  top: -50%;
++  left: -50%;
++  width: 200%;
++  height: 200%;
++  background: linear-gradient(
++    45deg,
++    transparent,
++    rgba(233, 69, 96, 0.1),
++    transparent
++  );
++  transform: rotate(45deg);
++  transition: all 0.5s ease;
++}
++
++.stats__card:hover::before {
++  top: -100%;
++  left: -100%;
++}
++
++.stats__card:hover {
++  border-color: #e94560;
++  transform: translateY(-5px);
++  box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
++}
++
++.stats__icon {
++  font-size: 3rem;
++  margin-bottom: 15px;
++  display: block;
++  color: #e94560;
++}
++
++.stats__number {
++  font-size: 3rem;
++  font-weight: 900;
++  color: #fff;
++  margin-bottom: 10px;
++  font-family: 'Bebas Neue', 'Arial Black', sans-serif;
++}
++
++.stats__label {
++  font-size: 1rem;
++  color: #a8a8a8;
++  text-transform: uppercase;
++  letter-spacing: 2px;
++  margin-bottom: 20px;
++}
++
++.stats__sparkline {
++  height: 40px;
++  background: rgba(255, 255, 255, 0.05);
++  border-radius: 4px;
++  margin-top: 15px;
++  position: relative;
++  overflow: hidden;
++}
++
++.stats__sparkline::after {
++  content: '';
++  position: absolute;
++  bottom: 0;
++  left: 0;
++  width: 100%;
++  height: 60%;
++  background: linear-gradient(to right, #e94560, #ff6b9d);
++  border-radius: 4px 4px 0 0;
++  opacity: 0.6;
++}
++
++/* Individual card gradients */
++.stats__card--missions .stats__sparkline::after {
++  background: linear-gradient(to right, #667eea, #764ba2);
++}
++
++.stats__card--team .stats__sparkline::after {
++  background: linear-gradient(to right, #f093fb, #f5576c);
++}
++
++.stats__card--alerts .stats__sparkline::after {
++  background: linear-gradient(to right, #fa709a, #fee140);
++}
++
++.stats__card--response .stats__sparkline::after {
++  background: linear-gradient(to right, #30cfd0, #330867);
++}
++
++.stats__card--success .stats__sparkline::after {
++  background: linear-gradient(to right, #a8edea, #fed6e3);
++}
++
++.stats__card--resources .stats__sparkline::after {
++  background: linear-gradient(to right, #ff9a9e, #fecfef);
++}
+diff --git a/index.html b/index.html
+index 27f7f21..15d3c5b 100644
+--- a/index.html
++++ b/index.html
+@@ -27,6 +27,7 @@
+   <link rel="stylesheet" href="css/timeline.css">
+   <link rel="stylesheet" href="css/threat-level.css">
+   <link rel="stylesheet" href="css/faq.css">
++  <link rel="stylesheet" href="css/profiles.css">
+   <link rel="stylesheet" href="css/modal.css">
+   <link rel="stylesheet" href="css/responsive.css">
+   <link rel="stylesheet" href="css/lightbox.css">
+@@ -188,6 +189,35 @@
+     </div>
+   </section>
+ 
++  <!-- Animated Statistics Counter Section -->
++  <section class="stats-counter" id="stats-counter">
++    <div class="stats-counter__container">
++      <h2 class="stats-counter__title">Mission Statistics</h2>
++      <div class="stats-counter__grid">
++        <div class="stats-counter__item">
++          <span class="stats-counter__icon">🎯</span>
++          <div class="stats-counter__number">1,247</div>
++          <div class="stats-counter__label">Missions Completed</div>
++        </div>
++        <div class="stats-counter__item">
++          <span class="stats-counter__icon">⚡</span>
++          <div class="stats-counter__number">892</div>
++          <div class="stats-counter__label">Threats Neutralized</div>
++        </div>
++        <div class="stats-counter__item">
++          <span class="stats-counter__icon">🛡️</span>
++          <div class="stats-counter__number">2.4M</div>
++          <div class="stats-counter__label">Civilians Saved</div>
++        </div>
++        <div class="stats-counter__item">
++          <span class="stats-counter__icon">👥</span>
++          <div class="stats-counter__number">12</div>
++          <div class="stats-counter__label">Team Members</div>
++        </div>
++      </div>
++    </div>
++  </section>
++
+   <!-- Hero Image Gallery -->
+   <section class="gallery" id="gallery">
+     <h2 class="gallery__title" data-animate="fade-in slide-right">Mission Gallery</h2>
+@@ -425,6 +455,212 @@
+     </div>
+   </section>
+ 
++  <!-- Profile Cards Section -->
++  <section class="profiles">
++    <div class="profiles__container">
++      <h2 class="profiles__title">Avenger Profiles</h2>
++      <div class="profiles__grid">
++        <!-- Iron Man Profile -->
++        <div class="profiles__card">
++          <div class="profiles__photo">
++            <div class="profiles__photo-bg" style="background-image: url('https://picsum.photos/400/500?random=101');"></div>
++          </div>
++          <div class="profiles__content">
++            <h3 class="profiles__name">Tony Stark</h3>
++            <span class="profiles__codename">Iron Man</span>
++            <div class="profiles__abilities">
++              <h4>Abilities:</h4>
++              <ul>
++                <li>Genius-level intellect</li>
++                <li>Powered armor suit</li>
++                <li>Advanced weaponry</li>
++              </ul>
++            </div>
++            <div class="profiles__stats">
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Intelligence</span>
++                <div class="profiles__stat-bar" data-percentage="100"></div>
++              </div>
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Strength</span>
++                <div class="profiles__stat-bar" data-percentage="75"></div>
++              </div>
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Speed</span>
++                <div class="profiles__stat-bar" data-percentage="70"></div>
++              </div>
++            </div>
++          </div>
++        </div>
++
++        <!-- Thor Profile -->
++        <div class="profiles__card">
++          <div class="profiles__photo">
++            <div class="profiles__photo-bg" style="background-image: url('https://picsum.photos/400/500?random=102');"></div>
++          </div>
++          <div class="profiles__content">
++            <h3 class="profiles__name">Thor Odinson</h3>
++            <span class="profiles__codename">Thor</span>
++            <div class="profiles__abilities">
++              <h4>Abilities:</h4>
++              <ul>
++                <li>Godly strength</li>
++                <li>Lightning control</li>
++                <li>Mjolnir mastery</li>
++              </ul>
++            </div>
++            <div class="profiles__stats">
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Intelligence</span>
++                <div class="profiles__stat-bar" data-percentage="75"></div>
++              </div>
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Strength</span>
++                <div class="profiles__stat-bar" data-percentage="100"></div>
++              </div>
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Speed</span>
++                <div class="profiles__stat-bar" data-percentage="85"></div>
++              </div>
++            </div>
++          </div>
++        </div>
++
++        <!-- Hulk Profile -->
++        <div class="profiles__card">
++          <div class="profiles__photo">
++            <div class="profiles__photo-bg" style="background-image: url('https://picsum.photos/400/500?random=103');"></div>
++          </div>
++          <div class="profiles__content">
++            <h3 class="profiles__name">Bruce Banner</h3>
++            <span class="profiles__codename">Hulk</span>
++            <div class="profiles__abilities">
++              <h4>Abilities:</h4>
++              <ul>
++                <li>Superhuman strength</li>
++                <li>Rapid regeneration</li>
++                <li>Gamma radiation</li>
++              </ul>
++            </div>
++            <div class="profiles__stats">
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Intelligence</span>
++                <div class="profiles__stat-bar" data-percentage="90"></div>
++              </div>
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Strength</span>
++                <div class="profiles__stat-bar" data-percentage="100"></div>
++              </div>
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Speed</span>
++                <div class="profiles__stat-bar" data-percentage="60"></div>
++              </div>
++            </div>
++          </div>
++        </div>
++
++        <!-- Black Widow Profile -->
++        <div class="profiles__card">
++          <div class="profiles__photo">
++            <div class="profiles__photo-bg" style="background-image: url('https://picsum.photos/400/500?random=104');"></div>
++          </div>
++          <div class="profiles__content">
++            <h3 class="profiles__name">Natasha Romanoff</h3>
++            <span class="profiles__codename">Black Widow</span>
++            <div class="profiles__abilities">
++              <h4>Abilities:</h4>
++              <ul>
++                <li>Master spy</li>
++                <li>Expert combatant</li>
++                <li>Strategic genius</li>
++              </ul>
++            </div>
++            <div class="profiles__stats">
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Intelligence</span>
++                <div class="profiles__stat-bar" data-percentage="85"></div>
++              </div>
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Strength</span>
++                <div class="profiles__stat-bar" data-percentage="60"></div>
++              </div>
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Speed</span>
++                <div class="profiles__stat-bar" data-percentage="80"></div>
++              </div>
++            </div>
++          </div>
++        </div>
++
++        <!-- Hawkeye Profile -->
++        <div class="profiles__card">
++          <div class="profiles__photo">
++            <div class="profiles__photo-bg" style="background-image: url('https://picsum.photos/400/500?random=105');"></div>
++          </div>
++          <div class="profiles__content">
++            <h3 class="profiles__name">Clint Barton</h3>
++            <span class="profiles__codename">Hawkeye</span>
++            <div class="profiles__abilities">
++              <h4>Abilities:</h4>
++              <ul>
++                <li>Perfect accuracy</li>
++                <li>Expert marksman</li>
++                <li>Tactical mind</li>
++              </ul>
++            </div>
++            <div class="profiles__stats">
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Intelligence</span>
++                <div class="profiles__stat-bar" data-percentage="70"></div>
++              </div>
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Strength</span>
++                <div class="profiles__stat-bar" data-percentage="55"></div>
++              </div>
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Speed</span>
++                <div class="profiles__stat-bar" data-percentage="75"></div>
++              </div>
++            </div>
++          </div>
++        </div>
++
++        <!-- Captain Marvel Profile -->
++        <div class="profiles__card">
++          <div class="profiles__photo">
++            <div class="profiles__photo-bg" style="background-image: url('https://picsum.photos/400/500?random=106');"></div>
++          </div>
++          <div class="profiles__content">
++            <h3 class="profiles__name">Carol Danvers</h3>
++            <span class="profiles__codename">Captain Marvel</span>
++            <div class="profiles__abilities">
++              <h4>Abilities:</h4>
++              <ul>
++                <li>Cosmic powers</li>
++                <li>Energy projection</li>
++                <li>Flight</li>
++              </ul>
++            </div>
++            <div class="profiles__stats">
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Intelligence</span>
++                <div class="profiles__stat-bar" data-percentage="80"></div>
++              </div>
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Strength</span>
++                <div class="profiles__stat-bar" data-percentage="95"></div>
++              </div>
++              <div class="profiles__stat">
++                <span class="profiles__stat-label">Speed</span>
++                <div class="profiles__stat-bar" data-percentage="100"></div>
++              </div>
++            </div>
++          </div>
++        </div>
++      </div>
++    </div>
++  </section>
++
+   <!-- Recent Missions Section -->
+   <section class="missions">
+     <div class="missions__container">

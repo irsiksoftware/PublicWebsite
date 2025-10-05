@@ -1,0 +1,10 @@
+﻿Issue #83: Create animated statistics counter section with large numbers
+State: OPEN
+Labels: MEDIUM, feature
+Assignees: unassigned
+Created: 2025-10-05T05:12:43Z
+Updated: 2025-10-05T09:06:17Z
+URL: https://github.com/irsiksoftware/TestForAI/issues/83
+
+--- Description ---
+Design eye-catching stats section.\n\n**Requirements:**\n- Display: 'Missions Completed: 1;247' 'Threats Neutralized: 892' 'Civilians Saved: 2.4M' 'Team Members: 12'\n- Layout: flexbox row; wrapped on mobile\n- Large bold numbers (font-size: 4rem; font-weight: 900)\n- Icons using Unicode symbols (ΓÜí ≡ƒ¢í∩╕Å ≡ƒæÑ ≡ƒÄ»)\n- Subtle background pattern using repeating-linear-gradient\n- Numbers will animate later with JS\n\n**Depends on:** #8 (roster section for context)

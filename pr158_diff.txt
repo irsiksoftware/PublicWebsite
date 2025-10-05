@@ -1,0 +1,250 @@
+﻿diff --git a/css/faq.css b/css/faq.css
+new file mode 100644
+index 0000000..5d0caa7
+--- /dev/null
++++ b/css/faq.css
+@@ -0,0 +1,176 @@
++/* FAQ Section - CSS-only accordion using checkbox hack */
++
++.faq {
++  padding: 80px 20px;
++  background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 100%);
++  position: relative;
++}
++
++.faq::before {
++  content: '';
++  position: absolute;
++  top: 0;
++  left: 0;
++  right: 0;
++  bottom: 0;
++  background:
++    radial-gradient(circle at 20% 50%, rgba(0, 112, 243, 0.1) 0%, transparent 50%),
++    radial-gradient(circle at 80% 80%, rgba(227, 6, 19, 0.1) 0%, transparent 50%);
++  pointer-events: none;
++}
++
++.faq__container {
++  max-width: 800px;
++  margin: 0 auto;
++  position: relative;
++  z-index: 1;
++}
++
++.faq__title {
++  font-size: 2.5rem;
++  font-weight: 700;
++  text-align: center;
++  margin-bottom: 50px;
++  color: var(--primary-color);
++  text-transform: uppercase;
++  letter-spacing: 2px;
++  text-shadow: 0 0 20px rgba(0, 112, 243, 0.5);
++}
++
++.faq__items {
++  display: flex;
++  flex-direction: column;
++  gap: 15px;
++}
++
++.faq__item {
++  background: rgba(255, 255, 255, 0.03);
++  border: 1px solid rgba(0, 112, 243, 0.2);
++  border-radius: 8px;
++  overflow: hidden;
++  transition: all 0.3s ease;
++}
++
++.faq__item:hover {
++  border-color: rgba(0, 112, 243, 0.5);
++  box-shadow: 0 4px 20px rgba(0, 112, 243, 0.2);
++}
++
++/* Hide the checkbox */
++.faq__toggle {
++  position: absolute;
++  opacity: 0;
++  pointer-events: none;
++}
++
++.faq__question {
++  display: flex;
++  justify-content: space-between;
++  align-items: center;
++  padding: 20px 25px;
++  font-size: 1.1rem;
++  font-weight: 600;
++  color: var(--text-light);
++  cursor: pointer;
++  user-select: none;
++  transition: all 0.3s ease;
++}
++
++.faq__question:hover {
++  color: var(--primary-color);
++  background: rgba(0, 112, 243, 0.05);
++}
++
++/* Arrow icon using pseudo-element */
++.faq__arrow {
++  position: relative;
++  width: 12px;
++  height: 12px;
++  flex-shrink: 0;
++  margin-left: 15px;
++}
++
++.faq__arrow::before,
++.faq__arrow::after {
++  content: '';
++  position: absolute;
++  background: var(--primary-color);
++  transition: all 0.3s ease;
++}
++
++.faq__arrow::before {
++  width: 12px;
++  height: 2px;
++  top: 5px;
++  left: 0;
++}
++
++.faq__arrow::after {
++  width: 2px;
++  height: 12px;
++  top: 0;
++  left: 5px;
++}
++
++/* Rotate arrow when checked */
++.faq__toggle:checked ~ .faq__question .faq__arrow {
++  transform: rotate(180deg);
++}
++
++.faq__toggle:checked ~ .faq__question .faq__arrow::after {
++  opacity: 0;
++}
++
++/* Answer section - hidden by default */
++.faq__answer {
++  max-height: 0;
++  opacity: 0;
++  overflow: hidden;
++  transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
++  padding: 0 25px;
++}
++
++.faq__answer p {
++  color: rgba(255, 255, 255, 0.7);
++  line-height: 1.6;
++  font-size: 0.95rem;
++}
++
++/* Show answer when checkbox is checked */
++.faq__toggle:checked ~ .faq__answer {
++  max-height: 500px;
++  opacity: 1;
++  padding: 0 25px 20px 25px;
++}
++
++/* Enhanced styling when checked */
++.faq__toggle:checked ~ .faq__question {
++  color: var(--primary-color);
++  background: rgba(0, 112, 243, 0.1);
++  border-bottom: 1px solid rgba(0, 112, 243, 0.2);
++}
++
++/* Responsive adjustments */
++@media (max-width: 768px) {
++  .faq {
++    padding: 60px 15px;
++  }
++
++  .faq__title {
++    font-size: 2rem;
++    margin-bottom: 30px;
++  }
++
++  .faq__question {
++    font-size: 1rem;
++    padding: 15px 20px;
++  }
++
++  .faq__answer {
++    padding: 0 20px;
++  }
++
++  .faq__toggle:checked ~ .faq__answer {
++    padding: 0 20px 15px 20px;
++  }
++}
+diff --git a/index.html b/index.html
+index a964607..3eacc5e 100644
+--- a/index.html
++++ b/index.html
+@@ -24,6 +24,7 @@
+   <link rel="stylesheet" href="css/gallery.css">
+   <link rel="stylesheet" href="css/stats.css">
+   <link rel="stylesheet" href="css/threat-level.css">
++  <link rel="stylesheet" href="css/faq.css">
+   <link rel="stylesheet" href="css/modal.css">
+   <link rel="stylesheet" href="css/responsive.css">
+   <link rel="stylesheet" href="css/lightbox.css">
+@@ -238,6 +239,55 @@ <h2 class="threat-level__title" data-animate="fade-in rotate-in">Global Threat A
+     </div>
+   </section>
+ 
++  <!-- FAQ Section -->
++  <section class="faq">
++    <div class="faq__container">
++      <h2 class="faq__title">Frequently Asked Questions</h2>
++      <div class="faq__items">
++        <div class="faq__item">
++          <input type="checkbox" id="q1" class="faq__toggle">
++          <label for="q1" class="faq__question">
++            How to join Initiative?
++            <span class="faq__arrow"></span>
++          </label>
++          <div class="faq__answer">
++            <p>The Avengers Initiative recruits individuals with extraordinary abilities or skills. Candidates are typically identified through S.H.I.E.L.D. operations or recommended by existing members. Required clearance level is classified. Contact Director Fury for more information.</p>
++          </div>
++        </div>
++        <div class="faq__item">
++          <input type="checkbox" id="q2" class="faq__toggle">
++          <label for="q2" class="faq__question">
++            Clearance levels explained?
++            <span class="faq__arrow"></span>
++          </label>
++          <div class="faq__answer">
++            <p>S.H.I.E.L.D. operates on a tiered clearance system: Level 1 (Basic Access), Level 5 (Field Agent), Level 7 (Senior Agent), and Level 10 (Director). Omega clearance is reserved for Avengers Initiative members and grants access to all classified materials.</p>
++          </div>
++        </div>
++        <div class="faq__item">
++          <input type="checkbox" id="q3" class="faq__toggle">
++          <label for="q3" class="faq__question">
++            Emergency protocols?
++            <span class="faq__arrow"></span>
++          </label>
++          <div class="faq__answer">
++            <p>In case of Code Red emergency: 1) Evacuate civilians to designated safe zones, 2) Contact nearest S.H.I.E.L.D. facility, 3) Await Avengers response team deployment. For imminent world-ending threats, Protocol 7 may be initiated by Director authorization.</p>
++          </div>
++        </div>
++        <div class="faq__item">
++          <input type="checkbox" id="q4" class="faq__toggle">
++          <label for="q4" class="faq__question">
++            Threat reporting?
++            <span class="faq__arrow"></span>
++          </label>
++          <div class="faq__answer">
++            <p>Report suspicious activity or potential threats through the S.H.I.E.L.D. hotline (1-800-SHIELD-1) or submit a classified report via the secure portal. All reports are analyzed by threat assessment specialists and escalated to the Avengers if necessary.</p>
++          </div>
++        </div>
++      </div>
++    </div>
++  </section>
++
+   <!-- Modal Dialog -->
+   <div class="modal" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+     <div class="modal__overlay"></div>
