@@ -17,6 +17,40 @@
   padding: 2rem;
 }
 
+/* S.H.I.E.L.D. Logo Animation */
+.shield-logo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: var(--shield-blue);
+  margin: 0 auto 3rem;
+  box-shadow: 0 0 20px var(--shield-blue),
+              0 0 40px var(--shield-blue),
+              0 0 80px var(--shield-blue);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+    box-shadow: 0 0 20px var(--shield-blue),
+                0 0 40px var(--shield-blue),
+                0 0 80px var(--shield-blue);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 30px var(--shield-blue),
+                0 0 60px var(--shield-blue),
+                0 0 120px var(--shield-blue);
+  }
+  100% {
+    opacity: 0.6;
+    box-shadow: 0 0 20px var(--shield-blue),
+                0 0 40px var(--shield-blue),
+                0 0 80px var(--shield-blue);
+  }
+}
+
 .hero__title {
   font-size: clamp(2.5rem, 8vw, 6rem);
   font-weight: 900;
