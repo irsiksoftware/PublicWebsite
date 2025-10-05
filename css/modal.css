@@ -1,0 +1,155 @@
+/**
+ * Modal Dialog Styles
+ * Accessible modal overlay with backdrop and focus management
+ */
+
+/* Modal Container */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+/* Modal Overlay */
+.modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+/* Modal Content */
+.modal__content {
+  position: relative;
+  background: var(--color-bg-primary, #1a1a1a);
+  border: 1px solid var(--color-border, #333);
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 2rem;
+  z-index: 1001;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Close Button */
+.modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary, #999);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.modal__close:hover,
+.modal__close:focus {
+  color: var(--color-text-primary, #fff);
+  outline: none;
+}
+
+/* Modal Title */
+.modal__title {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.75rem;
+  color: var(--color-text-primary, #fff);
+}
+
+/* Modal Body */
+.modal__body {
+  color: var(--color-text-secondary, #ccc);
+  line-height: 1.6;
+}
+
+.modal__body p {
+  margin-bottom: 1rem;
+}
+
+.modal__input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  background: var(--color-bg-secondary, #222);
+  border: 1px solid var(--color-border, #333);
+  border-radius: 4px;
+  color: var(--color-text-primary, #fff);
+  font-size: 1rem;
+}
+
+.modal__input:focus {
+  outline: 2px solid var(--color-primary, #0066cc);
+  outline-offset: 2px;
+}
+
+.modal__button {
+  padding: 0.75rem 1.5rem;
+  background: var(--color-primary, #0066cc);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.modal__button:hover {
+  background: var(--color-primary-hover, #0052a3);
+}
+
+.modal__button:focus {
+  outline: 2px solid var(--color-primary, #0066cc);
+  outline-offset: 2px;
+}
+
+/* Body scroll lock */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Roster card details button */
+.roster__card-details {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.roster__card-details:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.roster__card-details:focus {
+  outline: 2px solid var(--color-primary, #0066cc);
+  outline-offset: 2px;
+}
