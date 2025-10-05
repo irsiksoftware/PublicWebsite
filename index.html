@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/roster.css">
@@ -49,44 +50,44 @@
 
   <!-- Roster Section -->
   <section class="roster" id="roster">
-    <h2 class="roster__title">Meet the Team</h2>
-    <div class="roster__grid">
-      <div class="roster__card">
+    <h2 class="roster__title" data-animate="fade-in">Meet the Team</h2>
+    <div class="roster__grid" data-animate="fade-in zoom-in">
+      <div class="roster__card" data-animate-child>
         <div class="roster__card-image"></div>
         <div class="roster__card-overlay">
           <h3 class="roster__card-name">Tony Stark</h3>
           <span class="roster__card-codename">Iron Man</span>
         </div>
       </div>
-      <div class="roster__card">
+      <div class="roster__card" data-animate-child>
         <div class="roster__card-image"></div>
         <div class="roster__card-overlay">
           <h3 class="roster__card-name">Steve Rogers</h3>
           <span class="roster__card-codename">Captain America</span>
         </div>
       </div>
-      <div class="roster__card">
+      <div class="roster__card" data-animate-child>
         <div class="roster__card-image"></div>
         <div class="roster__card-overlay">
           <h3 class="roster__card-name">Thor Odinson</h3>
           <span class="roster__card-codename">Thor</span>
         </div>
       </div>
-      <div class="roster__card">
+      <div class="roster__card" data-animate-child>
         <div class="roster__card-image"></div>
         <div class="roster__card-overlay">
           <h3 class="roster__card-name">Bruce Banner</h3>
           <span class="roster__card-codename">Hulk</span>
         </div>
       </div>
-      <div class="roster__card">
+      <div class="roster__card" data-animate-child>
         <div class="roster__card-image"></div>
         <div class="roster__card-overlay">
           <h3 class="roster__card-name">Natasha Romanoff</h3>
           <span class="roster__card-codename">Black Widow</span>
         </div>
       </div>
-      <div class="roster__card">
+      <div class="roster__card" data-animate-child>
         <div class="roster__card-image"></div>
         <div class="roster__card-overlay">
           <h3 class="roster__card-name">Clint Barton</h3>
@@ -98,8 +99,8 @@
 
   <!-- Hero Image Gallery -->
   <section class="gallery" id="gallery">
-    <h2 class="gallery__title">Mission Gallery</h2>
-    <div class="gallery__grid">
+    <h2 class="gallery__title" data-animate="fade-in slide-right">Mission Gallery</h2>
+    <div class="gallery__grid" data-animate="fade-in">
       <div class="gallery__item">
         <img src="https://picsum.photos/800/450?random=1" alt="Iron Man" class="gallery__image">
         <div class="gallery__overlay">
@@ -162,8 +163,8 @@
   <!-- Team Stats Dashboard -->
   <section class="stats" id="stats">
     <div class="stats__container">
-      <h2 class="stats__title">Operational Dashboard</h2>
-      <div class="stats__grid">
+      <h2 class="stats__title" data-animate="fade-in slide-left">Operational Dashboard</h2>
+      <div class="stats__grid" data-animate="fade-in">
         <div class="stats__card stats__card--missions">
           <div class="stats__icon">▶</div>
           <div class="stats__number">42</div>
@@ -207,8 +208,8 @@
   <!-- Threat Level Indicator -->
   <section class="threat-level">
     <div class="threat-level__container">
-      <h2 class="threat-level__title">Global Threat Assessment</h2>
-      <div class="threat-level__grid">
+      <h2 class="threat-level__title" data-animate="fade-in rotate-in">Global Threat Assessment</h2>
+      <div class="threat-level__grid" data-animate="fade-in">
         <div class="threat-level__bar">
           <div class="threat-level__shape threat-level__shape--minimal"></div>
           <span class="threat-level__label">Minimal</span>
@@ -235,5 +236,6 @@
 
   <!-- JavaScript -->
   <script src="js/smooth-scroll.js"></script>
+  <script src="js/scroll-animations.js"></script>
 </body>
 </html>
