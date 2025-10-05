@@ -1,0 +1,148 @@
+/**
+ * Performance Monitoring Dashboard Styles
+ * Provides a fixed overlay for displaying performance metrics
+ */
+
+.perf-dashboard {
+  position: fixed;
+  top: 80px;
+  right: -320px;
+  width: 300px;
+  background: linear-gradient(135deg, rgba(0, 15, 50, 0.95) 0%, rgba(0, 30, 80, 0.95) 100%);
+  border: 2px solid rgba(100, 180, 255, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  font-family: 'Courier New', monospace;
+  color: #e0e0e0;
+  transition: right 0.3s ease-in-out;
+  backdrop-filter: blur(10px);
+}
+
+.perf-dashboard--visible {
+  right: 20px;
+}
+
+.perf-dashboard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(100, 180, 255, 0.2);
+  background: rgba(0, 50, 100, 0.3);
+}
+
+.perf-dashboard__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #64b4ff;
+  text-shadow: 0 0 10px rgba(100, 180, 255, 0.5);
+}
+
+.perf-dashboard__close {
+  background: none;
+  border: none;
+  color: #64b4ff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.perf-dashboard__close:hover {
+  color: #ff6464;
+  transform: scale(1.2);
+}
+
+.perf-dashboard__metrics {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.perf-dashboard__metric {
+  padding: 12px;
+  background: rgba(0, 30, 60, 0.5);
+  border-left: 3px solid #64b4ff;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.perf-dashboard__metric--warning {
+  border-left-color: #ffa500;
+  background: rgba(80, 40, 0, 0.3);
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.2);
+}
+
+.perf-dashboard__metric--warning .perf-dashboard__metric-value {
+  color: #ffa500;
+}
+
+.perf-dashboard__metric-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #8cb4d4;
+  margin-bottom: 4px;
+}
+
+.perf-dashboard__metric-value {
+  font-size: 20px;
+  font-weight: bold;
+  color: #64ff64;
+  text-shadow: 0 0 8px rgba(100, 255, 100, 0.5);
+  font-family: 'Courier New', monospace;
+}
+
+.perf-dashboard__footer {
+  padding: 10px 16px;
+  border-top: 1px solid rgba(100, 180, 255, 0.2);
+  background: rgba(0, 50, 100, 0.3);
+  font-size: 11px;
+  color: #8cb4d4;
+  text-align: center;
+}
+
+.perf-dashboard__footer kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  background: rgba(0, 30, 60, 0.8);
+  border: 1px solid rgba(100, 180, 255, 0.3);
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: #64b4ff;
+  margin: 0 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .perf-dashboard {
+    width: 280px;
+    right: -300px;
+    top: 60px;
+  }
+
+  .perf-dashboard--visible {
+    right: 10px;
+  }
+
+  .perf-dashboard__metric-value {
+    font-size: 18px;
+  }
+}
+
+/* Print styles - hide dashboard when printing */
+@media print {
+  .perf-dashboard {
+    display: none !important;
+  }
+}
