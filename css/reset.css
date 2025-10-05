@@ -1,73 +1,42 @@
-/* CSS Reset - Modern baseline styles for consistent rendering */
-
-/* Apply border-box sizing to all elements for easier layout calculations */
+﻿/* Modern CSS Reset */
+/* Box sizing reset */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Remove default margin and padding from all elements */
+/* Remove default margin and padding */
 * {
   margin: 0;
   padding: 0;
-}
-
-/* Prevent font size inflation on mobile devices */
-html {
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
 }
 
 /* Set core body defaults */
 body {
   min-height: 100vh;
   line-height: 1.5;
-  text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Set shorter line heights on headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.1;
-}
-
-/* Balance text wrapping on headings */
-h1,
-h2,
-h3,
-h4 {
-  text-wrap: balance;
-}
-
-/* Remove list styles on ul, ol elements with a list role */
-ul[role='list'],
-ol[role='list'] {
-  list-style: none;
-}
-
-/* Remove list styles */
-ul,
-ol {
-  list-style: none;
 }
 
 /* Make images easier to work with */
 img,
 picture,
+video,
+canvas,
 svg {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
-/* Inherit fonts for inputs and buttons */
+/* Remove default list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Inherit fonts for form controls */
 input,
 button,
 textarea,
@@ -77,25 +46,24 @@ select {
 
 /* Remove default button styles */
 button {
-  border: none;
   background: none;
+  border: none;
   cursor: pointer;
 }
 
-/* Remove default link styling */
-a {
-  text-decoration: none;
-  color: inherit;
+/* Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
 }
 
-/* Remove animations for people who've turned them off */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+/* Create a root stacking context */
+#root,
+#__next {
+  isolation: isolate;
 }
