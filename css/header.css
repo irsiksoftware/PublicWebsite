@@ -20,6 +20,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
 }
 
 .header__logo {
@@ -75,4 +76,27 @@
 
 .header__link--active::after {
   width: 100%;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .header__container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .header__logo {
+    font-size: 1.25rem;
+  }
+
+  .header__nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .header__link {
+    font-size: 0.8rem;
+  }
 }
