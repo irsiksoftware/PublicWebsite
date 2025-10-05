@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/lightbox.css">
   <link rel="stylesheet" href="css/missions.css">
+  <link rel="stylesheet" href="css/mission-logs.css">
   <link rel="stylesheet" href="css/team-builder.css">
   <link rel="stylesheet" href="css/footer.css">
 </head>
@@ -499,6 +500,38 @@
     </div>
   </section>
 
+  <!-- Mission Logs Section with Infinite Scroll -->
+  <section class="mission-logs">
+    <div class="mission-logs__container">
+      <h2 class="mission-logs__title">Mission Logs</h2>
+      <div class="mission-logs__table-wrapper">
+        <table class="mission-logs__table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Mission Name</th>
+              <th>Date</th>
+              <th>Agent</th>
+              <th>Status</th>
+              <th>Priority</th>
+            </tr>
+          </thead>
+          <tbody id="missionLogsTableBody">
+            <!-- Initial rows will be loaded here -->
+          </tbody>
+        </table>
+        <div id="missionLogsSentinel" class="mission-logs__sentinel"></div>
+        <div id="missionLogsLoader" class="mission-logs__loader" style="display: none;">
+          <div class="mission-logs__spinner"></div>
+          <p>Loading more missions...</p>
+        </div>
+      </div>
+      <button id="backToTop" class="mission-logs__back-to-top" style="display: none;">
+        ↑ Back to Top
+      </button>
+    </div>
+  </section>
+
   <!-- Team Builder Section -->
   <section class="team-builder">
     <div class="team-builder__container">
@@ -697,5 +730,6 @@
   <script src="js/lightbox.js"></script>
   <script src="js/advanced-search.js"></script>
   <script src="js/team-builder.js"></script>
+  <script src="js/infinite-scroll.js"></script>
 </body>
 </html>
