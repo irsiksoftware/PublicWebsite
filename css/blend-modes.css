@@ -1,0 +1,261 @@
+/* CSS Blend Modes for Creative Image Effects */
+
+/* Hero portrait duotone effect using background-blend-mode */
+.hero-portrait {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-portrait__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: var(--primary-red, #C8102E);
+  background-blend-mode: multiply;
+  transition: background-blend-mode 0.4s ease;
+}
+
+/* Color overlay layer with screen blend mode */
+.hero-portrait::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(200, 16, 46, 0.3); /* primary-red with alpha */
+  mix-blend-mode: screen;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* Before/after comparison on hover - removes blend effects */
+.hero-portrait:hover .hero-portrait__image {
+  background-blend-mode: normal;
+}
+
+.hero-portrait:hover::before {
+  opacity: 0;
+}
+
+/* Blend mode utility classes */
+
+/* Multiply - darkens images, good for duotone effects */
+.blend-multiply {
+  background-color: var(--primary-red, #C8102E);
+  background-blend-mode: multiply;
+}
+
+.blend-multiply--overlay {
+  position: relative;
+}
+
+.blend-multiply--overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary-red, #C8102E);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* Screen - lightens images, creates dramatic highlights */
+.blend-screen {
+  position: relative;
+}
+
+.blend-screen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(200, 16, 46, 0.4);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Overlay - combines multiply and screen, enhances contrast */
+.blend-overlay {
+  position: relative;
+}
+
+.blend-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary-red, #C8102E);
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Difference - inverts colors based on overlay, creates dramatic effects */
+.blend-difference {
+  position: relative;
+}
+
+.blend-difference::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary-red, #C8102E);
+  mix-blend-mode: difference;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Hover effects - dramatic color shifts */
+.blend-multiply:hover,
+.blend-screen:hover::after,
+.blend-overlay:hover::after,
+.blend-difference:hover::after {
+  background: var(--arc-reactor, #00D4FF);
+  transition: background 0.6s ease;
+}
+
+/* Gallery integration - add blend modes to gallery items */
+.gallery__item--blend-multiply .gallery__image {
+  background-color: var(--primary-red, #C8102E);
+  background-blend-mode: multiply;
+}
+
+.gallery__item--blend-multiply:hover .gallery__image {
+  background-color: var(--arc-reactor, #00D4FF);
+}
+
+.gallery__item--blend-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(200, 16, 46, 0.4);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+  transition: background 0.6s ease;
+}
+
+.gallery__item--blend-screen:hover::before {
+  background: rgba(0, 212, 255, 0.4);
+}
+
+.gallery__item--blend-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary-red, #C8102E);
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+  transition: background 0.6s ease;
+}
+
+.gallery__item--blend-overlay:hover::before {
+  background: var(--hulk-green, #6AC259);
+}
+
+.gallery__item--blend-difference::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary-red, #C8102E);
+  mix-blend-mode: difference;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 1;
+  transition: background 0.6s ease;
+}
+
+.gallery__item--blend-difference:hover::before {
+  background: var(--gold, #FFD700);
+}
+
+/* Ensure overlay stays below text overlay */
+.gallery__overlay {
+  z-index: 2;
+}
+
+/* Additional creative blend mode variations */
+
+/* Hard Light - similar to overlay but more intense */
+.blend-hard-light {
+  position: relative;
+}
+
+.blend-hard-light::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary-red, #C8102E), var(--shield-blue, #0057B8));
+  mix-blend-mode: hard-light;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Color Dodge - creates bright, saturated colors */
+.blend-color-dodge {
+  position: relative;
+}
+
+.blend-color-dodge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, var(--arc-reactor, #00D4FF), transparent);
+  mix-blend-mode: color-dodge;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Duotone effect with gradient */
+.blend-duotone {
+  position: relative;
+}
+
+.blend-duotone img {
+  filter: grayscale(100%) contrast(1.2);
+}
+
+.blend-duotone::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, var(--primary-red, #C8102E), var(--dark-bg, #1a1a1a));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.blend-duotone:hover::after {
+  background: linear-gradient(to bottom, var(--arc-reactor, #00D4FF), var(--shield-blue, #0057B8));
+  transition: background 0.8s ease;
+}
