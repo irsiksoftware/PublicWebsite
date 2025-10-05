@@ -17,9 +17,12 @@ const COLS = 10;
 const ROWS = 20;
 const BLOCK_SIZE = 30;
 let canvas, ctx;
+let nextPieceCanvas, nextPieceCtx;
 let currentPiece = null;
+let nextPiece = null;
 let gameLoopId = null;
 let gravityInterval = null;
+let highScore = 0;
 
 // Tetromino shapes (I, O, T, S, Z, J, L)
 const SHAPES = {
@@ -60,6 +63,15 @@ function initGame() {
   canvas.width = COLS * BLOCK_SIZE;
   canvas.height = ROWS * BLOCK_SIZE;
 
+  // Get next piece canvas
+  nextPieceCanvas = document.getElementById('nextPieceCanvas');
+  if (nextPieceCanvas) {
+    nextPieceCtx = nextPieceCanvas.getContext('2d');
+  }
+
+  // Load high score from localStorage
+  loadHighScore();
+
   // Reset game state
   resetGame();
 
@@ -83,27 +95,48 @@ function resetGame() {
   // Clear grid
   grid = Array(ROWS).fill(null).map(() => Array(COLS).fill(0));
 
+  // Hide game over overlay
+  hideGameOverOverlay();
+
+  // Generate next piece first
+  nextPiece = generateRandomPiece();
+
   // Spawn first piece
   spawnPiece();
 
   // Update UI
   updateUI();
+  drawNextPiece();
 }
 
 /**
- * Spawn a new piece at the top
+ * Generate a random piece
  */
-function spawnPiece() {
+function generateRandomPiece() {
   const shapeKeys = Object.keys(SHAPES);
   const randomShape = shapeKeys[Math.floor(Math.random() * shapeKeys.length)];
 
-  currentPiece = {
+  return {
     shape: SHAPES[randomShape],
     color: COLORS[randomShape],
     x: Math.floor(COLS / 2) - 1,
     y: 0,
     type: randomShape
   };
+}
+
+/**
+ * Spawn a new piece at the top
+ */
+function spawnPiece() {
+  // Use the next piece as the current piece
+  currentPiece = nextPiece;
+
+  // Generate a new next piece
+  nextPiece = generateRandomPiece();
+
+  // Draw the new next piece
+  drawNextPiece();
 
   // Check for game over (piece spawns with collision)
   if (checkCollision(currentPiece, currentPiece.x, currentPiece.y)) {
@@ -318,10 +351,12 @@ function updateUI() {
   const scoreEl = document.getElementById('tetrisScore');
   const levelEl = document.getElementById('tetrisLevel');
   const linesEl = document.getElementById('tetrisLines');
+  const highScoreEl = document.getElementById('tetrisHighScore');
 
   if (scoreEl) scoreEl.textContent = gameState.score;
   if (levelEl) levelEl.textContent = gameState.level;
   if (linesEl) linesEl.textContent = gameState.lines;
+  if (highScoreEl) highScoreEl.textContent = highScore;
 }
 
 /**
@@ -350,6 +385,13 @@ function togglePause() {
 function gameOver() {
   gameState.isGameOver = true;
 
+  // Update high score if needed
+  if (gameState.score > highScore) {
+    highScore = gameState.score;
+    saveHighScore();
+    updateUI();
+  }
+
   // Stop gravity
   if (gravityInterval) {
     clearInterval(gravityInterval);
@@ -361,6 +403,9 @@ function gameOver() {
     cancelAnimationFrame(gameLoopId);
     gameLoopId = null;
   }
+
+  // Show game over overlay
+  showGameOverOverlay();
 }
 
 /**
@@ -385,10 +430,97 @@ function setupControls() {
   });
 }
 
+/**
+ * Draw next piece preview
+ */
+function drawNextPiece() {
+  if (!nextPieceCtx || !nextPiece) return;
+
+  // Clear canvas
+  nextPieceCtx.fillStyle = '#000';
+  nextPieceCtx.fillRect(0, 0, nextPieceCanvas.width, nextPieceCanvas.height);
+
+  // Calculate piece dimensions
+  const pieceWidth = nextPiece.shape[0].length;
+  const pieceHeight = nextPiece.shape.length;
+  const blockSize = 16;
+
+  // Center the piece in the canvas
+  const offsetX = (nextPieceCanvas.width - pieceWidth * blockSize) / 2;
+  const offsetY = (nextPieceCanvas.height - pieceHeight * blockSize) / 2;
+
+  // Draw the piece
+  nextPieceCtx.fillStyle = nextPiece.color;
+  for (let y = 0; y < pieceHeight; y++) {
+    for (let x = 0; x < pieceWidth; x++) {
+      if (nextPiece.shape[y][x]) {
+        nextPieceCtx.fillRect(
+          offsetX + x * blockSize,
+          offsetY + y * blockSize,
+          blockSize - 1,
+          blockSize - 1
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Show game over overlay
+ */
+function showGameOverOverlay() {
+  const overlay = document.getElementById('gameOverOverlay');
+  const finalScoreEl = document.getElementById('finalScore');
+
+  if (finalScoreEl) {
+    finalScoreEl.textContent = gameState.score;
+  }
+
+  if (overlay) {
+    overlay.classList.add('active');
+  }
+}
+
+/**
+ * Hide game over overlay
+ */
+function hideGameOverOverlay() {
+  const overlay = document.getElementById('gameOverOverlay');
+  if (overlay) {
+    overlay.classList.remove('active');
+  }
+}
+
+/**
+ * Play again (restart game)
+ */
+function playAgain() {
+  // Restart game loop first
+  startGameLoop();
+  // Then reset game
+  resetGame();
+}
+
+/**
+ * Load high score from localStorage
+ */
+function loadHighScore() {
+  const saved = localStorage.getItem('tetrisHighScore');
+  highScore = saved ? parseInt(saved, 10) : 0;
+  updateUI();
+}
+
+/**
+ * Save high score to localStorage
+ */
+function saveHighScore() {
+  localStorage.setItem('tetrisHighScore', highScore.toString());
+}
+
 // Export for use in HTML
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { initGame, resetGame, togglePause, gameState };
+  module.exports = { initGame, resetGame, togglePause, playAgain, gameState };
 } else {
   // Make available globally for browser
-  window.TetrisGame = { initGame, resetGame, togglePause, gameState };
+  window.TetrisGame = { initGame, resetGame, togglePause, playAgain, gameState };
 }
