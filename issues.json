@@ -7,7 +7,6 @@
 #132 [OPEN] [MEDIUM, wip, feature] Implement theme switcher with localStorage
 #129 [OPEN] [HIGH, wip, feature] Create advanced search with multi-filter system
 #128 [OPEN] [LOW, feature] Implement Tetris hold piece and preview features
-#127 [OPEN] [MEDIUM, feature] Add Tetris UI panels and game over screen
 #126 [OPEN] [MEDIUM, feature] Implement Tetris line clearing and scoring
 #123 [OPEN] [CRITICAL, wip, feature] Create Tetris game canvas and grid setup
 #121 [OPEN] [MEDIUM, feature] Implement form validation with real-time feedback
@@ -19,7 +18,7 @@
 #113 [OPEN] [HIGH, wip, feature] Build hamburger menu toggle with animation
 #112 [OPEN] [HIGH, wip, feature] Implement smooth scroll with offset for sticky header
 #111 [OPEN] [CRITICAL, wip, feature] Add basic JavaScript module setup and utilities
-#110 [OPEN] [MEDIUM, feature] Add table of contents with smooth scroll navigation
+#110 [OPEN] [MEDIUM, wip, feature] Add table of contents with smooth scroll navigation
 #109 [OPEN] [MEDIUM, wip, feature] Design alert banner component with slide animation
 #108 [OPEN] [LOW, feature] Create CSS-only tooltip system with arrows
 #107 [OPEN] [LOW, feature] Add CSS blend modes for creative image effects
