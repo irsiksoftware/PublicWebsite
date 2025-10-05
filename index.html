@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="css/footer.css">
   <link rel="stylesheet" href="css/parallax.css">
   <link rel="stylesheet" href="css/toc.css">
+  <link rel="stylesheet" href="css/contact-form.css">
 </head>
 <body>
   <!-- Parallax Background Layers -->
@@ -687,6 +688,83 @@
     </div>
   </section>
 
+  <!-- Contact Form Section -->
+  <section class="contact-form" id="contact-form">
+    <div class="contact-form__container">
+      <h2 class="contact-form__title">Join the Initiative</h2>
+      <p class="contact-form__subtitle">Apply to become an Avenger. All fields marked with * are required.</p>
+
+      <form id="joinForm" class="contact-form__form" novalidate>
+        <div class="contact-form__field">
+          <label for="agentName" class="contact-form__label">Full Name *</label>
+          <input
+            type="text"
+            id="agentName"
+            name="agentName"
+            class="contact-form__input"
+            required
+            aria-required="true"
+            aria-describedby="agentNameError"
+          >
+          <span id="agentNameError" class="contact-form__error" role="alert"></span>
+        </div>
+
+        <div class="contact-form__field">
+          <label for="agentEmail" class="contact-form__label">Email Address *</label>
+          <input
+            type="email"
+            id="agentEmail"
+            name="agentEmail"
+            class="contact-form__input"
+            required
+            aria-required="true"
+            aria-describedby="agentEmailError"
+          >
+          <span id="agentEmailError" class="contact-form__error" role="alert"></span>
+        </div>
+
+        <div class="contact-form__field">
+          <label for="agentAbilities" class="contact-form__label">Special Abilities & Skills * (minimum 50 characters)</label>
+          <textarea
+            id="agentAbilities"
+            name="agentAbilities"
+            class="contact-form__textarea"
+            rows="5"
+            minlength="50"
+            required
+            aria-required="true"
+            aria-describedby="agentAbilitiesError"
+            placeholder="Describe your unique abilities, combat skills, technical expertise, or other qualifications..."
+          ></textarea>
+          <span id="agentAbilitiesError" class="contact-form__error" role="alert"></span>
+        </div>
+
+        <div class="contact-form__field">
+          <label for="clearanceLevel" class="contact-form__label">Current Clearance Level *</label>
+          <select
+            id="clearanceLevel"
+            name="clearanceLevel"
+            class="contact-form__select"
+            required
+            aria-required="true"
+            aria-describedby="clearanceLevelError"
+          >
+            <option value="">Select clearance level</option>
+            <option value="1">Level 1 - Basic Access</option>
+            <option value="5">Level 5 - Field Agent</option>
+            <option value="7">Level 7 - Senior Agent</option>
+            <option value="10">Level 10 - Director</option>
+          </select>
+          <span id="clearanceLevelError" class="contact-form__error" role="alert"></span>
+        </div>
+
+        <button type="submit" class="contact-form__submit">Submit Application</button>
+
+        <div id="formSuccess" class="contact-form__success" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
   <!-- Modal Dialog -->
   <div class="modal" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal__overlay"></div>
@@ -776,5 +854,6 @@
   <script src="js/infinite-scroll.js"></script>
   <script src="js/toc.js"></script>
   <script src="js/statistics-counter.js"></script>
+  <script src="js/form-validation.js"></script>
 </body>
 </html>

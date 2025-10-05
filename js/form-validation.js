@@ -7,17 +7,17 @@
   'use strict';
 
   // Get form and elements
-  const form = document.getElementById('initiativeForm');
-  const nameInput = document.getElementById('name');
-  const emailInput = document.getElementById('email');
-  const abilitiesInput = document.getElementById('abilities');
+  const form = document.getElementById('joinForm');
+  const nameInput = document.getElementById('agentName');
+  const emailInput = document.getElementById('agentEmail');
+  const abilitiesInput = document.getElementById('agentAbilities');
   const clearanceLevelInput = document.getElementById('clearanceLevel');
-  const successMessage = document.getElementById('successMessage');
+  const successMessage = document.getElementById('formSuccess');
 
   // Error message elements
-  const nameError = document.getElementById('nameError');
-  const emailError = document.getElementById('emailError');
-  const abilitiesError = document.getElementById('abilitiesError');
+  const nameError = document.getElementById('agentNameError');
+  const emailError = document.getElementById('agentEmailError');
+  const abilitiesError = document.getElementById('agentAbilitiesError');
   const clearanceLevelError = document.getElementById('clearanceLevelError');
 
   // Validation rules
@@ -132,22 +132,24 @@
     }
 
     // Hide success message
-    successMessage.style.display = 'none';
-    form.style.display = 'flex';
+    successMessage.classList.remove('show');
+    successMessage.textContent = '';
   }
 
   /**
-   * Show success message and hide form
+   * Show success message
    */
   function showSuccess() {
-    form.style.display = 'none';
-    successMessage.style.display = 'block';
+    successMessage.textContent = '✅ Application submitted successfully! A S.H.I.E.L.D. recruiter will contact you within 48 hours.';
+    successMessage.classList.add('show');
 
     // Scroll to success message
     successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
     // Reset form after 5 seconds
-    setTimeout(resetForm, 5000);
+    setTimeout(() => {
+      resetForm();
+    }, 5000);
   }
 
   // Attach blur event listeners for real-time validation
