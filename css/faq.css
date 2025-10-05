@@ -1,0 +1,176 @@
+/* FAQ Section - CSS-only accordion using checkbox hack */
+
+.faq {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 100%);
+  position: relative;
+}
+
+.faq::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(0, 112, 243, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(227, 6, 19, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.faq__container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.faq__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 50px;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(0, 112, 243, 0.5);
+}
+
+.faq__items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq__item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 112, 243, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq__item:hover {
+  border-color: rgba(0, 112, 243, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 112, 243, 0.2);
+}
+
+/* Hide the checkbox */
+.faq__toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.faq__question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-light);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.faq__question:hover {
+  color: var(--primary-color);
+  background: rgba(0, 112, 243, 0.05);
+}
+
+/* Arrow icon using pseudo-element */
+.faq__arrow {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  margin-left: 15px;
+}
+
+.faq__arrow::before,
+.faq__arrow::after {
+  content: '';
+  position: absolute;
+  background: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.faq__arrow::before {
+  width: 12px;
+  height: 2px;
+  top: 5px;
+  left: 0;
+}
+
+.faq__arrow::after {
+  width: 2px;
+  height: 12px;
+  top: 0;
+  left: 5px;
+}
+
+/* Rotate arrow when checked */
+.faq__toggle:checked ~ .faq__question .faq__arrow {
+  transform: rotate(180deg);
+}
+
+.faq__toggle:checked ~ .faq__question .faq__arrow::after {
+  opacity: 0;
+}
+
+/* Answer section - hidden by default */
+.faq__answer {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+  padding: 0 25px;
+}
+
+.faq__answer p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Show answer when checkbox is checked */
+.faq__toggle:checked ~ .faq__answer {
+  max-height: 500px;
+  opacity: 1;
+  padding: 0 25px 20px 25px;
+}
+
+/* Enhanced styling when checked */
+.faq__toggle:checked ~ .faq__question {
+  color: var(--primary-color);
+  background: rgba(0, 112, 243, 0.1);
+  border-bottom: 1px solid rgba(0, 112, 243, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .faq {
+    padding: 60px 15px;
+  }
+
+  .faq__title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .faq__question {
+    font-size: 1rem;
+    padding: 15px 20px;
+  }
+
+  .faq__answer {
+    padding: 0 20px;
+  }
+
+  .faq__toggle:checked ~ .faq__answer {
+    padding: 0 20px 15px 20px;
+  }
+}
