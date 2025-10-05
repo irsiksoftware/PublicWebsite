@@ -40,22 +40,32 @@ def main():
     print("=== PR FIXER - Cyclops Tactical Commander ===")
     print()
 
-    # Step 1: Fetch all open PRs
-    print("[1/5] Fetching open PRs...")
-    output, code = run_command('gh pr list --state open --json number,title,mergeable,headRefName,isDraft,createdAt,commits', use_powershell=True)
+    # Step 1: Fetch all open PRs using gh api
+    print("[1/5] Fetching open PRs via GitHub API...")
+    output, code = run_command('"C:\\Program Files\\GitHub CLI\\gh.bat" api repos/irsiksoftware/TestForAI/pulls?state=open')
 
     if code != 0 or not output:
         print(f"ERROR: Failed to fetch PRs (exit code: {code})")
         print(f"Output: {output}")
         return 1
 
-    print(f"DEBUG: Raw output: {output}")
-
     try:
-        prs = json.loads(output)
+        pr_list = json.loads(output)
+
+        # Transform to simpler format
+        prs = []
+        for pr in pr_list:
+            prs.append({
+                'number': pr['number'],
+                'title': pr['title'],
+                'mergeable': pr.get('mergeable'),
+                'mergeable_state': pr.get('mergeable_state', 'unknown'),
+                'headRefName': pr['head']['ref'],
+                'isDraft': pr.get('draft', False),
+                'createdAt': pr['created_at']
+            })
     except json.JSONDecodeError as e:
         print(f"ERROR: Failed to parse JSON: {e}")
-        print(f"Raw output: {output}")
         return 1
 
     if not prs:
@@ -77,6 +87,7 @@ def main():
         pr_num = pr['number']
         title = pr['title']
         mergeable = pr['mergeable']
+        mergeable_state = pr['mergeable_state']
         head_ref = pr['headRefName']
         is_draft = pr.get('isDraft', False)
         created_at = datetime.fromisoformat(pr['createdAt'].replace('Z', '+00:00'))
@@ -84,10 +95,10 @@ def main():
 
         print()
         print(f"PR #{pr_num}: {title}")
-        print(f"  Branch: {head_ref} | Mergeable: {mergeable} | Age: {age_hours:.1f}h")
+        print(f"  Branch: {head_ref} | Mergeable: {mergeable} | State: {mergeable_state} | Age: {age_hours:.1f}h")
 
         # Process based on mergeable status
-        if mergeable == "CONFLICTING":
+        if mergeable == False or mergeable_state == "dirty":
             print("  [ACTION] Merge conflicts detected!")
 
             # Notify Discord
@@ -145,28 +156,31 @@ def main():
             # Verify merge status
             print("    → Verifying merge status...")
             time.sleep(2)
-            verify_output, _ = run_command(f"gh pr view {pr_num} --json mergeable")
+            verify_output, _ = run_command(f'"C:\\Program Files\\GitHub CLI\\gh.bat" api repos/irsiksoftware/TestForAI/pulls/{pr_num}')
             verify_pr = json.loads(verify_output)
 
-            if verify_pr['mergeable'] == "MERGEABLE":
-                print("    ✓ Conflicts resolved successfully!")
+            new_mergeable = verify_pr.get('mergeable')
+            new_state = verify_pr.get('mergeable_state', 'unknown')
+
+            if new_mergeable == True or new_state == "clean":
+                print("    [SUCCESS] Conflicts resolved successfully!")
                 notify_discord("pr_fixed", "Scott Summers", pr_num, "Conflicts resolved via rebase")
                 fixed.append(pr_num)
             else:
-                print(f"    WARNING: Status still shows {verify_pr['mergeable']}")
+                print(f"    WARNING: Status still shows mergeable={new_mergeable}, state={new_state}")
                 skipped.append({"PR": pr_num, "Reason": "Status verification failed"})
 
             run_command("git checkout main", capture=False, check=False)
 
-        elif mergeable == "UNKNOWN":
+        elif mergeable is None or mergeable_state in ["unknown", "unstable"]:
             print("  [SKIP] Status checks pending")
             skipped.append({"PR": pr_num, "Reason": "Status checks pending"})
 
-        elif mergeable == "MERGEABLE":
+        elif mergeable == True or mergeable_state == "clean":
             print("  [SKIP] Already mergeable - ready for review")
 
-            if age_hours > 24 and len(pr.get('commits', [])) == 0:
-                print("  [WARNING] PR is stale (>24h, no commits)")
+            if age_hours > 24:
+                print("  [WARNING] PR is stale (>24h old)")
 
             skipped.append({"PR": pr_num, "Reason": "Already mergeable"})
 
@@ -180,7 +194,7 @@ def main():
     print("[3/5] Cleanup...")
     run_command("git checkout main", capture=False, check=False)
     run_command("git pull origin main", capture=False, check=False)
-    print("  ✓ Returned to main branch")
+    print("  [OK] Returned to main branch")
 
     # Step 4: Summary
     print()
