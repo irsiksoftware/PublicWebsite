@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/lightbox.css">
   <link rel="stylesheet" href="css/missions.css">
+  <link rel="stylesheet" href="css/team-builder.css">
 </head>
 <body>
   <!-- Header -->
@@ -497,6 +498,120 @@
     </div>
   </section>
 
+  <!-- Team Builder Section -->
+  <section class="team-builder">
+    <div class="team-builder__container">
+      <h2 class="team-builder__title">Assemble Your Team</h2>
+      <p class="team-builder__subtitle">Drag Avengers to build your perfect strike team (Max 6 members)</p>
+
+      <!-- Current Team Section -->
+      <div class="team-builder__team-section">
+        <h3 class="team-builder__section-title">Current Team</h3>
+        <div id="currentTeam" class="team-builder__team-slots">
+          <div class="team-builder__slot" data-slot="0"></div>
+          <div class="team-builder__slot" data-slot="1"></div>
+          <div class="team-builder__slot" data-slot="2"></div>
+          <div class="team-builder__slot" data-slot="3"></div>
+          <div class="team-builder__slot" data-slot="4"></div>
+          <div class="team-builder__slot" data-slot="5"></div>
+        </div>
+        <div id="teamValidation" class="team-builder__validation"></div>
+        <button id="resetTeam" class="team-builder__reset-btn">Reset Team</button>
+      </div>
+
+      <!-- Available Avengers Section -->
+      <div class="team-builder__avengers-section">
+        <h3 class="team-builder__section-title">Available Avengers</h3>
+        <div id="availableAvengers" class="team-builder__grid">
+          <div class="team-builder__card" draggable="true" data-id="ironman" data-role="tech">
+            <div class="team-builder__card-image" style="background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);"></div>
+            <div class="team-builder__card-content">
+              <h4 class="team-builder__card-name">Iron Man</h4>
+              <span class="team-builder__card-role">Tech</span>
+            </div>
+          </div>
+          <div class="team-builder__card" draggable="true" data-id="cap" data-role="leader">
+            <div class="team-builder__card-image" style="background: linear-gradient(135deg, #0066cc 0%, #003366 100%);"></div>
+            <div class="team-builder__card-content">
+              <h4 class="team-builder__card-name">Captain America</h4>
+              <span class="team-builder__card-role">Leader</span>
+            </div>
+          </div>
+          <div class="team-builder__card" draggable="true" data-id="thor" data-role="power">
+            <div class="team-builder__card-image" style="background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);"></div>
+            <div class="team-builder__card-content">
+              <h4 class="team-builder__card-name">Thor</h4>
+              <span class="team-builder__card-role">Power</span>
+            </div>
+          </div>
+          <div class="team-builder__card" draggable="true" data-id="hulk" data-role="power">
+            <div class="team-builder__card-image" style="background: linear-gradient(135deg, #00cc00 0%, #006600 100%);"></div>
+            <div class="team-builder__card-content">
+              <h4 class="team-builder__card-name">Hulk</h4>
+              <span class="team-builder__card-role">Power</span>
+            </div>
+          </div>
+          <div class="team-builder__card" draggable="true" data-id="widow" data-role="spy">
+            <div class="team-builder__card-image" style="background: linear-gradient(135deg, #000000 0%, #4d0000 100%);"></div>
+            <div class="team-builder__card-content">
+              <h4 class="team-builder__card-name">Black Widow</h4>
+              <span class="team-builder__card-role">Spy</span>
+            </div>
+          </div>
+          <div class="team-builder__card" draggable="true" data-id="hawkeye" data-role="support">
+            <div class="team-builder__card-image" style="background: linear-gradient(135deg, #663399 0%, #330066 100%);"></div>
+            <div class="team-builder__card-content">
+              <h4 class="team-builder__card-name">Hawkeye</h4>
+              <span class="team-builder__card-role">Support</span>
+            </div>
+          </div>
+          <div class="team-builder__card" draggable="true" data-id="panther" data-role="leader">
+            <div class="team-builder__card-image" style="background: linear-gradient(135deg, #663399 0%, #000000 100%);"></div>
+            <div class="team-builder__card-content">
+              <h4 class="team-builder__card-name">Black Panther</h4>
+              <span class="team-builder__card-role">Leader</span>
+            </div>
+          </div>
+          <div class="team-builder__card" draggable="true" data-id="scarlet" data-role="power">
+            <div class="team-builder__card-image" style="background: linear-gradient(135deg, #cc0000 0%, #660033 100%);"></div>
+            <div class="team-builder__card-content">
+              <h4 class="team-builder__card-name">Scarlet Witch</h4>
+              <span class="team-builder__card-role">Power</span>
+            </div>
+          </div>
+          <div class="team-builder__card" draggable="true" data-id="vision" data-role="tech">
+            <div class="team-builder__card-image" style="background: linear-gradient(135deg, #ffcc00 0%, #cc6600 100%);"></div>
+            <div class="team-builder__card-content">
+              <h4 class="team-builder__card-name">Vision</h4>
+              <span class="team-builder__card-role">Tech</span>
+            </div>
+          </div>
+          <div class="team-builder__card" draggable="true" data-id="spiderman" data-role="support">
+            <div class="team-builder__card-image" style="background: linear-gradient(135deg, #cc0000 0%, #0033cc 100%);"></div>
+            <div class="team-builder__card-content">
+              <h4 class="team-builder__card-name">Spider-Man</h4>
+              <span class="team-builder__card-role">Support</span>
+            </div>
+          </div>
+          <div class="team-builder__card" draggable="true" data-id="strange" data-role="power">
+            <div class="team-builder__card-image" style="background: linear-gradient(135deg, #0066cc 0%, #cc6600 100%);"></div>
+            <div class="team-builder__card-content">
+              <h4 class="team-builder__card-name">Dr. Strange</h4>
+              <span class="team-builder__card-role">Power</span>
+            </div>
+          </div>
+          <div class="team-builder__card" draggable="true" data-id="marvel" data-role="power">
+            <div class="team-builder__card-image" style="background: linear-gradient(135deg, #ffcc00 0%, #cc0033 100%);"></div>
+            <div class="team-builder__card-content">
+              <h4 class="team-builder__card-name">Captain Marvel</h4>
+              <span class="team-builder__card-role">Power</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Modal Dialog -->
   <div class="modal" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal__overlay"></div>
@@ -517,5 +632,6 @@
   <script src="js/modal.js"></script>
   <script src="js/lightbox.js"></script>
   <script src="js/advanced-search.js"></script>
+  <script src="js/team-builder.js"></script>
 </body>
 </html>
