@@ -1,0 +1,106 @@
+name: Discord Pull Request Notifications
+
+on:
+  pull_request:
+    types: [opened, closed, reopened, synchronize, review_requested]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord Notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.PULLREQUEST_WEBHOOK }}
+        run: |
+          # Extract PR info
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          PR_URL="${{ github.event.pull_request.html_url }}"
+          AUTHOR="${{ github.event.pull_request.user.login }}"
+          ACTION="${{ github.event.action }}"
+          BRANCH="${{ github.event.pull_request.head.ref }}"
+
+          # Determine event type and color
+          case "$ACTION" in
+            "opened")
+              EMOJI="🔔"
+              TITLE="Pull Request Opened"
+              COLOR=3447003  # Blue
+              ;;
+            "closed")
+              if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
+                EMOJI="✅"
+                TITLE="Pull Request Merged"
+                COLOR=3066993  # Green
+              else
+                EMOJI="❌"
+                TITLE="Pull Request Closed"
+                COLOR=15158332  # Red
+              fi
+              ;;
+            "reopened")
+              EMOJI="🔄"
+              TITLE="Pull Request Reopened"
+              COLOR=16776960  # Yellow
+              ;;
+            "synchronize")
+              EMOJI="📝"
+              TITLE="Pull Request Updated"
+              COLOR=3447003  # Blue
+              ;;
+            "review_requested")
+              EMOJI="👀"
+              TITLE="Review Requested"
+              COLOR=16776960  # Yellow
+              ;;
+            "submitted")
+              EMOJI="💬"
+              TITLE="Review Submitted"
+              COLOR=10181046  # Purple
+              ;;
+            *)
+              EMOJI="📌"
+              TITLE="Pull Request $ACTION"
+              COLOR=3447003  # Blue
+              ;;
+          esac
+
+          # Build JSON payload
+          PAYLOAD=$(cat <<EOF
+          {
+            "username": "GitHub Pull Requests",
+            "avatar_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+            "embeds": [{
+              "title": "$EMOJI $TITLE #$PR_NUMBER",
+              "description": "$PR_TITLE",
+              "url": "$PR_URL",
+              "color": $COLOR,
+              "fields": [
+                {
+                  "name": "Author",
+                  "value": "$AUTHOR",
+                  "inline": true
+                },
+                {
+                  "name": "Branch",
+                  "value": "$BRANCH",
+                  "inline": true
+                },
+                {
+                  "name": "Status",
+                  "value": "${{ github.event.pull_request.state }}",
+                  "inline": true
+                }
+              ],
+              "timestamp": "${{ github.event.pull_request.updated_at }}"
+            }]
+          }
+          EOF
+          )
+
+          # Send to Discord
+          curl -H "Content-Type: application/json" \
+               -d "$PAYLOAD" \
+               "$DISCORD_WEBHOOK"
