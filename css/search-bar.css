@@ -1,0 +1,114 @@
+/* Search Bar Styles - Issue #99 */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Icon */
+.search-bar__icon {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+/* Input */
+.search-bar__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--text-light);
+  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Placeholder */
+.search-bar__input::placeholder {
+  font-style: italic;
+  opacity: 0.6;
+  color: var(--text-light);
+  transition: opacity 0.3s ease;
+}
+
+.search-bar__input:focus::placeholder {
+  opacity: 0.3;
+}
+
+/* Focus state */
+.search-bar__input:focus {
+  border-color: var(--arc-reactor);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+/* Clear button */
+.search-bar__clear {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.search-bar__clear:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Show clear button when input has value */
+.search-bar__input:not(:placeholder-shown) ~ .search-bar__clear,
+.search-bar.has-value .search-bar__clear {
+  display: block;
+}
+
+/* Compact variant for header */
+.search-bar--compact {
+  max-width: 300px;
+  padding: 0.4rem 0.8rem;
+}
+
+.search-bar--compact .search-bar__input {
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-bar--compact {
+    max-width: 200px;
+  }
+
+  .search-bar__input {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar--compact {
+    max-width: 150px;
+  }
+
+  .search-bar__icon {
+    font-size: 1rem;
+  }
+
+  .search-bar__input {
+    font-size: 0.85rem;
+  }
+}
