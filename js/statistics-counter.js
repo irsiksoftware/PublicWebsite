@@ -1,5 +1,11 @@
-// Statistics Counter Animation with IntersectionObserver
+/**
+ * Statistics Counter Animation
+ * Animates numbers counting up when section scrolls into view
+ */
+
 (function() {
+  'use strict';
+
   // Easing function: easeOutQuart for natural deceleration
   function easeOutQuart(t) {
     return 1 - Math.pow(1 - t, 4);
