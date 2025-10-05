@@ -1,0 +1,229 @@
+/* Animated Statistics Counter Section */
+.stats-counter {
+  padding: 80px 20px;
+  background: linear-block(135deg, #1a1a2e 0%, #16213e 100%);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.02) 10px,
+    rgba(255, 255, 255, 0.02) 20px
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-counter__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stats-counter__title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: #e94560;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.stats-counter__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats-counter__item {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.stats-counter__item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.stats-counter__icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: block;
+  filter: drop-shadow(0 0 10px rgba(233, 69, 96, 0.5));
+}
+
+.stats-counter__number {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #e94560;
+  line-height: 1;
+  margin-bottom: 10px;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.stats-counter__label {
+  font-size: 1.1rem;
+  color: #a8a8a8;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .stats-counter__grid {
+    flex-direction: column;
+  }
+
+  .stats-counter__item {
+    min-width: 100%;
+  }
+
+  .stats-counter__number {
+    font-size: 3rem;
+  }
+
+  .stats-counter__title {
+    font-size: 2rem;
+  }
+}
+
+/* Existing Team Stats Dashboard Styles */
+.stats {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}
+
+.stats__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stats__title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 60px;
+  color: #e94560;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.stats__card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats__card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(233, 69, 96, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+}
+
+.stats__card:hover::before {
+  top: -100%;
+  left: -100%;
+}
+
+.stats__card:hover {
+  border-color: #e94560;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+}
+
+.stats__icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  display: block;
+  color: #e94560;
+}
+
+.stats__number {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 10px;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+}
+
+.stats__label {
+  font-size: 1rem;
+  color: #a8a8a8;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.stats__sparkline {
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  margin-top: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats__sparkline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to right, #e94560, #ff6b9d);
+  border-radius: 4px 4px 0 0;
+  opacity: 0.6;
+}
+
+/* Individual card gradients */
+.stats__card--missions .stats__sparkline::after {
+  background: linear-gradient(to right, #667eea, #764ba2);
+}
+
+.stats__card--team .stats__sparkline::after {
+  background: linear-gradient(to right, #f093fb, #f5576c);
+}
+
+.stats__card--alerts .stats__sparkline::after {
+  background: linear-gradient(to right, #fa709a, #fee140);
+}
+
+.stats__card--response .stats__sparkline::after {
+  background: linear-gradient(to right, #30cfd0, #330867);
+}
+
+.stats__card--success .stats__sparkline::after {
+  background: linear-gradient(to right, #a8edea, #fed6e3);
+}
+
+.stats__card--resources .stats__sparkline::after {
+  background: linear-gradient(to right, #ff9a9e, #fecfef);
+}
