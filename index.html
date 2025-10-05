@@ -15,11 +15,14 @@
   <!-- CSS Foundation -->
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/roster.css">
   <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/stats.css">
   <link rel="stylesheet" href="css/threat-level.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
   <!-- Header -->
@@ -151,6 +154,51 @@
         <div class="gallery__overlay">
           <span class="gallery__hero-name">Quinjet</span>
           <span class="gallery__hero-title">Advanced Transport</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Stats Dashboard -->
+  <section class="stats">
+    <div class="stats__container">
+      <h2 class="stats__title">Operational Dashboard</h2>
+      <div class="stats__grid">
+        <div class="stats__card stats__card--missions">
+          <div class="stats__icon">▶</div>
+          <div class="stats__number">42</div>
+          <div class="stats__label">Active Missions</div>
+          <div class="stats__sparkline stats__sparkline--missions"></div>
+        </div>
+        <div class="stats__card stats__card--team">
+          <div class="stats__icon">★</div>
+          <div class="stats__number">18</div>
+          <div class="stats__label">Team Members</div>
+          <div class="stats__sparkline stats__sparkline--team"></div>
+        </div>
+        <div class="stats__card stats__card--alerts">
+          <div class="stats__icon">⚠</div>
+          <div class="stats__number">7</div>
+          <div class="stats__label">Priority Alerts</div>
+          <div class="stats__sparkline stats__sparkline--alerts"></div>
+        </div>
+        <div class="stats__card stats__card--response">
+          <div class="stats__icon">⏱</div>
+          <div class="stats__number">12m</div>
+          <div class="stats__label">Avg Response Time</div>
+          <div class="stats__sparkline stats__sparkline--response"></div>
+        </div>
+        <div class="stats__card stats__card--success">
+          <div class="stats__icon">✓</div>
+          <div class="stats__number">94%</div>
+          <div class="stats__label">Success Rate</div>
+          <div class="stats__sparkline stats__sparkline--success"></div>
+        </div>
+        <div class="stats__card stats__card--resources">
+          <div class="stats__icon">◆</div>
+          <div class="stats__number">$2.3B</div>
+          <div class="stats__label">Resources</div>
+          <div class="stats__sparkline stats__sparkline--resources"></div>
         </div>
       </div>
     </div>

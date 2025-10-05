@@ -1,0 +1,65 @@
+/* SVG Icon System */
+
+/* Icon sizing classes */
+.icon-sm {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.icon-md {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.icon-lg {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+}
+
+/* Base icon styles */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Icon color inheritance - icons will inherit color from parent */
+.icon svg {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* Optional icon modifiers for specific use cases */
+.icon--primary {
+  color: var(--primary-color, #0066cc);
+}
+
+.icon--secondary {
+  color: var(--secondary-color, #6c757d);
+}
+
+.icon--success {
+  color: var(--success-color, #28a745);
+}
+
+.icon--danger {
+  color: var(--danger-color, #dc3545);
+}
+
+.icon--warning {
+  color: var(--warning-color, #ffc107);
+}
+
+.icon--info {
+  color: var(--info-color, #17a2b8);
+}
