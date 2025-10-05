@@ -1,0 +1,19 @@
+/* Avengers Theme Variables */
+:root {
+  /* Primary Colors */
+  --primary-red: #C8102E;
+  --shield-blue: #0057B8;
+  --arc-reactor: #00D4FF;
+  --hulk-green: #6AC259;
+  --gold: #FFD700;
+
+  /* Background Colors */
+  --dark-bg: #1a1a1a;
+
+  /* Text Colors */
+  --text-light: #f0f0f0;
+
+  /* Font Families - System Font Stack */
+  --font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+}
