@@ -1,0 +1,20 @@
+{
+  "audit": {
+    "broken_deps": [],
+    "missing_priority": [],
+    "multiple_priority": [],
+    "missing_type": [
+      {
+        "issue": 138,
+        "title": "Create comprehensive feature test page",
+        "suggested_type": "feature"
+      }
+    ]
+  },
+  "fixes": {
+    "broken_deps_fixed": 0,
+    "priority_added": 0,
+    "priority_cleaned": 0,
+    "type_added": 1
+  }
+}
