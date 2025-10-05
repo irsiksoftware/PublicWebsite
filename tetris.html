@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S.H.I.E.L.D. Training Simulator - Tetris</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Courier New', monospace;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .game-container {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .canvas-container {
+      background: #0f0f1e;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 240, 240, 0.3);
+    }
+
+    #tetrisCanvas {
+      border: 2px solid #00f0f0;
+      display: block;
+      background: #000;
+    }
+
+    .info-panel {
+      background: #0f0f1e;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 240, 240, 0.3);
+      min-width: 200px;
+    }
+
+    .info-panel h1 {
+      color: #00f0f0;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .stat {
+      margin-bottom: 15px;
+      padding: 10px;
+      background: rgba(0, 240, 240, 0.1);
+      border-left: 3px solid #00f0f0;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      color: #00f0f0;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .controls {
+      margin-top: 30px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 5px;
+    }
+
+    .controls h2 {
+      font-size: 14px;
+      color: #00f0f0;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .controls p {
+      font-size: 12px;
+      color: #aaa;
+      line-height: 1.6;
+      margin-bottom: 5px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: linear-gradient(135deg, #00f0f0 0%, #0080ff 100%);
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      font-weight: bold;
+      font-size: 14px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 240, 240, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <div class="canvas-container">
+      <canvas id="tetrisCanvas"></canvas>
+    </div>
+
+    <div class="info-panel">
+      <h1>S.H.I.E.L.D. Training</h1>
+
+      <div class="stat">
+        <div class="stat-label">Score</div>
+        <div class="stat-value" id="tetrisScore">0</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">Level</div>
+        <div class="stat-value" id="tetrisLevel">1</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">Lines</div>
+        <div class="stat-value" id="tetrisLines">0</div>
+      </div>
+
+      <button class="btn" onclick="TetrisGame.resetGame()">New Game</button>
+
+      <div class="controls">
+        <h2>Controls</h2>
+        <p><strong>P</strong> - Pause/Resume</p>
+        <p><strong>Movement</strong> - Coming Soon</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/tetris-game.js"></script>
+  <script>
+    // Initialize game when page loads
+    window.addEventListener('DOMContentLoaded', () => {
+      TetrisGame.initGame();
+    });
+  </script>
+</body>
+</html>
