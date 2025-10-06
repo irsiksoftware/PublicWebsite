@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentSort = { column: null, ascending: true };
     let currentFilter = 'all';
     let currentPage = 1;
-    const rowsPerPage = 50;
+    const rowsPerPage = 20;
 
     async function loadSpyActivity() {
         // Show skeleton loading state
