@@ -1,22 +1,17 @@
 ## Summary
-Enhanced modal UX with ESC key and outside click close functionality, plus body scroll prevention.
+Implement agent dropdown selector per issue #254
 
 ## Changes
-- Added ESC key listener to close modal when open
-- Implemented overlay click to close modal
-- Added `event.stopPropagation()` on modal content to prevent content clicks from closing
-- Body scroll is now locked when modal is open (already implemented in open/close methods)
+- Agent dropdown already implemented in `js/agent-selector.js`
+- Fetches from `/data/agents.json`
+- Filters to enabled agents only
+- Format: `Name (Alias) - Role`
+- Stores selection in `selectedAgent` variable
+- Change event triggers on selection
 
-## Implementation Details
-- Modal content clicks are explicitly stopped from propagating to prevent accidental closure
-- ESC key listener checks `isOpen` state to only trigger when modal is active
-- Overlay click handler provides intuitive close behavior
-- Body scroll lock uses `overflow: hidden` on document.body
+## Test Plan
+- [x] Dropdown populates from JSON
+- [x] Shows enabled agents only (Nick Fury, Cyclops, Scarlet Witch)
+- [x] Selection triggers change event
 
-## Testing
-- ✓ ESC key closes modal
-- ✓ Clicking overlay closes modal
-- ✓ Clicking modal content does not close modal
-- ✓ Body scroll locked when modal open
-
-Closes #224
+Closes #254
