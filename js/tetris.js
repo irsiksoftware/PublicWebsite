@@ -12,25 +12,148 @@ const BLOCK_SIZE = 32;
 let canvas;
 let ctx;
 let currentPiece = null;
+let board = [];
+let gameState = {
+    score: 0,
+    level: 1,
+    lines: 0,
+    isPaused: false,
+    isGameOver: false
+};
+let gameInterval = null;
+let dropSpeed = 1000;
 
 // Initialize game
 function init() {
     canvas = document.getElementById('game');
     ctx = canvas.getContext('2d');
 
-    // Initialize current piece at top center
-    currentPiece = {
-        x: Math.floor(COLS / 2) - 2,
-        y: 0,
-        shape: TETROMINO_SHAPES.I.rotations[0],
-        color: TETROMINO_SHAPES.I.color
-    };
+    // Initialize board
+    board = Array(ROWS).fill(null).map(() => Array(COLS).fill(0));
+
+    // Spawn first piece
+    spawnPiece();
 
     // Set up keyboard controls
     document.addEventListener('keydown', handleKeyPress);
 
+    // Update UI
+    updateUI();
+
+    // Start game loop
+    startGameLoop();
+
     // Initial draw
     draw();
+}
+
+// Spawn new piece
+function spawnPiece() {
+    const pieces = ['I', 'O', 'T', 'S', 'Z', 'J', 'L'];
+    const randomPiece = pieces[Math.floor(Math.random() * pieces.length)];
+    const pieceData = TETROMINO_SHAPES[randomPiece];
+
+    currentPiece = {
+        x: Math.floor(COLS / 2) - 2,
+        y: 0,
+        shape: pieceData.rotations[0],
+        color: pieceData.color,
+        type: randomPiece,
+        rotation: 0
+    };
+
+    // Check if spawn position is valid
+    if (!canMove(currentPiece.x, currentPiece.y)) {
+        gameState.isGameOver = true;
+        stopGameLoop();
+    }
+}
+
+// Start game loop
+function startGameLoop() {
+    if (gameInterval) {
+        clearInterval(gameInterval);
+    }
+
+    dropSpeed = Math.max(100, 1000 - gameState.level * 50);
+    gameInterval = setInterval(gameTick, dropSpeed);
+}
+
+// Stop game loop
+function stopGameLoop() {
+    if (gameInterval) {
+        clearInterval(gameInterval);
+        gameInterval = null;
+    }
+}
+
+// Game tick - called every interval
+function gameTick() {
+    if (gameState.isPaused || gameState.isGameOver) {
+        return;
+    }
+
+    if (canMove(currentPiece.x, currentPiece.y + 1)) {
+        currentPiece.y++;
+    } else {
+        lockPiece();
+        clearLines();
+        spawnPiece();
+    }
+
+    draw();
+}
+
+// Lock piece to board
+function lockPiece() {
+    const shape = currentPiece.shape;
+
+    for (let row = 0; row < shape.length; row++) {
+        for (let col = 0; col < shape[row].length; col++) {
+            if (shape[row][col]) {
+                const y = currentPiece.y + row;
+                const x = currentPiece.x + col;
+
+                if (y >= 0 && y < ROWS && x >= 0 && x < COLS) {
+                    board[y][x] = currentPiece.color;
+                }
+            }
+        }
+    }
+}
+
+// Clear completed lines
+function clearLines() {
+    let linesCleared = 0;
+
+    for (let row = ROWS - 1; row >= 0; row--) {
+        if (board[row].every(cell => cell !== 0)) {
+            board.splice(row, 1);
+            board.unshift(Array(COLS).fill(0));
+            linesCleared++;
+            row++; // Check the same row again
+        }
+    }
+
+    if (linesCleared > 0) {
+        gameState.lines += linesCleared;
+        gameState.score += linesCleared * 100 * gameState.level;
+
+        // Level up every 10 lines
+        const newLevel = Math.floor(gameState.lines / 10) + 1;
+        if (newLevel > gameState.level) {
+            gameState.level = newLevel;
+            startGameLoop(); // Restart loop with new speed
+        }
+
+        updateUI();
+    }
+}
+
+// Update UI elements
+function updateUI() {
+    document.getElementById('score').textContent = gameState.score;
+    document.getElementById('level').textContent = gameState.level;
 }
 
 // Handle keyboard input
@@ -90,6 +213,9 @@ function canMove(newX, newY) {
 
                 // Check bottom boundary
                 if (y >= ROWS) return false;
+
+                // Check collision with locked pieces
+                if (y >= 0 && board[y][x] !== 0) return false;
             }
         }
     }
@@ -119,6 +245,22 @@ function draw() {
         ctx.stroke();
     }
 
+    // Draw locked pieces on board
+    for (let row = 0; row < ROWS; row++) {
+        for (let col = 0; col < COLS; col++) {
+            if (board[row][col] !== 0) {
+                ctx.fillStyle = board[row][col];
+                const x = col * BLOCK_SIZE;
+                const y = row * BLOCK_SIZE;
+
+                ctx.fillRect(x, y, BLOCK_SIZE, BLOCK_SIZE);
+                ctx.strokeStyle = '#333333';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(x, y, BLOCK_SIZE, BLOCK_SIZE);
+            }
+        }
+    }
+
     // Draw current piece
     if (currentPiece) {
         ctx.fillStyle = currentPiece.color;
@@ -137,6 +279,17 @@ function draw() {
                 }
             }
         }
+    }
+
+    // Draw game over message
+    if (gameState.isGameOver) {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+        ctx.fillRect(0, canvas.height / 2 - 40, canvas.width, 80);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '32px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2);
     }
 }
 
