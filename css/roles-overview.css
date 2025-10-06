@@ -11,7 +11,7 @@
     border-radius: 12px;
     padding: 1.5rem;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -76,6 +76,88 @@
 .role-card-learn-more:hover {
     transform: translateY(-2px);
     opacity: 0.9;
+}
+
+/* Role Details Expandable Section */
+.role-details-toggle {
+    display: none;
+}
+
+.role-details-label {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: #f0f0f0;
+    color: #333;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    user-select: none;
+}
+
+.role-details-label:hover {
+    background: #e0e0e0;
+}
+
+.role-details-label .collapse-text {
+    display: none;
+}
+
+.role-details-toggle:checked + .role-details-label .expand-text {
+    display: none;
+}
+
+.role-details-toggle:checked + .role-details-label .collapse-text {
+    display: inline;
+}
+
+.role-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+    margin-bottom: 0;
+}
+
+.role-details-toggle:checked ~ .role-details {
+    max-height: 800px;
+    opacity: 1;
+    margin-bottom: 1rem;
+}
+
+.role-details-section {
+    margin-bottom: 1rem;
+}
+
+.role-details-section:last-child {
+    margin-bottom: 0;
+}
+
+.role-details-section h4 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.role-details-section p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.pattern-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.875rem;
 }
 
 /* Responsive adjustments for roles grid */
