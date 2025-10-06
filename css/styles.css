@@ -177,6 +177,95 @@
     text-decoration: underline;
 }
 
+/* Spy Activity Table Styles */
+#spy-activity-container {
+    margin-top: var(--spacing-lg);
+}
+
+#spy-activity-container h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+#spy-activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#spy-activity-table thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+#spy-activity-table th {
+    padding: var(--spacing-md);
+    text-align: left;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+#spy-activity-table th:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#spy-activity-table .sort-arrow {
+    display: inline-block;
+    margin-left: 0.25rem;
+    font-size: 0.75rem;
+}
+
+#spy-activity-table .sort-arrow.active {
+    color: #fff;
+    font-weight: bold;
+}
+
+#spy-activity-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.2s ease;
+}
+
+#spy-activity-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+#spy-activity-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+#spy-activity-table td {
+    padding: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+#spy-activity-table tbody tr td:nth-child(3) {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#spy-activity-table tbody tr td:nth-child(4) {
+    text-align: center;
+    font-weight: 600;
+}
+
+#spy-activity-table tbody tr td:nth-child(5) {
+    text-align: right;
+    font-family: 'Courier New', monospace;
+}
+
+#spy-activity-table tbody tr td:nth-child(6) {
+    text-transform: capitalize;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .agent-profile-card {
