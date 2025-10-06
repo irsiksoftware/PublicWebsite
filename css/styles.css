@@ -210,3 +210,209 @@
         padding: 0.375rem 0.75rem;
     }
 }
+
+/* Session Timeline Styles */
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    transform: translateX(-50%);
+}
+
+.timeline-date {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 2rem 0 1.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 25px;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    width: 45%;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 55%;
+    text-align: left;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 4px solid #667eea;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(odd)::before {
+    right: -60px;
+}
+
+.timeline-item:nth-child(even)::before {
+    left: -60px;
+}
+
+.timeline-item.productive::before {
+    border-color: #10b981;
+    background: #d1fae5;
+}
+
+.timeline-item.unproductive::before {
+    border-color: #ef4444;
+    background: #fee2e2;
+}
+
+.timeline-item.timeout::before {
+    border-color: #f59e0b;
+    background: #fef3c7;
+}
+
+.timeline-content {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.timeline-item:nth-child(odd) .timeline-header {
+    flex-direction: row-reverse;
+}
+
+.timeline-time {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.timeline-role {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.timeline-info {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.timeline-item:nth-child(odd) .timeline-info {
+    justify-content: flex-end;
+}
+
+.timeline-duration,
+.timeline-status {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.timeline-duration {
+    background: #e0e7ff;
+    color: #4338ca;
+}
+
+.timeline-status {
+    font-weight: 600;
+}
+
+.timeline-status.productive {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.timeline-status.unproductive {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.timeline-status.timeout {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* Responsive Timeline */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+
+    .timeline-date {
+        left: 0;
+        transform: none;
+        margin-left: 60px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        width: calc(100% - 80px);
+        left: 80px;
+        text-align: left;
+    }
+
+    .timeline-item::before,
+    .timeline-item:nth-child(odd)::before,
+    .timeline-item:nth-child(even)::before {
+        left: -50px;
+        right: auto;
+    }
+
+    .timeline-header,
+    .timeline-item:nth-child(odd) .timeline-header {
+        flex-direction: row;
+    }
+
+    .timeline-info,
+    .timeline-item:nth-child(odd) .timeline-info {
+        justify-content: flex-start;
+    }
+}
