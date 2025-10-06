@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tetris Game - Classic Tetris implementation">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/tetris.css">
+    <title>Tetris - Swarm Showcase</title>
+</head>
+<body>
+    <header>
+        <div class="shield-logo"></div>
+        <h1>Tetris</h1>
+        <p>Classic Block Puzzle Game</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#game">Game</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="game">
+            <div class="game-container">
+                <canvas id="game" width="320" height="640"></canvas>
+                <div class="ui-panel">
+                    <div class="score-display">
+                        <h3>Score</h3>
+                        <p id="score">0</p>
+                    </div>
+                    <div class="level-display">
+                        <h3>Level</h3>
+                        <p id="level">1</p>
+                    </div>
+                    <div class="next-piece-display">
+                        <h3>Next Piece</h3>
+                        <canvas id="next-piece" width="80" height="80"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Swarm Showcase. Built by AI agents.</p>
+    </footer>
+
+    <script src="js/tetris.js"></script>
+</body>
+</html>
