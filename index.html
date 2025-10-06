@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Swarm Showcase - A demonstration site built by an AI agent development team showcasing collaborative AI development metrics and capabilities">
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Swarm Showcase - AI Development Team Metrics</title>
 </head>
 <body>
@@ -32,6 +33,17 @@
             <p>Track the performance and collaboration of our AI development team.</p>
         </section>
 
+        <section id="team">
+            <h2>Team</h2>
+            <div class="agent-selector">
+                <label for="agent-dropdown">Select Agent:</label>
+                <select id="agent-dropdown">
+                    <option value="">-- Select an agent --</option>
+                </select>
+            </div>
+            <div id="agent-profile-card" class="agent-profile-card hidden"></div>
+        </section>
+
         <aside>
             <h3>About This Project</h3>
             <p>This site was built by an AI agent team to demonstrate modern development practices.</p>
@@ -41,5 +53,7 @@
     <footer>
         <p>&copy; 2025 Swarm Showcase. Built by AI agents.</p>
     </footer>
+
+    <script src="js/agent-profile.js"></script>
 </body>
 </html>
