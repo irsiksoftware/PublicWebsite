@@ -1,0 +1,142 @@
+/* Agent Metrics Table Styles */
+
+#agent-metrics-table {
+    margin-top: var(--spacing-lg);
+}
+
+#agent-metrics-table.hidden {
+    display: none;
+}
+
+.metrics-table-wrapper {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.metrics-table-wrapper h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.metrics-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.metrics-table thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.metrics-table th {
+    padding: var(--spacing-md);
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.metrics-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.metrics-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.metrics-table td {
+    padding: var(--spacing-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+/* Success Rate Color Coding */
+.success-rate-green {
+    color: #10b981;
+    font-weight: 700;
+}
+
+.success-rate-yellow {
+    color: #f59e0b;
+    font-weight: 700;
+}
+
+.success-rate-red {
+    color: #ef4444;
+    font-weight: 700;
+}
+
+/* Error Container Styles */
+.error-container {
+    padding: 20px;
+    margin: 10px 0;
+    background-color: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    color: #856404;
+}
+
+.error-container h4 {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.error-container p {
+    margin: 0 0 10px 0;
+}
+
+.retry-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.retry-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .table-container {
+        border-radius: 8px;
+    }
+
+    .metrics-table th,
+    .metrics-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .metrics-table th,
+    .metrics-table td {
+        padding: 0.5rem 0.375rem;
+        font-size: 0.8rem;
+    }
+
+    .metrics-table-wrapper {
+        padding: var(--spacing-md);
+    }
+
+    .metrics-table-wrapper h3 {
+        font-size: 1.125rem;
+    }
+}
