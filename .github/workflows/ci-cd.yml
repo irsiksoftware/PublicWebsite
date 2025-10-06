@@ -60,6 +60,7 @@ jobs:
 
       - name: Notify Discord - CI Build
         if: always()
+        continue-on-error: true
         env:
           DISCORD_WEBHOOK: ${{ secrets.COMMIT_WEBHOOK }}
         run: |
@@ -142,6 +143,7 @@ jobs:
 
       - name: Notify Discord - Deployment
         if: always()
+        continue-on-error: true
         env:
           DISCORD_WEBHOOK: ${{ secrets.COMMIT_WEBHOOK }}
         run: |
