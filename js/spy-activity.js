@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const rowsPerPage = 20;
 
     async function loadSpyActivity() {
+        // Show skeleton loading state
+        showTableSkeleton(tbody, 6);
+
         try {
             const response = await fetch('./data/spy-activity.json');
             if (!response.ok) {
@@ -262,4 +265,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('next-page').addEventListener('click', () => goToPage('next'));
 
     await loadSpyActivity();
+
+    function showTableSkeleton(tbody, columnCount) {
+        tbody.innerHTML = '';
+
+        // Create 5 skeleton rows
+        for (let i = 0; i < 5; i++) {
+            const row = document.createElement('tr');
+            row.className = 'skeleton-table-row';
+
+            for (let j = 0; j < columnCount; j++) {
+                const cell = document.createElement('td');
+                const skeletonDiv = document.createElement('div');
+                skeletonDiv.className = 'skeleton skeleton-table-cell skeleton-table-cell-medium';
+                cell.appendChild(skeletonDiv);
+                row.appendChild(cell);
+            }
+
+            tbody.appendChild(row);
+        }
+    }
 });
