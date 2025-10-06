@@ -243,6 +243,22 @@ header.scrolled {
     display: block;
 }
 
+/* Token Usage Chart Styles */
+#token-usage-chart-container {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#token-usage-chart {
+    width: 100%;
+    height: 400px;
+    display: block;
+}
+
 /* Spy Activity Table Styles */
 #spy-activity-container {
     margin-top: var(--spacing-lg);
