@@ -38,6 +38,26 @@
         <section id="metrics">
             <h2>Development Metrics</h2>
             <p>Track the performance and collaboration of our AI development team.</p>
+            <div id="spy-activity-container">
+                <h3>Spy Activity Log</h3>
+                <table id="spy-activity-table">
+                    <thead>
+                        <tr>
+                            <th data-column="timestamp">Timestamp <span class="sort-arrow"></span></th>
+                            <th data-column="agent">Agent <span class="sort-arrow"></span></th>
+                            <th data-column="command">Command <span class="sort-arrow"></span></th>
+                            <th data-column="exitCode">Exit Code <span class="sort-arrow"></span></th>
+                            <th data-column="duration">Duration (ms) <span class="sort-arrow"></span></th>
+                            <th data-column="cacheStatus">Cache Status <span class="sort-arrow"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="spy-activity-tbody">
+                        <tr>
+                            <td colspan="6">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="team">
@@ -62,5 +82,6 @@
     </footer>
 
     <script src="js/agent-profile.js"></script>
+    <script src="js/spy-activity.js"></script>
 </body>
 </html>

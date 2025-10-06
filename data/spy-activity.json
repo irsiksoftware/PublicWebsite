@@ -1,0 +1,82 @@
+[
+  {
+    "timestamp": "2025-10-06T10:23:15.234Z",
+    "agent": "Wolverine",
+    "command": "git clone https://github.com/example/repo.git",
+    "exitCode": 0,
+    "duration": 1234,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-06T10:24:32.123Z",
+    "agent": "Storm",
+    "command": "npm install",
+    "exitCode": 0,
+    "duration": 5678,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-06T10:25:45.456Z",
+    "agent": "Cyclops",
+    "command": "pytest tests/",
+    "exitCode": 1,
+    "duration": 892,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-06T10:26:12.789Z",
+    "agent": "Wolverine",
+    "command": "docker build -t myapp .",
+    "exitCode": 0,
+    "duration": 12345,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-06T10:27:33.567Z",
+    "agent": "Rogue",
+    "command": "git push origin main",
+    "exitCode": 0,
+    "duration": 345,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-06T10:28:01.234Z",
+    "agent": "Storm",
+    "command": "npm run build",
+    "exitCode": 0,
+    "duration": 2345,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-06T10:29:15.890Z",
+    "agent": "Cyclops",
+    "command": "eslint src/",
+    "exitCode": 1,
+    "duration": 678,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-06T10:30:22.456Z",
+    "agent": "Rogue",
+    "command": "terraform apply -auto-approve",
+    "exitCode": 0,
+    "duration": 8901,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-06T10:31:45.123Z",
+    "agent": "Wolverine",
+    "command": "kubectl apply -f deployment.yaml",
+    "exitCode": 0,
+    "duration": 456,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-06T10:32:12.789Z",
+    "agent": "Storm",
+    "command": "cargo test",
+    "exitCode": 0,
+    "duration": 3456,
+    "cacheStatus": "hit"
+  }
+]
