@@ -1,14 +1,17 @@
 ## Summary
-Implements #245: Created project folder structure with .gitkeep files
+Implements game loop with automatic piece falling and gravity system for Tetris game.
 
 ## Changes
-- ✅ Created folders: `/css`, `/js`, `/data`, `/assets`, `/images`
-- ✅ Added `.gitkeep` files to all folders for git tracking
-- ✅ Verified all folders are tracked in git
+- Added `setInterval`-based game loop with automatic piece descent
+- Implemented gravity system with level-based speed: `interval = max(100, 1000 - level × 50)`
+- Automatic piece spawning when current piece locks
+- Game state tracking: score, level, lines, isPaused, isGameOver
+- Speed increases automatically as level progresses
 
-## Acceptance Criteria
-- [x] All folders exist
-- [x] Can navigate to each folder
-- [x] Git tracks empty folders with .gitkeep
+## Test Plan
+- [ ] Verify pieces fall automatically
+- [ ] Check speed increases with level progression
+- [ ] Confirm new pieces spawn after locking
+- [ ] Test game over detection on spawn collision
 
-Closes #245
+Fixes #278
