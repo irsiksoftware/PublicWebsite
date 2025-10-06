@@ -20,6 +20,8 @@ function filterAgents(searchTerm) {
         ? '<option value="">No matches found</option>'
         : '<option value="">Select an agent...</option>';
 
+    select.setAttribute('aria-live', 'polite');
+
     filteredAgents.forEach(agent => {
         const option = document.createElement('option');
         option.value = agent.name;

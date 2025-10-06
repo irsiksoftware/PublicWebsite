@@ -6,6 +6,7 @@
     <meta name="description" content="Tetris Game - Classic Tetris implementation">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/tetris.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <title>Tetris - Swarm Showcase</title>
 </head>
 <body>
@@ -15,7 +16,7 @@
         <p>Classic Block Puzzle Game</p>
     </header>
 
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="#game">Game</a></li>
@@ -23,21 +24,22 @@
     </nav>
 
     <main>
-        <section id="game">
+        <section id="game" aria-labelledby="game-heading">
+            <h2 id="game-heading" class="visually-hidden">Tetris Game</h2>
             <div class="game-container">
-                <canvas id="game" width="320" height="640"></canvas>
+                <canvas id="game" width="320" height="640" aria-label="Tetris game board"></canvas>
                 <div class="ui-panel">
                     <div class="score-display">
                         <h3>Score</h3>
-                        <p id="score">0</p>
+                        <p id="score" aria-live="polite">0</p>
                     </div>
                     <div class="level-display">
                         <h3>Level</h3>
-                        <p id="level">1</p>
+                        <p id="level" aria-live="polite">1</p>
                     </div>
                     <div class="next-piece-display">
                         <h3>Next Piece</h3>
-                        <canvas id="next-piece" width="80" height="80"></canvas>
+                        <canvas id="next-piece" width="80" height="80" aria-label="Preview of next tetromino piece"></canvas>
                     </div>
                 </div>
             </div>
