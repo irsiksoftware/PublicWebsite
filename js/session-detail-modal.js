@@ -65,10 +65,17 @@ class SessionDetailModal {
     attachEventListeners() {
         const closeBtn = this.modal.querySelector('.session-modal-close');
         const overlay = this.modal.querySelector('.session-modal-overlay');
+        const modalContent = this.modal.querySelector('.session-modal-content');
 
         closeBtn.addEventListener('click', () => this.close());
         overlay.addEventListener('click', () => this.close());
 
+        // Prevent clicks on modal content from closing the modal
+        modalContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Close modal on ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.isOpen) {
                 this.close();
