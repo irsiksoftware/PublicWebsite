@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     let filteredData = [];
     let currentSort = { column: null, ascending: true };
     let currentFilter = 'all';
+    let currentPage = 1;
+    const rowsPerPage = 20;
 
     async function loadSpyActivity() {
         try {
@@ -33,8 +35,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             filteredData = activityData.filter(entry => entry.tool === currentFilter);
         }
 
+        currentPage = 1;
         updateFilterCount();
-        renderTable(filteredData);
+        renderCurrentPage();
     }
 
     function updateFilterCount() {
@@ -69,6 +72,38 @@ document.addEventListener('DOMContentLoaded', async () => {
         }).join('');
     }
 
+    function renderCurrentPage() {
+        const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+        const startIndex = (currentPage - 1) * rowsPerPage;
+        const endIndex = startIndex + rowsPerPage;
+        const pageData = filteredData.slice(startIndex, endIndex);
+
+        renderTable(pageData);
+        updatePaginationControls(totalPages);
+    }
+
+    function updatePaginationControls(totalPages) {
+        const pageInfo = document.getElementById('page-info');
+        const prevBtn = document.getElementById('prev-page');
+        const nextBtn = document.getElementById('next-page');
+
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+    }
+
+    function goToPage(direction) {
+        if (direction === 'prev' && currentPage > 1) {
+            currentPage--;
+        } else if (direction === 'next') {
+            const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+            }
+        }
+        renderCurrentPage();
+    }
+
     function escapeHtml(text) {
         const div = document.createElement('div');
         div.textContent = text;
@@ -83,7 +118,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentSort.ascending = true;
         }
 
-        const sortedData = [...filteredData].sort((a, b) => {
+        filteredData.sort((a, b) => {
             let valA = a[column];
             let valB = b[column];
 
@@ -103,7 +138,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             return 0;
         });
 
-        renderTable(sortedData);
+        currentPage = 1;
+        renderCurrentPage();
         updateSortIndicators(column);
     }
 
@@ -136,6 +172,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         currentFilter = toolFilter.value;
         applyFilter();
     });
+
+    document.getElementById('prev-page').addEventListener('click', () => goToPage('prev'));
+    document.getElementById('next-page').addEventListener('click', () => goToPage('next'));
 
     await loadSpyActivity();
 });
