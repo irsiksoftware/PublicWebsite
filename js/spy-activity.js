@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const tbody = document.getElementById('spy-activity-tbody');
     const table = document.getElementById('spy-activity-table');
+    const toolFilter = document.getElementById('tool-filter');
+    const filterCount = document.getElementById('filter-count');
 
     let activityData = [];
+    let filteredData = [];
     let currentSort = { column: null, ascending: true };
+    let currentFilter = 'all';
 
     async function loadSpyActivity() {
         try {
@@ -15,10 +19,32 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             activityData = activityData.slice(0, 50);
 
-            renderTable(activityData);
+            applyFilter();
         } catch (error) {
             console.error('Error loading spy activity:', error);
             tbody.innerHTML = '<tr><td colspan="6">Error loading activity data</td></tr>';
+        }
+    }
+
+    function applyFilter() {
+        if (currentFilter === 'all') {
+            filteredData = activityData;
+        } else {
+            filteredData = activityData.filter(entry => entry.tool === currentFilter);
+        }
+
+        updateFilterCount();
+        renderTable(filteredData);
+    }
+
+    function updateFilterCount() {
+        const total = activityData.length;
+        const showing = filteredData.length;
+
+        if (currentFilter === 'all' || showing === total) {
+            filterCount.textContent = '';
+        } else {
+            filterCount.textContent = `Showing ${showing} of ${total} commands`;
         }
     }
 
@@ -57,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentSort.ascending = true;
         }
 
-        const sortedData = [...activityData].sort((a, b) => {
+        const sortedData = [...filteredData].sort((a, b) => {
             let valA = a[column];
             let valB = b[column];
 
@@ -104,6 +130,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             const column = th.dataset.column;
             sortData(column);
         });
+    });
+
+    toolFilter.addEventListener('change', () => {
+        currentFilter = toolFilter.value;
+        applyFilter();
     });
 
     await loadSpyActivity();
