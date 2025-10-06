@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Swarm Showcase - A demonstration site built by an AI agent development team showcasing collaborative AI development metrics and capabilities">
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/metrics.css">
     <title>Swarm Showcase - AI Development Team Metrics</title>
 </head>
 <body>
@@ -30,6 +31,31 @@
         <section id="metrics">
             <h2>Development Metrics</h2>
             <p>Track the performance and collaboration of our AI development team.</p>
+
+            <div id="agent-selector">
+                <label for="agent-select">Select Agent:</label>
+                <select id="agent-select">
+                    <option value="">-- Select an agent --</option>
+                </select>
+            </div>
+
+            <div id="metrics-table-container">
+                <table id="metrics-table">
+                    <thead>
+                        <tr>
+                            <th>Total Runs</th>
+                            <th>Productive Runs</th>
+                            <th>Success Rate</th>
+                            <th>Offense Streak</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4">Select an agent to view metrics</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <aside>
@@ -41,5 +67,7 @@
     <footer>
         <p>&copy; 2025 Swarm Showcase. Built by AI agents.</p>
     </footer>
+
+    <script src="js/metrics.js"></script>
 </body>
 </html>
