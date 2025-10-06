@@ -47,3 +47,28 @@ jobs:
           if [ -d css ] && [ "$(ls -A css/*.css 2>/dev/null)" ]; then
             echo "✓ CSS files found"
           fi
+
+      - name: Notify Discord
+        if: always()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.COMMIT_WEBHOOK }}
+        run: |
+          STATUS="${{ job.status }}"
+          if [ "$STATUS" = "success" ]; then
+            COLOR="3066993"
+            EMOJI="✅"
+          else
+            COLOR="15158332"
+            EMOJI="❌"
+          fi
+
+          curl -H "Content-Type: application/json" \
+               -d "{
+                 \"embeds\": [{
+                   \"title\": \"$EMOJI CI Build $STATUS\",
+                   \"description\": \"**Commit:** ${{ github.event.head_commit.message }}\n**Branch:** ${{ github.ref_name }}\n**Author:** ${{ github.actor }}\",
+                   \"color\": $COLOR,
+                   \"url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"
+                 }]
+               }" \
+               "$DISCORD_WEBHOOK_URL"
