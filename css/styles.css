@@ -448,6 +448,109 @@ header.scrolled {
     opacity: 0.9;
 }
 
+/* Role Card Expandable Styles (CSS Checkbox Hack) */
+.role-card-expandable {
+    margin-top: var(--spacing-md);
+}
+
+.role-expand-checkbox {
+    display: none;
+}
+
+.role-expand-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.role-expand-label:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+}
+
+.role-expand-label .collapse-text {
+    display: none;
+}
+
+.role-expand-checkbox:checked + .role-expand-label .expand-text {
+    display: none;
+}
+
+.role-expand-checkbox:checked + .role-expand-label .collapse-text {
+    display: inline;
+}
+
+.role-expand-arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.role-expand-checkbox:checked + .role-expand-label .role-expand-arrow {
+    transform: rotate(180deg);
+}
+
+.role-expanded-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.role-expand-checkbox:checked ~ .role-expanded-content {
+    max-height: 1000px;
+}
+
+.role-detail-section {
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.role-detail-section:last-child {
+    border-bottom: none;
+}
+
+.role-detail-section h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.role-responsibilities-list {
+    margin: 0;
+    padding-left: 1.5rem;
+    list-style-type: disc;
+}
+
+.role-responsibilities-list li {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.pattern-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.pattern-rationale {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
 /* Responsive adjustments for roles grid */
 @media (max-width: 768px) {
     #roles-overview-grid {
@@ -466,6 +569,19 @@ header.scrolled {
 
     .role-card-name {
         font-size: 1.25rem;
+    }
+
+    .role-expand-label {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .role-detail-section h4 {
+        font-size: 0.875rem;
+    }
+
+    .role-responsibilities-list li {
+        font-size: 0.875rem;
     }
 }
 
