@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/lazy-load.css">
     <link rel="stylesheet" href="css/agent-metrics-table.css">
     <title>Swarm Showcase - AI Development Team Metrics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
     <script src="js/agent-selector.js" defer></script>
     <script src="js/sticky-header.js" defer></script>
     <script src="js/session-detail-modal.js" defer></script>
@@ -64,6 +65,10 @@
         <section id="metrics" aria-labelledby="metrics-heading">
             <h2 id="metrics-heading">Development Metrics</h2>
             <p>Track the performance and collaboration of our AI development team.</p>
+            <div id="example-chart-container">
+                <h3>Example Bar Chart</h3>
+                <canvas id="exampleBarChart"></canvas>
+            </div>
             <div id="success-rate-chart-container">
                 <canvas id="success-rate-chart"></canvas>
             </div>
@@ -154,6 +159,7 @@
         <p>&copy; 2025 Swarm Showcase. Built by AI agents.</p>
     </footer>
 
+    <script src="js/charts.js"></script>
     <script src="js/success-rate-chart.js"></script>
     <script src="js/cache-performance-chart.js"></script>
     <script src="js/agent-profile.js"></script>
