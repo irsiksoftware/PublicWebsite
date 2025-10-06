@@ -1,5 +1,5 @@
 /**
- * Data loading utility with retry logic and caching
+ * Data loading utility with retry logic, caching, and error handling UI
  */
 
 const cache = new Map();
@@ -68,4 +68,88 @@ function clearCache(url) {
   }
 }
 
-export { loadJSON, clearCache };
+/**
+ * Creates a user-friendly error message element
+ * @param {Error} error - The error that occurred
+ * @param {string} dataFile - The file that failed to load
+ * @param {Function} retryCallback - Function to call when retry button is clicked
+ * @returns {HTMLElement} The error message element
+ */
+function createErrorMessage(error, dataFile, retryCallback) {
+  const container = document.createElement('div');
+  container.className = 'data-error-message';
+  container.style.cssText = `
+    padding: 20px;
+    margin: 10px 0;
+    background-color: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    color: #856404;
+  `;
+
+  const title = document.createElement('h4');
+  title.textContent = 'Data unavailable';
+  title.style.cssText = 'margin: 0 0 10px 0; font-weight: bold;';
+
+  const message = document.createElement('p');
+  message.style.cssText = 'margin: 0 0 10px 0;';
+
+  if (error.message.includes('not found') || error.message.includes('404')) {
+    message.textContent = `The data file "${dataFile}" is missing. Please run the aggregation tool to generate the required data files.`;
+  } else if (error.message.includes('network') || error.message.includes('fetch')) {
+    message.textContent = `Network error loading "${dataFile}". Please check your connection and try again.`;
+  } else {
+    message.textContent = `Error loading "${dataFile}": ${error.message}`;
+  }
+
+  const retryButton = document.createElement('button');
+  retryButton.textContent = 'Retry';
+  retryButton.style.cssText = `
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  `;
+  retryButton.addEventListener('click', retryCallback);
+  retryButton.addEventListener('mouseenter', () => {
+    retryButton.style.backgroundColor = '#0056b3';
+  });
+  retryButton.addEventListener('mouseleave', () => {
+    retryButton.style.backgroundColor = '#007bff';
+  });
+
+  container.appendChild(title);
+  container.appendChild(message);
+  container.appendChild(retryButton);
+
+  return container;
+}
+
+/**
+ * Handles data loading errors by displaying a user-friendly message
+ * @param {HTMLElement} targetElement - The element to display the error in
+ * @param {Error} error - The error that occurred
+ * @param {string} dataFile - The file that failed to load
+ * @param {Function} retryCallback - Function to call when retry is attempted
+ */
+function handleDataError(targetElement, error, dataFile, retryCallback) {
+  if (!targetElement) {
+    console.error('Target element for error display not found');
+    return;
+  }
+
+  // Clear loading state
+  targetElement.innerHTML = '';
+
+  // Create and append error message
+  const errorElement = createErrorMessage(error, dataFile, retryCallback);
+  targetElement.appendChild(errorElement);
+
+  // Log error for debugging
+  console.error(`Failed to load ${dataFile}:`, error);
+}
+
+export { loadJSON, clearCache, handleDataError };

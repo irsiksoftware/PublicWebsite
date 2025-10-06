@@ -5,6 +5,20 @@ async function loadSuccessRateChart() {
             fetch('./data/performance-sample.json')
         ]);
 
+        if (!agentsResponse.ok) {
+            if (agentsResponse.status === 404) {
+                throw new Error('Resource not found: ./data/agents.json');
+            }
+            throw new Error(`HTTP error! status: ${agentsResponse.status}`);
+        }
+
+        if (!performanceResponse.ok) {
+            if (performanceResponse.status === 404) {
+                throw new Error('Resource not found: ./data/performance-sample.json');
+            }
+            throw new Error(`HTTP error! status: ${performanceResponse.status}`);
+        }
+
         const agentsData = await agentsResponse.json();
         const performanceData = await performanceResponse.json();
 
@@ -145,6 +159,60 @@ async function loadSuccessRateChart() {
 
     } catch (error) {
         console.error('Failed to load success rate chart:', error);
+
+        const canvas = document.getElementById('success-rate-chart');
+        if (canvas) {
+            const container = canvas.parentElement;
+            container.innerHTML = '';
+
+            const errorContainer = document.createElement('div');
+            errorContainer.style.cssText = `
+                padding: 20px;
+                margin: 10px 0;
+                background-color: #fff3cd;
+                border: 1px solid #ffc107;
+                border-radius: 4px;
+                color: #856404;
+            `;
+
+            const title = document.createElement('h4');
+            title.textContent = 'Data unavailable';
+            title.style.cssText = 'margin: 0 0 10px 0; font-weight: bold;';
+
+            const message = document.createElement('p');
+            message.style.cssText = 'margin: 0 0 10px 0;';
+
+            if (error.message.includes('not found') || error.message.includes('404')) {
+                const fileName = error.message.includes('agents.json') ? 'agents.json' : 'performance-sample.json';
+                message.textContent = `The data file "${fileName}" is missing. Please run the aggregation tool to generate the required data files.`;
+            } else {
+                message.textContent = `Error loading success rate chart: ${error.message}`;
+            }
+
+            const retryButton = document.createElement('button');
+            retryButton.textContent = 'Retry';
+            retryButton.style.cssText = `
+                padding: 8px 16px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+            `;
+            retryButton.addEventListener('click', () => loadSuccessRateChart());
+            retryButton.addEventListener('mouseenter', () => {
+                retryButton.style.backgroundColor = '#0056b3';
+            });
+            retryButton.addEventListener('mouseleave', () => {
+                retryButton.style.backgroundColor = '#007bff';
+            });
+
+            errorContainer.appendChild(title);
+            errorContainer.appendChild(message);
+            errorContainer.appendChild(retryButton);
+            container.appendChild(errorContainer);
+        }
     }
 }
 

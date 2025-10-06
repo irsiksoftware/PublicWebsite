@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Load agents from agents.json
     try {
         const response = await fetch('data/agents.json');
+        if (!response.ok) {
+            if (response.status === 404) {
+                throw new Error('Resource not found: data/agents.json');
+            }
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         agents = data.agents;
 
@@ -23,6 +29,54 @@ document.addEventListener('DOMContentLoaded', async function() {
     } catch (error) {
         console.error('Failed to load agents:', error);
         dropdown.innerHTML = '<option value="">Error loading agents</option>';
+
+        const errorContainer = document.createElement('div');
+        errorContainer.style.cssText = `
+            padding: 20px;
+            margin: 10px 0;
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 4px;
+            color: #856404;
+        `;
+
+        const title = document.createElement('h4');
+        title.textContent = 'Data unavailable';
+        title.style.cssText = 'margin: 0 0 10px 0; font-weight: bold;';
+
+        const message = document.createElement('p');
+        message.style.cssText = 'margin: 0 0 10px 0;';
+
+        if (error.message.includes('not found') || error.message.includes('404')) {
+            message.textContent = 'The data file "agents.json" is missing. Please run the aggregation tool to generate the required data files.';
+        } else {
+            message.textContent = `Error loading agents: ${error.message}`;
+        }
+
+        const retryButton = document.createElement('button');
+        retryButton.textContent = 'Retry';
+        retryButton.style.cssText = `
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        `;
+        retryButton.addEventListener('click', () => location.reload());
+        retryButton.addEventListener('mouseenter', () => {
+            retryButton.style.backgroundColor = '#0056b3';
+        });
+        retryButton.addEventListener('mouseleave', () => {
+            retryButton.style.backgroundColor = '#007bff';
+        });
+
+        errorContainer.appendChild(title);
+        errorContainer.appendChild(message);
+        errorContainer.appendChild(retryButton);
+
+        dropdown.parentElement.insertBefore(errorContainer, dropdown.nextSibling);
         return;
     }
 

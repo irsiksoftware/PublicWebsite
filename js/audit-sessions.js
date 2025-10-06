@@ -9,6 +9,12 @@ let sessionsData = [];
 async function loadAuditSessions() {
     try {
         const response = await fetch('./data/audit-sessions-sample.json');
+        if (!response.ok) {
+            if (response.status === 404) {
+                throw new Error('Resource not found: ./data/audit-sessions-sample.json');
+            }
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         sessionsData = data.sessions || [];
         renderSessionsTable(sessionsData);
@@ -16,7 +22,60 @@ async function loadAuditSessions() {
         console.error('Error loading audit sessions:', error);
         const tbody = document.getElementById('audit-sessions-tbody');
         if (tbody) {
-            tbody.innerHTML = '<tr><td colspan="6">Error loading sessions data</td></tr>';
+            tbody.innerHTML = '';
+
+            const errorRow = document.createElement('tr');
+            const errorCell = document.createElement('td');
+            errorCell.colSpan = 6;
+            errorCell.style.padding = '20px';
+
+            const errorContainer = document.createElement('div');
+            errorContainer.style.cssText = `
+                padding: 20px;
+                background-color: #fff3cd;
+                border: 1px solid #ffc107;
+                border-radius: 4px;
+                color: #856404;
+            `;
+
+            const title = document.createElement('h4');
+            title.textContent = 'Data unavailable';
+            title.style.cssText = 'margin: 0 0 10px 0; font-weight: bold;';
+
+            const message = document.createElement('p');
+            message.style.cssText = 'margin: 0 0 10px 0;';
+
+            if (error.message.includes('not found') || error.message.includes('404')) {
+                message.textContent = 'The data file "audit-sessions-sample.json" is missing. Please run the aggregation tool to generate the required data files.';
+            } else {
+                message.textContent = `Error loading audit sessions: ${error.message}`;
+            }
+
+            const retryButton = document.createElement('button');
+            retryButton.textContent = 'Retry';
+            retryButton.style.cssText = `
+                padding: 8px 16px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+            `;
+            retryButton.addEventListener('click', () => loadAuditSessions());
+            retryButton.addEventListener('mouseenter', () => {
+                retryButton.style.backgroundColor = '#0056b3';
+            });
+            retryButton.addEventListener('mouseleave', () => {
+                retryButton.style.backgroundColor = '#007bff';
+            });
+
+            errorContainer.appendChild(title);
+            errorContainer.appendChild(message);
+            errorContainer.appendChild(retryButton);
+            errorCell.appendChild(errorContainer);
+            errorRow.appendChild(errorCell);
+            tbody.appendChild(errorRow);
         }
     }
 }
