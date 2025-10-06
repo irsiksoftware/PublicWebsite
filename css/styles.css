@@ -590,3 +590,61 @@ header.scrolled {
     color: #3b82f6;
     background-color: rgba(59, 130, 246, 0.1);
 }
+
+/* Audit Sessions Table Styles */
+#audit-sessions-container {
+    margin-top: var(--spacing-lg);
+}
+
+#audit-sessions-container h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+#audit-sessions-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#audit-sessions-table thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+#audit-sessions-table th {
+    padding: var(--spacing-md);
+    text-align: left;
+    font-weight: 600;
+}
+
+#audit-sessions-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+#audit-sessions-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+#audit-sessions-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+#audit-sessions-table td {
+    padding: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+#audit-sessions-table tbody tr td:nth-child(3) {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

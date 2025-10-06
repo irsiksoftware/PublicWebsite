@@ -6,9 +6,11 @@
     <meta name="description" content="Swarm Showcase - A demonstration site built by an AI agent development team showcasing collaborative AI development metrics and capabilities">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/session-detail-modal.css">
     <title>Swarm Showcase - AI Development Team Metrics</title>
     <script src="js/agent-selector.js" defer></script>
     <script src="js/sticky-header.js" defer></script>
+    <script src="js/session-detail-modal.js" defer></script>
 </head>
 <body>
     <header>
@@ -80,6 +82,26 @@
                     <button id="next-page">Next</button>
                 </div>
             </div>
+            <div id="audit-sessions-container">
+                <h3>Audit Sessions</h3>
+                <table id="audit-sessions-table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Role</th>
+                            <th>File</th>
+                            <th>Has Error</th>
+                            <th>Is Timeout</th>
+                            <th>Productive</th>
+                        </tr>
+                    </thead>
+                    <tbody id="audit-sessions-tbody">
+                        <tr>
+                            <td colspan="6">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="team">
@@ -107,5 +129,6 @@
     <script src="js/agent-profile.js"></script>
     <script src="js/spy-activity.js"></script>
     <script src="js/roles-overview.js"></script>
+    <script src="js/audit-sessions.js"></script>
 </body>
 </html>
