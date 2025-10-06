@@ -446,6 +446,93 @@ header.scrolled {
     opacity: 0.9;
 }
 
+/* Role Card Expandable Section Styles */
+.role-card-expandable {
+    margin-top: var(--spacing-md);
+}
+
+.role-expand-toggle {
+    display: none;
+}
+
+.role-expand-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    user-select: none;
+}
+
+.role-expand-label:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.expand-icon {
+    transition: transform 0.3s ease;
+    font-size: 0.75rem;
+}
+
+.role-expand-toggle:checked + .role-expand-label .expand-icon {
+    transform: rotate(180deg);
+}
+
+.role-expanded-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.role-expand-toggle:checked ~ .role-expanded-content {
+    max-height: 1000px;
+}
+
+.role-detail-section {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: #f9fafb;
+    border-radius: 8px;
+    border-left: 3px solid var(--role-gradient);
+}
+
+.role-detail-section h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.role-detail-section p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.role-card-external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: var(--spacing-md);
+    color: #667eea;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.role-card-external-link:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
 /* Responsive adjustments for roles grid */
 @media (max-width: 768px) {
     #roles-overview-grid {
@@ -464,6 +551,18 @@ header.scrolled {
 
     .role-card-name {
         font-size: 1.25rem;
+    }
+
+    .role-detail-section {
+        padding: var(--spacing-sm);
+    }
+
+    .role-detail-section h4 {
+        font-size: 0.9rem;
+    }
+
+    .role-detail-section p {
+        font-size: 0.875rem;
     }
 }
 
