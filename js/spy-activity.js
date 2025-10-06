@@ -119,20 +119,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         const normalized = status.toLowerCase();
         let icon = '';
         let className = '';
-        let tooltip = status;
+        let tooltip = '';
 
         if (normalized === 'hit') {
             icon = '✓';
             className = 'cache-hit';
-            tooltip = 'Cache Hit';
+            tooltip = `Cache Hit (${status})`;
         } else if (normalized === 'miss') {
             icon = '-';
             className = 'cache-miss';
-            tooltip = 'Cache Miss';
+            tooltip = `Cache Miss (${status})`;
         } else if (normalized === 'partial' || normalized === 'static') {
             icon = 'S';
             className = 'cache-static';
-            tooltip = 'Static Cache';
+            tooltip = `Static Cache (${status})`;
         }
 
         return `<span class="cache-icon ${className}" title="${tooltip}">${icon}</span>`;
@@ -146,15 +146,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         tbody.innerHTML = data.map(entry => {
             const timestamp = new Date(entry.timestamp).toLocaleString();
-            const cacheIcon = getCacheStatusIcon(entry.cacheStatus);
+            const cacheIcon = getCacheStatusIcon(entry.cache_status);
             return `
                 <tr>
                     <td>${timestamp}</td>
                     <td>${escapeHtml(entry.agent)}</td>
                     <td>${escapeHtml(entry.tool || '')}</td>
                     <td>${escapeHtml(entry.command)}</td>
-                    <td>${entry.exitCode}</td>
-                    <td>${entry.duration}</td>
+                    <td>${entry.exit_code}</td>
+                    <td>${entry.duration_ms}</td>
                     <td>${cacheIcon}</td>
                 </tr>
             `;
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (column === 'timestamp') {
                 valA = new Date(valA).getTime();
                 valB = new Date(valB).getTime();
-            } else if (column === 'exitCode' || column === 'duration') {
+            } else if (column === 'exit_code' || column === 'duration_ms') {
                 valA = Number(valA);
                 valB = Number(valB);
             } else {
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             if (valA < valB) return currentSort.ascending ? -1 : 1;
-            if (valA > valB) return currentSort.ascending ? 1 : -1;
+            if (valA > valB) return currentSort.ascending ? 1 : 1;
             return 0;
         });
 
