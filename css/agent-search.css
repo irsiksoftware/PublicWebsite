@@ -1,0 +1,45 @@
+/* Agent Search Input Styles */
+#agent-search {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: var(--card-bg, #ffffff);
+    color: var(--text-primary, #333333);
+}
+
+#agent-search:focus {
+    outline: none;
+    border-color: var(--primary-blue, #667eea);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#agent-search::placeholder {
+    color: var(--text-secondary, #666666);
+    opacity: 0.7;
+}
+
+#agent-selector {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--card-bg, #ffffff);
+    color: var(--text-primary, #333333);
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+#agent-selector:focus {
+    outline: none;
+    border-color: var(--primary-blue, #667eea);
+}
+
+#agent-selector:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
