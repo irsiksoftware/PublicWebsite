@@ -1,0 +1,26 @@
+{
+  "James Howlett": {
+    "total_runs": 39,
+    "productive_runs": 39,
+    "current_offense_streak": 0,
+    "total_offenses": 0,
+    "timeout_count": 0,
+    "current_interval_minutes": null,
+    "base_interval_minutes": null,
+    "last_productive": "2025-10-05T17:50:12.117326",
+    "last_offense_type": null,
+    "offense_history": []
+  },
+  "Natasha Romanoff": {
+    "total_runs": 48,
+    "productive_runs": 48,
+    "current_offense_streak": 0,
+    "total_offenses": 0,
+    "timeout_count": 0,
+    "current_interval_minutes": null,
+    "base_interval_minutes": null,
+    "last_productive": "2025-10-05T17:47:33.837249",
+    "last_offense_type": null,
+    "offense_history": []
+  }
+}
