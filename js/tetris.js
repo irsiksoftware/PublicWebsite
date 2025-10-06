@@ -11,7 +11,10 @@ const BLOCK_SIZE = 32;
 // Game state
 let canvas;
 let ctx;
+let previewCanvas;
+let previewCtx;
 let currentPiece = null;
+let nextPiece = null;
 let board = [];
 let gameState = {
     score: 0,
@@ -28,8 +31,14 @@ function init() {
     canvas = document.getElementById('game');
     ctx = canvas.getContext('2d');
 
+    previewCanvas = document.getElementById('next-piece');
+    previewCtx = previewCanvas.getContext('2d');
+
     // Initialize board
     board = Array(ROWS).fill(null).map(() => Array(COLS).fill(0));
+
+    // Generate next piece
+    generateNextPiece();
 
     // Spawn first piece
     spawnPiece();
@@ -45,22 +54,37 @@ function init() {
 
     // Initial draw
     draw();
+    drawNextPiece();
 }
 
-// Spawn new piece
-function spawnPiece() {
+// Generate next piece
+function generateNextPiece() {
     const pieces = ['I', 'O', 'T', 'S', 'Z', 'J', 'L'];
     const randomPiece = pieces[Math.floor(Math.random() * pieces.length)];
     const pieceData = TETROMINO_SHAPES[randomPiece];
 
+    nextPiece = {
+        shape: pieceData.rotations[0],
+        color: pieceData.color,
+        type: randomPiece
+    };
+}
+
+// Spawn new piece
+function spawnPiece() {
+    // Use the next piece as the current piece
     currentPiece = {
         x: Math.floor(COLS / 2) - 2,
         y: 0,
-        shape: pieceData.rotations[0],
-        color: pieceData.color,
-        type: randomPiece,
+        shape: nextPiece.shape,
+        color: nextPiece.color,
+        type: nextPiece.type,
         rotation: 0
     };
+
+    // Generate new next piece
+    generateNextPiece();
+    drawNextPiece();
 
     // Check if spawn position is valid
     if (!canMove(currentPiece.x, currentPiece.y)) {
@@ -290,6 +314,54 @@ function draw() {
         ctx.font = '32px Arial';
         ctx.textAlign = 'center';
         ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2);
+    }
+}
+
+// Draw next piece in preview canvas
+function drawNextPiece() {
+    // Clear preview canvas
+    previewCtx.fillStyle = '#ffffff';
+    previewCtx.fillRect(0, 0, previewCanvas.width, previewCanvas.height);
+
+    if (!nextPiece) return;
+
+    const shape = nextPiece.shape;
+    const blockSize = 16; // Smaller blocks for preview
+
+    // Calculate piece dimensions
+    let minRow = shape.length, maxRow = 0, minCol = shape[0].length, maxCol = 0;
+    for (let row = 0; row < shape.length; row++) {
+        for (let col = 0; col < shape[row].length; col++) {
+            if (shape[row][col]) {
+                minRow = Math.min(minRow, row);
+                maxRow = Math.max(maxRow, row);
+                minCol = Math.min(minCol, col);
+                maxCol = Math.max(maxCol, col);
+            }
+        }
+    }
+
+    const pieceWidth = (maxCol - minCol + 1) * blockSize;
+    const pieceHeight = (maxRow - minRow + 1) * blockSize;
+
+    // Center the piece in the preview canvas
+    const offsetX = (previewCanvas.width - pieceWidth) / 2;
+    const offsetY = (previewCanvas.height - pieceHeight) / 2;
+
+    // Draw the piece
+    previewCtx.fillStyle = nextPiece.color;
+    for (let row = 0; row < shape.length; row++) {
+        for (let col = 0; col < shape[row].length; col++) {
+            if (shape[row][col]) {
+                const x = offsetX + (col - minCol) * blockSize;
+                const y = offsetY + (row - minRow) * blockSize;
+
+                previewCtx.fillRect(x, y, blockSize, blockSize);
+                previewCtx.strokeStyle = '#333333';
+                previewCtx.lineWidth = 1;
+                previewCtx.strokeRect(x, y, blockSize, blockSize);
+            }
+        }
     }
 }
 
