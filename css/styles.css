@@ -446,3 +446,78 @@ header.scrolled {
         font-size: 1.25rem;
     }
 }
+
+/* Prompt Design Badges Styles */
+.prompt-design-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--spacing-md);
+}
+
+.feature-badge {
+    position: relative;
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: help;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-badge.active {
+    background-color: #10b981;
+    color: white;
+}
+
+.feature-badge.inactive {
+    background-color: #9ca3af;
+    color: white;
+}
+
+.feature-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.feature-badge::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background-color: #1f2937;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.feature-badge:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+}
+
+@media (max-width: 480px) {
+    .prompt-design-badges {
+        gap: 0.375rem;
+    }
+
+    .feature-badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .feature-badge::after {
+        font-size: 0.625rem;
+        white-space: normal;
+        max-width: 200px;
+    }
+}
