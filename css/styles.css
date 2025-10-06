@@ -424,6 +424,26 @@ header.scrolled {
     font-size: 1rem;
     color: var(--text-secondary);
     line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+.role-card-learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.role-card-learn-more:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
 }
 
 /* Responsive adjustments for roles grid */
