@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
     <title>Swarm Showcase - AI Development Team Metrics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="js/agent-selector.js" defer></script>
+    <script src="js/charts.js" defer></script>
 </head>
 <body>
     <header>
@@ -38,6 +40,7 @@
         <section id="metrics">
             <h2>Development Metrics</h2>
             <p>Track the performance and collaboration of our AI development team.</p>
+            <canvas id="metricsChart"></canvas>
         </section>
 
         <section id="team">
