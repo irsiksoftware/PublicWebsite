@@ -68,6 +68,12 @@ function createRoleCard(role) {
         <h3 class="role-card-name">${escapeHtml(role.name)}</h3>
         <div class="role-card-count">${role.agentCount} ${role.agentCount === 1 ? 'Agent' : 'Agents'}</div>
         <p class="role-card-description">${escapeHtml(role.description)}</p>
+        <a href="https://www.anthropic.com/research/building-effective-agents"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="role-card-learn-more">
+            Learn More <span aria-hidden="true">↗</span>
+        </a>
     `;
 
     return card;
