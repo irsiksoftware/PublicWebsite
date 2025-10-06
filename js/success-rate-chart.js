@@ -2,7 +2,7 @@ async function loadSuccessRateChart() {
     try {
         const [agentsResponse, performanceResponse] = await Promise.all([
             fetch('./data/agents.json'),
-            fetch('./data/performance-sample.json')
+            fetch('./data/performance.json')
         ]);
 
         if (!agentsResponse.ok) {
@@ -14,7 +14,7 @@ async function loadSuccessRateChart() {
 
         if (!performanceResponse.ok) {
             if (performanceResponse.status === 404) {
-                throw new Error('Resource not found: ./data/performance-sample.json');
+                throw new Error('Resource not found: ./data/performance.json');
             }
             throw new Error(`HTTP error! status: ${performanceResponse.status}`);
         }
@@ -183,7 +183,7 @@ async function loadSuccessRateChart() {
             message.style.cssText = 'margin: 0 0 10px 0;';
 
             if (error.message.includes('not found') || error.message.includes('404')) {
-                const fileName = error.message.includes('agents.json') ? 'agents.json' : 'performance-sample.json';
+                const fileName = error.message.includes('agents.json') ? 'agents.json' : 'performance.json';
                 message.textContent = `The data file "${fileName}" is missing. Please run the aggregation tool to generate the required data files.`;
             } else {
                 message.textContent = `Error loading success rate chart: ${error.message}`;
