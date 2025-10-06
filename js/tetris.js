@@ -216,6 +216,12 @@ function moveDown() {
     if (canMove(currentPiece.x, currentPiece.y + 1)) {
         currentPiece.y++;
         draw();
+    } else {
+        // Lock piece when collision detected on moveDown
+        lockPiece();
+        clearLines();
+        spawnPiece();
+        draw();
     }
 }
 
@@ -245,6 +251,29 @@ function canMove(newX, newY) {
     }
 
     return true;
+}
+
+// Check collision at specific position with specific piece
+function checkCollision(x, y, piece) {
+    const shape = piece || currentPiece.shape;
+
+    for (let row = 0; row < shape.length; row++) {
+        for (let col = 0; col < shape[row].length; col++) {
+            if (shape[row][col]) {
+                const gridX = x + col;
+                const gridY = y + row;
+
+                // Check grid boundaries (0-9 for x, 0-19 for y)
+                if (gridX < 0 || gridX >= COLS) return true;
+                if (gridY < 0 || gridY >= ROWS) return true;
+
+                // Check if cell already occupied in grid
+                if (gridY >= 0 && board[gridY][gridX] !== 0) return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 // Draw grid borders and background
