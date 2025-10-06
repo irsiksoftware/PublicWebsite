@@ -11,7 +11,7 @@ async function loadAuditSessions() {
 
     // Show skeleton loading state
     if (tbody) {
-        showTableSkeleton(tbody, 6);
+        showTableSkeleton(tbody, 7);
     }
 
     try {
@@ -33,7 +33,7 @@ async function loadAuditSessions() {
 
             const errorRow = document.createElement('tr');
             const errorCell = document.createElement('td');
-            errorCell.colSpan = 6;
+            errorCell.colSpan = 7;
             errorCell.style.padding = '20px';
 
             const errorContainer = document.createElement('div');
@@ -92,7 +92,7 @@ function renderSessionsTable(sessions) {
     if (!tbody) return;
 
     if (!sessions || sessions.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6">No sessions found</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="7">No sessions found</td></tr>';
         return;
     }
 
@@ -104,6 +104,7 @@ function renderSessionsTable(sessions) {
             <td>${session.has_error ? '✗' : '✓'}</td>
             <td>${session.is_timeout ? '✗' : '✓'}</td>
             <td>${session.is_productive ? '✓' : '✗'}</td>
+            <td>${renderSignalBadges(session.signals)}</td>
         </tr>
     `).join('');
 
@@ -113,6 +114,34 @@ function renderSessionsTable(sessions) {
 function truncateText(text, maxLength) {
     if (text.length <= maxLength) return text;
     return text.substring(0, maxLength) + '...';
+}
+
+function renderSignalBadges(signals) {
+    if (!signals) return '<span class="signal-badges unproductive">-</span>';
+
+    const badgeMap = {
+        pr_created: '🎯',
+        issue_claimed: '🏷️',
+        pr_merged: '✅',
+        discord_call: '🎙️',
+        work_activity: '🔧'
+    };
+
+    const activeBadges = [];
+    let hasActiveSignal = false;
+
+    for (const [key, icon] of Object.entries(badgeMap)) {
+        if (signals[key]) {
+            activeBadges.push(`<span class="signal-badge" title="${key.replace('_', ' ')}">${icon}</span>`);
+            hasActiveSignal = true;
+        }
+    }
+
+    if (!hasActiveSignal) {
+        return '<span class="signal-badges unproductive">-</span>';
+    }
+
+    return `<span class="signal-badges">${activeBadges.join('')}</span>`;
 }
 
 function attachSessionClickHandlers() {

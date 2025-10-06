@@ -297,6 +297,24 @@ header.scrolled {
     white-space: nowrap;
 }
 
+/* Signal Badges Styles */
+.signal-badges {
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+}
+
+.signal-badge {
+    font-size: 1.2rem;
+    display: inline-block;
+    cursor: help;
+}
+
+.signal-badges.unproductive {
+    color: #9ca3af;
+    font-weight: 600;
+}
+
 /* Mobile Navigation Styles */
 .hamburger {
     display: none;
