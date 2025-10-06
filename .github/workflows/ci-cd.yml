@@ -58,30 +58,60 @@ jobs:
             echo "✓ CSS files found"
           fi
 
-      - name: Notify Discord - CI Status
+      - name: Notify Discord - CI Build
         if: always()
         env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.COMMIT_WEBHOOK }}
+          DISCORD_WEBHOOK: ${{ secrets.COMMIT_WEBHOOK }}
         run: |
           STATUS="${{ job.status }}"
           if [ "$STATUS" = "success" ]; then
-            COLOR="3066993"
+            COLOR=3066993
             EMOJI="✅"
+            TITLE="CI Build Passed"
           else
-            COLOR="15158332"
+            COLOR=15158332
             EMOJI="❌"
+            TITLE="CI Build Failed"
           fi
 
+          COMMIT_MSG=$(echo '${{ github.event.head_commit.message }}' | head -n1)
+          COMMIT_URL="${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+
+          PAYLOAD=$(cat <<EOF
+          {
+            "username": "GitHub CI/CD",
+            "avatar_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+            "embeds": [{
+              "title": "$EMOJI $TITLE",
+              "description": "$COMMIT_MSG",
+              "url": "$COMMIT_URL",
+              "color": $COLOR,
+              "fields": [
+                {
+                  "name": "Author",
+                  "value": "${{ github.actor }}",
+                  "inline": true
+                },
+                {
+                  "name": "Branch",
+                  "value": "${{ github.ref_name }}",
+                  "inline": true
+                },
+                {
+                  "name": "Status",
+                  "value": "$STATUS",
+                  "inline": true
+                }
+              ],
+              "timestamp": "${{ github.event.head_commit.timestamp }}"
+            }]
+          }
+          EOF
+          )
+
           curl -H "Content-Type: application/json" \
-               -d "{
-                 \"embeds\": [{
-                   \"title\": \"$EMOJI CI Build $STATUS\",
-                   \"description\": \"**Commit:** ${{ github.event.head_commit.message }}\n**Branch:** ${{ github.ref_name }}\n**Author:** ${{ github.actor }}\",
-                   \"color\": $COLOR,
-                   \"url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"
-                 }]
-               }" \
-               "$DISCORD_WEBHOOK_URL"
+               -d "$PAYLOAD" \
+               "$DISCORD_WEBHOOK"
 
   deploy:
     name: Deploy to GitHub Pages
@@ -110,29 +140,57 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Notify Discord - Deployment Status
+      - name: Notify Discord - Deployment
         if: always()
         env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.COMMIT_WEBHOOK }}
+          DISCORD_WEBHOOK: ${{ secrets.COMMIT_WEBHOOK }}
         run: |
           STATUS="${{ job.status }}"
           if [ "$STATUS" = "success" ]; then
-            COLOR="3066993"
+            COLOR=3066993
             EMOJI="🚀"
-            TITLE="Deployment Successful"
+            TITLE="Site Deployed"
           else
-            COLOR="15158332"
+            COLOR=15158332
             EMOJI="❌"
             TITLE="Deployment Failed"
           fi
 
+          COMMIT_MSG=$(echo '${{ github.event.head_commit.message }}' | head -n1)
+          ACTIONS_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+          PAYLOAD=$(cat <<EOF
+          {
+            "username": "GitHub Pages",
+            "avatar_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+            "embeds": [{
+              "title": "$EMOJI $TITLE",
+              "description": "$COMMIT_MSG",
+              "url": "$ACTIONS_URL",
+              "color": $COLOR,
+              "fields": [
+                {
+                  "name": "Author",
+                  "value": "${{ github.actor }}",
+                  "inline": true
+                },
+                {
+                  "name": "Site",
+                  "value": "[irsik.software](https://irsik.software)",
+                  "inline": true
+                },
+                {
+                  "name": "Status",
+                  "value": "$STATUS",
+                  "inline": true
+                }
+              ],
+              "timestamp": "${{ github.event.head_commit.timestamp }}"
+            }]
+          }
+          EOF
+          )
+
           curl -H "Content-Type: application/json" \
-               -d "{
-                 \"embeds\": [{
-                   \"title\": \"$EMOJI $TITLE\",
-                   \"description\": \"**Site:** https://irsik.software\n**Commit:** ${{ github.event.head_commit.message }}\n**Author:** ${{ github.actor }}\",
-                   \"color\": $COLOR,
-                   \"url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"
-                 }]
-               }" \
-               "$DISCORD_WEBHOOK_URL"
+               -d "$PAYLOAD" \
+               "$DISCORD_WEBHOOK"
