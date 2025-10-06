@@ -192,6 +192,9 @@ function handleKeyPress(event) {
         case 'ArrowDown':
             moveDown();
             break;
+        case 'ArrowUp':
+            rotatePiece();
+            break;
     }
 }
 
@@ -223,6 +226,39 @@ function moveDown() {
         spawnPiece();
         draw();
     }
+}
+
+// Rotate piece with wall kicks (SRS standard)
+function rotatePiece() {
+    if (gameState.isPaused || gameState.isGameOver || !currentPiece) {
+        return;
+    }
+
+    const pieceData = TETROMINO_SHAPES[currentPiece.type];
+    const nextRotation = (currentPiece.rotation + 1) % 4;
+    const newShape = pieceData.rotations[nextRotation];
+
+    // Try rotation at current position
+    if (!checkCollision(currentPiece.x, currentPiece.y, newShape)) {
+        currentPiece.rotation = nextRotation;
+        currentPiece.shape = newShape;
+        draw();
+        return;
+    }
+
+    // Wall kick attempts: try offsets ±1, ±2
+    const wallKickOffsets = [1, -1, 2, -2];
+    for (const offset of wallKickOffsets) {
+        if (!checkCollision(currentPiece.x + offset, currentPiece.y, newShape)) {
+            currentPiece.x += offset;
+            currentPiece.rotation = nextRotation;
+            currentPiece.shape = newShape;
+            draw();
+            return;
+        }
+    }
+
+    // All kicks failed, don't rotate
 }
 
 // Check if piece can move to new position
