@@ -1,0 +1,112 @@
+/* Skeleton Loading Styles */
+
+@keyframes shimmer {
+    0% {
+        background-position: -468px 0;
+    }
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 0px,
+        #e0e0e0 40px,
+        #f0f0f0 80px
+    );
+    background-size: 468px 100%;
+    animation: shimmer 1.2s ease-in-out infinite;
+}
+
+/* Role Card Skeletons */
+.skeleton-role-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.skeleton-role-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.skeleton-role-title {
+    width: 60%;
+    height: 24px;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+.skeleton-role-count {
+    width: 40%;
+    height: 18px;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+.skeleton-role-description {
+    width: 100%;
+    height: 14px;
+    border-radius: 4px;
+    margin-top: auto;
+}
+
+.skeleton-role-description:nth-child(5) {
+    width: 90%;
+}
+
+.skeleton-role-description:nth-child(6) {
+    width: 80%;
+}
+
+.skeleton-role-button {
+    width: 120px;
+    height: 36px;
+    border-radius: 4px;
+    margin: 1rem auto 0;
+}
+
+/* Table Skeletons */
+.skeleton-table-row {
+    height: 48px;
+}
+
+.skeleton-table-cell {
+    height: 16px;
+    border-radius: 4px;
+    margin: 8px;
+}
+
+.skeleton-table-cell-short {
+    width: 60%;
+}
+
+.skeleton-table-cell-medium {
+    width: 80%;
+}
+
+.skeleton-table-cell-long {
+    width: 100%;
+}
+
+/* Roles Overview Grid Skeleton */
+#roles-overview-grid.loading {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Hide content when loading */
+.loading-state {
+    display: none;
+}

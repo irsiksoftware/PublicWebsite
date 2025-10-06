@@ -51,11 +51,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('roles-overview-grid');
     if (!container) return;
 
-    // Create and append role cards
-    roles.forEach(role => {
-        const card = createRoleCard(role);
-        container.appendChild(card);
-    });
+    // Show skeleton loading state
+    showRolesSkeleton(container);
+
+    // Simulate loading delay to show skeleton
+    setTimeout(() => {
+        // Clear skeleton
+        container.innerHTML = '';
+        container.classList.remove('loading');
+
+        // Create and append role cards
+        roles.forEach(role => {
+            const card = createRoleCard(role);
+            container.appendChild(card);
+        });
+    }, 800);
 });
 
 function createRoleCard(role) {
@@ -84,4 +94,25 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+function showRolesSkeleton(container) {
+    container.classList.add('loading');
+    container.innerHTML = '';
+
+    // Create 6 skeleton cards matching the number of roles
+    for (let i = 0; i < 6; i++) {
+        const skeleton = document.createElement('div');
+        skeleton.className = 'skeleton-role-card';
+        skeleton.innerHTML = `
+            <div class="skeleton skeleton-role-icon"></div>
+            <div class="skeleton skeleton-role-title"></div>
+            <div class="skeleton skeleton-role-count"></div>
+            <div class="skeleton skeleton-role-description"></div>
+            <div class="skeleton skeleton-role-description"></div>
+            <div class="skeleton skeleton-role-description"></div>
+            <div class="skeleton skeleton-role-button"></div>
+        `;
+        container.appendChild(skeleton);
+    }
 }

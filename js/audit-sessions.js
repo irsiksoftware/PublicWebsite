@@ -7,6 +7,13 @@ let sessionModal;
 let sessionsData = [];
 
 async function loadAuditSessions() {
+    const tbody = document.getElementById('audit-sessions-tbody');
+
+    // Show skeleton loading state
+    if (tbody) {
+        showTableSkeleton(tbody, 6);
+    }
+
     try {
         const response = await fetch('./data/audit-sessions-sample.json');
         if (!response.ok) {
@@ -119,6 +126,26 @@ function attachSessionClickHandlers() {
             }
         });
     });
+}
+
+function showTableSkeleton(tbody, columnCount) {
+    tbody.innerHTML = '';
+
+    // Create 5 skeleton rows
+    for (let i = 0; i < 5; i++) {
+        const row = document.createElement('tr');
+        row.className = 'skeleton-table-row';
+
+        for (let j = 0; j < columnCount; j++) {
+            const cell = document.createElement('td');
+            const skeletonDiv = document.createElement('div');
+            skeletonDiv.className = 'skeleton skeleton-table-cell skeleton-table-cell-medium';
+            cell.appendChild(skeletonDiv);
+            row.appendChild(cell);
+        }
+
+        tbody.appendChild(row);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
