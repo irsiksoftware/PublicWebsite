@@ -61,6 +61,8 @@ header.scrolled {
     --spacing-md: 1rem;
     --spacing-lg: 1.5rem;
     --primary-blue: #667eea;
+    --shield-red: #dc143c;
+    --dark-bg: #1a1a1a;
 }
 
 .agent-selector {
@@ -812,5 +814,62 @@ header.scrolled {
         left: 10px;
         top: 10px;
         font-size: 0.875rem;
+    }
+}
+
+/* Hero Section Styles */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--shield-red), var(--dark-bg));
+    transform: skewY(-2deg);
+    transform-origin: top left;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-content {
+    transform: skewY(2deg);
+    text-align: center;
+    color: white;
+    z-index: 1;
+}
+
+.hero-section h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-section p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .hero-section p {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
     }
 }
