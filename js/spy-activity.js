@@ -48,6 +48,31 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+    function getCacheStatusIcon(status) {
+        if (!status) return '';
+
+        const normalized = status.toLowerCase();
+        let icon = '';
+        let className = '';
+        let tooltip = status;
+
+        if (normalized === 'hit') {
+            icon = '✓';
+            className = 'cache-hit';
+            tooltip = 'Cache Hit';
+        } else if (normalized === 'miss') {
+            icon = '-';
+            className = 'cache-miss';
+            tooltip = 'Cache Miss';
+        } else if (normalized === 'partial' || normalized === 'static') {
+            icon = 'S';
+            className = 'cache-static';
+            tooltip = 'Static Cache';
+        }
+
+        return `<span class="cache-icon ${className}" title="${tooltip}">${icon}</span>`;
+    }
+
     function renderTable(data) {
         if (!data || data.length === 0) {
             tbody.innerHTML = '<tr><td colspan="6">No activity data available</td></tr>';
@@ -56,6 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         tbody.innerHTML = data.map(entry => {
             const timestamp = new Date(entry.timestamp).toLocaleString();
+            const cacheIcon = getCacheStatusIcon(entry.cacheStatus);
             return `
                 <tr>
                     <td>${timestamp}</td>
@@ -63,7 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td>${escapeHtml(entry.command)}</td>
                     <td>${entry.exitCode}</td>
                     <td>${entry.duration}</td>
-                    <td>${escapeHtml(entry.cacheStatus)}</td>
+                    <td>${cacheIcon}</td>
                 </tr>
             `;
         }).join('');

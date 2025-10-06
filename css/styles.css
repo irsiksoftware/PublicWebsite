@@ -521,3 +521,31 @@ header.scrolled {
         max-width: 200px;
     }
 }
+
+/* Cache Status Icon Styles */
+.cache-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.875rem;
+    cursor: help;
+}
+
+.cache-icon.cache-hit {
+    color: #10b981;
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.cache-icon.cache-miss {
+    color: #f59e0b;
+    background-color: rgba(245, 158, 11, 0.1);
+}
+
+.cache-icon.cache-static {
+    color: #3b82f6;
+    background-color: rgba(59, 130, 246, 0.1);
+}
