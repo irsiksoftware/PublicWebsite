@@ -148,20 +148,29 @@ function lockPiece() {
 
 // Clear completed lines
 function clearLines() {
-    let linesCleared = 0;
-
-    for (let row = ROWS - 1; row >= 0; row--) {
+    // Check all rows for completion
+    const fullRows = [];
+    for (let row = 0; row < ROWS; row++) {
         if (board[row].every(cell => cell !== 0)) {
-            board.splice(row, 1);
-            board.unshift(Array(COLS).fill(0));
-            linesCleared++;
-            row++; // Check the same row again
+            fullRows.push(row);
         }
     }
 
-    if (linesCleared > 0) {
-        gameState.lines += linesCleared;
-        gameState.score += linesCleared * 100 * gameState.level;
+    if (fullRows.length === 0) {
+        return;
+    }
+
+    // Flash rows briefly before clearing
+    flashRows(fullRows, () => {
+        // Remove cleared rows and shift blocks down
+        for (let i = fullRows.length - 1; i >= 0; i--) {
+            board.splice(fullRows[i], 1);
+            board.unshift(Array(COLS).fill(0));
+        }
+
+        // Update lines cleared count
+        gameState.lines += fullRows.length;
+        gameState.score += fullRows.length * 100 * gameState.level;
 
         // Level up every 10 lines
         const newLevel = Math.floor(gameState.lines / 10) + 1;
@@ -171,13 +180,48 @@ function clearLines() {
         }
 
         updateUI();
+        draw();
+    });
+}
+
+// Flash rows with color change animation
+function flashRows(rows, callback) {
+    const originalColors = [];
+
+    // Save original colors
+    for (const row of rows) {
+        originalColors.push([...board[row]]);
     }
+
+    let flashCount = 0;
+    const maxFlashes = 3;
+    const flashInterval = 100; // ms
+
+    const flashTimer = setInterval(() => {
+        // Alternate between white and original colors
+        const useWhite = flashCount % 2 === 0;
+
+        for (const row of rows) {
+            for (let col = 0; col < COLS; col++) {
+                board[row][col] = useWhite ? '#ffffff' : originalColors[rows.indexOf(row)][col];
+            }
+        }
+
+        draw();
+        flashCount++;
+
+        if (flashCount >= maxFlashes * 2) {
+            clearInterval(flashTimer);
+            callback();
+        }
+    }, flashInterval);
 }
 
 // Update UI elements
 function updateUI() {
     document.getElementById('score').textContent = gameState.score;
     document.getElementById('level').textContent = gameState.level;
+    document.getElementById('lines').textContent = gameState.lines;
 }
 
 // Handle keyboard input
