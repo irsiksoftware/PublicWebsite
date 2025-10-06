@@ -1,0 +1,84 @@
+/**
+ * Keyboard Navigation Styles
+ * Focus-visible indicators and skip link styles
+ */
+
+/* Focus visible styles for table rows */
+table tbody tr.keyboard-navigable:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: -2px;
+    background-color: rgba(102, 126, 234, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+table tbody tr.keyboard-focused {
+    outline: 2px solid #667eea;
+    outline-offset: -2px;
+    background-color: rgba(102, 126, 234, 0.1);
+}
+
+/* Focus visible styles for table cells */
+table tbody td:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: -2px;
+    background-color: rgba(102, 126, 234, 0.15);
+}
+
+/* Focus visible styles for interactive elements */
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+a:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #667eea;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+    z-index: 10000;
+    font-weight: bold;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+/* Ensure table rows are keyboard navigable */
+table tbody tr.keyboard-navigable {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+table tbody tr.keyboard-navigable:hover {
+    background-color: rgba(102, 126, 234, 0.05);
+}
+
+/* Remove default focus outline, use focus-visible instead */
+table tbody tr.keyboard-navigable:focus {
+    outline: none;
+}
+
+/* Pagination button focus styles */
+.pagination-controls button:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Table header focus styles for sortable columns */
+table th[data-column]:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: -2px;
+    background-color: rgba(102, 126, 234, 0.1);
+}

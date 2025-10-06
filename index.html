@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/roles-overview.css">
     <link rel="stylesheet" href="css/agent-profile-card.css">
     <link rel="stylesheet" href="css/agent-search.css">
+    <link rel="stylesheet" href="css/keyboard-navigation.css">
     <title>Swarm Showcase - AI Development Team Metrics</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
     <script type="module" src="js/data-loader.js" defer></script>
@@ -26,8 +27,10 @@
     <script src="js/mobile-nav.js" defer></script>
     <script src="js/back-to-top.js" defer></script>
     <script type="module" src="js/data-refresh.js"></script>
+    <script src="js/keyboard-navigation.js" defer></script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <section class="hero-section">
         <div class="hero-content">
             <h1>SWARM SHOWCASE</h1>
@@ -51,7 +54,7 @@
         </ul>
     </nav>
 
-    <main>
+    <main id="main-content">
         <section id="overview" aria-labelledby="overview-heading">
             <h2 id="overview-heading">Overview</h2>
             <p>Welcome to the Swarm Showcase - a demonstration of collaborative AI development.</p>
