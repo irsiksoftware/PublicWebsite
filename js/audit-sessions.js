@@ -60,6 +60,11 @@ function attachSessionClickHandlers() {
             }
         });
     });
+
+    // Refresh keyboard navigation
+    if (window.auditTableKeyboard) {
+        window.auditTableKeyboard.refresh();
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {

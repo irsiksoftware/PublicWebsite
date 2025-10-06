@@ -203,4 +203,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('next-page').addEventListener('click', () => goToPage('next'));
 
     await loadSpyActivity();
+
+    // Refresh keyboard navigation when table updates
+    const originalRenderTable = renderTable;
+    renderTable = function(data) {
+        originalRenderTable(data);
+        if (window.spyTableKeyboard) {
+            window.spyTableKeyboard.refresh();
+        }
+    };
 });

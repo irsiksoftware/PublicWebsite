@@ -648,3 +648,62 @@ header.scrolled {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+/* Skip to Content Link */
+.skip-to-content {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 9999;
+    padding: 1rem 1.5rem;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-to-content:focus {
+    left: 0;
+}
+
+/* Keyboard Navigation Focus Styles */
+#spy-activity-table tbody,
+#audit-sessions-table tbody {
+    outline: none;
+}
+
+#spy-activity-table tbody tr.keyboard-focus,
+#audit-sessions-table tbody tr.keyboard-focus {
+    background-color: #e0e7ff !important;
+    outline: 2px solid #667eea;
+    outline-offset: -2px;
+}
+
+#spy-activity-table tbody tr:focus-visible,
+#audit-sessions-table tbody tr:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: -2px;
+}
+
+#spy-activity-table tbody td.keyboard-focus,
+#audit-sessions-table tbody td.keyboard-focus {
+    background-color: #c7d2fe;
+    outline: 2px solid #4f46e5;
+    outline-offset: -2px;
+}
+
+#spy-activity-table tbody td:focus-visible,
+#audit-sessions-table tbody td:focus-visible {
+    outline: 2px solid #4f46e5;
+    outline-offset: -2px;
+}
+
+/* Focus visible for interactive elements */
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+a:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
