@@ -1,7 +1,0 @@
-At line:1 char:98
-+ ...  1000 --json number,title,labels,state | ConvertFrom-Json;  | Convert ...
-+                                                                 ~
-An empty pipe element is not allowed.
-    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
-    + FullyQualifiedErrorId : EmptyPipeElement
- 

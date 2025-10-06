@@ -1,0 +1,34 @@
+{
+  "generated_at": "2025-10-06T04:35:03.509817",
+  "description": "Swarm team metrics and activity data",
+  "data_sources": {
+    "spy_logs": "Command-level activity (gh, git, npm)",
+    "audit_sessions": "AI agent session transcripts",
+    "cached_issues": "GitHub issues cached for orchestrator",
+    "performance": "Agent performance tracking",
+    "reports": "CSV reports (team performance, cache stats, etc.)"
+  },
+  "files": {
+    "spy_activity": {
+      "path": "spy-activity.json",
+      "size_bytes": 24978
+    },
+    "audit_sessions": {
+      "path": "audit-sessions.json",
+      "size_bytes": 922374
+    },
+    "cached_issues": {
+      "path": "cached-issues.json",
+      "size_bytes": 57003
+    },
+    "performance": {
+      "path": "performance.json",
+      "size_bytes": 710
+    },
+    "reports": {
+      "cache_performance_results_10_05_25_20_30_52": "reports/cache-performance-results-10-05-25-20-30-52.csv",
+      "label_usage_results_10_05_25_20_30_51": "reports/label-usage-results-10-05-25-20-30-51.csv",
+      "team_performance_results_10_05_25_20_30_52": "reports/team-performance-results-10-05-25-20-30-52.csv"
+    }
+  }
+}

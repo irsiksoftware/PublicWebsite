@@ -1,0 +1,100 @@
+{
+  "generated_at": "2025-10-06T04:35:03.410760",
+  "stats": {
+    "total_issues": 60,
+    "by_state": {
+      "OPEN": 60
+    },
+    "by_priority": {
+      "LOW": 13,
+      "HIGH": 18,
+      "MEDIUM": 27,
+      "CRITICAL": 2
+    },
+    "with_dependencies": 0
+  },
+  "issues": [
+    {
+      "number": 79,
+      "file": "issues\\79.txt",
+      "title": "Create responsive navigation with flexbox and hover effects",
+      "state": "OPEN",
+      "labels": [
+        "HIGH",
+        "wip",
+        "feature"
+      ],
+      "priority": "HIGH",
+      "dependencies": [],
+      "created_at": "2025-10-05T05:12:38Z",
+      "updated_at": "2025-10-05T09:44:57Z",
+      "url": "https://github.com/irsiksoftware/TestForAI/issues/79",
+      "description": "Build horizontal navigation bar using flexbox.\\n\\n**Requirements:**\\n- Nav links: Home; Avengers Roster; Missions Archive; Intel Database; Training; Threat Assessment\\n- display: flex; justify-content: space-between; align-items: center\\n- Hover effects: transform: translateY(-2px); color transition to arc-reactor cyan; text-shadow\\n- Active link indicator with border-bottom\\n- Mobile hamburger menu structure (hidden for now; functionality added later)\\n\\n**Depends on:** #2 (HTML nav)"
+    },
+    {
+      "number": 80,
+      "file": "issues\\80.txt",
+      "title": "Implement sticky header with glassmorphism effect",
+      "state": "OPEN",
+      "labels": [
+        "HIGH",
+        "feature"
+      ],
+      "priority": "HIGH",
+      "dependencies": [],
+      "created_at": "2025-10-05T05:12:40Z",
+      "updated_at": "2025-10-05T09:06:23Z",
+      "url": "https://github.com/irsiksoftware/TestForAI/issues/80",
+      "description": "Make header sticky with modern glassmorphism.\\n\\n**Requirements:**\\n- position: sticky; top: 0; z-index: 1000\\n- backdrop-filter: blur(10px) saturate(180%)\\n- Semi-transparent background: rgba(26; 26; 26; 0.8)\\n- Add class .scrolled via CSS (JS will toggle later) for box-shadow when scrolled\\n- Smooth transition: all 0.3s ease\\n\\n**Depends on:** #6 (navigation structure)"
+    },
+    {
+      "number": 81,
+      "file": "issues\\81.txt",
+      "title": "Design Avengers roster grid with modern CSS Grid",
+      "state": "OPEN",
+      "labels": [
+        "HIGH",
+        "feature"
+      ],
+      "priority": "HIGH",
+      "dependencies": [],
+      "created_at": "2025-10-05T05:12:41Z",
+      "updated_at": "2025-10-05T09:06:21Z",
+      "url": "https://github.com/irsiksoftware/TestForAI/issues/81",
+      "description": "Create 'Meet the Team' section using CSS Grid.\\n\\n**Requirements:**\\n- Grid: repeat(auto-fit; minmax(300px; 1fr)); gap: 2rem\\n- Each card: aspect-ratio: 1/1; gradient background; border-radius: 16px; overflow: hidden\\n- Card structure: image area; name overlay; codename badge\\n- Hover effect: transform: scale(1.05) rotateZ(2deg); box-shadow increases; filter: brightness(1.1)\\n- transition: all 0.4s cubic-bezier(0.175; 0.885; 0.32; 1.275)\\n\\n**Depends on:** #3 (CSS variables)"
+    },
+    {
+      "number": 82,
+      "file": "issues\\82.txt",
+      "title": "Add custom fonts with @font-face and font-display",
+      "state": "OPEN",
+      "labels": [
+        "MEDIUM",
+        "wip",
+        "feature"
+      ],
+      "priority": "MEDIUM",
+      "dependencies": [],
+      "created_at": "2025-10-05T05:12:42Z",
+      "updated_at": "2025-10-05T12:38:32Z",
+      "url": "https://github.com/irsiksoftware/TestForAI/issues/82",
+      "description": "Add superhero-themed fonts for dramatic typography.\\n\\n**Requirements:**\\n- Download 'Bebas Neue' (headings) and 'Rajdhani' (body) to /fonts folder\\n- Use @font-face with font-display: swap for performance\\n- Define in CSS variables: --font-heading: 'Bebas Neue'; --font-body: 'Rajdhani'\\n- Add fallbacks to sans-serif system fonts\\n- Apply throughout site\\n\\n**Depends on:** #1 (fonts folder)"
+    },
+    {
+      "number": 83,
+      "file": "issues\\83.txt",
+      "title": "Create animated statistics counter section with large numbers",
+      "state": "OPEN",
+      "labels": [
+        "MEDIUM",
+        "feature"
+      ],
+      "priority": "MEDIUM",
+      "dependencies": [],
+      "created_at": "2025-10-05T05:12:43Z",
+      "updated_at": "2025-10-05T14:37:06Z",
+      "url": "https://github.com/irsiksoftware/TestForAI/issues/83",
+      "description": "Design eye-catching stats section.\\n\\n**Requirements:**\\n- Display: 'Missions Completed: 1;247' 'Threats Neutralized: 892' 'Civilians Saved: 2.4M' 'Team Members: 12'\\n- Layout: flexbox row; wrapped on mobile\\n- Large bold numbers (font-size: 4rem; font-weight: 900)\\n- Icons using Unicode symbols (\u26a1 \ud83d\udee1\ufe0f \ud83d\udc65 \ud83c\udfaf)\\n- Subtle background pattern using repeating-linear-gradient\\n- Numbers will animate later with JS\\n\\n**Depends on:** #8 (roster section for context)"
+    }
+  ]
+}

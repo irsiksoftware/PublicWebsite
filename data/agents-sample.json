@@ -1,0 +1,301 @@
+{
+  "generated_at": "2025-10-06T04:35:03.497760",
+  "description": "Swarm agent metadata, personas, and roles",
+  "anthropic_architecture": {
+    "pattern": "Orchestrator-Worker",
+    "lead_agent": "Nick Fury (ORCHESTRATOR)",
+    "worker_agents": [
+      "Wolverine",
+      "Spider-Man",
+      "Black Widow",
+      "Dr. Strange",
+      "Hulk",
+      "Thor"
+    ],
+    "specialist_agents": [
+      "Cyclops",
+      "Scarlet Witch",
+      "Iron Man"
+    ],
+    "meta_agents": [
+      "Thanos",
+      "Maria Hill"
+    ]
+  },
+  "agents": [
+    {
+      "name": "Nick Fury",
+      "full_name": "Nicholas Joseph Fury",
+      "alias": "The Director",
+      "description": "Lead Agent. Assembles the team, coordinates work distribution, spawns parallel workers.",
+      "role": "Orchestrator",
+      "anthropic_pattern": "Lead Agent",
+      "email": "fury@irsiksoftware.com",
+      "role_key": "ORCHESTRATOR",
+      "script": "role-orchestrator.ps1",
+      "prompt_design": {
+        "context_injection": false,
+        "discovery_logic": false,
+        "worktree_support": true,
+        "discord_notifications": false,
+        "audit_logging": false,
+        "timeout_minutes": null,
+        "pattern": "Legacy (Discovery)"
+      },
+      "timeout_minutes": 10,
+      "schedule_minutes": 15,
+      "enabled": true
+    },
+    {
+      "name": "Wolverine",
+      "full_name": "James Howlett",
+      "alias": "Logan",
+      "description": "Core implementer. Works on issues, writes code, creates PRs.",
+      "role": "Implementer",
+      "anthropic_pattern": "Worker Agent",
+      "email": "wolverine@irsiksoftware.com",
+      "role_key": "IMPLEMENTER",
+      "script": "role-implementer.ps1",
+      "prompt_design": {
+        "context_injection": true,
+        "discovery_logic": false,
+        "worktree_support": true,
+        "discord_notifications": true,
+        "audit_logging": true,
+        "timeout_minutes": null,
+        "pattern": "Anthropic (Context Injection)"
+      },
+      "timeout_minutes": 0,
+      "schedule_minutes": 0,
+      "enabled": false
+    },
+    {
+      "name": "Spider-Man",
+      "full_name": "Peter Parker",
+      "alias": "Web-Slinger",
+      "description": "Implementer with humor variation. Tests personality in prompts.",
+      "role": "Implementer",
+      "anthropic_pattern": "Worker Agent",
+      "email": "spidey@irsiksoftware.com",
+      "role_key": "IMPLEMENTER2",
+      "script": "role-implementer2.ps1",
+      "prompt_design": {
+        "context_injection": false,
+        "discovery_logic": true,
+        "worktree_support": false,
+        "discord_notifications": true,
+        "audit_logging": true,
+        "timeout_minutes": null,
+        "pattern": "Legacy (Discovery)"
+      },
+      "timeout_minutes": 0,
+      "schedule_minutes": 0,
+      "enabled": false
+    },
+    {
+      "name": "Black Widow",
+      "full_name": "Natasha Romanoff",
+      "alias": "The Spy",
+      "description": "Implementer with sycophantic variation. Tests flattery prompting.",
+      "role": "Implementer",
+      "anthropic_pattern": "Worker Agent",
+      "email": "widow@irsiksoftware.com",
+      "role_key": "IMPLEMENTER3",
+      "script": "role-implementer3.ps1",
+      "prompt_design": {
+        "context_injection": false,
+        "discovery_logic": true,
+        "worktree_support": false,
+        "discord_notifications": true,
+        "audit_logging": true,
+        "timeout_minutes": null,
+        "pattern": "Legacy (Discovery)"
+      },
+      "timeout_minutes": 0,
+      "schedule_minutes": 0,
+      "enabled": false
+    },
+    {
+      "name": "Dr. Strange",
+      "full_name": "Dr. Stephen Strange",
+      "alias": "Sorcerer Supreme",
+      "description": "PR Reviewer. Reviews code with mystical insight, approves/blocks/merges.",
+      "role": "Reviewer",
+      "anthropic_pattern": "Worker Agent",
+      "email": "strange@irsiksoftware.com",
+      "role_key": "PR_REVIEWER",
+      "script": "role-pr-reviewer.ps1",
+      "prompt_design": {
+        "context_injection": true,
+        "discovery_logic": false,
+        "worktree_support": true,
+        "discord_notifications": true,
+        "audit_logging": true,
+        "timeout_minutes": null,
+        "pattern": "Anthropic (Context Injection)"
+      },
+      "timeout_minutes": 0,
+      "schedule_minutes": 0,
+      "enabled": false
+    },
+    {
+      "name": "Hulk",
+      "full_name": "Bruce Banner",
+      "alias": "The Strongest Avenger",
+      "description": "PR Reviewer. SMASH bugs, merge when tests pass.",
+      "role": "Reviewer",
+      "anthropic_pattern": "Worker Agent",
+      "email": "hulk@irsiksoftware.com",
+      "role_key": "PR_REVIEWER2",
+      "script": "role-pr-reviewer2.ps1",
+      "prompt_design": {
+        "context_injection": false,
+        "discovery_logic": false,
+        "worktree_support": false,
+        "discord_notifications": true,
+        "audit_logging": false,
+        "timeout_minutes": null,
+        "pattern": "Legacy (Discovery)"
+      },
+      "timeout_minutes": 0,
+      "schedule_minutes": 0,
+      "enabled": false
+    },
+    {
+      "name": "Thor",
+      "full_name": "Thor Odinson",
+      "alias": "God of Thunder",
+      "description": "PR Reviewer. Worthy code passes, unworthy code gets blocked.",
+      "role": "Reviewer",
+      "anthropic_pattern": "Worker Agent",
+      "email": "thor@irsiksoftware.com",
+      "role_key": "PR_REVIEWER3",
+      "script": "role-pr-reviewer3.ps1",
+      "prompt_design": {
+        "context_injection": false,
+        "discovery_logic": false,
+        "worktree_support": false,
+        "discord_notifications": true,
+        "audit_logging": false,
+        "timeout_minutes": null,
+        "pattern": "Legacy (Discovery)"
+      },
+      "timeout_minutes": 0,
+      "schedule_minutes": 0,
+      "enabled": false
+    },
+    {
+      "name": "Cyclops",
+      "full_name": "Scott Summers",
+      "alias": "Tactical Leader",
+      "description": "PR Fixer. Resolves merge conflicts, fixes failing checks.",
+      "role": "Fixer",
+      "anthropic_pattern": "Specialist Agent",
+      "email": "cyclops@irsiksoftware.com",
+      "role_key": "PR_FIXER",
+      "script": "role-pr-fixer.ps1",
+      "prompt_design": {
+        "context_injection": true,
+        "discovery_logic": false,
+        "worktree_support": true,
+        "discord_notifications": true,
+        "audit_logging": true,
+        "timeout_minutes": null,
+        "pattern": "Anthropic (Context Injection)"
+      },
+      "timeout_minutes": 8,
+      "schedule_minutes": 20,
+      "enabled": true
+    },
+    {
+      "name": "Scarlet Witch",
+      "full_name": "Wanda Maximoff",
+      "alias": "Reality Bender",
+      "description": "Manager. Makes deployment decisions, orchestrates releases.",
+      "role": "Manager",
+      "anthropic_pattern": "Specialist Agent",
+      "email": "wanda@irsiksoftware.com",
+      "role_key": "MANAGER",
+      "script": "role-manager.ps1",
+      "prompt_design": {
+        "context_injection": false,
+        "discovery_logic": false,
+        "worktree_support": false,
+        "discord_notifications": false,
+        "audit_logging": false,
+        "timeout_minutes": null,
+        "pattern": "Legacy (Discovery)"
+      },
+      "timeout_minutes": 5,
+      "schedule_minutes": 30,
+      "enabled": true
+    },
+    {
+      "name": "Iron Man",
+      "full_name": "Tony Stark",
+      "alias": "Genius Billionaire",
+      "description": "Tester. Runs test suites, validates code quality.",
+      "role": "Tester",
+      "anthropic_pattern": "Specialist Agent",
+      "email": "stark@irsiksoftware.com",
+      "role_key": "TESTER",
+      "script": "role-tester.ps1",
+      "prompt_design": {
+        "context_injection": false,
+        "discovery_logic": false,
+        "worktree_support": false,
+        "discord_notifications": false,
+        "audit_logging": false,
+        "timeout_minutes": null,
+        "pattern": "Legacy (Discovery)"
+      },
+      "timeout_minutes": 0
+    },
+    {
+      "name": "Thanos",
+      "full_name": "Thanos",
+      "alias": "The Mad Titan",
+      "description": "Timeout Manager. Judges agent performance, enforces survival of the fittest.",
+      "role": "Judge",
+      "anthropic_pattern": "Meta-Agent",
+      "email": "thanos@irsiksoftware.com",
+      "role_key": "TIMEOUT_MANAGER",
+      "script": "role-timeout-manager.ps1",
+      "prompt_design": {
+        "context_injection": false,
+        "discovery_logic": false,
+        "worktree_support": false,
+        "discord_notifications": true,
+        "audit_logging": true,
+        "timeout_minutes": null,
+        "pattern": "Legacy (Discovery)"
+      },
+      "timeout_minutes": 0,
+      "schedule_minutes": 0,
+      "enabled": false
+    },
+    {
+      "name": "Maria Hill",
+      "full_name": "Maria Hill",
+      "alias": "Deputy Director",
+      "description": "Backlog Coordinator. Audits backlog health, fixes dependencies.",
+      "role": "Coordinator",
+      "anthropic_pattern": "Meta-Agent",
+      "email": "hill@irsiksoftware.com",
+      "role_key": "BACKLOG_COORDINATOR",
+      "script": "role-backlog-coordinator.ps1",
+      "prompt_design": {
+        "context_injection": false,
+        "discovery_logic": true,
+        "worktree_support": false,
+        "discord_notifications": false,
+        "audit_logging": true,
+        "timeout_minutes": null,
+        "pattern": "Legacy (Discovery)"
+      },
+      "timeout_minutes": 0,
+      "schedule_minutes": 0,
+      "enabled": false
+    }
+  ]
+}

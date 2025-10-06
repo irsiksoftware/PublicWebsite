@@ -1,187 +1,169 @@
-# TestForAI - Avengers Archive
+# Meta Swarm Analysis Website
 
-**AI Agent Swarm Testing Ground - Marvel-Themed Static Website Project**
+A showcase website that displays real-time metrics, activity, and performance data from the AI agent swarm that built it.
 
-A comprehensive test repository designed to evaluate AI agent swarm coordination, dependency resolution, priority handling, and collaborative development workflows. Built as a Marvel Avengers Archive static website with intentionally simple issues to maximize agent throughput and minimize implementation complexity.
+## Project Overview
 
----
+This is a **meta-circular** project - the website showcases the AI swarm team that created it. The site displays:
 
-## 🎯 Purpose
+- **Agent Roster** - All 12 Marvel-themed AI agents with personas and roles
+- **Command Activity** - Real-time spy logs showing git/gh/npm commands executed
+- **Session Timeline** - Audit logs of agent sessions with productivity signals
+- **Performance Charts** - Agent success rates, offense streaks, cache efficiency
+- **Interactive Games** - Tetris and other JS games built by the swarm
+- **Role Documentation** - How each agent role works (Implementer, Reviewer, etc.)
 
-TestForAI serves as the **target repository** for the **Not So Dumb Swarm** project—an autonomous AI agent system where Marvel superhero personas (Wolverine, Spider-Man, Dr. Strange, etc.) collaborate to implement features, review code, and deploy releases.
+## Technology Stack
 
-### What We're Testing
+- **Pure HTML/CSS/JavaScript** - No frameworks, offline-capable
+- **Chart.js** - Performance visualizations
+- **JSON Data** - Real swarm metrics from logs/audit/cache
+- **Responsive Design** - Mobile-friendly flexbox/grid layouts
+- **Glassmorphism UI** - Modern aesthetic with backdrop-filter effects
 
-#### 1. **WIP (Work In Progress) Label Coordination**
-- **Goal**: Prevent multiple agents from claiming the same issue
-- **Mechanism**: First agent to apply \`wip\` label wins; others skip and move to next available issue
-- **Validation**: No duplicate PRs for same issue, no merge conflicts from parallel work
-- **Metrics**: WIP claim collisions, resolution time per issue
+## Directory Structure
 
-#### 2. **Dependency Resolution**
-- **Goal**: Ensure agents respect issue dependencies before starting work
-- **Mechanism**: Issues labeled \`d1\`, \`d2\`, etc. indicate dependencies (e.g., \`d5\` = depends on issue #5)
-- **Workflow**: Agent checks all dependency issues are CLOSED before claiming work
-- **Metrics**: Blocked issue count, dependency chain depth, out-of-order attempts
+```
+metaswarmanalysiswebsite/
+├── README.md              # This file
+├── SETUP.bat              # Setup script (copies files to target repo)
+├── data/                  # JSON sample data for development
+│   ├── agents-sample.json
+│   ├── spy-activity-sample.json
+│   ├── audit-sessions-sample.json
+│   ├── cached-issues-sample.json
+│   ├── performance-sample.json
+│   └── index-sample.json
+└── pictures/              # Images and assets for the website
+```
 
-#### 3. **Priority-Based Work Selection**
-- **Goal**: Critical work gets completed before low-priority tasks
-- **Mechanism**: Labels \`CRITICAL > URGENT > HIGH > MEDIUM > LOW\` with oldest-first tiebreaker
-- **Validation**: High-priority issues close before low-priority ones
-- **Metrics**: Priority adherence rate, completion order analysis
+## Setup Instructions
 
-#### 4. **GitHub API Cache Efficiency**
-- **Goal**: Reduce API calls by 80-95% to avoid rate limits (5000/hour)
-- **Mechanism**: Fake gh CLI wrapper with hybrid TTL-based cache (lightweight lists + individual details)
-- **Validation**: Compare cache hit/miss ratio, API call reduction percentage
-- **Metrics**: Cache hit rate, API calls saved, cache staleness incidents
+### Prerequisites
 
-#### 5. **Git Commit Attribution**
-- **Goal**: Each agent maintains unique identity in git history
-- **Mechanism**: Git config + environment variables per agent (e.g., \`wolverine@irsiksoftware.com\`)
-- **Validation**: Commits show agent name/email, not human operator
-- **Metrics**: Attribution accuracy per agent, commit authorship distribution
+1. **GitHub Repository** - Any empty or existing repo (default: C:\Code\TestForAI)
+2. **GitHub CLI** - Authenticated with `gh auth login`
+3. **Python 3.x** - For populate/clear scripts
 
-#### 6. **Multi-Agent Throughput**
-- **Goal**: Measure completion velocity with 1-6 parallel agents
-- **Mechanism**: Scheduled tasks at staggered intervals (7-13 min cycles)
-- **Validation**: Linear vs. sublinear scaling with agent count
-- **Metrics**: Issues/hour, PRs merged/hour, token consumption, cycle time
+### Quick Start
 
-#### 7. **Discord Notification Reliability**
-- **Goal**: Real-time visibility into agent actions
-- **Mechanism**: Webhooks for issue claims, PR creation, merges, blocks
-- **Validation**: All significant events posted to Discord
-- **Metrics**: Notification delivery rate, latency from action to notification
+1. **Edit SETUP.bat** - Set your target repository:
+   ```batch
+   set TARGET_REPO=C:\Code\YourRepoName
+   ```
 
-#### 8. **Circuit Breaker & Auto-Recovery**
-- **Goal**: Disable unproductive agents, recover when work becomes available
-- **Mechanism**: After 3 consecutive no-ops, disable agent; re-enable when new issues created
-- **Validation**: Agents don't spam empty runs
-- **Metrics**: False positive disables, recovery time when work appears
+2. **Run setup script**:
+   ```bash
+   SETUP.bat
+   ```
 
-#### 9. **Prompt Variation A/B Testing**
-- **Goal**: Determine if humor/sycophancy improves agent performance
-- **Variants**:
-  - **Baseline** (Wolverine): Professional, direct instructions
-  - **Humor** (Spider-Man): Playful tone, emojis, jokes
-  - **Sycophantic** (Black Widow): Praise-heavy, flattery-based prompting
-- **Metrics**: Completion rate, error rate, code quality, execution time per variant
+This will:
+1. Copy README, data, and pictures to target repo (creates repo if needed, clears if exists)
+2. Clear existing GitHub issues/labels
+3. Populate GitHub with 50 website build issues from stories.csv
 
-#### 10. **Timeout & Performance Judging**
-- **Goal**: Survival of the fittest - best-performing agents get more resources
-- **Mechanism**: Thanos (timeout manager) analyzes productivity, adjusts schedules
-- **Validation**: Unproductive agents get timeout increases (slower runs)
-- **Metrics**: Performance score per agent, schedule adjustments made
+### Copying This Project
 
----
+To create a new project based on this template:
 
-## 🦸 The Project: Avengers Archive
+1. Copy the entire `metaswarmanalysiswebsite` folder
+2. Rename it to your project name (e.g., `mobileapp`)
+3. Edit `SETUP.bat` - change `TARGET_REPO` to your target repository
+4. Replace `stories.csv` with your own user stories
+5. Update README.md, data, and pictures as needed
+6. Run `SETUP.bat`
 
-A static website database of Marvel's Avengers team featuring:
+**That's it!** The setup script is fully self-contained and project-agnostic.
 
-- **Hero Profiles**: Individual pages for each Avenger (Iron Man, Captain America, Thor, etc.)
-- **Team Directory**: Searchable/filterable hero database
-- **Mission History**: Timeline of significant Avengers events
-- **Interactive Features**: CSS animations, particle effects, responsive design
-- **Accessibility**: ARIA labels, keyboard navigation, screen reader support
+### Manual Setup
 
-### Tech Stack
-- **HTML5**: Semantic markup, forms, media elements
-- **CSS3**: Flexbox, Grid, animations, custom properties
-- **Vanilla JavaScript**: DOM manipulation, fetch API, event handling
-- **No Build Tools**: Pure static files (GitHub Pages ready)
+If you prefer manual setup:
 
-### Issue Complexity
-Issues are **intentionally simple** ("dog simple" per project docs):
-- 200-500 word feature descriptions
-- Single-file changes (HTML/CSS/JS)
-- Clear acceptance criteria
-- Minimal external dependencies
-- ~5-15 minute implementation time per issue
+```bash
+# 1. Clear target repository files
+cd C:\Code\TestForAI
+git rm -rf .
+git commit -m "Clean slate for website"
 
-**Why Simple?** Maximizes agent throughput, reduces implementation failures, focuses testing on **coordination** rather than **coding complexity**.
+# 2. Copy project files
+xcopy /E /I C:\Code\temp-swarm\projects\metaswarmanalysiswebsite\data C:\Code\TestForAI\data
+xcopy /E /I C:\Code\temp-swarm\projects\metaswarmanalysiswebsite\pictures C:\Code\TestForAI\pictures
+copy C:\Code\temp-swarm\projects\metaswarmanalysiswebsite\README.md C:\Code\TestForAI\
 
----
+# 3. Clear and populate GitHub issues
+cd C:\Code\temp-swarm
+python tools\clear-repo.py C:\Code\TestForAI
+python tools\populate-repo.py C:\Code\TestForAI C:\Code\temp-swarm\projects\metaswarmanalysiswebsite\stories.csv
+```
 
-## 📊 Metrics Tracking
+## Development
 
-See **temp-swarm** repository for full metrics infrastructure.
+The swarm agents will build the website by:
 
-### Real-Time Tracking
-- **performance.json** - Per-agent productivity scores
-- **audit_scanner.py** - Post-run productivity analysis
-- **gh-spy.log** - GitHub CLI activity with persona tracking
-- **AI-Audit logs** - Full Claude conversation transcripts
-- **Discord webhooks** - Real-time notification stream
-- **view-metrics.bat** - PowerShell metrics dashboard
+1. **Claiming issues** from Stories.csv (50 tasks, 15-50 min each)
+2. **Creating branches** for each feature
+3. **Implementing HTML/CSS/JS** according to requirements
+4. **Creating PRs** with completed work
+5. **Reviewing and merging** via PR Reviewer agents
+6. **Testing** via Tester agents
 
----
+## Data Sources
 
-## 📈 Success Criteria
+All JSON data in `/data` is generated from real swarm activity:
 
-### Coordination Tests
-- ✅ Zero WIP collisions across 100 agent runs
-- ✅ Zero out-of-order completions (dependencies respected)
-- ✅ >95% cache hit rate after initial population
-- ✅ 100% attribution accuracy (all commits show agent identity)
+- **logs/gh-spy.log, git-spy.log, npm-spy.log** → spy-activity.json
+- **logs/ai-conversations/ROLE/DATE/*.txt** → audit-sessions.json
+- **cache/issues/*.txt** → cached-issues.json
+- **roles/*.ps1, settings.ini** → agents.json
+- **cache/performance.json** → performance.json
 
-### Performance Tests
-- ✅ 50 issues completed in <3 hours (3 agents)
-- ✅ Linear scaling from 1→3 agents (3x throughput)
-- ✅ <5% API rate limit warnings (stay under 5000/hr)
+To regenerate full data from live swarm:
 
-### Reliability Tests
-- ✅ Zero false-positive circuit breaks
-- ✅ 100% Discord notification delivery
-- ✅ <1% cache staleness
+```bash
+cd C:\Code\temp-swarm
+python tools\aggregate-all-data.py
+```
 
-### Prompt Variation Tests
-- ✅ Completion rate within ±10% across variants
-- ✅ Error rate within ±5% across variants
-- ✅ No significant quality difference in code review
+## Features to Build
 
----
+The 50 GitHub issues in Stories.csv cover:
 
-## 🔗 Integration with temp-swarm
+- **Foundation** - Folder structure, HTML boilerplate, CSS variables
+- **Hero Section** - Gradient background, S.H.I.E.L.D. logo, navigation
+- **Agent Dashboard** - Dropdown selector, profile cards, metrics
+- **Command Activity** - Spy log table with filters and search
+- **Session Timeline** - Audit log visualization
+- **Performance Charts** - Chart.js integration for agent stats
+- **Tetris Game** - Full implementation with scoring
+- **Interactive Features** - Search, filters, CSV export
+- **Polish** - Accessibility, mobile optimization, animations
 
-TestForAI is the **target repository** controlled by \`temp-swarm/settings.ini\`:
+## Success Metrics
 
-\`\`\`ini
-target_repo = C:\Code\TestForAI
-\`\`\`
+When complete, the website should:
 
-### Agent Workflow (per cycle)
-1. Circuit Breaker Check
-2. WIP Limit Check
-3. Change Directory to TestForAI
-4. Set Git Persona
-5. Find Work (gh issue list via cache)
-6. Sort by Priority
-7. Check Dependencies
-8. Claim Issue (add wip label)
-9. Notify Discord
-10. Implement Solution
-11. Commit & Push
-12. Create PR
-13. Remove WIP label
-14. Notify Discord
-15. Return to temp-swarm
-16. Audit Scan
-17. Update performance.json
-18. Exit
+- ✅ Display all 12 agent personas with real metrics
+- ✅ Show real command activity from spy logs
+- ✅ Visualize session productivity with charts
+- ✅ Run Tetris game smoothly
+- ✅ Work offline (no external dependencies)
+- ✅ Be fully responsive (mobile/tablet/desktop)
+- ✅ Load in under 2 seconds
+
+## Meta-Circular Nature
+
+The unique aspect of this project is that **the AI swarm builds a website about itself**:
+
+- The agents creating the code are the same agents being showcased
+- Real spy logs capture the agents building the website
+- Performance metrics include the agents' work on this project
+- The final website displays the team that created it
+
+This creates a self-documenting, living showcase of AI agent capabilities.
 
 ---
 
-## 📚 Additional Resources
-
-- **temp-swarm/README.md** - Full swarm architecture
-- **temp-swarm/AGENT-GUIDELINES.md** - Priority/dependency workflow
-- **temp-swarm/tools/gh-fake/README.md** - Cache system deep dive
-- **temp-swarm/timeout.md** - Timeout manager design
-
----
-
-**Last Updated**: 2025-10-05
-**Swarm Version**: v2.0 (Marvel personas, aggressive timings, A/B testing, timeout manager)
-**Status**: ✅ Active Testing
+**Project Type**: Showcase Website
+**Target Completion**: ~50 issues × 30 min avg = ~25 hours of agent work
+**Technology**: HTML/CSS/JavaScript, Chart.js, JSON
+**Purpose**: Demonstrate multi-agent coordination and meta-circular development

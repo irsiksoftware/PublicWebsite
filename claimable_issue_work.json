@@ -1,6 +1,0 @@
-﻿{
-    "priority":  "MEDIUM",
-    "number":  106,
-    "body":  "Create ability assessment visualization.\\n\\n**Requirements:**\\n- Skills per Avenger: Combat; Intelligence; Technology; Leadership; Power Control\\n- Each bar: label; percentage (85%); visual bar\\n- Bar structure: background track (rgba); filled portion (linear-gradient from theme colors)\\n- CSS Grid layout for alignment\\n- width transition (will be triggered by JS); transition: width 1s ease-out\\n\\n**Depends on:** #16 (profile cards)",
-    "title":  "Build skill progress bars with animated gradients"
-}

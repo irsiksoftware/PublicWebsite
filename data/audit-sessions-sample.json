@@ -1,0 +1,137 @@
+{
+  "generated_at": "2025-10-06T04:35:03.137856",
+  "stats": {
+    "total_sessions": 603,
+    "by_role": {
+      "BACKLOG_COORDINATOR": 21,
+      "CACHE_VALIDATOR": 44,
+      "IMPLEMENTER": 94,
+      "IMPLEMENTER3": 94,
+      "PR_FIXER": 50,
+      "PR_REVIEWER": 60,
+      "PR_REVIEWER2": 60,
+      "PR_REVIEWER3": 60,
+      "TESTER": 94,
+      "TIMEOUT_MANAGER": 26
+    },
+    "by_date": {
+      "2025-10-05": 603
+    },
+    "productive_sessions": 155,
+    "unproductive_sessions": 448,
+    "with_errors": 40,
+    "timeouts": 26
+  },
+  "sessions": [
+    {
+      "file": "logs/ai-conversations\\BACKLOG_COORDINATOR\\2025-10-05\\AUTO_PS_072501.txt",
+      "role": "BACKLOG_COORDINATOR",
+      "date": "2025-10-05",
+      "timestamp": "072501",
+      "content": "========================================\nBACKLOG COORDINATOR Agent - POWERSHELL\n========================================\nTarget: C:\\Code\\TestForAI\nStart Time: 07:25:01.82\nTimeout: 5 minutes\nAudit Log: C:\\code\\temp-swarm\\logs/ai-conversations\\BACKLOG_COORDINATOR\\2025-10-05\\AUTO_PS_072501.txt\n\n\nLaunching Claude in: C:\\Code\\TestForAI\n\nLaunching Claude directly...\n\n## BACKLOG AUDIT REPORT\n\n### AUDIT RESULTS (60 open issues: #79-#138)\n\n**1. DEPENDENCY LABELS AUDIT:**\n- \u2705 No dependency labels (d1, d2, d3, etc.) fo...[truncated]",
+      "target_repo": "C:\\Code\\TestForAI",
+      "start_time": "07:25:01.82",
+      "timeout_minutes": 5,
+      "signals": {
+        "discord_call": false,
+        "issue_claimed": false,
+        "pr_created": false,
+        "pr_merged": false,
+        "issue_fixed": false,
+        "work_activity": true
+      },
+      "has_error": true,
+      "is_timeout": false,
+      "is_productive": true,
+      "size_bytes": 1880
+    },
+    {
+      "file": "logs/ai-conversations\\BACKLOG_COORDINATOR\\2025-10-05\\AUTO_PS_075501.txt",
+      "role": "BACKLOG_COORDINATOR",
+      "date": "2025-10-05",
+      "timestamp": "075501",
+      "content": "========================================\nBACKLOG COORDINATOR Agent - POWERSHELL\n========================================\nTarget: C:\\Code\\TestForAI\nStart Time: 07:55:01.82\nTimeout: 5 minutes\nAudit Log: C:\\code\\temp-swarm\\logs/ai-conversations\\BACKLOG_COORDINATOR\\2025-10-05\\AUTO_PS_075501.txt\n\n\nLaunching Claude in: C:\\Code\\TestForAI\n\nLaunching Claude directly...\n\n## \ud83d\udfe2 BACKLOG HEALTH AUDIT COMPLETE\n\n### MISSION SUMMARY\n\n**Audited:** 58 open issues\n**Status:** \u2705 **EXCELLENT - NO ISSUES FOUND**\n\n### RESULTS\n\n| He...[truncated]",
+      "target_repo": "C:\\Code\\TestForAI",
+      "start_time": "07:55:01.82",
+      "timeout_minutes": 5,
+      "signals": {
+        "discord_call": false,
+        "issue_claimed": false,
+        "pr_created": false,
+        "pr_merged": false,
+        "issue_fixed": false,
+        "work_activity": false
+      },
+      "has_error": false,
+      "is_timeout": false,
+      "is_productive": false,
+      "size_bytes": 1658
+    },
+    {
+      "file": "logs/ai-conversations\\BACKLOG_COORDINATOR\\2025-10-05\\AUTO_PS_082501.txt",
+      "role": "BACKLOG_COORDINATOR",
+      "date": "2025-10-05",
+      "timestamp": "082501",
+      "content": "========================================\nBACKLOG COORDINATOR Agent - POWERSHELL\n========================================\nTarget: C:\\Code\\TestForAI\nStart Time: 08:25:01.82\nTimeout: 5 minutes\nAudit Log: C:\\code\\temp-swarm\\logs/ai-conversations\\BACKLOG_COORDINATOR\\2025-10-05\\AUTO_PS_082501.txt\n\n\nLaunching Claude in: C:\\Code\\TestForAI\n\nLaunching Claude directly...\n\n---\n\n## BACKLOG AUDIT COMPLETE \u2705\n\n**SUMMARY:**\n- **Fixed broken dependencies:** 0\n- **Added missing labels:** 0\n- **Created placeholder issues:** 0\n-...[truncated]",
+      "target_repo": "C:\\Code\\TestForAI",
+      "start_time": "08:25:01.82",
+      "timeout_minutes": 5,
+      "signals": {
+        "discord_call": false,
+        "issue_claimed": false,
+        "pr_created": false,
+        "pr_merged": false,
+        "issue_fixed": false,
+        "work_activity": true
+      },
+      "has_error": false,
+      "is_timeout": false,
+      "is_productive": true,
+      "size_bytes": 1566
+    },
+    {
+      "file": "logs/ai-conversations\\BACKLOG_COORDINATOR\\2025-10-05\\AUTO_PS_085501.txt",
+      "role": "BACKLOG_COORDINATOR",
+      "date": "2025-10-05",
+      "timestamp": "085501",
+      "content": "========================================\nBACKLOG COORDINATOR Agent - POWERSHELL\n========================================\nTarget: C:\\Code\\TestForAI\nStart Time: 08:55:01.84\nTimeout: 5 minutes\nAudit Log: C:\\code\\temp-swarm\\logs/ai-conversations\\BACKLOG_COORDINATOR\\2025-10-05\\AUTO_PS_085501.txt\n\n\nLaunching Claude in: C:\\Code\\TestForAI\n\nLaunching Claude directly...\n\n## BACKLOG HEALTH AUDIT - COMPLETE \u2705\n\n**Mission Status:** ACCOMPLISHED\n\n### Audit Summary\n\n**Total Issues Audited:** 55\n**Broken Dependencies:** 0\n**...[truncated]",
+      "target_repo": "C:\\Code\\TestForAI",
+      "start_time": "08:55:01.84",
+      "timeout_minutes": 5,
+      "signals": {
+        "discord_call": false,
+        "issue_claimed": true,
+        "pr_created": false,
+        "pr_merged": false,
+        "issue_fixed": false,
+        "work_activity": true
+      },
+      "has_error": false,
+      "is_timeout": false,
+      "is_productive": true,
+      "size_bytes": 1886
+    },
+    {
+      "file": "logs/ai-conversations\\BACKLOG_COORDINATOR\\2025-10-05\\AUTO_PS_092501.txt",
+      "role": "BACKLOG_COORDINATOR",
+      "date": "2025-10-05",
+      "timestamp": "092501",
+      "content": "========================================\nBACKLOG COORDINATOR Agent - POWERSHELL\n========================================\nTarget: C:\\Code\\TestForAI\nStart Time: 09:25:01.83\nTimeout: 5 minutes\nAudit Log: C:\\code\\temp-swarm\\logs/ai-conversations\\BACKLOG_COORDINATOR\\2025-10-05\\AUTO_PS_092501.txt\n\n\nLaunching Claude in: C:\\Code\\TestForAI\n\nLaunching Claude directly...\n\n## \ud83c\udfaf MISSION COMPLETE\n\n**BACKLOG HEALTH AUDIT SUMMARY**\n\n### \u2705 STATUS: SWARM UNBLOCKED\n\n**Audited:** 53 open issues  \n**Broken dependencies:** 0  \n**...[truncated]",
+      "target_repo": "C:\\Code\\TestForAI",
+      "start_time": "09:25:01.83",
+      "timeout_minutes": 5,
+      "signals": {
+        "discord_call": false,
+        "issue_claimed": false,
+        "pr_created": false,
+        "pr_merged": false,
+        "issue_fixed": false,
+        "work_activity": true
+      },
+      "has_error": false,
+      "is_timeout": false,
+      "is_productive": true,
+      "size_bytes": 1511
+    }
+  ]
+}
