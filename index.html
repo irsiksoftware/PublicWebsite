@@ -46,6 +46,17 @@
             </div>
             <div id="spy-activity-container">
                 <h3>Spy Activity Log</h3>
+                <div>
+                    <label for="tool-filter">Filter by tool:</label>
+                    <select id="tool-filter">
+                        <option value="all">All</option>
+                        <option value="gh">gh</option>
+                        <option value="git">git</option>
+                        <option value="npm">npm</option>
+                        <option value="gh-fake">gh-fake</option>
+                    </select>
+                    <span id="filter-count"></span>
+                </div>
                 <table id="spy-activity-table">
                     <thead>
                         <tr>
