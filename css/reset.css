@@ -1,6 +1,6 @@
 /* CSS Reset and Base Styles */
 
-/* Apply border-box to all elements */
+/* Box sizing rules */
 *,
 *::before,
 *::after {
@@ -19,8 +19,11 @@ html {
   line-height: 1.5;
 }
 
-/* Improve text rendering */
+/* Set core body defaults */
 body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -41,7 +44,7 @@ svg {
   max-width: 100%;
 }
 
-/* Remove default form element styling */
+/* Inherit fonts for inputs and buttons */
 input,
 button,
 textarea,
@@ -77,4 +80,16 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
