@@ -1,3 +1,17 @@
+/* Header Styles */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px) saturate(180%);
+    background: rgba(26, 26, 26, 0.8);
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
 /* S.H.I.E.L.D. Logo Styles */
 
 .shield-logo {
