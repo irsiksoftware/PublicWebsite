@@ -17,12 +17,12 @@ class SessionDetailModal {
 
     createModal() {
         const modalHTML = `
-            <div id="session-detail-modal" class="session-modal" style="display: none;">
+            <div id="session-detail-modal" class="session-modal" style="display: none;" role="dialog" aria-labelledby="modal-title" aria-modal="true">
                 <div class="session-modal-overlay"></div>
                 <div class="session-modal-content">
                     <button class="session-modal-close" aria-label="Close modal">&times;</button>
                     <div class="session-modal-body">
-                        <h2>Session Details</h2>
+                        <h2 id="modal-title">Session Details</h2>
                         <div class="session-detail-grid">
                             <div class="session-detail-item">
                                 <span class="session-detail-label">File Path:</span>
