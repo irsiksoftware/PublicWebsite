@@ -1,0 +1,72 @@
+/* Modern CSS Reset */
+/* Box-sizing border-box for all elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set base font size and line height */
+html {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Reset form elements */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Remove default button styles */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Images and media */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Remove default link underline */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Avoid text overflow */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
