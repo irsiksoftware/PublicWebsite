@@ -247,13 +247,13 @@ function canMove(newX, newY) {
     return true;
 }
 
-// Draw the game
-function draw() {
+// Draw grid borders and background
+function drawGrid() {
     // Clear canvas
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw grid
+    // Draw grid lines
     ctx.strokeStyle = '#e0e0e0';
     ctx.lineWidth = 1;
     for (let row = 0; row <= ROWS; row++) {
@@ -268,6 +268,12 @@ function draw() {
         ctx.lineTo(col * BLOCK_SIZE, ROWS * BLOCK_SIZE);
         ctx.stroke();
     }
+}
+
+// Draw the game
+function draw() {
+    // Clear and redraw grid
+    drawGrid();
 
     // Draw locked pieces on board
     for (let row = 0; row < ROWS; row++) {
