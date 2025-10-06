@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function loadSpyActivity() {
         // Show skeleton loading state
-        showTableSkeleton(tbody, 6);
+        showTableSkeleton(tbody, 7);
 
         try {
             const response = await fetch('./data/spy-activity.json');
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Create error message
             const errorRow = document.createElement('tr');
             const errorCell = document.createElement('td');
-            errorCell.colSpan = 6;
+            errorCell.colSpan = 7;
             errorCell.style.padding = '20px';
 
             const errorContainer = document.createElement('div');
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function renderTable(data) {
         if (!data || data.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6">No activity data available</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="7">No activity data available</td></tr>';
             return;
         }
 
@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <tr>
                     <td>${timestamp}</td>
                     <td>${escapeHtml(entry.agent)}</td>
+                    <td>${escapeHtml(entry.tool || '')}</td>
                     <td>${escapeHtml(entry.command)}</td>
                     <td>${entry.exitCode}</td>
                     <td>${entry.duration}</td>
