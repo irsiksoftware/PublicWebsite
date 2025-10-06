@@ -12,11 +12,19 @@ const BLOCK_SIZE = 32;
 let canvas;
 let ctx;
 let currentPiece = null;
+let board = Array(ROWS).fill().map(() => Array(COLS).fill(0));
+let score = 0;
+let level = 1;
+let linesCleared = 0;
+let highScore = 0;
 
 // Initialize game
 function init() {
     canvas = document.getElementById('game');
     ctx = canvas.getContext('2d');
+
+    // Load high score from localStorage
+    highScore = parseInt(localStorage.getItem('tetrisHighScore')) || 0;
 
     // Initialize current piece at top center
     currentPiece = {
@@ -30,6 +38,7 @@ function init() {
     document.addEventListener('keydown', handleKeyPress);
 
     // Initial draw
+    updateUI();
     draw();
 }
 
@@ -69,6 +78,10 @@ function moveDown() {
     if (canMove(currentPiece.x, currentPiece.y + 1)) {
         currentPiece.y++;
         draw();
+    } else {
+        // Piece has landed - lock it and check for completed lines
+        lockPiece();
+        clearLines();
     }
 }
 
@@ -97,6 +110,67 @@ function canMove(newX, newY) {
     return true;
 }
 
+// Lock piece into board
+function lockPiece() {
+    const shape = currentPiece.shape;
+    for (let row = 0; row < shape.length; row++) {
+        for (let col = 0; col < shape[row].length; col++) {
+            if (shape[row][col]) {
+                const x = currentPiece.x + col;
+                const y = currentPiece.y + row;
+                if (y >= 0 && y < ROWS && x >= 0 && x < COLS) {
+                    board[y][x] = currentPiece.color;
+                }
+            }
+        }
+    }
+}
+
+// Clear completed lines and update score
+function clearLines() {
+    let completedLines = 0;
+
+    // Check each row from bottom to top
+    for (let row = ROWS - 1; row >= 0; row--) {
+        if (board[row].every(cell => cell !== 0)) {
+            // Remove completed line
+            board.splice(row, 1);
+            // Add new empty line at top
+            board.unshift(Array(COLS).fill(0));
+            completedLines++;
+            row++; // Recheck this row since we removed one
+        }
+    }
+
+    // Update score based on lines cleared
+    if (completedLines > 0) {
+        const scoreValues = [0, 100, 300, 500, 800];
+        score += scoreValues[completedLines];
+        linesCleared += completedLines;
+
+        // Update level (every 10 lines)
+        level = Math.floor(linesCleared / 10) + 1;
+
+        // Update high score
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem('tetrisHighScore', highScore);
+        }
+
+        updateUI();
+    }
+
+    draw();
+}
+
+// Update UI display
+function updateUI() {
+    document.getElementById('score').textContent = score;
+    document.getElementById('level').textContent = level;
+    document.getElementById('lines').textContent = linesCleared;
+    document.getElementById('high-score').textContent = highScore;
+}
+
 // Draw the game
 function draw() {
     // Clear canvas
@@ -117,6 +191,21 @@ function draw() {
         ctx.moveTo(col * BLOCK_SIZE, 0);
         ctx.lineTo(col * BLOCK_SIZE, ROWS * BLOCK_SIZE);
         ctx.stroke();
+    }
+
+    // Draw locked pieces on board
+    for (let row = 0; row < ROWS; row++) {
+        for (let col = 0; col < COLS; col++) {
+            if (board[row][col]) {
+                ctx.fillStyle = board[row][col];
+                const x = col * BLOCK_SIZE;
+                const y = row * BLOCK_SIZE;
+                ctx.fillRect(x, y, BLOCK_SIZE, BLOCK_SIZE);
+                ctx.strokeStyle = '#333333';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(x, y, BLOCK_SIZE, BLOCK_SIZE);
+            }
+        }
     }
 
     // Draw current piece
