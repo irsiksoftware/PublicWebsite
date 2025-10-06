@@ -13,8 +13,12 @@ let canvas;
 let ctx;
 let previewCanvas;
 let previewCtx;
+let holdCanvas;
+let holdCtx;
 let currentPiece = null;
 let nextPiece = null;
+let heldPiece = null;
+let canHold = true;
 let board = [];
 let gameState = {
     score: 0,
@@ -33,6 +37,9 @@ function init() {
 
     previewCanvas = document.getElementById('next-piece');
     previewCtx = previewCanvas.getContext('2d');
+
+    holdCanvas = document.getElementById('hold-piece');
+    holdCtx = holdCanvas.getContext('2d');
 
     // Initialize board
     board = Array(ROWS).fill(null).map(() => Array(COLS).fill(0));
@@ -144,6 +151,9 @@ function lockPiece() {
             }
         }
     }
+
+    // Reset canHold when piece locks
+    canHold = true;
 }
 
 // Clear completed lines
@@ -238,6 +248,10 @@ function handleKeyPress(event) {
             break;
         case 'ArrowUp':
             rotatePiece();
+            break;
+        case 'c':
+        case 'C':
+            holdPiece();
             break;
     }
 }
@@ -478,6 +492,101 @@ function drawNextPiece() {
             }
         }
     }
+}
+
+// Draw held piece in hold canvas
+function drawHoldPiece() {
+    // Clear hold canvas
+    holdCtx.fillStyle = '#ffffff';
+    holdCtx.fillRect(0, 0, holdCanvas.width, holdCanvas.height);
+
+    if (!heldPiece) return;
+
+    const shape = heldPiece.shape;
+    const blockSize = 16; // Smaller blocks for preview
+
+    // Calculate piece dimensions
+    let minRow = shape.length, maxRow = 0, minCol = shape[0].length, maxCol = 0;
+    for (let row = 0; row < shape.length; row++) {
+        for (let col = 0; col < shape[row].length; col++) {
+            if (shape[row][col]) {
+                minRow = Math.min(minRow, row);
+                maxRow = Math.max(maxRow, row);
+                minCol = Math.min(minCol, col);
+                maxCol = Math.max(maxCol, col);
+            }
+        }
+    }
+
+    const pieceWidth = (maxCol - minCol + 1) * blockSize;
+    const pieceHeight = (maxRow - minRow + 1) * blockSize;
+
+    // Center the piece in the hold canvas
+    const offsetX = (holdCanvas.width - pieceWidth) / 2;
+    const offsetY = (holdCanvas.height - pieceHeight) / 2;
+
+    // Draw the piece
+    holdCtx.fillStyle = heldPiece.color;
+    for (let row = 0; row < shape.length; row++) {
+        for (let col = 0; col < shape[row].length; col++) {
+            if (shape[row][col]) {
+                const x = offsetX + (col - minCol) * blockSize;
+                const y = offsetY + (row - minRow) * blockSize;
+
+                holdCtx.fillRect(x, y, blockSize, blockSize);
+                holdCtx.strokeStyle = '#333333';
+                holdCtx.lineWidth = 1;
+                holdCtx.strokeRect(x, y, blockSize, blockSize);
+            }
+        }
+    }
+}
+
+// Hold piece function
+function holdPiece() {
+    if (gameState.isPaused || gameState.isGameOver || !currentPiece || !canHold) {
+        return;
+    }
+
+    canHold = false;
+
+    if (heldPiece === null) {
+        // Store current piece and spawn next piece
+        heldPiece = {
+            shape: TETROMINO_SHAPES[currentPiece.type].rotations[0],
+            color: currentPiece.color,
+            type: currentPiece.type
+        };
+        spawnPiece();
+    } else {
+        // Swap current piece with held piece
+        const tempType = currentPiece.type;
+        const tempColor = currentPiece.color;
+
+        currentPiece = {
+            x: Math.floor(COLS / 2) - 2,
+            y: 0,
+            shape: heldPiece.shape,
+            color: heldPiece.color,
+            type: heldPiece.type,
+            rotation: 0
+        };
+
+        heldPiece = {
+            shape: TETROMINO_SHAPES[tempType].rotations[0],
+            color: tempColor,
+            type: tempType
+        };
+
+        // Check if spawn position is valid
+        if (!canMove(currentPiece.x, currentPiece.y)) {
+            gameState.isGameOver = true;
+            stopGameLoop();
+        }
+    }
+
+    drawHoldPiece();
+    draw();
 }
 
 // Start game when DOM is loaded
