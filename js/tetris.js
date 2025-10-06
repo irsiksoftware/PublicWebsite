@@ -22,11 +22,18 @@ let gameState = {
 };
 let gameInterval = null;
 let dropSpeed = 1000;
+let heldPiece = null;
+let canHold = true;
+let holdCanvas;
+let holdCtx;
 
 // Initialize game
 function init() {
     canvas = document.getElementById('game');
     ctx = canvas.getContext('2d');
+
+    holdCanvas = document.getElementById('hold-piece');
+    holdCtx = holdCanvas.getContext('2d');
 
     // Initialize board
     board = Array(ROWS).fill(null).map(() => Array(COLS).fill(0));
@@ -45,6 +52,7 @@ function init() {
 
     // Initial draw
     draw();
+    drawHoldPiece();
 }
 
 // Spawn new piece
@@ -120,6 +128,9 @@ function lockPiece() {
             }
         }
     }
+
+    // Reset hold flag when piece locks
+    canHold = true;
 }
 
 // Clear completed lines
@@ -168,6 +179,10 @@ function handleKeyPress(event) {
         case 'ArrowDown':
             moveDown();
             break;
+        case 'c':
+        case 'C':
+            holdPiece();
+            break;
     }
 }
 
@@ -192,6 +207,85 @@ function moveDown() {
     if (canMove(currentPiece.x, currentPiece.y + 1)) {
         currentPiece.y++;
         draw();
+    }
+}
+
+// Hold current piece
+function holdPiece() {
+    if (!canHold || gameState.isPaused || gameState.isGameOver) {
+        return;
+    }
+
+    canHold = false;
+
+    if (heldPiece === null) {
+        // First hold - store current piece and spawn new one
+        heldPiece = {
+            type: currentPiece.type,
+            color: currentPiece.color
+        };
+        spawnPiece();
+    } else {
+        // Swap current piece with held piece
+        const tempType = currentPiece.type;
+        const tempColor = currentPiece.color;
+
+        // Restore held piece as current
+        const pieceData = TETROMINO_SHAPES[heldPiece.type];
+        currentPiece = {
+            x: Math.floor(COLS / 2) - 2,
+            y: 0,
+            shape: pieceData.rotations[0],
+            color: heldPiece.color,
+            type: heldPiece.type,
+            rotation: 0
+        };
+
+        // Store old current as held
+        heldPiece = {
+            type: tempType,
+            color: tempColor
+        };
+    }
+
+    drawHoldPiece();
+    draw();
+}
+
+// Draw held piece in UI
+function drawHoldPiece() {
+    // Clear canvas
+    holdCtx.fillStyle = '#ffffff';
+    holdCtx.fillRect(0, 0, holdCanvas.width, holdCanvas.height);
+
+    if (heldPiece === null) {
+        return;
+    }
+
+    const pieceData = TETROMINO_SHAPES[heldPiece.type];
+    const shape = pieceData.rotations[0];
+    const blockSize = 16;
+
+    // Calculate centering offset
+    const shapeWidth = shape[0].length;
+    const shapeHeight = shape.length;
+    const offsetX = (holdCanvas.width - shapeWidth * blockSize) / 2;
+    const offsetY = (holdCanvas.height - shapeHeight * blockSize) / 2;
+
+    holdCtx.fillStyle = heldPiece.color;
+
+    for (let row = 0; row < shape.length; row++) {
+        for (let col = 0; col < shape[row].length; col++) {
+            if (shape[row][col]) {
+                const x = offsetX + col * blockSize;
+                const y = offsetY + row * blockSize;
+
+                holdCtx.fillRect(x, y, blockSize, blockSize);
+                holdCtx.strokeStyle = '#333333';
+                holdCtx.lineWidth = 1;
+                holdCtx.strokeRect(x, y, blockSize, blockSize);
+            }
+        }
     }
 }
 
