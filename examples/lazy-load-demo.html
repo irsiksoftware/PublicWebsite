@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazy Loading Demo - Swarm Showcase</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/lazy-load.css">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .image-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .spacer {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 24px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lazy Loading Image Demo</h1>
+    <p>Scroll down to see images load as they enter the viewport. Images use low-quality placeholders and fade in when fully loaded.</p>
+
+    <div class="spacer">Scroll down to see lazy loading in action ↓</div>
+
+    <div class="image-grid">
+        <div class="image-container">
+            <img src="../pictures/placeholder.png"
+                 data-src="../pictures/hero_banner_4.png"
+                 loading="lazy"
+                 alt="Hero banner 4">
+        </div>
+        <div class="image-container">
+            <img src="../pictures/placeholder.png"
+                 data-src="../pictures/hero_banner_9.png"
+                 loading="lazy"
+                 alt="Hero banner 9">
+        </div>
+        <div class="image-container">
+            <img src="../pictures/placeholder.png"
+                 data-src="../pictures/hero_banner_14.png"
+                 loading="lazy"
+                 alt="Hero banner 14">
+        </div>
+    </div>
+
+    <div class="spacer">More images below ↓</div>
+
+    <div class="image-grid">
+        <div class="image-container">
+            <img src="../pictures/placeholder.png"
+                 data-src="../pictures/hero_large_3.png"
+                 loading="lazy"
+                 alt="Hero large 3">
+        </div>
+        <div class="image-container">
+            <img src="../pictures/placeholder.png"
+                 data-src="../pictures/hero_large_8.png"
+                 loading="lazy"
+                 alt="Hero large 8">
+        </div>
+        <div class="image-container">
+            <img src="../pictures/placeholder.png"
+                 data-src="../pictures/hero_large_13.png"
+                 loading="lazy"
+                 alt="Hero large 13">
+        </div>
+    </div>
+
+    <div class="spacer">Even more images ↓</div>
+
+    <div class="image-grid">
+        <div class="image-container">
+            <img src="../pictures/placeholder.png"
+                 data-src="../pictures/hero_medium_2.png"
+                 loading="lazy"
+                 alt="Hero medium 2">
+        </div>
+        <div class="image-container">
+            <img src="../pictures/placeholder.png"
+                 data-src="../pictures/hero_medium_7.png"
+                 loading="lazy"
+                 alt="Hero medium 7">
+        </div>
+        <div class="image-container">
+            <img src="../pictures/placeholder.png"
+                 data-src="../pictures/hero_medium_12.png"
+                 loading="lazy"
+                 alt="Hero medium 12">
+        </div>
+    </div>
+
+    <script src="../js/lazy-load-images.js"></script>
+</body>
+</html>
