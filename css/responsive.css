@@ -1,0 +1,225 @@
+/* Responsive Breakpoints - Mobile First Design */
+
+/* CSS Custom Properties for Breakpoints */
+:root {
+    --breakpoint-mobile-max: 767px;
+    --breakpoint-tablet-min: 768px;
+    --breakpoint-tablet-max: 1023px;
+    --breakpoint-desktop-min: 1024px;
+}
+
+/* Base Styles (Mobile First - 320px-767px) */
+body {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    line-height: 1.6;
+    padding: 0.5rem;
+}
+
+h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    line-height: 1.3;
+}
+
+h3 {
+    font-size: clamp(1.125rem, 3.5vw, 1.5rem);
+    line-height: 1.4;
+}
+
+p, li, td, th {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+/* Grid System - Mobile: 1 column */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem 0.5rem;
+}
+
+section {
+    padding: 1rem;
+}
+
+/* Navigation - Mobile: Hamburger Menu (already implemented) */
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Tables - Mobile: Horizontal scroll */
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem 0;
+}
+
+table {
+    min-width: 600px;
+}
+
+/* Prevent horizontal scroll on body (except tables) */
+body {
+    overflow-x: hidden;
+}
+
+/* Tablet Styles (768px-1023px) */
+@media (min-width: 768px) {
+    body {
+        font-size: clamp(0.9375rem, 1.5vw, 1rem);
+        padding: 1rem;
+    }
+
+    main {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 1.5rem 1rem;
+        max-width: 1024px;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+
+    /* Grid columns adjust to 2 on tablet */
+    #roles-overview-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Navigation - Tablet: Horizontal layout */
+    nav ul {
+        position: static !important;
+        height: auto !important;
+        width: auto !important;
+        flex-direction: row !important;
+        background: transparent !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .hamburger {
+        display: none !important;
+    }
+
+    nav ul li {
+        width: auto !important;
+        margin: 0 1rem !important;
+    }
+
+    nav ul li a {
+        padding: 0.5rem 1rem !important;
+    }
+
+    /* Tables can show more content */
+    table {
+        min-width: 100%;
+    }
+
+    .table-container {
+        overflow-x: visible;
+    }
+}
+
+/* Desktop Styles (1024px+) */
+@media (min-width: 1024px) {
+    body {
+        font-size: 1rem;
+        padding: 1.5rem;
+    }
+
+    main {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        padding: 2rem 1.5rem;
+        max-width: 1440px;
+    }
+
+    section {
+        padding: 2rem;
+    }
+
+    /* Grid columns adjust to 3-4 on desktop */
+    #roles-overview-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    /* Full width sections for certain content */
+    section#overview,
+    section#metrics {
+        grid-column: 1 / -1;
+    }
+
+    /* Tables fully visible */
+    .table-container {
+        overflow-x: visible;
+    }
+
+    table {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+/* Extra Large Desktop (1440px+) */
+@media (min-width: 1440px) {
+    main {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1920px;
+    }
+
+    /* Grid columns adjust to 4 on large desktop */
+    #roles-overview-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* Ensure no horizontal scroll except for table containers */
+html {
+    overflow-x: hidden;
+}
+
+* {
+    max-width: 100%;
+}
+
+.table-container {
+    max-width: 100vw;
+}
+
+/* Additional responsive utilities */
+@media (max-width: 767px) {
+    /* Hide less important content on mobile if needed */
+    .desktop-only {
+        display: none;
+    }
+
+    /* Stack form elements vertically */
+    form, .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    input, select, textarea {
+        width: 100%;
+    }
+
+    /* Improve button touch targets */
+    button, a {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+@media (min-width: 768px) {
+    .mobile-only {
+        display: none;
+    }
+}

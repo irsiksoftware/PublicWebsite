@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/session-detail-modal.css">
     <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <title>Swarm Showcase - AI Development Team Metrics</title>
     <script src="js/agent-selector.js" defer></script>
     <script src="js/sticky-header.js" defer></script>
@@ -67,23 +68,25 @@
                     </select>
                     <span id="filter-count"></span>
                 </div>
-                <table id="spy-activity-table">
-                    <thead>
-                        <tr>
-                            <th data-column="timestamp">Timestamp <span class="sort-arrow"></span></th>
-                            <th data-column="agent">Agent <span class="sort-arrow"></span></th>
-                            <th data-column="command">Command <span class="sort-arrow"></span></th>
-                            <th data-column="exitCode">Exit Code <span class="sort-arrow"></span></th>
-                            <th data-column="duration">Duration (ms) <span class="sort-arrow"></span></th>
-                            <th data-column="cacheStatus">Cache Status <span class="sort-arrow"></span></th>
-                        </tr>
-                    </thead>
-                    <tbody id="spy-activity-tbody">
-                        <tr>
-                            <td colspan="6">Loading...</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-container">
+                    <table id="spy-activity-table">
+                        <thead>
+                            <tr>
+                                <th data-column="timestamp">Timestamp <span class="sort-arrow"></span></th>
+                                <th data-column="agent">Agent <span class="sort-arrow"></span></th>
+                                <th data-column="command">Command <span class="sort-arrow"></span></th>
+                                <th data-column="exitCode">Exit Code <span class="sort-arrow"></span></th>
+                                <th data-column="duration">Duration (ms) <span class="sort-arrow"></span></th>
+                                <th data-column="cacheStatus">Cache Status <span class="sort-arrow"></span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="spy-activity-tbody">
+                            <tr>
+                                <td colspan="6">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="pagination-controls">
                     <button id="prev-page" aria-label="Previous page">Previous</button>
                     <span id="page-info" aria-live="polite">Page 1 of 1</span>
@@ -92,23 +95,25 @@
             </div>
             <div id="audit-sessions-container">
                 <h3>Audit Sessions</h3>
-                <table id="audit-sessions-table">
-                    <thead>
-                        <tr>
-                            <th>Timestamp</th>
-                            <th>Role</th>
-                            <th>File</th>
-                            <th>Has Error</th>
-                            <th>Is Timeout</th>
-                            <th>Productive</th>
-                        </tr>
-                    </thead>
-                    <tbody id="audit-sessions-tbody">
-                        <tr>
-                            <td colspan="6">Loading...</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-container">
+                    <table id="audit-sessions-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Role</th>
+                                <th>File</th>
+                                <th>Has Error</th>
+                                <th>Is Timeout</th>
+                                <th>Productive</th>
+                            </tr>
+                        </thead>
+                        <tbody id="audit-sessions-tbody">
+                            <tr>
+                                <td colspan="6">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
