@@ -19,7 +19,7 @@ concurrency:
 jobs:
   lint:
     name: Lint JavaScript
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
@@ -115,7 +115,7 @@ jobs:
 
   deploy:
     name: Deploy to GitHub Pages
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: lint
     # Only deploy on push to main (not on PRs)
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
