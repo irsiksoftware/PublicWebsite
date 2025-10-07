@@ -4,7 +4,7 @@ header {
     top: 0;
     z-index: 1000;
     backdrop-filter: blur(10px) saturate(180%);
-    background: rgba(26, 26, 26, 0.8);
+    background: var(--header-bg);
     transition: all 0.3s ease;
 }
 
@@ -51,16 +51,12 @@ header.scrolled {
     --gradient-lead: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --gradient-worker: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --gradient-default: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    --card-bg: #ffffff;
-    --text-primary: #333333;
-    --text-secondary: #666666;
     --border-radius: 12px;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 1.5rem;
     --primary-blue: #667eea;
     --shield-red: #dc143c;
-    --dark-bg: #1a1a1a;
 }
 
 /* Success Rate Chart Styles */
