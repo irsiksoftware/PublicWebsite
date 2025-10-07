@@ -463,7 +463,7 @@ header.scrolled {
 
 /* Hero Section Styles */
 .hero-section {
-    height: 100vh;
+    height: 25vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -473,6 +473,22 @@ header.scrolled {
     transform-origin: top left;
     overflow: hidden;
     position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--hero-bg-image, none);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    transition: background-image 1s ease-in-out;
+    z-index: 0;
 }
 
 .hero-content {
