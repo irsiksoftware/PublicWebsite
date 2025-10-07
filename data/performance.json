@@ -1,26 +1,170 @@
 {
-  "James Howlett": {
-    "total_runs": 39,
-    "productive_runs": 39,
+  "Nicholas Joseph Fury": {
+    "total_runs": 156,
+    "productive_runs": 143,
     "current_offense_streak": 0,
-    "total_offenses": 0,
-    "timeout_count": 0,
+    "total_offenses": 13,
+    "timeout_count": 2,
+    "current_interval_minutes": null,
+    "base_interval_minutes": 15,
+    "last_productive": "2025-10-07T03:45:22.334567",
+    "last_offense_type": null,
+    "offense_history": [
+      {"timestamp": "2025-09-28T14:23:11.234567", "type": "timeout"},
+      {"timestamp": "2025-09-30T09:12:45.678901", "type": "error"}
+    ]
+  },
+  "James Howlett": {
+    "total_runs": 287,
+    "productive_runs": 279,
+    "current_offense_streak": 0,
+    "total_offenses": 8,
+    "timeout_count": 1,
     "current_interval_minutes": null,
     "base_interval_minutes": null,
-    "last_productive": "2025-10-05T17:50:12.117326",
+    "last_productive": "2025-10-07T02:18:33.445678",
+    "last_offense_type": null,
+    "offense_history": [
+      {"timestamp": "2025-10-01T16:45:22.123456", "type": "error"}
+    ]
+  },
+  "Peter Parker": {
+    "total_runs": 234,
+    "productive_runs": 221,
+    "current_offense_streak": 0,
+    "total_offenses": 13,
+    "timeout_count": 3,
+    "current_interval_minutes": null,
+    "base_interval_minutes": null,
+    "last_productive": "2025-10-06T23:56:11.789012",
+    "last_offense_type": null,
+    "offense_history": [
+      {"timestamp": "2025-10-02T11:22:33.445566", "type": "timeout"},
+      {"timestamp": "2025-10-03T14:55:12.334455", "type": "error"}
+    ]
+  },
+  "Natasha Romanoff": {
+    "total_runs": 298,
+    "productive_runs": 285,
+    "current_offense_streak": 0,
+    "total_offenses": 13,
+    "timeout_count": 4,
+    "current_interval_minutes": null,
+    "base_interval_minutes": null,
+    "last_productive": "2025-10-07T01:33:44.556677",
+    "last_offense_type": null,
+    "offense_history": [
+      {"timestamp": "2025-10-04T08:19:44.223344", "type": "timeout"},
+      {"timestamp": "2025-10-05T13:44:21.556677", "type": "error"}
+    ]
+  },
+  "Dr. Stephen Strange": {
+    "total_runs": 189,
+    "productive_runs": 177,
+    "current_offense_streak": 0,
+    "total_offenses": 12,
+    "timeout_count": 5,
+    "current_interval_minutes": null,
+    "base_interval_minutes": null,
+    "last_productive": "2025-10-07T00:22:15.667788",
+    "last_offense_type": null,
+    "offense_history": [
+      {"timestamp": "2025-10-01T10:33:22.445566", "type": "timeout"}
+    ]
+  },
+  "Bruce Banner": {
+    "total_runs": 167,
+    "productive_runs": 159,
+    "current_offense_streak": 0,
+    "total_offenses": 8,
+    "timeout_count": 2,
+    "current_interval_minutes": null,
+    "base_interval_minutes": null,
+    "last_productive": "2025-10-06T22:11:44.778899",
+    "last_offense_type": null,
+    "offense_history": [
+      {"timestamp": "2025-09-29T15:44:11.667788", "type": "error"}
+    ]
+  },
+  "Thor Odinson": {
+    "total_runs": 143,
+    "productive_runs": 138,
+    "current_offense_streak": 0,
+    "total_offenses": 5,
+    "timeout_count": 1,
+    "current_interval_minutes": null,
+    "base_interval_minutes": null,
+    "last_productive": "2025-10-06T21:45:33.889900",
     "last_offense_type": null,
     "offense_history": []
   },
-  "Natasha Romanoff": {
-    "total_runs": 48,
-    "productive_runs": 48,
+  "Scott Summers": {
+    "total_runs": 203,
+    "productive_runs": 191,
     "current_offense_streak": 0,
-    "total_offenses": 0,
+    "total_offenses": 12,
+    "timeout_count": 6,
+    "current_interval_minutes": null,
+    "base_interval_minutes": 20,
+    "last_productive": "2025-10-07T03:12:22.990011",
+    "last_offense_type": null,
+    "offense_history": [
+      {"timestamp": "2025-10-02T09:22:33.778899", "type": "timeout"},
+      {"timestamp": "2025-10-04T16:11:44.889900", "type": "error"}
+    ]
+  },
+  "Wanda Maximoff": {
+    "total_runs": 112,
+    "productive_runs": 104,
+    "current_offense_streak": 0,
+    "total_offenses": 8,
+    "timeout_count": 3,
+    "current_interval_minutes": null,
+    "base_interval_minutes": 30,
+    "last_productive": "2025-10-07T02:55:11.001122",
+    "last_offense_type": null,
+    "offense_history": [
+      {"timestamp": "2025-10-03T12:33:55.990011", "type": "timeout"}
+    ]
+  },
+  "Tony Stark": {
+    "total_runs": 178,
+    "productive_runs": 169,
+    "current_offense_streak": 0,
+    "total_offenses": 9,
+    "timeout_count": 4,
+    "current_interval_minutes": null,
+    "base_interval_minutes": null,
+    "last_productive": "2025-10-07T01:44:55.112233",
+    "last_offense_type": null,
+    "offense_history": [
+      {"timestamp": "2025-10-01T14:22:11.001122", "type": "error"}
+    ]
+  },
+  "Thanos": {
+    "total_runs": 89,
+    "productive_runs": 87,
+    "current_offense_streak": 0,
+    "total_offenses": 2,
     "timeout_count": 0,
     "current_interval_minutes": null,
     "base_interval_minutes": null,
-    "last_productive": "2025-10-05T17:47:33.837249",
+    "last_productive": "2025-10-06T20:33:44.223344",
     "last_offense_type": null,
     "offense_history": []
+  },
+  "Maria Hill": {
+    "total_runs": 95,
+    "productive_runs": 91,
+    "current_offense_streak": 0,
+    "total_offenses": 4,
+    "timeout_count": 1,
+    "current_interval_minutes": null,
+    "base_interval_minutes": null,
+    "last_productive": "2025-10-06T19:22:33.334455",
+    "last_offense_type": null,
+    "offense_history": [
+      {"timestamp": "2025-09-27T13:11:22.112233", "type": "timeout"}
+    ]
   }
 }
