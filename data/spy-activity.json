@@ -1,137 +1,659 @@
 [
   {
-    "timestamp": "2025-10-06T10:23:15.234Z",
+    "timestamp": "2025-10-07T03:45:15.234Z",
     "agent": "Wolverine",
-    "command": "git clone https://github.com/example/repo.git",
+    "command": "git clone https://github.com/irsiksoftware/TestForAI.git",
     "tool": "git",
+    "exitCode": 0,
+    "duration": 1456,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T03:42:32.123Z",
+    "agent": "Black Widow",
+    "command": "npm install",
+    "tool": "npm",
+    "exitCode": 0,
+    "duration": 4234,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T03:38:45.456Z",
+    "agent": "Cyclops",
+    "command": "pytest tests/unit/",
+    "tool": "pytest",
+    "exitCode": 0,
+    "duration": 1823,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T03:35:12.789Z",
+    "agent": "Wolverine",
+    "command": "docker build -t swarm-agents:latest .",
+    "tool": "docker",
+    "exitCode": 0,
+    "duration": 18945,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-07T03:31:33.567Z",
+    "agent": "Spider-Man",
+    "command": "git push origin feature/issue-287",
+    "tool": "git",
+    "exitCode": 0,
+    "duration": 423,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T03:28:01.234Z",
+    "agent": "Dr. Strange",
+    "command": "npm run build",
+    "tool": "npm",
+    "exitCode": 0,
+    "duration": 3456,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T03:24:15.890Z",
+    "agent": "Cyclops",
+    "command": "eslint src/ --fix",
+    "tool": "eslint",
+    "exitCode": 0,
+    "duration": 892,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T03:20:22.456Z",
+    "agent": "Black Widow",
+    "command": "terraform apply -auto-approve",
+    "tool": "terraform",
+    "exitCode": 0,
+    "duration": 12567,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T03:16:45.123Z",
+    "agent": "Wolverine",
+    "command": "kubectl apply -f k8s/deployment.yaml",
+    "tool": "kubectl",
+    "exitCode": 0,
+    "duration": 678,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-07T03:12:12.789Z",
+    "agent": "Thor",
+    "command": "cargo test --all-features",
+    "tool": "cargo",
+    "exitCode": 0,
+    "duration": 5234,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T03:08:45.123Z",
+    "agent": "Spider-Man",
+    "command": "gh pr create --title 'Fix bug in agent routing' --body 'Resolves issue #287'",
+    "tool": "gh",
     "exitCode": 0,
     "duration": 1234,
     "cacheStatus": "miss"
   },
   {
-    "timestamp": "2025-10-06T10:24:32.123Z",
-    "agent": "Storm",
-    "command": "npm install",
-    "tool": "npm",
+    "timestamp": "2025-10-07T03:04:12.789Z",
+    "agent": "Dr. Strange",
+    "command": "gh pr review 156 --approve",
+    "tool": "gh",
     "exitCode": 0,
-    "duration": 5678,
+    "duration": 567,
     "cacheStatus": "hit"
   },
   {
-    "timestamp": "2025-10-06T10:25:45.456Z",
-    "agent": "Cyclops",
-    "command": "pytest tests/",
-    "tool": "pytest",
-    "exitCode": 1,
-    "duration": 892,
+    "timestamp": "2025-10-07T03:00:33.567Z",
+    "agent": "Nick Fury",
+    "command": "git status",
+    "tool": "git",
+    "exitCode": 0,
+    "duration": 89,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T02:56:01.234Z",
+    "agent": "Hulk",
+    "command": "npm test -- --coverage",
+    "tool": "npm",
+    "exitCode": 0,
+    "duration": 4567,
     "cacheStatus": "miss"
   },
   {
-    "timestamp": "2025-10-06T10:26:12.789Z",
-    "agent": "Wolverine",
-    "command": "docker build -t myapp .",
-    "tool": "docker",
+    "timestamp": "2025-10-07T02:52:15.890Z",
+    "agent": "Cyclops",
+    "command": "gh pr merge 154 --squash",
+    "tool": "gh",
     "exitCode": 0,
-    "duration": 12345,
+    "duration": 1890,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T02:48:22.456Z",
+    "agent": "Black Widow",
+    "command": "docker-compose up -d",
+    "tool": "docker-compose",
+    "exitCode": 0,
+    "duration": 6789,
     "cacheStatus": "partial"
   },
   {
-    "timestamp": "2025-10-06T10:27:33.567Z",
-    "agent": "Rogue",
-    "command": "git push origin main",
+    "timestamp": "2025-10-07T02:44:45.123Z",
+    "agent": "Wolverine",
+    "command": "git rebase main",
     "tool": "git",
     "exitCode": 0,
-    "duration": 345,
+    "duration": 234,
     "cacheStatus": "hit"
   },
   {
-    "timestamp": "2025-10-06T10:28:01.234Z",
-    "agent": "Storm",
-    "command": "npm run build",
+    "timestamp": "2025-10-07T02:40:12.789Z",
+    "agent": "Tony Stark",
+    "command": "pytest tests/ --verbose",
+    "tool": "pytest",
+    "exitCode": 0,
+    "duration": 2345,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T02:36:33.567Z",
+    "agent": "Spider-Man",
+    "command": "npm run lint",
+    "tool": "npm",
+    "exitCode": 0,
+    "duration": 1234,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T02:32:01.234Z",
+    "agent": "Dr. Strange",
+    "command": "gh issue close 283 --comment 'Fixed in PR #395'",
+    "tool": "gh",
+    "exitCode": 0,
+    "duration": 456,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T02:28:15.890Z",
+    "agent": "Cyclops",
+    "command": "git cherry-pick abc123",
+    "tool": "git",
+    "exitCode": 0,
+    "duration": 178,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T02:24:22.456Z",
+    "agent": "Thor",
+    "command": "npm run dev",
+    "tool": "npm",
+    "exitCode": 0,
+    "duration": 892,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-07T02:20:45.123Z",
+    "agent": "Black Widow",
+    "command": "terraform plan",
+    "tool": "terraform",
+    "exitCode": 0,
+    "duration": 3456,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T02:16:12.789Z",
+    "agent": "Wolverine",
+    "command": "docker ps -a",
+    "tool": "docker",
+    "exitCode": 0,
+    "duration": 123,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T02:12:33.567Z",
+    "agent": "Nick Fury",
+    "command": "gh issue list --state open --label enhancement",
+    "tool": "gh",
+    "exitCode": 0,
+    "duration": 678,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T02:08:01.234Z",
+    "agent": "Spider-Man",
+    "command": "git commit -m 'Implement feature #280'",
+    "tool": "git",
+    "exitCode": 0,
+    "duration": 234,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T02:04:15.890Z",
+    "agent": "Hulk",
+    "command": "gh pr checks 155",
+    "tool": "gh",
+    "exitCode": 0,
+    "duration": 567,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-07T02:00:22.456Z",
+    "agent": "Dr. Strange",
+    "command": "npm audit fix",
     "tool": "npm",
     "exitCode": 0,
     "duration": 2345,
     "cacheStatus": "miss"
   },
   {
-    "timestamp": "2025-10-06T10:29:15.890Z",
+    "timestamp": "2025-10-07T01:56:45.123Z",
     "agent": "Cyclops",
-    "command": "eslint src/",
-    "tool": "eslint",
-    "exitCode": 1,
-    "duration": 678,
+    "command": "git diff HEAD~1",
+    "tool": "git",
+    "exitCode": 0,
+    "duration": 145,
     "cacheStatus": "hit"
   },
   {
-    "timestamp": "2025-10-06T10:30:22.456Z",
-    "agent": "Rogue",
-    "command": "terraform apply -auto-approve",
-    "tool": "terraform",
+    "timestamp": "2025-10-07T01:52:12.789Z",
+    "agent": "Tony Stark",
+    "command": "pytest tests/integration/ --maxfail=1",
+    "tool": "pytest",
     "exitCode": 0,
-    "duration": 8901,
+    "duration": 3456,
     "cacheStatus": "miss"
   },
   {
-    "timestamp": "2025-10-06T10:31:45.123Z",
-    "agent": "Wolverine",
-    "command": "kubectl apply -f deployment.yaml",
+    "timestamp": "2025-10-07T01:48:33.567Z",
+    "agent": "Black Widow",
+    "command": "kubectl get pods --all-namespaces",
     "tool": "kubectl",
+    "exitCode": 0,
+    "duration": 234,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T01:44:01.234Z",
+    "agent": "Wolverine",
+    "command": "gh pr comment 157 --body 'LGTM'",
+    "tool": "gh",
     "exitCode": 0,
     "duration": 456,
     "cacheStatus": "partial"
   },
   {
-    "timestamp": "2025-10-06T10:32:12.789Z",
-    "agent": "Storm",
-    "command": "cargo test",
+    "timestamp": "2025-10-07T01:40:15.890Z",
+    "agent": "Thor",
+    "command": "cargo build --release",
     "tool": "cargo",
     "exitCode": 0,
-    "duration": 3456,
+    "duration": 8901,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T01:36:22.456Z",
+    "agent": "Spider-Man",
+    "command": "git branch -D obsolete-feature",
+    "tool": "git",
+    "exitCode": 0,
+    "duration": 89,
     "cacheStatus": "hit"
   },
   {
-    "timestamp": "2025-10-06T10:33:45.123Z",
-    "agent": "Jean",
-    "command": "gh pr create --title 'Add feature' --body 'Description'",
+    "timestamp": "2025-10-07T01:32:45.123Z",
+    "agent": "Nick Fury",
+    "command": "gh workflow run ci.yml",
+    "tool": "gh",
+    "exitCode": 0,
+    "duration": 1234,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T01:28:12.789Z",
+    "agent": "Dr. Strange",
+    "command": "npm run format",
+    "tool": "npm",
+    "exitCode": 0,
+    "duration": 567,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T01:24:33.567Z",
+    "agent": "Cyclops",
+    "command": "docker logs swarm-agent-1 --tail 50",
+    "tool": "docker",
+    "exitCode": 0,
+    "duration": 234,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-07T01:20:01.234Z",
+    "agent": "Hulk",
+    "command": "gh pr list --state open --assignee @me",
+    "tool": "gh",
+    "exitCode": 0,
+    "duration": 678,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T01:16:15.890Z",
+    "agent": "Black Widow",
+    "command": "terraform destroy -auto-approve",
+    "tool": "terraform",
+    "exitCode": 0,
+    "duration": 5678,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T01:12:22.456Z",
+    "agent": "Wolverine",
+    "command": "git tag v1.2.3",
+    "tool": "git",
+    "exitCode": 0,
+    "duration": 123,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-07T01:08:45.123Z",
+    "agent": "Tony Stark",
+    "command": "pytest --collect-only",
+    "tool": "pytest",
+    "exitCode": 0,
+    "duration": 234,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T01:04:12.789Z",
+    "agent": "Spider-Man",
+    "command": "npm outdated",
+    "tool": "npm",
+    "exitCode": 0,
+    "duration": 1234,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T01:00:33.567Z",
+    "agent": "Dr. Strange",
+    "command": "gh release create v1.2.3",
+    "tool": "gh",
+    "exitCode": 0,
+    "duration": 2345,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T00:56:01.234Z",
+    "agent": "Cyclops",
+    "command": "git log --oneline --graph --all",
+    "tool": "git",
+    "exitCode": 0,
+    "duration": 178,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T00:52:15.890Z",
+    "agent": "Thor",
+    "command": "cargo clippy -- -D warnings",
+    "tool": "cargo",
+    "exitCode": 0,
+    "duration": 1456,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-07T00:48:22.456Z",
+    "agent": "Black Widow",
+    "command": "kubectl describe pod swarm-orchestrator",
+    "tool": "kubectl",
+    "exitCode": 0,
+    "duration": 345,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T00:44:45.123Z",
+    "agent": "Nick Fury",
+    "command": "gh api repos/irsiksoftware/TestForAI/issues",
+    "tool": "gh",
+    "exitCode": 0,
+    "duration": 789,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T00:40:12.789Z",
+    "agent": "Wolverine",
+    "command": "docker-compose down",
+    "tool": "docker-compose",
+    "exitCode": 0,
+    "duration": 1234,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-07T00:36:33.567Z",
+    "agent": "Spider-Man",
+    "command": "npm run type-check",
+    "tool": "npm",
+    "exitCode": 0,
+    "duration": 2345,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T00:32:01.234Z",
+    "agent": "Hulk",
+    "command": "gh pr diff 158",
+    "tool": "gh",
+    "exitCode": 0,
+    "duration": 456,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T00:28:15.890Z",
+    "agent": "Dr. Strange",
+    "command": "git fetch --all --prune",
+    "tool": "git",
+    "exitCode": 0,
+    "duration": 567,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T00:24:22.456Z",
+    "agent": "Cyclops",
+    "command": "pytest tests/ --markers",
+    "tool": "pytest",
+    "exitCode": 0,
+    "duration": 123,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T00:20:45.123Z",
+    "agent": "Tony Stark",
+    "command": "npm ci",
+    "tool": "npm",
+    "exitCode": 0,
+    "duration": 3456,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-07T00:16:12.789Z",
+    "agent": "Black Widow",
+    "command": "terraform validate",
+    "tool": "terraform",
+    "exitCode": 0,
+    "duration": 234,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-07T00:12:33.567Z",
+    "agent": "Thor",
+    "command": "cargo doc --open",
+    "tool": "cargo",
+    "exitCode": 0,
+    "duration": 2345,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-07T00:08:01.234Z",
+    "agent": "Wolverine",
+    "command": "gh issue create --title 'New feature request' --label enhancement",
     "tool": "gh",
     "exitCode": 0,
     "duration": 890,
     "cacheStatus": "miss"
   },
   {
-    "timestamp": "2025-10-06T10:34:12.789Z",
-    "agent": "Beast",
-    "command": "gh issue list",
-    "tool": "gh",
+    "timestamp": "2025-10-07T00:04:15.890Z",
+    "agent": "Spider-Man",
+    "command": "git stash pop",
+    "tool": "git",
     "exitCode": 0,
-    "duration": 456,
+    "duration": 145,
     "cacheStatus": "hit"
   },
   {
-    "timestamp": "2025-10-06T10:35:33.567Z",
-    "agent": "Professor X",
-    "command": "git status",
+    "timestamp": "2025-10-07T00:00:22.456Z",
+    "agent": "Nick Fury",
+    "command": "docker system prune -a -f",
+    "tool": "docker",
+    "exitCode": 0,
+    "duration": 4567,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-06T23:56:45.123Z",
+    "agent": "Dr. Strange",
+    "command": "gh pr view 159 --json title,body,reviews",
+    "tool": "gh",
+    "exitCode": 0,
+    "duration": 678,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-06T23:52:12.789Z",
+    "agent": "Cyclops",
+    "command": "npm run watch",
+    "tool": "npm",
+    "exitCode": 0,
+    "duration": 234,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-06T23:48:33.567Z",
+    "agent": "Hulk",
+    "command": "kubectl apply -f k8s/",
+    "tool": "kubectl",
+    "exitCode": 0,
+    "duration": 1234,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-06T23:44:01.234Z",
+    "agent": "Black Widow",
+    "command": "git reset --hard HEAD~1",
+    "tool": "git",
+    "exitCode": 0,
+    "duration": 178,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-06T23:40:15.890Z",
+    "agent": "Tony Stark",
+    "command": "pytest tests/ --cov=src --cov-report=html",
+    "tool": "pytest",
+    "exitCode": 0,
+    "duration": 5678,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-06T23:36:22.456Z",
+    "agent": "Wolverine",
+    "command": "gh workflow view ci.yml",
+    "tool": "gh",
+    "exitCode": 0,
+    "duration": 456,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-06T23:32:45.123Z",
+    "agent": "Thor",
+    "command": "cargo fmt --all",
+    "tool": "cargo",
+    "exitCode": 0,
+    "duration": 567,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-06T23:28:12.789Z",
+    "agent": "Spider-Man",
+    "command": "npm run start",
+    "tool": "npm",
+    "exitCode": 0,
+    "duration": 1234,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-06T23:24:33.567Z",
+    "agent": "Dr. Strange",
+    "command": "gh pr ready 160",
+    "tool": "gh",
+    "exitCode": 0,
+    "duration": 345,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-06T23:20:01.234Z",
+    "agent": "Cyclops",
+    "command": "git worktree list",
     "tool": "git",
     "exitCode": 0,
     "duration": 123,
     "cacheStatus": "hit"
   },
   {
-    "timestamp": "2025-10-06T10:36:01.234Z",
-    "agent": "Gambit",
-    "command": "npm test",
-    "tool": "npm",
+    "timestamp": "2025-10-06T23:16:15.890Z",
+    "agent": "Nick Fury",
+    "command": "terraform fmt -recursive",
+    "tool": "terraform",
     "exitCode": 0,
-    "duration": 2345,
+    "duration": 789,
+    "cacheStatus": "partial"
+  },
+  {
+    "timestamp": "2025-10-06T23:12:22.456Z",
+    "agent": "Black Widow",
+    "command": "docker images --filter dangling=true",
+    "tool": "docker",
+    "exitCode": 0,
+    "duration": 234,
     "cacheStatus": "miss"
   },
   {
-    "timestamp": "2025-10-06T10:37:15.890Z",
-    "agent": "Nightcrawler",
-    "command": "gh-fake deploy staging",
-    "tool": "gh-fake",
+    "timestamp": "2025-10-06T23:08:45.123Z",
+    "agent": "Hulk",
+    "command": "gh issue comment 288 --body 'Working on this'",
+    "tool": "gh",
+    "exitCode": 0,
+    "duration": 567,
+    "cacheStatus": "hit"
+  },
+  {
+    "timestamp": "2025-10-06T23:04:12.789Z",
+    "agent": "Wolverine",
+    "command": "npm run clean",
+    "tool": "npm",
+    "exitCode": 0,
+    "duration": 456,
+    "cacheStatus": "miss"
+  },
+  {
+    "timestamp": "2025-10-06T23:00:33.567Z",
+    "agent": "Tony Stark",
+    "command": "pytest tests/unit/test_agents.py -v",
+    "tool": "pytest",
     "exitCode": 0,
     "duration": 1234,
-    "cacheStatus": "miss"
+    "cacheStatus": "hit"
   }
 ]
