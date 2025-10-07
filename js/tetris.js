@@ -24,6 +24,7 @@ let gameState = {
     score: 0,
     level: 1,
     lines: 0,
+    highScore: 0,
     isPaused: false,
     isGameOver: false
 };
@@ -40,6 +41,9 @@ function init() {
 
     holdCanvas = document.getElementById('hold-piece');
     holdCtx = holdCanvas.getContext('2d');
+
+    // Load high score from localStorage
+    loadHighScore();
 
     // Initialize board
     board = Array(ROWS).fill(null).map(() => Array(COLS).fill(0));
@@ -180,7 +184,18 @@ function clearLines() {
 
         // Update lines cleared count
         gameState.lines += fullRows.length;
-        gameState.score += fullRows.length * 100 * gameState.level;
+
+        // Calculate score based on lines cleared
+        const lineScores = {
+            1: 100,
+            2: 300,
+            3: 500,
+            4: 800
+        };
+        gameState.score += (lineScores[fullRows.length] || 100) * gameState.level;
+
+        // Update high score
+        updateHighScore();
 
         // Level up every 10 lines
         const newLevel = Math.floor(gameState.lines / 10) + 1;
@@ -227,11 +242,28 @@ function flashRows(rows, callback) {
     }, flashInterval);
 }
 
+// Load high score from localStorage
+function loadHighScore() {
+    const savedHighScore = localStorage.getItem('tetrisHighScore');
+    if (savedHighScore) {
+        gameState.highScore = parseInt(savedHighScore, 10);
+    }
+}
+
+// Update high score
+function updateHighScore() {
+    if (gameState.score > gameState.highScore) {
+        gameState.highScore = gameState.score;
+        localStorage.setItem('tetrisHighScore', gameState.highScore.toString());
+    }
+}
+
 // Update UI elements
 function updateUI() {
     document.getElementById('score').textContent = gameState.score;
     document.getElementById('level').textContent = gameState.level;
     document.getElementById('lines').textContent = gameState.lines;
+    document.getElementById('high-score').textContent = gameState.highScore;
 }
 
 // Handle keyboard input
