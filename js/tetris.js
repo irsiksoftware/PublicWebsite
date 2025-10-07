@@ -269,22 +269,22 @@ function updateUI() {
 // Handle keyboard input
 function handleKeyPress(event) {
     switch(event.key) {
-        case 'ArrowLeft':
-            moveLeft();
-            break;
-        case 'ArrowRight':
-            moveRight();
-            break;
-        case 'ArrowDown':
-            moveDown();
-            break;
-        case 'ArrowUp':
-            rotatePiece();
-            break;
-        case 'c':
-        case 'C':
-            holdPiece();
-            break;
+    case 'ArrowLeft':
+        moveLeft();
+        break;
+    case 'ArrowRight':
+        moveRight();
+        break;
+    case 'ArrowDown':
+        moveDown();
+        break;
+    case 'ArrowUp':
+        rotatePiece();
+        break;
+    case 'c':
+    case 'C':
+        holdPiece();
+        break;
     }
 }
 
