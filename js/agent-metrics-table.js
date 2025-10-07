@@ -101,9 +101,9 @@ function showError(container, error) {
         <div class="error-container">
             <h4>Data unavailable</h4>
             <p>${error.message.includes('not found') || error.message.includes('404')
-                ? 'The data file "performance-sample.json" is missing. Please run the aggregation tool to generate the required data files.'
-                : `Error loading performance data: ${error.message}`
-            }</p>
+        ? 'The data file "performance-sample.json" is missing. Please run the aggregation tool to generate the required data files.'
+        : `Error loading performance data: ${error.message}`
+}</p>
             <button class="retry-button" onclick="location.reload()">Retry</button>
         </div>
     `;

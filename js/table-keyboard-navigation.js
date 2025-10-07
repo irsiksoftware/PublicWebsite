@@ -31,7 +31,7 @@ function makeTableNavigable(table) {
         });
 
         // Add click handler for Enter key consistency
-        row.addEventListener('click', function(event) {
+        row.addEventListener('click', function() {
             // Trigger any existing click handlers
             row.dispatchEvent(new CustomEvent('rowSelect', {
                 detail: { row: row, index: index }
@@ -46,58 +46,58 @@ function handleTableKeyboardNavigation(event, table, currentRow, currentIndex) {
     const cells = Array.from(currentRow.querySelectorAll('td, th'));
 
     switch(event.key) {
-        case 'Enter':
-        case ' ':
-            // Activate row (trigger click)
-            event.preventDefault();
-            currentRow.click();
-            break;
+    case 'Enter':
+    case ' ':
+        // Activate row (trigger click)
+        event.preventDefault();
+        currentRow.click();
+        break;
 
-        case 'ArrowUp':
-            event.preventDefault();
-            if (currentIndex > 0) {
-                rows[currentIndex - 1].focus();
-            }
-            break;
+    case 'ArrowUp':
+        event.preventDefault();
+        if (currentIndex > 0) {
+            rows[currentIndex - 1].focus();
+        }
+        break;
 
-        case 'ArrowDown':
-            event.preventDefault();
-            if (currentIndex < rows.length - 1) {
-                rows[currentIndex + 1].focus();
-            }
-            break;
+    case 'ArrowDown':
+        event.preventDefault();
+        if (currentIndex < rows.length - 1) {
+            rows[currentIndex + 1].focus();
+        }
+        break;
 
-        case 'ArrowLeft':
-            event.preventDefault();
-            navigateCells(cells, currentRow, -1);
-            break;
+    case 'ArrowLeft':
+        event.preventDefault();
+        navigateCells(cells, currentRow, -1);
+        break;
 
-        case 'ArrowRight':
-            event.preventDefault();
-            navigateCells(cells, currentRow, 1);
-            break;
+    case 'ArrowRight':
+        event.preventDefault();
+        navigateCells(cells, currentRow, 1);
+        break;
 
-        case 'Home':
-            event.preventDefault();
-            if (event.ctrlKey) {
-                // Go to first row
-                rows[0].focus();
-            } else {
-                // Go to first cell in row
-                cells[0]?.focus();
-            }
-            break;
+    case 'Home':
+        event.preventDefault();
+        if (event.ctrlKey) {
+            // Go to first row
+            rows[0].focus();
+        } else {
+            // Go to first cell in row
+            cells[0]?.focus();
+        }
+        break;
 
-        case 'End':
-            event.preventDefault();
-            if (event.ctrlKey) {
-                // Go to last row
-                rows[rows.length - 1].focus();
-            } else {
-                // Go to last cell in row
-                cells[cells.length - 1]?.focus();
-            }
-            break;
+    case 'End':
+        event.preventDefault();
+        if (event.ctrlKey) {
+            // Go to last row
+            rows[rows.length - 1].focus();
+        } else {
+            // Go to last cell in row
+            cells[cells.length - 1]?.focus();
+        }
+        break;
     }
 }
 
