@@ -33,7 +33,7 @@ let dropSpeed = 1000;
 
 // Initialize game
 function init() {
-    canvas = document.getElementById('game');
+    canvas = document.getElementById('tetris-game');
     ctx = canvas.getContext('2d');
 
     previewCanvas = document.getElementById('next-piece');

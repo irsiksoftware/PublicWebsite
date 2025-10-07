@@ -1,0 +1,174 @@
+/* Tetris Game Styles */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333333;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: rgba(26, 26, 26, 0.8);
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+header p {
+    margin: 0.5rem 0 0;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+nav {
+    background: rgba(26, 26, 26, 0.9);
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 300px);
+    padding: 2rem 1rem;
+}
+
+.game-container {
+    display: flex;
+    gap: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+canvas {
+    border: 2px solid #333333;
+    display: block;
+    background: white;
+}
+
+.ui-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 200px;
+}
+
+.ui-panel > div {
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ui-panel h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #667eea;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+.ui-panel p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333333;
+}
+
+.next-piece-display canvas,
+.hold-piece-display canvas {
+    background: white;
+    border: 1px solid #e0e0e0;
+    margin-top: 0.5rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(26, 26, 26, 0.9);
+    color: white;
+    margin-top: 2rem;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ui-panel {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        min-width: auto;
+    }
+
+    .ui-panel > div {
+        flex: 1 1 calc(50% - 0.75rem);
+        min-width: 150px;
+    }
+
+    canvas#game {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .game-container {
+        padding: 1rem;
+    }
+
+    .ui-panel > div {
+        flex: 1 1 100%;
+    }
+}
