@@ -10,7 +10,8 @@ const roles = [
         gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         responsibilities: 'Breaks down complex projects into manageable tasks, assigns work to specialized agents, monitors overall progress, and ensures cohesive integration of all team outputs.',
         anthropicPattern: 'Lead Agent',
-        patternRationale: 'Acts as the central coordinator with high-level planning capabilities, delegating to specialized workers while maintaining project coherence.'
+        patternRationale: 'Acts as the central coordinator with high-level planning capabilities, delegating to specialized workers while maintaining project coherence.',
+        learnMoreUrl: 'https://www.anthropic.com/research/building-effective-agents'
     },
     {
         name: 'Implementer',
@@ -20,7 +21,8 @@ const roles = [
         gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
         responsibilities: 'Translates specifications into working code, follows established patterns and conventions, implements new features, and integrates components into the existing codebase.',
         anthropicPattern: 'Worker Agent',
-        patternRationale: 'Focused on execution of well-defined tasks with clear specifications, operating independently within their scope of responsibility.'
+        patternRationale: 'Focused on execution of well-defined tasks with clear specifications, operating independently within their scope of responsibility.',
+        learnMoreUrl: 'https://www.anthropic.com/news/3-5-models-and-computer-use'
     },
     {
         name: 'Reviewer',
@@ -30,7 +32,8 @@ const roles = [
         gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
         responsibilities: 'Examines code for quality, security, and maintainability issues, verifies adherence to coding standards, provides constructive feedback, and approves or requests changes.',
         anthropicPattern: 'Specialist Agent',
-        patternRationale: 'Deep expertise in code quality assessment and best practices, providing specialized evaluation that requires domain knowledge.'
+        patternRationale: 'Deep expertise in code quality assessment and best practices, providing specialized evaluation that requires domain knowledge.',
+        learnMoreUrl: 'https://www.anthropic.com/customers/lonely-planet'
     },
     {
         name: 'Fixer',
@@ -40,7 +43,8 @@ const roles = [
         gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
         responsibilities: 'Diagnoses root causes of bugs and technical issues, develops and tests fixes, ensures solutions don\'t introduce new problems, and documents resolution approaches.',
         anthropicPattern: 'Worker Agent',
-        patternRationale: 'Task-focused problem solvers addressing specific issues, operating with autonomy within their debugging and fixing scope.'
+        patternRationale: 'Task-focused problem solvers addressing specific issues, operating with autonomy within their debugging and fixing scope.',
+        learnMoreUrl: 'https://www.anthropic.com/news/evaluating-ai-systems'
     },
     {
         name: 'Manager',
@@ -50,7 +54,8 @@ const roles = [
         gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
         responsibilities: 'Tracks project milestones and deadlines, monitors team capacity and workload, identifies bottlenecks or blockers, and provides status reports and insights.',
         anthropicPattern: 'Meta Agent',
-        patternRationale: 'Operates at a higher level of abstraction, monitoring and optimizing the system itself rather than directly implementing features.'
+        patternRationale: 'Operates at a higher level of abstraction, monitoring and optimizing the system itself rather than directly implementing features.',
+        learnMoreUrl: 'https://www.anthropic.com/customers/bridgewater'
     },
     {
         name: 'Tester',
@@ -60,7 +65,8 @@ const roles = [
         gradient: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
         responsibilities: 'Designs and executes test cases, validates functionality against requirements, identifies edge cases and failure scenarios, and documents test results and coverage.',
         anthropicPattern: 'Specialist Agent',
-        patternRationale: 'Specialized knowledge in testing methodologies and quality assurance, requiring expertise in test design and failure analysis.'
+        patternRationale: 'Specialized knowledge in testing methodologies and quality assurance, requiring expertise in test design and failure analysis.',
+        learnMoreUrl: 'https://www.anthropic.com/customers/asana'
     }
 ];
 
@@ -122,7 +128,7 @@ function createRoleCard(role) {
             </div>
         </div>
 
-        <a href="https://www.anthropic.com/research/building-effective-agents"
+        <a href="${escapeHtml(role.learnMoreUrl)}"
            target="_blank"
            rel="noopener noreferrer"
            class="role-card-learn-more">
