@@ -174,6 +174,6 @@ This creates a self-documenting, living showcase of AI agent capabilities.
 
 **Joke Time!** 🎭
 
-Why don't programmers like nature?
+Why do programmers prefer dark mode?
 
-It has too many bugs!
+Because light attracts bugs!
