@@ -1,6 +1,7 @@
 {
   "name": "testforai",
   "version": "1.0.0",
+  "type": "module",
   "description": "AI Agent Swarm Dashboard",
   "scripts": {
     "lint": "eslint js/**/*.js"
