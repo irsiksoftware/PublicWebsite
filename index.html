@@ -48,9 +48,7 @@
     <nav role="navigation" aria-label="Main navigation">
         <ul>
             <li><a href="#overview" aria-label="Navigate to Home section">Home</a></li>
-            <li><a href="#team" aria-label="Navigate to Team section">Team</a></li>
-            <li><a href="#metrics" class="active" aria-label="Navigate to Activity section">Activity</a></li>
-            <li><a href="#metrics" aria-label="Navigate to Performance section">Performance</a></li>
+            <li><a href="#team" class="active" aria-label="Navigate to Team section">Team</a></li>
             <li><a href="tetris.html" aria-label="Navigate to Tetris game">Tetris</a></li>
             <li><a href="contact.html" aria-label="Navigate to Contact Us section">Contact Us</a></li>
         </ul>
@@ -61,86 +59,6 @@
             <h2 id="overview-heading">Overview</h2>
             <p class="company-tagline">Enterprise Software Solutions & AI Innovation</p>
             <p>IrsikSoftware delivers cutting-edge enterprise solutions that combine traditional software engineering excellence with innovative AI technologies. We partner with organizations to transform their digital infrastructure and unlock new capabilities through intelligent automation and advanced software development practices.</p>
-        </section>
-
-        <section id="metrics" aria-labelledby="metrics-heading">
-            <h2 id="metrics-heading">Development Metrics</h2>
-            <p>Track the performance and collaboration of our AI development team.</p>
-            <div id="example-chart-container">
-                <h3>Example Bar Chart</h3>
-                <canvas id="exampleBarChart"></canvas>
-            </div>
-            <div id="success-rate-chart-container">
-                <canvas id="success-rate-chart"></canvas>
-            </div>
-            <div id="cache-performance-chart-container">
-                <canvas id="cache-performance-chart"></canvas>
-            </div>
-            <div id="token-usage-chart-container">
-                <canvas id="token-usage-chart"></canvas>
-            </div>
-            <div id="spy-activity-container">
-                <h3>Spy Activity Log</h3>
-                <div>
-                    <label for="tool-filter">Filter by tool:</label>
-                    <select id="tool-filter">
-                        <option value="all">All</option>
-                        <option value="gh">gh</option>
-                        <option value="git">git</option>
-                        <option value="npm">npm</option>
-                        <option value="gh-fake">gh-fake</option>
-                    </select>
-                    <span id="filter-count"></span>
-                </div>
-                <div class="table-container">
-                    <table id="spy-activity-table">
-                        <thead>
-                            <tr>
-                                <th data-column="timestamp">Timestamp <span class="sort-arrow"></span></th>
-                                <th data-column="agent">Agent <span class="sort-arrow"></span></th>
-                                <th data-column="tool">Tool <span class="sort-arrow"></span></th>
-                                <th data-column="command">Command <span class="sort-arrow"></span></th>
-                                <th data-column="exit_code">Exit Code <span class="sort-arrow"></span></th>
-                                <th data-column="duration_ms">Duration (ms) <span class="sort-arrow"></span></th>
-                                <th data-column="cache_status">Cache Status <span class="sort-arrow"></span></th>
-                            </tr>
-                        </thead>
-                        <tbody id="spy-activity-tbody">
-                            <tr>
-                                <td colspan="7">Loading...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="pagination-controls">
-                    <button id="prev-page" aria-label="Previous page">Previous</button>
-                    <span id="page-info" aria-live="polite">Page 1 of 1</span>
-                    <button id="next-page" aria-label="Next page">Next</button>
-                </div>
-            </div>
-            <div id="audit-sessions-container">
-                <h3>Audit Sessions</h3>
-                <div class="table-container">
-                    <table id="audit-sessions-table">
-                        <thead>
-                            <tr>
-                                <th>Timestamp</th>
-                                <th>Role</th>
-                                <th>File</th>
-                                <th>Has Error</th>
-                                <th>Is Timeout</th>
-                                <th>Productive</th>
-                                <th>Signals</th>
-                            </tr>
-                        </thead>
-                        <tbody id="audit-sessions-tbody">
-                            <tr>
-                                <td colspan="7">Loading...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </section>
 
         <section id="team" aria-labelledby="team-heading">
@@ -165,15 +83,9 @@
         <p>&copy; 2025 Swarm Showcase. Built by AI agents.</p>
     </footer>
 
-    <script src="js/charts.js"></script>
-    <script src="js/success-rate-chart.js"></script>
-    <script src="js/cache-performance-chart.js"></script>
-    <script src="js/token-usage-chart.js"></script>
     <script src="js/agent-profile.js"></script>
     <script src="js/agent-metrics-table.js"></script>
-    <script src="js/spy-activity.js"></script>
     <script src="js/roles-overview.js"></script>
-    <script src="js/audit-sessions.js"></script>
     <script src="js/lazy-load-images.js"></script>
     <script src="js/table-keyboard-navigation.js"></script>
     <script src="js/hero-carousel.js"></script>
