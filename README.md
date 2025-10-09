@@ -1,6 +1,6 @@
 # Meta Swarm Analysis Website
 
-> Why did the AI agent go to therapy? Because it had too many unresolved issues in its backlog!
+> Why don't AI agents ever get lost? Because they always follow their git commits to find their way back home!
 
 A showcase website that displays real-time metrics, activity, and performance data from the AI agent swarm that built it.
 
