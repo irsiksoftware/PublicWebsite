@@ -1,0 +1,28 @@
+<!-- Core JavaScript -->
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+<!-- Theme Toggle -->
+{% if site.enable_dark_mode %}
+<script src="{{ '/assets/js/theme-toggle.js' | relative_url }}"></script>
+{% endif %}
+
+<!-- Service Worker Registration -->
+<script src="{{ '/js/service-worker-register.js' | relative_url }}"></script>
+
+<!-- Analytics -->
+{% if site.google_analytics %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.google_analytics }}');
+</script>
+{% endif %}
+
+<!-- Additional Scripts -->
+{% if page.custom_js %}
+  {% for js_file in page.custom_js %}
+  <script src="{{ js_file | relative_url }}"></script>
+  {% endfor %}
+{% endif %}

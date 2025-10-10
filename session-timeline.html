@@ -1,38 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session Timeline</title>
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/session-timeline.css">
-    <link rel="stylesheet" href="css/theme-toggle.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <script src="js/theme-toggle.js"></script>
-    <script src="js/service-worker-register.js"></script>
-</head>
-<body>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
-    <div class="container">
-        <h1 id="timeline-heading">Agent Audit Sessions Timeline</h1>
-        <div id="timeline-container" aria-labelledby="timeline-heading" aria-live="polite">
-            <div class="timeline-loading">Loading sessions...</div>
-        </div>
+---
+layout: default
+title: "Session Timeline"
+description: "Agent Audit Sessions Timeline"
+additional_css:
+  - session-timeline.css
+additional_scripts_body:
+  - src: "js/session-timeline.js"
+---
+
+<div class="container">
+    <h1 id="timeline-heading">Agent Audit Sessions Timeline</h1>
+    <div id="timeline-container" aria-labelledby="timeline-heading" aria-live="polite">
+        <div class="timeline-loading">Loading sessions...</div>
     </div>
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 IrsikSoftware. All rights reserved.</p>
-            <nav class="footer-nav">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms-of-service.html">Terms of Service</a>
-            </nav>
-            <address>
-                123 Innovation Drive, Suite 400<br>
-                Tech Valley, CA 94000
-            </address>
-        </div>
-    </footer>
-    <script src="js/session-timeline.js"></script>
-</body>
-</html>
+</div>

@@ -1,0 +1,25 @@
+title: "IrsikSoftware - Enterprise Software Solutions"
+description: "Leading provider of custom software development, AI solutions, and cloud architecture services"
+baseurl: ""
+url: "https://irsik.software"
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .github
+
+# Include files
+include:
+  - _includes
+  - _layouts
