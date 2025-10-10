@@ -1,0 +1,86 @@
+---
+layout: default
+title: "Racing Game - Unity WebGL Demo"
+description: "Experience high-speed racing in our Unity WebGL racing game demo"
+stylesheets:
+  - ../css/variables.css
+  - ../css/reset.css
+  - ../css/unity-game.css
+  - ../css/accessibility.css
+  - ../css/responsive.css
+  - ../css/theme-toggle.css
+  - ../css/footer.css
+scripts_head:
+  - src: ../js/theme-toggle.js
+theme_toggle: true
+header:
+  title: Racing Game Demo
+  subtitle: High-Speed 3D Racing Action
+nav:
+  - text: Home
+    url: ../index.html
+  - text: All Games
+    url: ../games.html
+  - text: Contact Us
+    url: ../contact.html
+scripts_body:
+  - ../js/unity-loader.js
+---
+
+<section id="game-container" aria-labelledby="game-heading">
+    <h2 id="game-heading" class="visually-hidden">Racing Game Demo</h2>
+
+    <div class="game-wrapper">
+        <div id="unity-container" class="unity-desktop">
+            <canvas id="unity-canvas" tabindex="-1" aria-label="Racing Game Canvas"></canvas>
+            <div id="unity-loading-bar">
+                <div id="unity-logo"></div>
+                <div id="unity-progress-bar-empty">
+                    <div id="unity-progress-bar-full"></div>
+                </div>
+            </div>
+            <div id="unity-warning" aria-live="polite"></div>
+        </div>
+
+        <div class="game-controls">
+            <button id="fullscreen-button" aria-label="Toggle fullscreen">⛶ Fullscreen</button>
+            <button id="restart-button" aria-label="Restart game">↻ Restart</button>
+        </div>
+
+        <div class="game-info-panel">
+            <h3>About This Game</h3>
+            <p>Race through stunning 3D environments with realistic physics and dynamic weather. Compete for the best lap times on challenging tracks.</p>
+
+            <h4>Controls</h4>
+            <ul>
+                <li><strong>Arrow Keys / WASD:</strong> Steer and accelerate</li>
+                <li><strong>Space:</strong> Brake / Handbrake</li>
+                <li><strong>Shift:</strong> Boost (when available)</li>
+                <li><strong>C:</strong> Change camera view</li>
+                <li><strong>R:</strong> Reset car position</li>
+                <li><strong>ESC:</strong> Pause menu</li>
+            </ul>
+
+            <h4>Features</h4>
+            <ul>
+                <li>Realistic car physics and handling</li>
+                <li>Multiple racing tracks</li>
+                <li>Dynamic weather conditions</li>
+                <li>Time trial and race modes</li>
+                <li>Multiple camera angles</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script>
+    const gameConfig = {
+        dataUrl: "../unity-builds/racing/Build/racing.data.unityweb",
+        frameworkUrl: "../unity-builds/racing/Build/racing.framework.js.unityweb",
+        codeUrl: "../unity-builds/racing/Build/racing.wasm.unityweb",
+        streamingAssetsUrl: "../unity-builds/racing/StreamingAssets",
+        companyName: "IrsikSoftware",
+        productName: "Racing Game Demo",
+        productVersion: "1.0.0",
+    };
+</script>

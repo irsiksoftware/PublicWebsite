@@ -1,0 +1,91 @@
+---
+layout: default
+title: "Multiplayer Prototype - Unity WebGL Demo"
+description: "Test real-time multiplayer gameplay with Unity WebGL"
+stylesheets:
+  - ../css/variables.css
+  - ../css/reset.css
+  - ../css/unity-game.css
+  - ../css/accessibility.css
+  - ../css/responsive.css
+  - ../css/theme-toggle.css
+  - ../css/footer.css
+scripts_head:
+  - src: ../js/theme-toggle.js
+theme_toggle: true
+header:
+  title: Multiplayer Prototype
+  subtitle: Real-Time Networked Gameplay
+nav:
+  - text: Home
+    url: ../index.html
+  - text: All Games
+    url: ../games.html
+  - text: Contact Us
+    url: ../contact.html
+scripts_body:
+  - ../js/unity-loader.js
+---
+
+<section id="game-container" aria-labelledby="game-heading">
+    <h2 id="game-heading" class="visually-hidden">Multiplayer Prototype</h2>
+
+    <div class="game-wrapper">
+        <div id="unity-container" class="unity-desktop">
+            <canvas id="unity-canvas" tabindex="-1" aria-label="Multiplayer Game Canvas"></canvas>
+            <div id="unity-loading-bar">
+                <div id="unity-logo"></div>
+                <div id="unity-progress-bar-empty">
+                    <div id="unity-progress-bar-full"></div>
+                </div>
+            </div>
+            <div id="unity-warning" aria-live="polite"></div>
+        </div>
+
+        <div class="game-controls">
+            <button id="fullscreen-button" aria-label="Toggle fullscreen">⛶ Fullscreen</button>
+            <button id="restart-button" aria-label="Restart game">↻ Reconnect</button>
+        </div>
+
+        <div class="game-info-panel">
+            <h3>About This Game</h3>
+            <p>Experience real-time multiplayer gameplay with synchronized physics and player interactions. Join other players in a shared virtual space.</p>
+
+            <h4>Controls</h4>
+            <ul>
+                <li><strong>WASD:</strong> Move your character</li>
+                <li><strong>Mouse:</strong> Look around</li>
+                <li><strong>Space:</strong> Jump</li>
+                <li><strong>Left Click:</strong> Primary action</li>
+                <li><strong>E:</strong> Interact with objects</li>
+                <li><strong>Tab:</strong> Show scoreboard</li>
+                <li><strong>T:</strong> Text chat</li>
+                <li><strong>ESC:</strong> Menu</li>
+            </ul>
+
+            <h4>Features</h4>
+            <ul>
+                <li>Real-time multiplayer networking</li>
+                <li>Synchronized player movements</li>
+                <li>Shared game state</li>
+                <li>In-game text chat</li>
+                <li>Player matchmaking</li>
+            </ul>
+
+            <h4>Note</h4>
+            <p><em>This is a prototype demonstration. Actual multiplayer functionality requires backend server infrastructure.</em></p>
+        </div>
+    </div>
+</section>
+
+<script>
+    const gameConfig = {
+        dataUrl: "../unity-builds/multiplayer/Build/multiplayer.data.unityweb",
+        frameworkUrl: "../unity-builds/multiplayer/Build/multiplayer.framework.js.unityweb",
+        codeUrl: "../unity-builds/multiplayer/Build/multiplayer.wasm.unityweb",
+        streamingAssetsUrl: "../unity-builds/multiplayer/StreamingAssets",
+        companyName: "IrsikSoftware",
+        productName: "Multiplayer Prototype",
+        productVersion: "1.0.0",
+    };
+</script>

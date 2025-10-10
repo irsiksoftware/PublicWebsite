@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Irsik Software Solutions Client Portal - Secure Login">
+    <title>Client Portal Login - Irsik Software Solutions</title>
+    <link rel="stylesheet" href="./css/portal.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <h1>Irsik Software Solutions</h1>
+                <p>Client Portal</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="remember" id="remember">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+                <div class="error-message" id="errorMessage" style="display: none;"></div>
+            </form>
+            <div class="login-footer">
+                <p>Need access? <a href="../contact.html">Contact us</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="./js/auth.js"></script>
+</body>
+</html>

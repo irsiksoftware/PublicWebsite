@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support Tickets - Client Portal">
+    <title>Support - Client Portal</title>
+    <link rel="stylesheet" href="./css/portal.css">
+</head>
+<body>
+    <div class="portal-wrapper">
+        <nav class="portal-nav">
+            <div class="nav-header">
+                <h2>Irsik Software Solutions</h2>
+                <p class="user-info" id="userInfo">Loading...</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                <li><a href="./documents.html">Documents</a></li>
+                <li><a href="./support.html" class="active">Support Tickets</a></li>
+                <li><a href="#" id="logoutBtn">Logout</a></li>
+            </ul>
+        </nav>
+        <main class="portal-content">
+            <header class="content-header">
+                <h1>Support Tickets</h1>
+                <button id="newTicketBtn" class="btn-primary">New Ticket</button>
+            </header>
+            <div class="tickets-container">
+                <div class="ticket-filters">
+                    <button class="filter-btn active" data-status="all">All</button>
+                    <button class="filter-btn" data-status="open">Open</button>
+                    <button class="filter-btn" data-status="in-progress">In Progress</button>
+                    <button class="filter-btn" data-status="resolved">Resolved</button>
+                    <button class="filter-btn" data-status="closed">Closed</button>
+                </div>
+                <div id="ticketList" class="ticket-list">
+                    <div class="loading">Loading tickets...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- New Ticket Modal -->
+    <div id="newTicketModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Ticket</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <form id="newTicketForm" class="ticket-form">
+                <div class="form-group">
+                    <label for="ticketSubject">Subject</label>
+                    <input type="text" id="ticketSubject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="ticketPriority">Priority</label>
+                    <select id="ticketPriority" name="priority" required>
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                        <option value="urgent">Urgent</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ticketCategory">Category</label>
+                    <select id="ticketCategory" name="category" required>
+                        <option value="technical">Technical Issue</option>
+                        <option value="billing">Billing</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="general">General Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ticketDescription">Description</label>
+                    <textarea id="ticketDescription" name="description" rows="6" required></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancelTicket">Cancel</button>
+                    <button type="submit" class="btn-primary">Submit Ticket</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/auth.js"></script>
+    <script src="./js/support.js"></script>
+</body>
+</html>

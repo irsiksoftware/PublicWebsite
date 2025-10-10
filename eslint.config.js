@@ -23,7 +23,12 @@ export default [
                 SessionDetailModal: "readonly",
                 module: "readonly",
                 navigator: "readonly",
-                self: "readonly"
+                self: "readonly",
+                gtag: "readonly",
+                URL: "readonly",
+                trackLinkClick: "readonly",
+                trackDownload: "readonly",
+                trackScrollDepth: "readonly"
             }
         },
         rules: {
