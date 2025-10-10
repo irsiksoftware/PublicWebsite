@@ -3,6 +3,10 @@ description: "Leading provider of custom software development, AI solutions, and
 baseurl: ""
 url: "https://irsik.software"
 
+# Google Analytics 4
+# To enable: Set your GA4 Measurement ID (format: G-XXXXXXXXXX)
+google_analytics_id: ""
+
 # Build settings
 markdown: kramdown
 plugins:
