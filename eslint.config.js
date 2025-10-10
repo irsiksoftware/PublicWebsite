@@ -21,7 +21,9 @@ export default [
                 Chart: "readonly",
                 TETROMINO_SHAPES: "readonly",
                 SessionDetailModal: "readonly",
-                module: "readonly"
+                module: "readonly",
+                navigator: "readonly",
+                self: "readonly"
             }
         },
         rules: {
