@@ -3,9 +3,9 @@
     "collect": {
       "url": [
         "http://localhost:8080/index.html",
-        "http://localhost:8080/about.html",
-        "http://localhost:8080/services.html",
-        "http://localhost:8080/contact.html"
+        "http://localhost:8080/contact.html",
+        "http://localhost:8080/privacy-policy.html",
+        "http://localhost:8080/terms-of-service.html"
       ],
       "numberOfRuns": 3,
       "startServerCommand": "npx http-server -p 8080",
