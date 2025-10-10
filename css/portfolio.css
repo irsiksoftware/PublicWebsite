@@ -43,6 +43,27 @@
     font-size: 1rem;
 }
 
+.portfolio-item .demo-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.portfolio-item .demo-link:hover {
+    background: var(--primary-blue-dark, #1e5a8e);
+    transform: translateY(-2px);
+}
+
+.portfolio-item .demo-link:active {
+    transform: translateY(0);
+}
+
 @media (max-width: 768px) {
     .portfolio-grid {
         grid-template-columns: 1fr;
