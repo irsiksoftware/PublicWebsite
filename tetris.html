@@ -9,6 +9,32 @@ additional_scripts_body:
   - src: "js/tetromino-shapes.js"
   - src: "js/tetris.js"
   - src: "js/lazy-load-images.js"
+stylesheets:
+  - css/variables.css
+  - css/reset.css
+  - css/tetris.css
+  - css/accessibility.css
+  - css/responsive.css
+  - css/lazy-load.css
+  - css/theme-toggle.css
+  - css/footer.css
+scripts_head:
+  - src: js/theme-toggle.js
+theme_toggle: true
+header:
+  title: Tetris
+  subtitle: Classic Block Puzzle Game
+nav:
+  - text: Home
+    url: index.html
+  - text: Game
+    url: "#game"
+  - text: Contact Us
+    url: contact.html
+scripts_body:
+  - js/tetromino-shapes.js
+  - js/tetris.js
+  - js/lazy-load-images.js
 ---
 
 <section id="game" aria-labelledby="game-heading">
