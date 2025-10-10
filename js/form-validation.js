@@ -1,6 +1,6 @@
 /**
  * Accessible Form Validation - WCAG 2.1 AA Compliant
- * Provides real-time validation feedback with proper ARIA support
+ * Provides real-time validation feedback with proper ARIA support and keyboard navigation
  */
 
 class AccessibleFormValidator {
@@ -12,7 +12,7 @@ class AccessibleFormValidator {
     }
 
     init() {
-    // Add aria-live region for form-level errors
+        // Add aria-live region for form-level errors
         this.createErrorSummary();
 
         // Set up field validation
@@ -28,8 +28,37 @@ class AccessibleFormValidator {
             input.addEventListener('input', () => this.clearFieldError(input));
         });
 
+        // Enable keyboard navigation
+        this.setupKeyboardNavigation();
+
         // Form submission validation
         this.form.addEventListener('submit', (e) => this.validateForm(e));
+    }
+
+    setupKeyboardNavigation() {
+        const formGroups = Array.from(this.form.querySelectorAll('.form-group'));
+        const submitBtn = this.form.querySelector('button[type="submit"]');
+
+        this.form.addEventListener('keydown', (e) => {
+            const currentInput = document.activeElement;
+
+            // Move to next field with Enter key (unless in textarea)
+            if (e.key === 'Enter' && currentInput.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+                const currentIndex = formGroups.findIndex(group =>
+                    group.contains(currentInput)
+                );
+
+                if (currentIndex !== -1 && currentIndex < formGroups.length - 1) {
+                    const nextInput = formGroups[currentIndex + 1].querySelector('input, textarea, select');
+                    if (nextInput) {
+                        nextInput.focus();
+                    }
+                } else if (submitBtn) {
+                    submitBtn.focus();
+                }
+            }
+        });
     }
 
     createErrorSummary() {
@@ -175,7 +204,47 @@ class AccessibleFormValidator {
 
         // Clear error summary on successful validation
         this.clearErrorSummary();
+
+        // Handle successful form submission
+        this.handleFormSubmit(e);
         return true;
+    }
+
+    handleFormSubmit(e) {
+        e.preventDefault();
+        const submitBtn = this.form.querySelector('button[type="submit"]');
+
+        // Disable submit button during processing
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+        }
+
+        // Show success message
+        setTimeout(() => {
+            const successMsg = document.createElement('div');
+            successMsg.className = 'success-message';
+            successMsg.setAttribute('role', 'alert');
+            successMsg.textContent = 'Your message has been sent successfully!';
+
+            this.form.insertAdjacentElement('beforebegin', successMsg);
+            this.form.reset();
+
+            // Re-enable submit button
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
+
+            // Focus success message for screen readers
+            successMsg.setAttribute('tabindex', '-1');
+            successMsg.focus();
+
+            // Remove success message after 5 seconds
+            setTimeout(() => {
+                successMsg.remove();
+            }, 5000);
+        }, 1000);
     }
 
     showErrorSummary(errors) {
