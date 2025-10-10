@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktestforai=self.webpackChunktestforai||[]).push([[944],{259:()=>{window.addEventListener("scroll",function(){var e=document.querySelector("header");window.scrollY>0?e.classList.add("scrolled"):e.classList.remove("scrolled")})}},e=>{var s;s=259,e(e.s=s)}]);
+//# sourceMappingURL=sticky-header.9fc31948ec325cbf9d2a.js.map

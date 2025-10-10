@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktestforai=self.webpackChunktestforai||[]).push([[370],{733:()=>{!function(){var e=["./pictures/hero_banner_4.png","./pictures/hero_banner_9.png","./pictures/hero_banner_14.png","./pictures/hero_banner_19.png","./pictures/hero_banner_24.png"],n=0,r=document.querySelector(".hero-section");function t(n){r&&r.style.setProperty("--hero-bg-image","url('".concat(e[n],"')"))}r&&(t(0),setInterval(function(){t(n=(n+1)%e.length)},5e3))}()}},e=>{var n;n=733,e(e.s=n)}]);
+//# sourceMappingURL=hero-carousel.7a753f81a9c46ec811b2.js.map
