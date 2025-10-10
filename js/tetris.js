@@ -57,6 +57,9 @@ function init() {
     // Set up keyboard controls
     document.addEventListener('keydown', handleKeyPress);
 
+    // Set up touch controls
+    setupTouchControls();
+
     // Update UI
     updateUI();
 
@@ -294,6 +297,65 @@ function handleKeyPress(event) {
         holdPiece();
         break;
     }
+}
+
+// Set up touch controls for mobile
+function setupTouchControls() {
+    const btnLeft = document.getElementById('btn-left');
+    const btnRight = document.getElementById('btn-right');
+    const btnDown = document.getElementById('btn-down');
+    const btnRotate = document.getElementById('btn-rotate');
+    const btnHold = document.getElementById('btn-hold');
+
+    // Prevent default touch behavior
+    const preventDefaultTouch = (e) => {
+        e.preventDefault();
+    };
+
+    // Left button
+    btnLeft.addEventListener('touchstart', (e) => {
+        preventDefaultTouch(e);
+        moveLeft();
+    });
+    btnLeft.addEventListener('click', (e) => {
+        moveLeft();
+    });
+
+    // Right button
+    btnRight.addEventListener('touchstart', (e) => {
+        preventDefaultTouch(e);
+        moveRight();
+    });
+    btnRight.addEventListener('click', (e) => {
+        moveRight();
+    });
+
+    // Down button
+    btnDown.addEventListener('touchstart', (e) => {
+        preventDefaultTouch(e);
+        moveDown();
+    });
+    btnDown.addEventListener('click', (e) => {
+        moveDown();
+    });
+
+    // Rotate button
+    btnRotate.addEventListener('touchstart', (e) => {
+        preventDefaultTouch(e);
+        rotatePiece();
+    });
+    btnRotate.addEventListener('click', (e) => {
+        rotatePiece();
+    });
+
+    // Hold button
+    btnHold.addEventListener('touchstart', (e) => {
+        preventDefaultTouch(e);
+        holdPiece();
+    });
+    btnHold.addEventListener('click', (e) => {
+        holdPiece();
+    });
 }
 
 // Move piece left

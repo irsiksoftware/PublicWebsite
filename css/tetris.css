@@ -117,6 +117,137 @@ canvas {
     margin-top: 0.5rem;
 }
 
+/* Mobile controls */
+.game-and-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mobile-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.dpad-container {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 0.25rem;
+    justify-items: center;
+}
+
+.dpad-middle {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 0.25rem;
+}
+
+.dpad-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    border: 2px solid #667eea;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    color: #667eea;
+    font-weight: bold;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.dpad-btn:hover {
+    background: #667eea;
+    color: white;
+}
+
+.dpad-btn:active {
+    transform: scale(0.95);
+    background: #5568d3;
+    color: white;
+}
+
+.hold-btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid #764ba2;
+    background: white;
+    color: #764ba2;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hold-btn:hover {
+    background: #764ba2;
+    color: white;
+}
+
+.hold-btn:active {
+    transform: scale(0.95);
+    background: #653a8a;
+    color: white;
+}
+
+/* Tooltip */
+.hold-piece-display h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #667eea;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: help;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    background: #333;
+    color: white;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 1.4;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip-icon:hover + .tooltip,
+.tooltip-icon:focus + .tooltip,
+.tooltip:hover {
+    display: block;
+}
+
 footer {
     text-align: center;
     padding: 1rem;
@@ -148,7 +279,7 @@ footer p {
         min-width: 150px;
     }
 
-    canvas#game {
+    canvas#tetris-game {
         width: 100%;
         max-width: 320px;
         height: auto;
