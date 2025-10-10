@@ -317,7 +317,7 @@ function setupTouchControls() {
         preventDefaultTouch(e);
         moveLeft();
     });
-    btnLeft.addEventListener('click', (e) => {
+    btnLeft.addEventListener('click', () => {
         moveLeft();
     });
 
@@ -326,7 +326,7 @@ function setupTouchControls() {
         preventDefaultTouch(e);
         moveRight();
     });
-    btnRight.addEventListener('click', (e) => {
+    btnRight.addEventListener('click', () => {
         moveRight();
     });
 
@@ -335,7 +335,7 @@ function setupTouchControls() {
         preventDefaultTouch(e);
         moveDown();
     });
-    btnDown.addEventListener('click', (e) => {
+    btnDown.addEventListener('click', () => {
         moveDown();
     });
 
@@ -344,7 +344,7 @@ function setupTouchControls() {
         preventDefaultTouch(e);
         rotatePiece();
     });
-    btnRotate.addEventListener('click', (e) => {
+    btnRotate.addEventListener('click', () => {
         rotatePiece();
     });
 
@@ -353,7 +353,7 @@ function setupTouchControls() {
         preventDefaultTouch(e);
         holdPiece();
     });
-    btnHold.addEventListener('click', (e) => {
+    btnHold.addEventListener('click', () => {
         holdPiece();
     });
 }
