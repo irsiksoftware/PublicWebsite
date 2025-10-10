@@ -41,7 +41,7 @@ jobs:
       - name: Lint JS files
         run: |
           if [ -d js ] && [ "$(ls -A js/*.js 2>/dev/null)" ]; then
-            npx eslint js/**/*.js --max-warnings 0 || echo "No ESLint config found, skipping strict linting"
+            npx eslint --config config/eslint.config.js js/**/*.js --max-warnings 0 || echo "No ESLint config found, skipping strict linting"
           else
             echo "No JS files to lint"
           fi
