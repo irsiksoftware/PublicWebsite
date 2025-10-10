@@ -3,6 +3,8 @@
  * Provides real-time validation feedback with proper ARIA support and keyboard navigation
  */
 
+/* global FormData, fetch */
+
 class AccessibleFormValidator {
     constructor(formSelector) {
         this.form = document.querySelector(formSelector);
@@ -210,9 +212,10 @@ class AccessibleFormValidator {
         return true;
     }
 
-    handleFormSubmit(e) {
+    async handleFormSubmit(e) {
         e.preventDefault();
         const submitBtn = this.form.querySelector('button[type="submit"]');
+        const statusDiv = document.getElementById('form-status');
 
         // Disable submit button during processing
         if (submitBtn) {
@@ -220,31 +223,65 @@ class AccessibleFormValidator {
             submitBtn.textContent = 'Sending...';
         }
 
-        // Show success message
-        setTimeout(() => {
-            const successMsg = document.createElement('div');
-            successMsg.className = 'success-message';
-            successMsg.setAttribute('role', 'alert');
-            successMsg.textContent = 'Your message has been sent successfully!';
+        try {
+            // Submit form data to Formspree
+            const formData = new FormData(this.form);
+            const response = await fetch(this.form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
 
-            this.form.insertAdjacentElement('beforebegin', successMsg);
-            this.form.reset();
+            if (response.ok) {
+                // Show success message
+                if (statusDiv) {
+                    statusDiv.className = 'form-status success-message';
+                    statusDiv.textContent = 'Thank you! Your message has been sent successfully.';
+                    statusDiv.style.display = 'block';
+                }
 
+                this.form.reset();
+
+                // Focus status message for screen readers
+                if (statusDiv) {
+                    statusDiv.setAttribute('tabindex', '-1');
+                    statusDiv.focus();
+                }
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    if (statusDiv) {
+                        statusDiv.style.display = 'none';
+                        statusDiv.removeAttribute('tabindex');
+                    }
+                }, 5000);
+            } else {
+                // Handle error response
+                const data = await response.json();
+                const errorMsg = data.errors ? data.errors.map(e => e.message).join(', ') : 'There was a problem sending your message. Please try again.';
+
+                if (statusDiv) {
+                    statusDiv.className = 'form-status error-message';
+                    statusDiv.textContent = errorMsg;
+                    statusDiv.style.display = 'block';
+                }
+            }
+        } catch (error) {
+            // Handle network error
+            if (statusDiv) {
+                statusDiv.className = 'form-status error-message';
+                statusDiv.textContent = 'There was a network error. Please check your connection and try again.';
+                statusDiv.style.display = 'block';
+            }
+        } finally {
             // Re-enable submit button
             if (submitBtn) {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Send Message';
             }
-
-            // Focus success message for screen readers
-            successMsg.setAttribute('tabindex', '-1');
-            successMsg.focus();
-
-            // Remove success message after 5 seconds
-            setTimeout(() => {
-                successMsg.remove();
-            }, 5000);
-        }, 1000);
+        }
     }
 
     showErrorSummary(errors) {
