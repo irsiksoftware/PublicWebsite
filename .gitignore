@@ -1,11 +1,59 @@
+# Dependencies
 node_modules/
-coverage/
-.DS_Store
-*.log
-.env
-.env.local
+package-lock.json
+
+# Build outputs
 dist/
 build/
+public/
+.cache/
+
+# Testing
+coverage/
 cypress/videos/
 cypress/screenshots/
 cypress/downloads/
+.nyc_output/
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+.temp/
+temp/
+.pr-body*.txt
+.pr-body*.md
+pr-body*
+
+# Build artifacts
+*.min.js
+*.min.css
+
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Lighthouse reports
+lighthouse-reports/
+.lighthouseci/
