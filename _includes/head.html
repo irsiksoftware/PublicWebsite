@@ -19,6 +19,11 @@
   {% endfor %}
 {% endif %}
 <title>{{ page.title | default: site.title }}</title>
+{% include schema-organization.html %}
+{% include schema-localbusiness.html %}
+{% include schema-service.html %}
+{% include schema-softwareapplication.html %}
+{% include schema-breadcrumb.html %}
 {% if site.google_analytics_id %}
 {% include google-analytics.html %}
 {% endif %}
