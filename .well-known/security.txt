@@ -1,0 +1,16 @@
+# Our security policy
+# RFC 9116 compliant security.txt file
+
+Contact: mailto:security@irsik.com
+Expires: 2026-10-10T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.irsik.com/.well-known/security.txt
+
+# Encryption
+Encryption: https://keys.openpgp.org/search?q=security@irsik.com
+
+# Policy
+Policy: https://www.irsik.com/security-policy
+
+# Acknowledgments
+Acknowledgments: https://www.irsik.com/security-acknowledgments
