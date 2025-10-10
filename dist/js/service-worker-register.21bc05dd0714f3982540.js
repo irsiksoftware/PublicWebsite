@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktestforai=self.webpackChunktestforai||[]).push([[495],{714:()=>{"serviceWorker"in navigator&&window.addEventListener("load",function(){navigator.serviceWorker.register("./service-worker.js").then(function(e){setInterval(function(){e.update()},6e4)}).catch(function(e){}),navigator.serviceWorker.addEventListener("controllerchange",function(){window.location.reload()})})}},e=>{var n;n=714,e(e.s=n)}]);
+//# sourceMappingURL=service-worker-register.21bc05dd0714f3982540.js.map
