@@ -1,0 +1,247 @@
+/* Accessible Form Validation Styles - WCAG 2.1 AA Compliant */
+
+/* Form Error Summary */
+.form-error-summary {
+  display: none;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #FEE2E2;
+  border: 2px solid #DC2626;
+  border-radius: 8px;
+  color: #991B1B;
+}
+
+[data-theme="dark"] .form-error-summary {
+  background-color: #7F1D1D;
+  border-color: #DC2626;
+  color: #FCA5A5;
+}
+
+.form-error-summary h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  color: #991B1B;
+}
+
+[data-theme="dark"] .form-error-summary h3 {
+  color: #FCA5A5;
+}
+
+.form-error-summary ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
+.form-error-summary li {
+  margin-bottom: 0.5rem;
+}
+
+.form-error-summary a {
+  color: #991B1B;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.form-error-summary a:hover {
+  color: #7F1D1D;
+}
+
+[data-theme="dark"] .form-error-summary a {
+  color: #FCA5A5;
+}
+
+[data-theme="dark"] .form-error-summary a:hover {
+  color: #FEE2E2;
+}
+
+/* Field-level error states */
+.form-group.has-error label {
+  color: #DC2626;
+}
+
+[data-theme="dark"] .form-group.has-error label {
+  color: #FCA5A5;
+}
+
+.form-group input.error,
+.form-group textarea.error,
+.form-group select.error {
+  border-color: #DC2626;
+  background-color: #FEE2E2;
+}
+
+[data-theme="dark"] .form-group input.error,
+[data-theme="dark"] .form-group textarea.error,
+[data-theme="dark"] .form-group select.error {
+  border-color: #DC2626;
+  background-color: rgba(127, 29, 29, 0.3);
+  color: #f0f0f0;
+}
+
+/* Ensure error border is visible with sufficient contrast */
+.form-group input.error:focus,
+.form-group textarea.error:focus,
+.form-group select.error:focus {
+  outline: 3px solid #DC2626;
+  outline-offset: 2px;
+  border-color: #DC2626;
+}
+
+/* Field error messages */
+.field-error {
+  display: none;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #DC2626;
+  font-weight: 500;
+}
+
+[data-theme="dark"] .field-error {
+  color: #FCA5A5;
+}
+
+/* Success states */
+.form-group.has-success input,
+.form-group.has-success textarea,
+.form-group.has-success select {
+  border-color: #10B981;
+  background-color: #D1FAE5;
+}
+
+[data-theme="dark"] .form-group.has-success input,
+[data-theme="dark"] .form-group.has-success textarea,
+[data-theme="dark"] .form-group.has-success select {
+  border-color: #10B981;
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+/* Required field indicator */
+.form-group label span[aria-label="required"] {
+  color: #DC2626;
+  margin-left: 0.25rem;
+}
+
+[data-theme="dark"] .form-group label span[aria-label="required"] {
+  color: #FCA5A5;
+}
+
+/* Ensure proper focus styles on form elements */
+.form-group input:focus-visible,
+.form-group textarea:focus-visible,
+.form-group select:focus-visible {
+  outline: 3px solid var(--primary-blue, #0057B8);
+  outline-offset: 2px;
+  border-color: var(--primary-blue, #0057B8);
+}
+
+[data-theme="dark"] .form-group input:focus-visible,
+[data-theme="dark"] .form-group textarea:focus-visible,
+[data-theme="dark"] .form-group select:focus-visible {
+  outline-color: #4A9EFF;
+  border-color: #4A9EFF;
+}
+
+/* Improve color contrast for better readability */
+.form-group input,
+.form-group textarea,
+.form-group select {
+  color: #1F2937;
+  background-color: #FFFFFF;
+  border: 2px solid #D1D5DB;
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea,
+[data-theme="dark"] .form-group select {
+  color: #F3F4F6;
+  background-color: #374151;
+  border-color: #6B7280;
+}
+
+/* Placeholder text contrast */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #6B7280;
+}
+
+[data-theme="dark"] .form-group input::placeholder,
+[data-theme="dark"] .form-group textarea::placeholder {
+  color: #9CA3AF;
+}
+
+/* Button states with proper contrast */
+.submit-btn {
+  background-color: #0057B8;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #004494;
+  transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn:focus-visible {
+  outline: 3px solid #0057B8;
+  outline-offset: 3px;
+}
+
+.submit-btn:disabled {
+  background-color: #9CA3AF;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+[data-theme="dark"] .submit-btn {
+  background-color: #4A9EFF;
+  color: #1F2937;
+}
+
+[data-theme="dark"] .submit-btn:hover {
+  background-color: #3B82F6;
+}
+
+[data-theme="dark"] .submit-btn:focus-visible {
+  outline-color: #4A9EFF;
+}
+
+/* Ensure help text is readable */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Form group spacing for better scanability */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #1F2937;
+}
+
+[data-theme="dark"] .form-group label {
+  color: #F3F4F6;
+}
