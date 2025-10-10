@@ -1,0 +1,87 @@
+---
+layout: default
+title: "AR Visualization - Unity WebGL Demo"
+description: "Explore augmented reality visualization with Unity WebGL"
+stylesheets:
+  - ../css/variables.css
+  - ../css/reset.css
+  - ../css/unity-game.css
+  - ../css/accessibility.css
+  - ../css/responsive.css
+  - ../css/theme-toggle.css
+  - ../css/footer.css
+scripts_head:
+  - src: ../js/theme-toggle.js
+theme_toggle: true
+header:
+  title: AR Visualization Demo
+  subtitle: Interactive 3D Model Exploration
+nav:
+  - text: Home
+    url: ../index.html
+  - text: All Games
+    url: ../games.html
+  - text: Contact Us
+    url: ../contact.html
+scripts_body:
+  - ../js/unity-loader.js
+---
+
+<section id="game-container" aria-labelledby="game-heading">
+    <h2 id="game-heading" class="visually-hidden">AR Visualization Demo</h2>
+
+    <div class="game-wrapper">
+        <div id="unity-container" class="unity-desktop">
+            <canvas id="unity-canvas" tabindex="-1" aria-label="AR Visualization Canvas"></canvas>
+            <div id="unity-loading-bar">
+                <div id="unity-logo"></div>
+                <div id="unity-progress-bar-empty">
+                    <div id="unity-progress-bar-full"></div>
+                </div>
+            </div>
+            <div id="unity-warning" aria-live="polite"></div>
+        </div>
+
+        <div class="game-controls">
+            <button id="fullscreen-button" aria-label="Toggle fullscreen">⛶ Fullscreen</button>
+            <button id="restart-button" aria-label="Restart demo">↻ Reset View</button>
+        </div>
+
+        <div class="game-info-panel">
+            <h3>About This Demo</h3>
+            <p>Explore interactive 3D models and environments with augmented reality visualization. Manipulate, examine, and interact with detailed models in a virtual space.</p>
+
+            <h4>Controls</h4>
+            <ul>
+                <li><strong>Mouse Drag:</strong> Rotate view</li>
+                <li><strong>Scroll Wheel:</strong> Zoom in/out</li>
+                <li><strong>Left Click:</strong> Select object</li>
+                <li><strong>Right Click:</strong> Pan camera</li>
+                <li><strong>1-5:</strong> Switch between models</li>
+                <li><strong>Space:</strong> Toggle object info</li>
+                <li><strong>R:</strong> Reset camera position</li>
+            </ul>
+
+            <h4>Features</h4>
+            <ul>
+                <li>High-quality 3D model rendering</li>
+                <li>Interactive object manipulation</li>
+                <li>Real-time lighting and shadows</li>
+                <li>Multiple visualization modes</li>
+                <li>Detailed model information</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script>
+    const gameConfig = {
+        dataUrl: "../unity-builds/ar-visualization/Build/ar-visualization.data.unityweb",
+        frameworkUrl: "../unity-builds/ar-visualization/Build/ar-visualization.framework.js.unityweb",
+        codeUrl: "../unity-builds/ar-visualization/Build/ar-visualization.wasm.unityweb",
+        streamingAssetsUrl: "../unity-builds/ar-visualization/StreamingAssets",
+        companyName: "IrsikSoftware",
+        productName: "AR Visualization Demo",
+        productVersion: "1.0.0",
+    };
+</script>

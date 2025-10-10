@@ -1,0 +1,84 @@
+---
+layout: default
+title: "3D Puzzle Game - Unity WebGL Demo"
+description: "Play our 3D Puzzle game demo built with Unity WebGL"
+stylesheets:
+  - ../css/variables.css
+  - ../css/reset.css
+  - ../css/unity-game.css
+  - ../css/accessibility.css
+  - ../css/responsive.css
+  - ../css/theme-toggle.css
+  - ../css/footer.css
+scripts_head:
+  - src: ../js/theme-toggle.js
+theme_toggle: true
+header:
+  title: 3D Puzzle Game
+  subtitle: Physics-Based Puzzle Solving
+nav:
+  - text: Home
+    url: ../index.html
+  - text: All Games
+    url: ../games.html
+  - text: Contact Us
+    url: ../contact.html
+scripts_body:
+  - ../js/unity-loader.js
+---
+
+<section id="game-container" aria-labelledby="game-heading">
+    <h2 id="game-heading" class="visually-hidden">3D Puzzle Game</h2>
+
+    <div class="game-wrapper">
+        <div id="unity-container" class="unity-desktop">
+            <canvas id="unity-canvas" tabindex="-1" aria-label="3D Puzzle Game Canvas"></canvas>
+            <div id="unity-loading-bar">
+                <div id="unity-logo"></div>
+                <div id="unity-progress-bar-empty">
+                    <div id="unity-progress-bar-full"></div>
+                </div>
+            </div>
+            <div id="unity-warning" aria-live="polite"></div>
+        </div>
+
+        <div class="game-controls">
+            <button id="fullscreen-button" aria-label="Toggle fullscreen">⛶ Fullscreen</button>
+            <button id="restart-button" aria-label="Restart game">↻ Restart</button>
+        </div>
+
+        <div class="game-info-panel">
+            <h3>About This Game</h3>
+            <p>Solve intricate 3D puzzles using physics-based mechanics. Rotate objects, manipulate gravity, and find creative solutions to challenging spatial puzzles.</p>
+
+            <h4>Controls</h4>
+            <ul>
+                <li><strong>Mouse:</strong> Rotate camera / Select objects</li>
+                <li><strong>WASD:</strong> Move camera</li>
+                <li><strong>Space:</strong> Interact with objects</li>
+                <li><strong>R:</strong> Reset current puzzle</li>
+                <li><strong>ESC:</strong> Pause menu</li>
+            </ul>
+
+            <h4>Features</h4>
+            <ul>
+                <li>Multiple challenging puzzle levels</li>
+                <li>Realistic physics simulation</li>
+                <li>Beautiful 3D graphics</li>
+                <li>Progressive difficulty curve</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script>
+    const gameConfig = {
+        dataUrl: "../unity-builds/puzzle/Build/puzzle.data.unityweb",
+        frameworkUrl: "../unity-builds/puzzle/Build/puzzle.framework.js.unityweb",
+        codeUrl: "../unity-builds/puzzle/Build/puzzle.wasm.unityweb",
+        streamingAssetsUrl: "../unity-builds/puzzle/StreamingAssets",
+        companyName: "IrsikSoftware",
+        productName: "3D Puzzle Game",
+        productVersion: "1.0.0",
+    };
+</script>
