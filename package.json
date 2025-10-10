@@ -12,6 +12,10 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "e2e": "cypress open",
+    "e2e:headless": "cypress run",
     "css:optimize": "postcss css/**/*.css --dir public/css --no-map",
     "build:css": "npm run css:optimize"
   },
@@ -24,6 +28,7 @@
     "babel-loader": "^10.0.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.2",
+    "cypress": "^15.4.0",
     "cssnano": "^7.1.1",
     "eslint": "^8.57.0",
     "html-webpack-plugin": "^5.6.4",
