@@ -35,7 +35,20 @@
         <section id="game" aria-labelledby="game-heading">
             <h2 id="game-heading" class="visually-hidden">Tetris Game</h2>
             <div class="game-container">
-                <canvas id="tetris-game" width="320" height="640" aria-label="Tetris game board"></canvas>
+                <div class="game-and-controls">
+                    <canvas id="tetris-game" width="320" height="640" aria-label="Tetris game board"></canvas>
+                    <div class="mobile-controls" id="mobile-controls" aria-label="Touch controls">
+                        <div class="dpad-container">
+                            <button class="dpad-btn dpad-up" id="btn-rotate" aria-label="Rotate piece">&#9650;</button>
+                            <div class="dpad-middle">
+                                <button class="dpad-btn dpad-left" id="btn-left" aria-label="Move left">&#9664;</button>
+                                <button class="dpad-btn dpad-down" id="btn-down" aria-label="Move down">&#9660;</button>
+                                <button class="dpad-btn dpad-right" id="btn-right" aria-label="Move right">&#9654;</button>
+                            </div>
+                        </div>
+                        <button class="hold-btn" id="btn-hold" aria-label="Hold piece">HOLD (C)</button>
+                    </div>
+                </div>
                 <div class="ui-panel">
                     <div class="score-display">
                         <h3>Current Score</h3>
@@ -58,7 +71,10 @@
                         <canvas id="next-piece" width="80" height="80" aria-label="Preview of next tetromino piece"></canvas>
                     </div>
                     <div class="hold-piece-display">
-                        <h3>Hold Piece</h3>
+                        <h3>Hold Piece <span class="tooltip-icon" aria-describedby="hold-tooltip">?</span></h3>
+                        <div class="tooltip" id="hold-tooltip" role="tooltip">
+                            Press 'C' or tap HOLD to swap the current piece with the held piece. You can only hold once per piece.
+                        </div>
                         <canvas id="hold-piece" width="80" height="80" aria-label="Preview of held tetromino piece"></canvas>
                     </div>
                 </div>
