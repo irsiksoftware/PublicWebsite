@@ -1,7 +1,7 @@
 module.exports = {
   ci: {
     collect: {
-      startServerCommand: 'npx http-server -p 8080',
+      startServerCommand: 'npx http-server . -p 8080',
       url: ['http://localhost:8080/index.html'],
       numberOfRuns: 3,
     },
