@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Document Repository - Client Portal">
+    <title>Documents - Client Portal</title>
+    <link rel="stylesheet" href="./css/portal.css">
+</head>
+<body>
+    <div class="portal-wrapper">
+        <nav class="portal-nav">
+            <div class="nav-header">
+                <h2>Irsik Software Solutions</h2>
+                <p class="user-info" id="userInfo">Loading...</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                <li><a href="./documents.html" class="active">Documents</a></li>
+                <li><a href="./support.html">Support Tickets</a></li>
+                <li><a href="#" id="logoutBtn">Logout</a></li>
+            </ul>
+        </nav>
+        <main class="portal-content">
+            <header class="content-header">
+                <h1>Document Repository</h1>
+                <div class="header-actions">
+                    <input type="search" id="searchDocs" placeholder="Search documents..." class="search-input">
+                    <select id="filterCategory" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="contracts">Contracts</option>
+                        <option value="reports">Reports</option>
+                        <option value="invoices">Invoices</option>
+                        <option value="specifications">Specifications</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </header>
+            <div class="documents-container">
+                <div id="documentList" class="document-list">
+                    <div class="loading">Loading documents...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./js/auth.js"></script>
+    <script src="./js/documents.js"></script>
+</body>
+</html>
