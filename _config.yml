@@ -23,6 +23,12 @@ exclude:
   - vendor
   - .git
   - .github
+  - config
+  - build-scripts
+  - tests
+  - cypress
+  - package.json
+  - package-lock.json
 
 # Include files
 include:
@@ -43,31 +49,31 @@ defaults:
         priority: 1.0
         changefreq: weekly
   - scope:
-      path: "contact.html"
+      path: "pages/contact.html"
     values:
       sitemap:
         priority: 0.8
         changefreq: monthly
   - scope:
-      path: "privacy-policy.html"
+      path: "pages/legal/privacy-policy.html"
     values:
       sitemap:
         priority: 0.3
         changefreq: yearly
   - scope:
-      path: "terms-of-service.html"
+      path: "pages/legal/terms-of-service.html"
     values:
       sitemap:
         priority: 0.3
         changefreq: yearly
   - scope:
-      path: "tetris.html"
+      path: "games/tetris.html"
     values:
       sitemap:
         priority: 0.5
         changefreq: monthly
   - scope:
-      path: "session-timeline.html"
+      path: "pages/session-timeline.html"
     values:
       sitemap:
         priority: 0.6
