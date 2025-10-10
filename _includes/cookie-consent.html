@@ -1,0 +1,53 @@
+<!-- Cookie Consent Banner -->
+<div id="cookie-consent-banner" class="cookie-consent-banner" style="display: none;">
+  <div class="cookie-consent-content">
+    <p class="cookie-consent-text">
+      We use cookies and analytics to improve your experience and understand how you use our site.
+      <a href="#privacy-policy" class="cookie-consent-link">Learn more</a>
+    </p>
+    <div class="cookie-consent-buttons">
+      <button id="cookie-accept" class="cookie-btn cookie-accept">Accept</button>
+      <button id="cookie-decline" class="cookie-btn cookie-decline">Decline</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const banner = document.getElementById('cookie-consent-banner');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const declineBtn = document.getElementById('cookie-decline');
+
+    // Show banner if no consent decision has been made
+    if (!localStorage.getItem('cookieConsent')) {
+      banner.style.display = 'block';
+    }
+
+    acceptBtn.addEventListener('click', function() {
+      localStorage.setItem('cookieConsent', 'accepted');
+      banner.style.display = 'none';
+
+      // Update GA consent
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+      }
+
+      // Reload to initialize analytics
+      location.reload();
+    });
+
+    declineBtn.addEventListener('click', function() {
+      localStorage.setItem('cookieConsent', 'declined');
+      banner.style.display = 'none';
+
+      // Keep analytics denied
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'analytics_storage': 'denied'
+        });
+      }
+    });
+  })();
+</script>

@@ -3,11 +3,16 @@ description: "Leading provider of custom software development, AI solutions, and
 baseurl: ""
 url: "https://irsik.software"
 
+# Google Analytics 4
+# To enable: Set your GA4 Measurement ID (format: G-XXXXXXXXXX)
+google_analytics_id: ""
+
 # Build settings
 markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Exclude from processing
 exclude:
@@ -23,3 +28,55 @@ exclude:
 include:
   - _includes
   - _layouts
+
+# Sitemap settings
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      sitemap: true
+  - scope:
+      path: "index.html"
+    values:
+      sitemap:
+        priority: 1.0
+        changefreq: weekly
+  - scope:
+      path: "contact.html"
+    values:
+      sitemap:
+        priority: 0.8
+        changefreq: monthly
+  - scope:
+      path: "privacy-policy.html"
+    values:
+      sitemap:
+        priority: 0.3
+        changefreq: yearly
+  - scope:
+      path: "terms-of-service.html"
+    values:
+      sitemap:
+        priority: 0.3
+        changefreq: yearly
+  - scope:
+      path: "tetris.html"
+    values:
+      sitemap:
+        priority: 0.5
+        changefreq: monthly
+  - scope:
+      path: "session-timeline.html"
+    values:
+      sitemap:
+        priority: 0.6
+        changefreq: weekly
+  - scope:
+      path: "offline.html"
+    values:
+      sitemap: false
+  - scope:
+      path: "examples/*"
+    values:
+      sitemap: false

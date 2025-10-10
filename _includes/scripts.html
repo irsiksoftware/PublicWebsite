@@ -9,15 +9,9 @@
 <!-- Service Worker Registration -->
 <script src="{{ '/js/service-worker-register.js' | relative_url }}"></script>
 
-<!-- Analytics -->
-{% if site.google_analytics %}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', '{{ site.google_analytics }}');
-</script>
+<!-- Custom Analytics Event Tracking -->
+{% if site.google_analytics_id %}
+<script src="{{ '/js/analytics-events.js' | relative_url }}"></script>
 {% endif %}
 
 <!-- Additional Scripts -->

@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/theme-toggle.css">
 <link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/cookie-consent.css">
 {% if page.additional_css %}
   {% for css_file in page.additional_css %}
 <link rel="stylesheet" href="css/{{ css_file }}">
@@ -23,6 +24,9 @@
 {% include schema-service.html %}
 {% include schema-softwareapplication.html %}
 {% include schema-breadcrumb.html %}
+{% if site.google_analytics_id %}
+{% include google-analytics.html %}
+{% endif %}
 {% if page.additional_scripts_head %}
   {% for script in page.additional_scripts_head %}
 <script src="{{ script.src }}"{% if script.defer %} defer{% endif %}{% if script.type %} type="{{ script.type }}"{% endif %}></script>
