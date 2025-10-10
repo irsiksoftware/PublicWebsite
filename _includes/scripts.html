@@ -1,0 +1,9 @@
+<script src="js/sticky-header.js" defer></script>
+<script src="js/mobile-nav.js" defer></script>
+<script src="js/back-to-top.js" defer></script>
+<script src="js/theme-toggle.js"></script>
+{% if page.additional_scripts_body %}
+  {% for script in page.additional_scripts_body %}
+<script{% if script.type %} type="{{ script.type }}"{% endif %} src="{{ script.src }}"{% if script.defer %} defer{% endif %}></script>
+  {% endfor %}
+{% endif %}

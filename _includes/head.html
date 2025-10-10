@@ -1,0 +1,22 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/accessibility.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/theme-toggle.css">
+<link rel="stylesheet" href="css/footer.css">
+{% if page.additional_css %}
+  {% for css_file in page.additional_css %}
+<link rel="stylesheet" href="css/{{ css_file }}">
+  {% endfor %}
+{% endif %}
+<title>{{ page.title | default: site.title }}</title>
+{% if page.additional_scripts_head %}
+  {% for script in page.additional_scripts_head %}
+<script src="{{ script.src }}"{% if script.defer %} defer{% endif %}{% if script.type %} type="{{ script.type }}"{% endif %}></script>
+  {% endfor %}
+{% endif %}
