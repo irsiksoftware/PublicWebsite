@@ -35,4 +35,50 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.setAttribute('aria-expanded', 'false');
         }
     });
+
+    // Keyboard navigation for hamburger menu
+    hamburger.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navUl.classList.contains('open')) {
+            navUl.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburger.focus();
+        }
+    });
+
+    // Trap focus within open menu
+    navUl.addEventListener('keydown', (e) => {
+        if (!navUl.classList.contains('open')) return;
+
+        const links = Array.from(navUl.querySelectorAll('a'));
+        const firstLink = links[0];
+        const lastLink = links[links.length - 1];
+
+        if (e.key === 'Escape') {
+            navUl.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburger.focus();
+        } else if (e.key === 'Tab') {
+            if (e.shiftKey) {
+                if (document.activeElement === firstLink) {
+                    e.preventDefault();
+                    hamburger.focus();
+                }
+            } else {
+                if (document.activeElement === lastLink) {
+                    e.preventDefault();
+                    hamburger.focus();
+                }
+            }
+        }
+    });
+
+    // Focus first link when menu opens via keyboard
+    hamburger.addEventListener('click', () => {
+        if (navUl.classList.contains('open')) {
+            setTimeout(() => {
+                const firstLink = navUl.querySelector('a');
+                if (firstLink) firstLink.focus();
+            }, 50);
+        }
+    });
 });
