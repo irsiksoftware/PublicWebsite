@@ -1,0 +1,25 @@
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      {% if include.title %}
+      <h1 class="hero-title">{{ include.title }}</h1>
+      {% endif %}
+
+      {% if include.subtitle %}
+      <p class="hero-subtitle">{{ include.subtitle }}</p>
+      {% endif %}
+
+      {% if include.cta_text and include.cta_url %}
+      <div class="hero-cta">
+        <a href="{{ include.cta_url | relative_url }}" class="btn btn-primary">{{ include.cta_text }}</a>
+      </div>
+      {% endif %}
+
+      {% if include.content %}
+      <div class="hero-description">
+        {{ include.content }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

@@ -1,19 +1,10 @@
-<button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
-<a href="#main" class="skip-to-content">Skip to main content</a>
-{% if page.hero %}
-<section class="hero-section">
-    <div class="hero-content">
-        <h1>{{ page.hero.title }}</h1>
-        <p>{{ page.hero.subtitle }}</p>
-        {% if page.hero.cta %}
-        <a href="{{ page.hero.cta.link }}" class="cta-button">{{ page.hero.cta.text }}</a>
-        {% endif %}
+<header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <a href="{{ '/' | relative_url }}" class="logo-link">
+        <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="{{ site.title }}" class="logo" />
+        <span class="tagline">{{ site.tagline }}</span>
+      </a>
     </div>
-</section>
-{% endif %}
-
-<header>
-    <div class="shield-logo"></div>
-    <h1>Swarm Showcase</h1>
-    <p>AI Development Team Metrics</p>
+  </div>
 </header>
