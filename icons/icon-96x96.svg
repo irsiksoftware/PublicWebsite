@@ -1,0 +1,5 @@
+<svg width="96" height="96" xmlns="http://www.w3.org/2000/svg">
+  <rect width="96" height="96" fill="#6c63ff"/>
+  <path d="M 48 14.399999999999999 L 76.80000000000001 24 L 76.80000000000001 60 L 48 81.6 L 19.200000000000003 60 L 19.200000000000003 24 Z" fill="white"/>
+  <text x="48" y="48" font-family="Arial" font-size="38.400000000000006" font-weight="bold" fill="#6c63ff" text-anchor="middle" dominant-baseline="central">I</text>
+</svg>
