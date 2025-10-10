@@ -1,74 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Terms of Service - IrsikSoftware">
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/accessibility.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/theme-toggle.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <title>Terms of Service - Swarm Showcase</title>
-    <script src="js/theme-toggle.js"></script>
-</head>
-<body>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
-    <a href="#main" class="skip-to-content">Skip to main content</a>
+---
+layout: default
+title: Terms of Service - Swarm Showcase
+description: Terms of Service - IrsikSoftware
+stylesheets:
+  - css/variables.css
+  - css/reset.css
+  - css/styles.css
+  - css/nav.css
+  - css/accessibility.css
+  - css/responsive.css
+  - css/theme-toggle.css
+  - css/footer.css
+scripts_head:
+  - src: js/theme-toggle.js
+theme_toggle: true
+skip_to_content: true
+header:
+  title: Swarm Showcase
+  subtitle: AI Development Team Metrics
+nav:
+  - text: Home
+    url: index.html
+  - text: Contact Us
+    url: contact.html
+---
 
-    <header>
-        <div class="shield-logo"></div>
-        <h1>Swarm Showcase</h1>
-        <p>AI Development Team Metrics</p>
-    </header>
+<main id="main">
+    <section id="terms-of-service" aria-labelledby="terms-heading">
+        <h2 id="terms-heading">Terms of Service</h2>
+        <p><em>Last updated: October 9, 2025</em></p>
 
-    <nav role="navigation" aria-label="Main navigation">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-    </nav>
+        <h3>Acceptance of Terms</h3>
+        <p>By accessing and using this website, you accept and agree to be bound by the terms and provisions of this agreement.</p>
 
-    <main id="main">
-        <section id="terms-of-service" aria-labelledby="terms-heading">
-            <h2 id="terms-heading">Terms of Service</h2>
-            <p><em>Last updated: October 9, 2025</em></p>
+        <h3>Use License</h3>
+        <p>Permission is granted to temporarily access the materials on IrsikSoftware's website for personal, non-commercial transitory viewing only.</p>
 
-            <h3>Acceptance of Terms</h3>
-            <p>By accessing and using this website, you accept and agree to be bound by the terms and provisions of this agreement.</p>
+        <h3>Disclaimer</h3>
+        <p>The materials on IrsikSoftware's website are provided on an 'as is' basis. IrsikSoftware makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
 
-            <h3>Use License</h3>
-            <p>Permission is granted to temporarily access the materials on IrsikSoftware's website for personal, non-commercial transitory viewing only.</p>
+        <h3>Limitations</h3>
+        <p>In no event shall IrsikSoftware or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on IrsikSoftware's website.</p>
 
-            <h3>Disclaimer</h3>
-            <p>The materials on IrsikSoftware's website are provided on an 'as is' basis. IrsikSoftware makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+        <h3>Modifications</h3>
+        <p>IrsikSoftware may revise these terms of service at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.</p>
 
-            <h3>Limitations</h3>
-            <p>In no event shall IrsikSoftware or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on IrsikSoftware's website.</p>
-
-            <h3>Modifications</h3>
-            <p>IrsikSoftware may revise these terms of service at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.</p>
-
-            <h3>Contact Information</h3>
-            <p>For questions about these Terms of Service, please contact us at <a href="mailto:legal@irsik.software">legal@irsik.software</a>.</p>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 IrsikSoftware. All rights reserved.</p>
-            <nav class="footer-nav">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms-of-service.html">Terms of Service</a>
-            </nav>
-            <address>
-                123 Innovation Drive, Suite 400<br>
-                Tech Valley, CA 94000
-            </address>
-        </div>
-    </footer>
-</body>
-</html>
+        <h3>Contact Information</h3>
+        <p>For questions about these Terms of Service, please contact us at <a href="mailto:legal@irsik.software">legal@irsik.software</a>.</p>
+    </section>
+</main>

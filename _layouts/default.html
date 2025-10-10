@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    {% if page.stylesheets %}
+    {% for stylesheet in page.stylesheets %}
+    <link rel="stylesheet" href="{{ stylesheet }}">
+    {% endfor %}
+    {% endif %}
+    <title>{{ page.title | default: site.title }}</title>
+    {% if page.scripts_head %}
+    {% for script in page.scripts_head %}
+    {% if script.type %}
+    <script type="{{ script.type }}" src="{{ script.src }}"{% if script.defer %} defer{% endif %}></script>
+    {% else %}
+    <script src="{{ script.src }}"{% if script.defer %} defer{% endif %}></script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+</head>
+<body>
+    {% if page.theme_toggle %}
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    {% endif %}
+    {% if page.skip_to_content %}
+    <a href="#main" class="skip-to-content">Skip to main content</a>
+    {% endif %}
+    {% if page.hero %}
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>{{ page.hero.title }}</h1>
+            <p>{{ page.hero.description }}</p>
+            {% if page.hero.cta %}
+            <a href="{{ page.hero.cta.link }}" class="cta-button">{{ page.hero.cta.text }}</a>
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if page.header %}
+    <header>
+        <div class="shield-logo"></div>
+        <h1>{{ page.header.title }}</h1>
+        <p>{{ page.header.subtitle }}</p>
+    </header>
+    {% endif %}
+
+    {% if page.nav %}
+    <nav role="navigation" aria-label="Main navigation">
+        <ul>
+            {% for item in page.nav %}
+            <li><a href="{{ item.url }}"{% if item.active %} class="active"{% endif %} aria-label="{{ item.aria }}">{{ item.text }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+    {% endif %}
+
+    {{ content }}
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 IrsikSoftware. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+            </nav>
+            <address>
+                123 Innovation Drive, Suite 400<br>
+                Tech Valley, CA 94000
+            </address>
+        </div>
+    </footer>
+
+    {% if page.scripts_body %}
+    {% for script in page.scripts_body %}
+    <script src="{{ script }}"></script>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>
