@@ -1,0 +1,156 @@
+/**
+ * Image loading and lazy loading styles
+ * Provides placeholder blur-up effect and smooth transitions
+ */
+
+/* Lazy image base styles */
+.lazy-image {
+  transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+  opacity: 1;
+  filter: blur(10px);
+  transform: scale(1.05);
+  will-change: opacity, filter;
+}
+
+/* Loaded state - remove blur and show full quality */
+.lazy-image.loaded {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
+/* Image loading container with aspect ratio preservation */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+/* Common aspect ratios */
+.image-container.aspect-16-9 {
+  padding-bottom: 56.25%; /* 16:9 */
+}
+
+.image-container.aspect-4-3 {
+  padding-bottom: 75%; /* 4:3 */
+}
+
+.image-container.aspect-1-1 {
+  padding-bottom: 100%; /* 1:1 */
+}
+
+.image-container.aspect-21-9 {
+  padding-bottom: 42.857%; /* 21:9 */
+}
+
+/* Image inside container */
+.image-container img,
+.image-container picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Loading spinner overlay (optional) */
+.image-loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spinner 0.8s linear infinite;
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+}
+
+.image-container.loaded .image-loading-spinner {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes spinner {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Shimmer loading effect for placeholder */
+.image-placeholder {
+  position: relative;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Responsive image optimizations */
+picture {
+  display: block;
+  line-height: 0;
+}
+
+picture img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevent layout shift during image load */
+img[data-src] {
+  min-height: 1px;
+}
+
+/* Error state for failed image loads */
+img.load-error {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .lazy-image {
+    filter: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .lazy-image,
+  .image-loading-spinner,
+  .image-placeholder {
+    animation: none;
+    transition: none;
+  }
+
+  .lazy-image {
+    filter: none;
+    transform: none;
+  }
+}
+
+/* Print optimization */
+@media print {
+  .lazy-image {
+    filter: none;
+    opacity: 1;
+  }
+
+  .image-loading-spinner {
+    display: none;
+  }
+}
