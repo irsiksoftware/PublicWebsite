@@ -1,17 +1,45 @@
 /**
- * Form Validation and Keyboard Navigation
- * Enhances form accessibility with keyboard navigation and validation
+ * Accessible Form Validation - WCAG 2.1 AA Compliant
+ * Provides real-time validation feedback with proper ARIA support and keyboard navigation
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-    const forms = document.querySelectorAll('form');
+class AccessibleFormValidator {
+    constructor(formSelector) {
+        this.form = document.querySelector(formSelector);
+        if (!this.form) return;
 
-    forms.forEach(form => {
-        const formGroups = Array.from(form.querySelectorAll('.form-group'));
-        const submitBtn = form.querySelector('button[type="submit"]');
+        this.init();
+    }
 
-        // Enable keyboard navigation between form fields
-        form.addEventListener('keydown', (e) => {
+    init() {
+        // Add aria-live region for form-level errors
+        this.createErrorSummary();
+
+        // Set up field validation
+        const inputs = this.form.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            // Add error container if not exists
+            this.createErrorContainer(input);
+
+            // Validation on blur for better UX
+            input.addEventListener('blur', () => this.validateField(input));
+
+            // Clear errors on input
+            input.addEventListener('input', () => this.clearFieldError(input));
+        });
+
+        // Enable keyboard navigation
+        this.setupKeyboardNavigation();
+
+        // Form submission validation
+        this.form.addEventListener('submit', (e) => this.validateForm(e));
+    }
+
+    setupKeyboardNavigation() {
+        const formGroups = Array.from(this.form.querySelectorAll('.form-group'));
+        const submitBtn = this.form.querySelector('button[type="submit"]');
+
+        this.form.addEventListener('keydown', (e) => {
             const currentInput = document.activeElement;
 
             // Move to next field with Enter key (unless in textarea)
@@ -31,154 +59,251 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+    }
 
-        // Real-time validation feedback
-        const inputs = form.querySelectorAll('input, textarea, select');
+    createErrorSummary() {
+        const summary = document.createElement('div');
+        summary.id = 'form-error-summary';
+        summary.className = 'form-error-summary';
+        summary.setAttribute('role', 'alert');
+        summary.setAttribute('aria-live', 'polite');
+        summary.setAttribute('aria-atomic', 'true');
+        this.form.insertBefore(summary, this.form.firstChild);
+    }
+
+    createErrorContainer(input) {
+        const errorId = `${input.id}-error`;
+
+        if (!document.getElementById(errorId)) {
+            const errorContainer = document.createElement('span');
+            errorContainer.id = errorId;
+            errorContainer.className = 'field-error';
+            errorContainer.setAttribute('role', 'alert');
+            errorContainer.setAttribute('aria-live', 'polite');
+
+            // Insert error container after the input
+            input.parentNode.insertBefore(errorContainer, input.nextSibling);
+
+            // Link input to error with aria-describedby
+            const describedBy = input.getAttribute('aria-describedby') || '';
+            const ids = describedBy ? describedBy.split(' ') : [];
+            if (!ids.includes(errorId)) {
+                ids.push(errorId);
+                input.setAttribute('aria-describedby', ids.join(' '));
+            }
+        }
+    }
+
+    validateField(input) {
+        const value = input.value.trim();
+        const type = input.type;
+        let error = null;
+
+        // Required field validation
+        if (input.hasAttribute('required') && !value) {
+            error = `${this.getFieldLabel(input)} is required`;
+        }
+        // Email validation
+        else if (type === 'email' && value && !this.isValidEmail(value)) {
+            error = 'Please enter a valid email address';
+        }
+        // Min length validation
+        else if (input.hasAttribute('minlength') && value.length > 0) {
+            const minLength = parseInt(input.getAttribute('minlength'));
+            if (value.length < minLength) {
+                error = `${this.getFieldLabel(input)} must be at least ${minLength} characters`;
+            }
+        }
+        // Pattern validation
+        else if (input.hasAttribute('pattern') && value) {
+            const pattern = new RegExp(input.getAttribute('pattern'));
+            if (!pattern.test(value)) {
+                error = input.getAttribute('title') || 'Please match the requested format';
+            }
+        }
+
+        if (error) {
+            this.showFieldError(input, error);
+            return false;
+        } else {
+            this.clearFieldError(input);
+            return true;
+        }
+    }
+
+    showFieldError(input, message) {
+        const errorId = `${input.id}-error`;
+        const errorContainer = document.getElementById(errorId);
+
+        if (errorContainer) {
+            errorContainer.textContent = message;
+            errorContainer.style.display = 'block';
+        }
+
+        // Mark field as invalid
+        input.setAttribute('aria-invalid', 'true');
+        input.classList.add('error');
+
+        // Add visual error state to form group
+        const formGroup = input.closest('.form-group');
+        if (formGroup) {
+            formGroup.classList.add('has-error');
+        }
+    }
+
+    clearFieldError(input) {
+        const errorId = `${input.id}-error`;
+        const errorContainer = document.getElementById(errorId);
+
+        if (errorContainer) {
+            errorContainer.textContent = '';
+            errorContainer.style.display = 'none';
+        }
+
+        // Remove invalid state
+        input.setAttribute('aria-invalid', 'false');
+        input.classList.remove('error');
+
+        // Remove error state from form group
+        const formGroup = input.closest('.form-group');
+        if (formGroup) {
+            formGroup.classList.remove('has-error');
+        }
+    }
+
+    validateForm(e) {
+        const inputs = this.form.querySelectorAll('input, textarea, select');
+        const errors = [];
+        let firstErrorField = null;
+
         inputs.forEach(input => {
-            // Add validation on blur
-            input.addEventListener('blur', () => {
-                validateField(input);
-            });
-
-            // Clear error on focus
-            input.addEventListener('focus', () => {
-                clearFieldError(input);
-            });
-        });
-
-        // Form submission validation
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            let isValid = true;
-            const firstInvalidField = Array.from(inputs).find(input => {
-                const valid = validateField(input);
-                if (!valid) isValid = false;
-                return !valid;
-            });
-
-            if (isValid) {
-                // Form is valid, handle submission
-                handleFormSubmit(form);
-            } else if (firstInvalidField) {
-                // Focus first invalid field
-                firstInvalidField.focus();
+            if (!this.validateField(input)) {
+                errors.push({
+                    field: input,
+                    label: this.getFieldLabel(input)
+                });
+                if (!firstErrorField) {
+                    firstErrorField = input;
+                }
             }
         });
-    });
-});
 
-/**
- * Validate individual form field
- */
-function validateField(input) {
-    const value = input.value.trim();
-    const type = input.type;
-    const required = input.hasAttribute('required');
+        if (errors.length > 0) {
+            e.preventDefault();
 
-    // Clear previous error
-    clearFieldError(input);
+            // Show error summary
+            this.showErrorSummary(errors);
 
-    // Required field validation
-    if (required && !value) {
-        showFieldError(input, 'This field is required');
-        return false;
-    }
+            // Focus first error field
+            if (firstErrorField) {
+                firstErrorField.focus();
+            }
 
-    // Email validation
-    if (type === 'email' && value) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) {
-            showFieldError(input, 'Please enter a valid email address');
             return false;
         }
+
+        // Clear error summary on successful validation
+        this.clearErrorSummary();
+
+        // Handle successful form submission
+        this.handleFormSubmit(e);
+        return true;
     }
 
-    // Minimum length validation
-    const minLength = input.getAttribute('minlength');
-    if (minLength && value.length < parseInt(minLength)) {
-        showFieldError(input, `Minimum length is ${minLength} characters`);
-        return false;
-    }
+    handleFormSubmit(e) {
+        e.preventDefault();
+        const submitBtn = this.form.querySelector('button[type="submit"]');
 
-    return true;
-}
-
-/**
- * Show field error message
- */
-function showFieldError(input, message) {
-    const formGroup = input.closest('.form-group');
-    if (!formGroup) return;
-
-    input.setAttribute('aria-invalid', 'true');
-    input.classList.add('error');
-
-    // Create or update error message
-    let errorMsg = formGroup.querySelector('.error-message');
-    if (!errorMsg) {
-        errorMsg = document.createElement('span');
-        errorMsg.className = 'error-message';
-        errorMsg.setAttribute('role', 'alert');
-        errorMsg.id = `${input.id}-error`;
-        input.setAttribute('aria-describedby', errorMsg.id);
-        formGroup.appendChild(errorMsg);
-    }
-
-    errorMsg.textContent = message;
-}
-
-/**
- * Clear field error message
- */
-function clearFieldError(input) {
-    const formGroup = input.closest('.form-group');
-    if (!formGroup) return;
-
-    input.removeAttribute('aria-invalid');
-    input.classList.remove('error');
-
-    const errorMsg = formGroup.querySelector('.error-message');
-    if (errorMsg) {
-        errorMsg.remove();
-    }
-}
-
-/**
- * Handle form submission
- */
-function handleFormSubmit(form) {
-    const submitBtn = form.querySelector('button[type="submit"]');
-
-    // Disable submit button during processing
-    if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-    }
-
-    // Show success message
-    setTimeout(() => {
-        const successMsg = document.createElement('div');
-        successMsg.className = 'success-message';
-        successMsg.setAttribute('role', 'alert');
-        successMsg.textContent = 'Your message has been sent successfully!';
-
-        form.insertAdjacentElement('beforebegin', successMsg);
-        form.reset();
-
-        // Re-enable submit button
+        // Disable submit button during processing
         if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Message';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
         }
 
-        // Focus success message for screen readers
-        successMsg.setAttribute('tabindex', '-1');
-        successMsg.focus();
-
-        // Remove success message after 5 seconds
+        // Show success message
         setTimeout(() => {
-            successMsg.remove();
-        }, 5000);
-    }, 1000);
+            const successMsg = document.createElement('div');
+            successMsg.className = 'success-message';
+            successMsg.setAttribute('role', 'alert');
+            successMsg.textContent = 'Your message has been sent successfully!';
+
+            this.form.insertAdjacentElement('beforebegin', successMsg);
+            this.form.reset();
+
+            // Re-enable submit button
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
+
+            // Focus success message for screen readers
+            successMsg.setAttribute('tabindex', '-1');
+            successMsg.focus();
+
+            // Remove success message after 5 seconds
+            setTimeout(() => {
+                successMsg.remove();
+            }, 5000);
+        }, 1000);
+    }
+
+    showErrorSummary(errors) {
+        const summary = document.getElementById('form-error-summary');
+        if (!summary) return;
+
+        const heading = document.createElement('h3');
+        heading.textContent = `There ${errors.length === 1 ? 'is' : 'are'} ${errors.length} error${errors.length === 1 ? '' : 's'} with your submission:`;
+
+        const list = document.createElement('ul');
+        errors.forEach(error => {
+            const item = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = `#${error.field.id}`;
+            link.textContent = `${error.label} - ${error.field.nextElementSibling?.textContent || 'Invalid'}`;
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                error.field.focus();
+            });
+            item.appendChild(link);
+            list.appendChild(item);
+        });
+
+        summary.innerHTML = '';
+        summary.appendChild(heading);
+        summary.appendChild(list);
+        summary.style.display = 'block';
+    }
+
+    clearErrorSummary() {
+        const summary = document.getElementById('form-error-summary');
+        if (summary) {
+            summary.innerHTML = '';
+            summary.style.display = 'none';
+        }
+    }
+
+    getFieldLabel(input) {
+        const label = this.form.querySelector(`label[for="${input.id}"]`);
+        return label ? label.textContent.replace('*', '').trim() : input.name;
+    }
+
+    isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+}
+
+// Initialize form validation when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFormValidation);
+} else {
+    initFormValidation();
+}
+
+function initFormValidation() {
+    // Validate contact form
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        new AccessibleFormValidator('.contact-form');
+    }
 }

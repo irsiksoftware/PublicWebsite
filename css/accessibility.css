@@ -1,4 +1,4 @@
-/* Accessibility Styles */
+/* Accessibility Styles - WCAG 2.1 AA Compliant */
 
 /* Visually hidden class for screen readers */
 .visually-hidden {
@@ -11,6 +11,17 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+/* Focus visible enhancements for WCAG 2.4.7 (Focus Visible) */
+*:focus-visible {
+    outline: 3px solid var(--primary-blue, #0057B8);
+    outline-offset: 2px;
+}
+
+/* High contrast focus for dark backgrounds */
+[data-theme="dark"] *:focus-visible {
+    outline-color: #4A9EFF;
 }
 
 /* Skip to content link */
