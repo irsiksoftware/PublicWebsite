@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Client Portal Dashboard - Irsik Software Solutions">
+    <title>Dashboard - Client Portal</title>
+    <link rel="stylesheet" href="./css/portal.css">
+</head>
+<body>
+    <div class="portal-wrapper">
+        <nav class="portal-nav">
+            <div class="nav-header">
+                <h2>Irsik Software Solutions</h2>
+                <p class="user-info" id="userInfo">Loading...</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="./dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="./documents.html">Documents</a></li>
+                <li><a href="./support.html">Support Tickets</a></li>
+                <li><a href="#" id="logoutBtn">Logout</a></li>
+            </ul>
+        </nav>
+        <main class="portal-content">
+            <header class="content-header">
+                <h1>Dashboard</h1>
+            </header>
+            <div class="dashboard-grid">
+                <section class="card project-status">
+                    <h2>Project Status</h2>
+                    <div id="projectList" class="project-list">
+                        <div class="loading">Loading projects...</div>
+                    </div>
+                </section>
+                <section class="card quick-stats">
+                    <h2>Quick Stats</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-value" id="activeProjects">-</span>
+                            <span class="stat-label">Active Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="openTickets">-</span>
+                            <span class="stat-label">Open Tickets</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="documents">-</span>
+                            <span class="stat-label">Documents</span>
+                        </div>
+                    </div>
+                </section>
+                <section class="card recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div id="activityList" class="activity-list">
+                        <div class="loading">Loading activity...</div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="./js/auth.js"></script>
+    <script src="./js/dashboard.js"></script>
+</body>
+</html>
