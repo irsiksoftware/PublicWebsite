@@ -1,0 +1,72 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - feature/**
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm install -g http-server
+
+      - name: Run Lighthouse CI
+        run: npx lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Upload Lighthouse reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/
+          retention-days: 30
+
+      - name: Comment PR with results
+        uses: actions/github-script@v7
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            const fs = require('fs');
+            const manifestPath = '.lighthouseci/manifest.json';
+
+            if (fs.existsSync(manifestPath)) {
+              const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+              const reports = manifest.map(result => {
+                const url = result.url;
+                const summary = result.summary;
+                return `### ${url}\n` +
+                  `- Performance: ${Math.round(summary.performance * 100)}\n` +
+                  `- Accessibility: ${Math.round(summary.accessibility * 100)}\n` +
+                  `- Best Practices: ${Math.round(summary['best-practices'] * 100)}\n` +
+                  `- SEO: ${Math.round(summary.seo * 100)}`;
+              }).join('\n\n');
+
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `## Lighthouse CI Results\n\n${reports}`
+              });
+            }
