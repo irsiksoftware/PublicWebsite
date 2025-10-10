@@ -2,6 +2,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="{{ page.description | default: site.description }}">
 <meta name="theme-color" content="#6c63ff">
+
+<!-- Resource Hints for Performance -->
+<!-- DNS Prefetch for external domains -->
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+<!-- Preconnect to required origins -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+
+<!-- Preload critical resources -->
+<link rel="preload" href="css/variables.css" as="style">
+<link rel="preload" href="css/styles.css" as="style">
+<link rel="preload" href="assets/js/main.js" as="script">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192x192.png">
 <link rel="stylesheet" href="css/variables.css">

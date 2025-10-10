@@ -133,24 +133,73 @@ module.exports = (env, argv) => {
       ],
       splitChunks: {
         chunks: 'all',
+        maxInitialRequests: 25,
+        maxAsyncRequests: 25,
+        minSize: 20000,
+        maxSize: 244000,
         cacheGroups: {
+          // Vendor dependencies
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendors',
             priority: 10,
             reuseExistingChunk: true
           },
+          // Common code shared across components
           common: {
             minChunks: 2,
             priority: 5,
             reuseExistingChunk: true,
             enforce: true
+          },
+          // Chart components
+          chartComponents: {
+            test: /[\\/]js[\\/](.*-chart)\.js$/,
+            name: 'chart-components',
+            priority: 8,
+            reuseExistingChunk: true
+          },
+          // Agent components
+          agentComponents: {
+            test: /[\\/]js[\\/]agent-.*\.js$/,
+            name: 'agent-components',
+            priority: 8,
+            reuseExistingChunk: true
+          },
+          // Session components
+          sessionComponents: {
+            test: /[\\/]js[\\/](session-.*|audit-sessions)\.js$/,
+            name: 'session-components',
+            priority: 8,
+            reuseExistingChunk: true
+          },
+          // Game components
+          gameComponents: {
+            test: /[\\/]js[\\/](tetris|tetromino-shapes|unity-loader)\.js$/,
+            name: 'game-components',
+            priority: 8,
+            reuseExistingChunk: true
+          },
+          // UI utilities
+          utilComponents: {
+            test: /[\\/]js[\\/](lazy-.*|data-.*|theme-toggle|mobile-nav)\.js$/,
+            name: 'util-components',
+            priority: 7,
+            reuseExistingChunk: true
           }
         }
       },
       runtimeChunk: {
         name: 'runtime'
-      }
+      },
+      // Enable module concatenation for better tree shaking
+      concatenateModules: isProduction,
+      // Use deterministic module IDs for better caching
+      moduleIds: 'deterministic',
+      // Minimize chunk count for better performance
+      mergeDuplicateChunks: true,
+      // Remove empty chunks
+      removeEmptyChunks: true
     },
     performance: {
       hints: isProduction ? 'warning' : false,
