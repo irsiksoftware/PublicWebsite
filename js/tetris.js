@@ -270,15 +270,23 @@ function updateUI() {
 function handleKeyPress(event) {
     switch(event.key) {
     case 'ArrowLeft':
+    case 'a':
+    case 'A':
         moveLeft();
         break;
     case 'ArrowRight':
+    case 'd':
+    case 'D':
         moveRight();
         break;
     case 'ArrowDown':
+    case 's':
+    case 'S':
         moveDown();
         break;
     case 'ArrowUp':
+    case 'w':
+    case 'W':
         rotatePiece();
         break;
     case 'c':
