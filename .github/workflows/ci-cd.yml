@@ -31,7 +31,6 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        shell: bash
         run: |
           if [ -f package.json ]; then
             npm ci
@@ -40,7 +39,6 @@ jobs:
           fi
 
       - name: Lint JS files
-        shell: bash
         run: |
           if [ -d js ] && [ "$(ls -A js/*.js 2>/dev/null)" ]; then
             npx eslint js/**/*.js --max-warnings 0 || echo "No ESLint config found, skipping strict linting"
@@ -49,14 +47,12 @@ jobs:
           fi
 
       - name: Validate HTML
-        shell: bash
         run: |
           if [ -f index.html ]; then
             echo "✓ index.html exists"
           fi
 
       - name: Check CSS
-        shell: bash
         run: |
           if [ -d css ] && [ "$(ls -A css/*.css 2>/dev/null)" ]; then
             echo "✓ CSS files found"
@@ -65,7 +61,6 @@ jobs:
       - name: Notify Discord - CI Build
         if: always()
         continue-on-error: true
-        shell: bash
         env:
           DISCORD_WEBHOOK: ${{ secrets.COMMIT_WEBHOOK }}
         run: |
@@ -149,7 +144,6 @@ jobs:
       - name: Notify Discord - Deployment
         if: always()
         continue-on-error: true
-        shell: bash
         env:
           DISCORD_WEBHOOK: ${{ secrets.COMMIT_WEBHOOK }}
         run: |
