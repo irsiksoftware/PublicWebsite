@@ -1,106 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tetris Game - Classic Tetris implementation">
-    <meta name="theme-color" content="#6c63ff">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/tetris.css">
-    <link rel="stylesheet" href="css/accessibility.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/lazy-load.css">
-    <link rel="stylesheet" href="css/theme-toggle.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <title>Tetris - Swarm Showcase</title>
-    <script src="js/theme-toggle.js"></script>
-</head>
-<body>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
-    <header>
-        <div class="shield-logo"></div>
-        <h1>Tetris</h1>
-        <p>Classic Block Puzzle Game</p>
-    </header>
+---
+layout: default
+title: "Tetris - Swarm Showcase"
+description: "Tetris Game - Classic Tetris implementation"
+additional_css:
+  - tetris.css
+  - lazy-load.css
+additional_scripts_body:
+  - src: "js/tetromino-shapes.js"
+  - src: "js/tetris.js"
+  - src: "js/lazy-load-images.js"
+---
 
-    <nav role="navigation" aria-label="Main navigation">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#game">Game</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section id="game" aria-labelledby="game-heading">
-            <h2 id="game-heading" class="visually-hidden">Tetris Game</h2>
-            <div class="game-container">
-                <div class="game-and-controls">
-                    <canvas id="tetris-game" width="320" height="640" aria-label="Tetris game board"></canvas>
-                    <div class="mobile-controls" id="mobile-controls" aria-label="Touch controls">
-                        <div class="dpad-container">
-                            <button class="dpad-btn dpad-up" id="btn-rotate" aria-label="Rotate piece">&#9650;</button>
-                            <div class="dpad-middle">
-                                <button class="dpad-btn dpad-left" id="btn-left" aria-label="Move left">&#9664;</button>
-                                <button class="dpad-btn dpad-down" id="btn-down" aria-label="Move down">&#9660;</button>
-                                <button class="dpad-btn dpad-right" id="btn-right" aria-label="Move right">&#9654;</button>
-                            </div>
-                        </div>
-                        <button class="hold-btn" id="btn-hold" aria-label="Hold piece">HOLD (C)</button>
+<section id="game" aria-labelledby="game-heading">
+    <h2 id="game-heading" class="visually-hidden">Tetris Game</h2>
+    <div class="game-container">
+        <div class="game-and-controls">
+            <canvas id="tetris-game" width="320" height="640" aria-label="Tetris game board"></canvas>
+            <div class="mobile-controls" id="mobile-controls" aria-label="Touch controls">
+                <div class="dpad-container">
+                    <button class="dpad-btn dpad-up" id="btn-rotate" aria-label="Rotate piece">&#9650;</button>
+                    <div class="dpad-middle">
+                        <button class="dpad-btn dpad-left" id="btn-left" aria-label="Move left">&#9664;</button>
+                        <button class="dpad-btn dpad-down" id="btn-down" aria-label="Move down">&#9660;</button>
+                        <button class="dpad-btn dpad-right" id="btn-right" aria-label="Move right">&#9654;</button>
                     </div>
                 </div>
-                <div class="ui-panel">
-                    <div class="score-display">
-                        <h3>Current Score</h3>
-                        <p id="score" aria-live="polite">0</p>
-                    </div>
-                    <div class="high-score-display">
-                        <h3>High Score</h3>
-                        <p id="high-score" aria-live="polite">0</p>
-                    </div>
-                    <div class="level-display">
-                        <h3>Level</h3>
-                        <p id="level" aria-live="polite">1</p>
-                    </div>
-                    <div class="lines-display">
-                        <h3>Lines Cleared</h3>
-                        <p id="lines" aria-live="polite">0</p>
-                    </div>
-                    <div class="next-piece-display">
-                        <h3>Next Piece</h3>
-                        <canvas id="next-piece" width="80" height="80" aria-label="Preview of next tetromino piece"></canvas>
-                    </div>
-                    <div class="hold-piece-display">
-                        <h3>Hold Piece <span class="tooltip-icon" aria-describedby="hold-tooltip">?</span></h3>
-                        <div class="tooltip" id="hold-tooltip" role="tooltip">
-                            Press 'C' or tap HOLD to swap the current piece with the held piece. You can only hold once per piece.
-                        </div>
-                        <canvas id="hold-piece" width="80" height="80" aria-label="Preview of held tetromino piece"></canvas>
-                    </div>
-                </div>
+                <button class="hold-btn" id="btn-hold" aria-label="Hold piece">HOLD (C)</button>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 IrsikSoftware. All rights reserved.</p>
-            <nav class="footer-nav">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms-of-service.html">Terms of Service</a>
-            </nav>
-            <address>
-                123 Innovation Drive, Suite 400<br>
-                Tech Valley, CA 94000
-            </address>
         </div>
-    </footer>
-
-    <script src="js/tetromino-shapes.js"></script>
-    <script src="js/tetris.js"></script>
-    <script src="js/lazy-load-images.js"></script>
-</body>
-</html>
+        <div class="ui-panel">
+            <div class="score-display">
+                <h3>Current Score</h3>
+                <p id="score" aria-live="polite">0</p>
+            </div>
+            <div class="high-score-display">
+                <h3>High Score</h3>
+                <p id="high-score" aria-live="polite">0</p>
+            </div>
+            <div class="level-display">
+                <h3>Level</h3>
+                <p id="level" aria-live="polite">1</p>
+            </div>
+            <div class="lines-display">
+                <h3>Lines Cleared</h3>
+                <p id="lines" aria-live="polite">0</p>
+            </div>
+            <div class="next-piece-display">
+                <h3>Next Piece</h3>
+                <canvas id="next-piece" width="80" height="80" aria-label="Preview of next tetromino piece"></canvas>
+            </div>
+            <div class="hold-piece-display">
+                <h3>Hold Piece <span class="tooltip-icon" aria-describedby="hold-tooltip">?</span></h3>
+                <div class="tooltip" id="hold-tooltip" role="tooltip">
+                    Press 'C' or tap HOLD to swap the current piece with the held piece. You can only hold once per piece.
+                </div>
+                <canvas id="hold-piece" width="80" height="80" aria-label="Preview of held tetromino piece"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
