@@ -28,12 +28,14 @@
 <link rel="stylesheet" href="css/theme-toggle.css">
 <link rel="stylesheet" href="css/footer.css">
 <link rel="stylesheet" href="css/cookie-consent.css">
+<link rel="stylesheet" href="css/app-install-banner.css">
 {% if page.additional_css %}
   {% for css_file in page.additional_css %}
 <link rel="stylesheet" href="css/{{ css_file }}">
   {% endfor %}
 {% endif %}
 <title>{{ page.title | default: site.title }}</title>
+{% include app-banners.html %}
 {% include schema-organization.html %}
 {% include schema-localbusiness.html %}
 {% include schema-service.html %}
