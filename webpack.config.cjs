@@ -24,6 +24,9 @@ module.exports = (env, argv) => {
       'hero-carousel': './js/hero-carousel.js',
       'lazy-load-images': './js/lazy-load-images.js',
       'mobile-nav': './js/mobile-nav.js',
+      'mobile-gestures': './js/mobile-gestures.js',
+      'swipe-navigation': './js/swipe-navigation.js',
+      'pull-to-refresh': './js/pull-to-refresh.js',
       'roles-overview': './js/roles-overview.js',
       'service-worker-register': './js/service-worker-register.js',
       'session-detail-modal': './js/session-detail-modal.js',
@@ -80,7 +83,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './index.html',
         filename: 'index.html',
-        chunks: ['main', 'mobile-nav', 'theme-toggle', 'hero-carousel', 'analytics-events']
+        chunks: ['main', 'mobile-nav', 'mobile-gestures', 'swipe-navigation', 'pull-to-refresh', 'theme-toggle', 'hero-carousel', 'analytics-events']
       }),
       new HtmlWebpackPlugin({
         template: './contact.html',
@@ -185,6 +188,13 @@ module.exports = (env, argv) => {
             test: /[\\/]js[\\/](lazy-.*|data-.*|theme-toggle|mobile-nav)\.js$/,
             name: 'util-components',
             priority: 7,
+            reuseExistingChunk: true
+          },
+          // Mobile features
+          mobileComponents: {
+            test: /[\\/]js[\\/](mobile-gestures|swipe-navigation|pull-to-refresh)\.js$/,
+            name: 'mobile-components',
+            priority: 8,
             reuseExistingChunk: true
           }
         }
