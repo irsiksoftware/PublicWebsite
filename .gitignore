@@ -1,1 +1,11 @@
 node_modules/
+coverage/
+.DS_Store
+*.log
+.env
+.env.local
+dist/
+build/
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
