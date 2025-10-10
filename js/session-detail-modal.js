@@ -81,6 +81,30 @@ class SessionDetailModal {
                 this.close();
             }
         });
+
+        // Trap focus within modal
+        this.modal.addEventListener('keydown', (e) => {
+            if (!this.isOpen || e.key !== 'Tab') return;
+
+            const focusableElements = this.modal.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const focusableArray = Array.from(focusableElements);
+            const firstElement = focusableArray[0];
+            const lastElement = focusableArray[focusableArray.length - 1];
+
+            if (e.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        });
     }
 
     open(sessionData) {
@@ -118,12 +142,26 @@ class SessionDetailModal {
         this.modal.style.display = 'block';
         this.isOpen = true;
         document.body.style.overflow = 'hidden';
+
+        // Store previously focused element
+        this.previouslyFocusedElement = document.activeElement;
+
+        // Focus close button when modal opens
+        setTimeout(() => {
+            const closeBtn = this.modal.querySelector('.session-modal-close');
+            if (closeBtn) closeBtn.focus();
+        }, 50);
     }
 
     close() {
         this.modal.style.display = 'none';
         this.isOpen = false;
         document.body.style.overflow = '';
+
+        // Restore focus to previously focused element
+        if (this.previouslyFocusedElement) {
+            this.previouslyFocusedElement.focus();
+        }
     }
 }
 

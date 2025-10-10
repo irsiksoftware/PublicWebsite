@@ -271,30 +271,53 @@ function updateUI() {
 
 // Handle keyboard input
 function handleKeyPress(event) {
+    if (gameState.isPaused || gameState.isGameOver) {
+        return;
+    }
+
+    // Prevent default behavior for arrow keys to stop page scrolling
+    if (event.key.startsWith('Arrow')) {
+        event.preventDefault();
+    }
+
     switch(event.key) {
     case 'ArrowLeft':
     case 'a':
     case 'A':
+        event.preventDefault();
         moveLeft();
         break;
     case 'ArrowRight':
     case 'd':
     case 'D':
+        event.preventDefault();
         moveRight();
         break;
     case 'ArrowDown':
     case 's':
     case 'S':
+        event.preventDefault();
         moveDown();
         break;
     case 'ArrowUp':
     case 'w':
     case 'W':
+        event.preventDefault();
         rotatePiece();
+        break;
+    case ' ':
+        event.preventDefault();
+        hardDrop();
         break;
     case 'c':
     case 'C':
+        event.preventDefault();
         holdPiece();
+        break;
+    case 'p':
+    case 'P':
+        event.preventDefault();
+        togglePause();
         break;
     }
 }
@@ -688,6 +711,80 @@ function holdPiece() {
     }
 
     drawHoldPiece();
+    draw();
+}
+
+// Toggle pause state
+function togglePause() {
+    if (gameState.isGameOver) return;
+
+    gameState.isPaused = !gameState.isPaused;
+
+    if (gameState.isPaused) {
+        stopGameLoop();
+        showPauseOverlay();
+    } else {
+        startGameLoop();
+        hidePauseOverlay();
+    }
+}
+
+// Show pause overlay
+function showPauseOverlay() {
+    let overlay = document.getElementById('pause-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'pause-overlay';
+        overlay.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            z-index: 1000;
+        `;
+        overlay.textContent = 'PAUSED';
+        canvas.parentElement.style.position = 'relative';
+        canvas.parentElement.appendChild(overlay);
+    } else {
+        overlay.style.display = 'flex';
+    }
+}
+
+// Hide pause overlay
+function hidePauseOverlay() {
+    const overlay = document.getElementById('pause-overlay');
+    if (overlay) {
+        overlay.style.display = 'none';
+    }
+}
+
+// Hard drop - instantly drop piece to bottom
+function hardDrop() {
+    if (gameState.isPaused || gameState.isGameOver || !currentPiece) {
+        return;
+    }
+
+    let dropDistance = 0;
+    while (canMove(currentPiece.x, currentPiece.y + 1)) {
+        currentPiece.y++;
+        dropDistance++;
+    }
+
+    // Add bonus points for hard drop
+    gameState.score += dropDistance * 2;
+    updateUI();
+
+    lockPiece();
+    clearLines();
+    spawnPiece();
     draw();
 }
 

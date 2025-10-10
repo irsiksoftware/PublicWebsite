@@ -1,0 +1,417 @@
+{
+  "wcagVersion": "2.1",
+  "conformanceLevel": "AA",
+  "guidelines": {
+    "perceivable": {
+      "textAlternatives": {
+        "1.1.1": {
+          "name": "Non-text Content",
+          "level": "A",
+          "implementation": [
+            "All images have alt attributes",
+            "Decorative images use aria-hidden='true' and empty alt",
+            "SVG icons include aria-label or are marked aria-hidden"
+          ]
+        }
+      },
+      "adaptable": {
+        "1.3.1": {
+          "name": "Info and Relationships",
+          "level": "A",
+          "implementation": [
+            "Semantic HTML5 elements (nav, main, section, article, aside, footer)",
+            "ARIA landmarks for page regions",
+            "Proper heading hierarchy (h1-h6)",
+            "Form labels associated with inputs"
+          ]
+        },
+        "1.3.2": {
+          "name": "Meaningful Sequence",
+          "level": "A",
+          "implementation": [
+            "Logical reading order in DOM",
+            "Tab order follows visual flow",
+            "CSS does not disrupt content order"
+          ]
+        },
+        "1.3.3": {
+          "name": "Sensory Characteristics",
+          "level": "A",
+          "implementation": [
+            "Instructions do not rely solely on shape, size, or visual location",
+            "Audio/visual content has text alternatives"
+          ]
+        }
+      },
+      "distinguishable": {
+        "1.4.1": {
+          "name": "Use of Color",
+          "level": "A",
+          "implementation": [
+            "Color not used as only visual means of conveying information",
+            "Links distinguished by underline or other non-color indicator",
+            "Error states use icons/text in addition to color"
+          ]
+        },
+        "1.4.3": {
+          "name": "Contrast (Minimum)",
+          "level": "AA",
+          "implementation": [
+            "Normal text: 4.5:1 contrast ratio",
+            "Large text (18pt+ or 14pt+ bold): 3:1 contrast ratio",
+            "UI components and graphical objects: 3:1 contrast ratio"
+          ],
+          "colorSchemes": {
+            "light": {
+              "textOnBackground": "4.5:1 minimum (#333333 on #ffffff = 12.63:1)",
+              "primaryBlue": "#0057B8 on white = 6.29:1",
+              "linksOnBackground": "4.5:1 minimum"
+            },
+            "dark": {
+              "textOnBackground": "4.5:1 minimum (#f0f0f0 on #1a1a1a = 14.89:1)",
+              "accentBlue": "#4A9EFF on dark = 7.12:1"
+            }
+          }
+        },
+        "1.4.4": {
+          "name": "Resize Text",
+          "level": "AA",
+          "implementation": [
+            "Text can be resized up to 200% without loss of content or functionality",
+            "Relative units (rem, em) used for font sizes",
+            "Responsive design supports text scaling"
+          ]
+        },
+        "1.4.5": {
+          "name": "Images of Text",
+          "level": "AA",
+          "implementation": [
+            "Text used instead of images of text where possible",
+            "Logos and essential graphics excepted",
+            "SVG text preferred over raster images"
+          ]
+        },
+        "1.4.10": {
+          "name": "Reflow",
+          "level": "AA",
+          "implementation": [
+            "Content reflows to 320px width without horizontal scrolling",
+            "Responsive design prevents 2D scrolling",
+            "Mobile-first approach ensures reflow compliance"
+          ]
+        },
+        "1.4.11": {
+          "name": "Non-text Contrast",
+          "level": "AA",
+          "implementation": [
+            "UI components have 3:1 contrast ratio",
+            "Focus indicators meet contrast requirements",
+            "Interactive elements clearly distinguishable"
+          ]
+        },
+        "1.4.12": {
+          "name": "Text Spacing",
+          "level": "AA",
+          "implementation": [
+            "Line height at least 1.5x font size",
+            "Paragraph spacing at least 2x font size",
+            "Letter spacing at least 0.12x font size",
+            "Word spacing at least 0.16x font size"
+          ]
+        },
+        "1.4.13": {
+          "name": "Content on Hover or Focus",
+          "level": "AA",
+          "implementation": [
+            "Hover/focus content dismissible without moving pointer",
+            "Content remains visible while hovering",
+            "Additional content does not obscure original trigger"
+          ]
+        }
+      }
+    },
+    "operable": {
+      "keyboardAccessible": {
+        "2.1.1": {
+          "name": "Keyboard",
+          "level": "A",
+          "implementation": [
+            "All functionality available via keyboard",
+            "No keyboard traps",
+            "Custom controls have proper keyboard handling",
+            "Tab order is logical and intuitive"
+          ]
+        },
+        "2.1.2": {
+          "name": "No Keyboard Trap",
+          "level": "A",
+          "implementation": [
+            "Users can navigate away from all components using keyboard",
+            "Modals can be closed with Escape key",
+            "Focus returns to triggering element when closing dialogs"
+          ]
+        },
+        "2.1.4": {
+          "name": "Character Key Shortcuts",
+          "level": "A",
+          "implementation": [
+            "Single character shortcuts can be turned off or remapped",
+            "Shortcuts only active when component has focus"
+          ]
+        }
+      },
+      "enoughTime": {
+        "2.2.1": {
+          "name": "Timing Adjustable",
+          "level": "A",
+          "implementation": [
+            "Time limits can be turned off, adjusted, or extended",
+            "Users warned before time expires"
+          ]
+        },
+        "2.2.2": {
+          "name": "Pause, Stop, Hide",
+          "level": "A",
+          "implementation": [
+            "Auto-updating content can be paused, stopped, or hidden",
+            "Carousels have pause/play controls",
+            "Animations respect prefers-reduced-motion"
+          ]
+        }
+      },
+      "navigable": {
+        "2.4.1": {
+          "name": "Bypass Blocks",
+          "level": "A",
+          "implementation": [
+            "Skip to main content link provided",
+            "ARIA landmarks enable screen reader navigation",
+            "Heading structure supports content navigation"
+          ]
+        },
+        "2.4.2": {
+          "name": "Page Titled",
+          "level": "A",
+          "implementation": [
+            "Every page has unique, descriptive title",
+            "Title describes page purpose or topic"
+          ]
+        },
+        "2.4.3": {
+          "name": "Focus Order",
+          "level": "A",
+          "implementation": [
+            "Focus order preserves meaning and operability",
+            "Tab order follows visual layout",
+            "No unexpected focus changes"
+          ]
+        },
+        "2.4.4": {
+          "name": "Link Purpose (In Context)",
+          "level": "A",
+          "implementation": [
+            "Link purpose clear from link text or context",
+            "Aria-label provides additional context where needed",
+            "No generic 'click here' links"
+          ]
+        },
+        "2.4.5": {
+          "name": "Multiple Ways",
+          "level": "AA",
+          "implementation": [
+            "Multiple navigation mechanisms (menu, search, sitemap)",
+            "Breadcrumbs for hierarchical navigation",
+            "Related links within content"
+          ]
+        },
+        "2.4.6": {
+          "name": "Headings and Labels",
+          "level": "AA",
+          "implementation": [
+            "Headings describe topic or purpose",
+            "Labels describe purpose of inputs",
+            "Consistent heading hierarchy throughout site"
+          ]
+        },
+        "2.4.7": {
+          "name": "Focus Visible",
+          "level": "AA",
+          "implementation": [
+            "Focus indicator visible with 3:1 contrast ratio",
+            "focus-visible pseudo-class used",
+            "Custom focus styles for better visibility"
+          ]
+        }
+      },
+      "inputModalities": {
+        "2.5.1": {
+          "name": "Pointer Gestures",
+          "level": "A",
+          "implementation": [
+            "All multipoint/path-based gestures have single-pointer alternative",
+            "Swipe gestures have button alternatives"
+          ]
+        },
+        "2.5.2": {
+          "name": "Pointer Cancellation",
+          "level": "A",
+          "implementation": [
+            "Click events fire on up-event, not down-event",
+            "Users can abort/undo accidental activation"
+          ]
+        },
+        "2.5.3": {
+          "name": "Label in Name",
+          "level": "A",
+          "implementation": [
+            "Accessible name includes visible label text",
+            "aria-label consistent with visual label"
+          ]
+        },
+        "2.5.4": {
+          "name": "Motion Actuation",
+          "level": "A",
+          "implementation": [
+            "Functions triggered by device motion have alternative input",
+            "Motion can be disabled in user preferences"
+          ]
+        }
+      }
+    },
+    "understandable": {
+      "readable": {
+        "3.1.1": {
+          "name": "Language of Page",
+          "level": "A",
+          "implementation": [
+            "HTML lang attribute set on root element",
+            "Language changes marked with lang attribute"
+          ]
+        },
+        "3.1.2": {
+          "name": "Language of Parts",
+          "level": "AA",
+          "implementation": [
+            "Foreign language passages marked with lang attribute",
+            "Proper language codes used (en, es, fr, etc.)"
+          ]
+        }
+      },
+      "predictable": {
+        "3.2.1": {
+          "name": "On Focus",
+          "level": "A",
+          "implementation": [
+            "Receiving focus does not initiate change of context",
+            "No automatic navigation or form submission on focus"
+          ]
+        },
+        "3.2.2": {
+          "name": "On Input",
+          "level": "A",
+          "implementation": [
+            "Changing settings does not automatically cause context change",
+            "Explicit submit/apply buttons for form changes"
+          ]
+        },
+        "3.2.3": {
+          "name": "Consistent Navigation",
+          "level": "AA",
+          "implementation": [
+            "Navigation mechanisms in same relative order across pages",
+            "Consistent header/footer across site"
+          ]
+        },
+        "3.2.4": {
+          "name": "Consistent Identification",
+          "level": "AA",
+          "implementation": [
+            "Icons, buttons, links with same function use consistent labels",
+            "UI patterns consistent throughout application"
+          ]
+        }
+      },
+      "inputAssistance": {
+        "3.3.1": {
+          "name": "Error Identification",
+          "level": "A",
+          "implementation": [
+            "Errors identified and described in text",
+            "aria-invalid and aria-describedby used for error messaging",
+            "Error messages associated with inputs"
+          ]
+        },
+        "3.3.2": {
+          "name": "Labels or Instructions",
+          "level": "A",
+          "implementation": [
+            "Labels or instructions provided for user input",
+            "Required fields clearly marked",
+            "Input format examples provided where needed"
+          ]
+        },
+        "3.3.3": {
+          "name": "Error Suggestion",
+          "level": "AA",
+          "implementation": [
+            "Suggestions provided for input errors when known",
+            "Helpful error messages guide user to correction"
+          ]
+        },
+        "3.3.4": {
+          "name": "Error Prevention (Legal, Financial, Data)",
+          "level": "AA",
+          "implementation": [
+            "Submissions are reversible, checked, or confirmed",
+            "Confirmation dialogs for critical actions"
+          ]
+        }
+      }
+    },
+    "robust": {
+      "compatible": {
+        "4.1.1": {
+          "name": "Parsing",
+          "level": "A",
+          "implementation": [
+            "Valid HTML5 markup",
+            "No duplicate IDs",
+            "Properly nested elements"
+          ]
+        },
+        "4.1.2": {
+          "name": "Name, Role, Value",
+          "level": "A",
+          "implementation": [
+            "ARIA roles, states, and properties correctly applied",
+            "Custom controls have proper accessible names",
+            "Interactive elements programmatically determinable"
+          ]
+        },
+        "4.1.3": {
+          "name": "Status Messages",
+          "level": "AA",
+          "implementation": [
+            "Status messages use role='status' or role='alert'",
+            "aria-live regions for dynamic updates",
+            "Screen readers notified of important changes"
+          ]
+        }
+      }
+    }
+  },
+  "testingTools": [
+    "axe-core",
+    "pa11y",
+    "Lighthouse",
+    "WAVE (browser extension)",
+    "Screen readers (NVDA, JAWS, VoiceOver)"
+  ],
+  "automatedTests": {
+    "npm_scripts": {
+      "accessibility:audit": "Run complete WCAG 2.1 AA audit",
+      "a11y:audit": "Alias for accessibility:audit",
+      "a11y:test": "Alias for accessibility:audit"
+    }
+  }
+}
