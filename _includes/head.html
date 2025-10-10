@@ -18,6 +18,11 @@
   {% endfor %}
 {% endif %}
 <title>{{ page.title | default: site.title }}</title>
+{% include schema-organization.html %}
+{% include schema-localbusiness.html %}
+{% include schema-service.html %}
+{% include schema-softwareapplication.html %}
+{% include schema-breadcrumb.html %}
 {% if page.additional_scripts_head %}
   {% for script in page.additional_scripts_head %}
 <script src="{{ script.src }}"{% if script.defer %} defer{% endif %}{% if script.type %} type="{{ script.type }}"{% endif %}></script>
