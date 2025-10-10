@@ -1,0 +1,118 @@
+---
+layout: default
+title: "Unity Games Showcase - IrsikSoftware"
+description: "Explore our Unity games portfolio featuring interactive WebGL games with categories, filters, and player statistics"
+additional_css:
+  - games-gallery.css
+additional_scripts_body:
+  - src: "js/games-gallery.js"
+    defer: true
+stylesheets:
+  - css/variables.css
+  - css/reset.css
+  - css/styles.css
+  - css/nav.css
+  - css/accessibility.css
+  - css/responsive.css
+  - css/footer.css
+  - css/theme-toggle.css
+  - css/games-gallery.css
+scripts_head:
+  - src: js/sticky-header.js
+    defer: true
+  - src: js/mobile-nav.js
+    defer: true
+  - src: js/back-to-top.js
+    defer: true
+  - src: js/theme-toggle.js
+scripts_body:
+  - js/games-gallery.js
+theme_toggle: true
+skip_to_content: true
+header:
+  title: Unity Games Showcase
+  subtitle: Explore Our Interactive WebGL Games
+nav:
+  - text: Home
+    url: index.html
+    aria: Navigate to Home page
+  - text: Unity Games
+    url: unity-games.html
+    aria: Navigate to Unity Games page
+    active: true
+  - text: Tetris
+    url: tetris.html
+    aria: Navigate to Tetris game
+  - text: Contact Us
+    url: contact.html
+    aria: Navigate to Contact Us section
+---
+
+<section id="games-gallery" aria-labelledby="gallery-heading">
+    <div class="gallery-header">
+        <h2 id="gallery-heading">Unity Games Gallery</h2>
+        <p class="gallery-description">Browse our collection of interactive Unity games built with cutting-edge WebGL technology</p>
+    </div>
+
+    <div class="filters-container" role="region" aria-label="Game filters">
+        <div class="filter-group">
+            <label for="category-filter" class="filter-label">Category:</label>
+            <select id="category-filter" class="filter-select" aria-label="Filter games by category">
+                <option value="all">All Categories</option>
+                <option value="puzzle">Puzzle</option>
+                <option value="action">Action</option>
+                <option value="adventure">Adventure</option>
+                <option value="strategy">Strategy</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="sort-filter" class="filter-label">Sort by:</label>
+            <select id="sort-filter" class="filter-select" aria-label="Sort games">
+                <option value="rating">Highest Rated</option>
+                <option value="plays">Most Played</option>
+                <option value="newest">Newest</option>
+                <option value="name">Name (A-Z)</option>
+            </select>
+        </div>
+
+        <div class="search-group">
+            <label for="search-input" class="visually-hidden">Search games</label>
+            <input
+                type="search"
+                id="search-input"
+                class="search-input"
+                placeholder="Search games..."
+                aria-label="Search games by name"
+            >
+        </div>
+    </div>
+
+    <div id="games-grid" class="games-grid" role="region" aria-live="polite" aria-label="Games list">
+        <!-- Games will be dynamically loaded here -->
+    </div>
+
+    <div id="no-results" class="no-results" style="display: none;" role="status">
+        <p>No games found matching your criteria.</p>
+    </div>
+</section>
+
+<section id="about-unity" aria-labelledby="about-unity-heading">
+    <h2 id="about-unity-heading">About Our Unity Games</h2>
+    <p>Our Unity games showcase demonstrates the power of WebGL technology for delivering high-performance gaming experiences directly in your browser. Each game is optimized for smooth gameplay, responsive controls, and cross-platform compatibility.</p>
+
+    <div class="tech-highlights">
+        <div class="tech-highlight">
+            <h3>WebGL Technology</h3>
+            <p>Built with Unity and exported to WebGL for seamless browser-based gameplay without plugins</p>
+        </div>
+        <div class="tech-highlight">
+            <h3>Cross-Platform</h3>
+            <p>Play on desktop, tablet, or mobile with responsive touch and keyboard controls</p>
+        </div>
+        <div class="tech-highlight">
+            <h3>Performance Optimized</h3>
+            <p>Optimized assets and code for fast loading times and smooth 60 FPS gameplay</p>
+        </div>
+    </div>
+</section>
