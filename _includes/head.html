@@ -4,6 +4,9 @@
 <meta name="theme-color" content="#6c63ff">
 <link rel="icon" type="image/png" href="/favicon.png">
 
+<!-- Mobile App Banners -->
+{% include mobile-app-banner.html %}
+
 <!-- Open Graph / Social Media Meta Tags -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
@@ -48,6 +51,7 @@
 <link rel="stylesheet" href="/css/micro-interactions.css">
 <link rel="stylesheet" href="/css/language-selector.css">
 <link rel="stylesheet" href="/css/newsletter-signup.css">
+<link rel="stylesheet" href="/css/mobile-app-banner.css">
 {% if page.additional_css %}
   {% for css_file in page.additional_css %}
 <link rel="stylesheet" href="/css/{{ css_file }}">
