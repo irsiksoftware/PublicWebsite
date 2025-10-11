@@ -1,11 +1,11 @@
 // Hero Carousel - Auto-rotating background images
 (function() {
     const heroImages = [
-        './pictures/hero_banner_4.png',
-        './pictures/hero_banner_9.png',
-        './pictures/hero_banner_14.png',
-        './pictures/hero_banner_19.png',
-        './pictures/hero_banner_24.png'
+        '/pictures/hero_banner_4.png',
+        '/pictures/hero_banner_9.png',
+        '/pictures/hero_banner_14.png',
+        '/pictures/hero_banner_19.png',
+        '/pictures/hero_banner_24.png'
     ];
 
     let currentIndex = 0;
