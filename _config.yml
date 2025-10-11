@@ -3,6 +3,10 @@ description: "Leading provider of custom software development, AI solutions, and
 baseurl: ""
 url: "https://irsik.software"
 
+# Contact Information
+email: "hello@irsik.software"
+github_username: "irsiksoftware"
+
 # Google Analytics 4
 # To enable: Set your GA4 Measurement ID (format: G-XXXXXXXXXX)
 google_analytics_id: ""
@@ -67,7 +71,7 @@ defaults:
         priority: 0.3
         changefreq: yearly
   - scope:
-      path: "games/tetris.html"
+      path: "games/browser/tetris.html"
     values:
       sitemap:
         priority: 0.5
