@@ -20,11 +20,20 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.setAttribute('aria-expanded', !isOpen);
     });
 
-    // Close menu when clicking a link
+    // Close menu when clicking a link (except dropdown toggle)
     navUl.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navUl.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
+        link.addEventListener('click', (e) => {
+            if (link.classList.contains('dropdown-toggle')) {
+                e.preventDefault();
+                const parent = link.closest('.dropdown');
+                const menu = parent.querySelector('.dropdown-menu');
+                const isExpanded = link.getAttribute('aria-expanded') === 'true';
+                link.setAttribute('aria-expanded', !isExpanded);
+                menu.style.display = isExpanded ? 'none' : 'block';
+            } else {
+                navUl.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
         });
     });
 

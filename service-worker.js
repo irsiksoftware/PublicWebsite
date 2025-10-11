@@ -7,6 +7,7 @@ const STATIC_ASSETS = [
   './index.html',
   './pages/contact.html',
   './games/browser/tetris.html',
+  './portfolio/candy-rush-game.html',
   './pages/legal/terms-of-service.html',
   './pages/legal/privacy-policy.html',
   './offline.html',
