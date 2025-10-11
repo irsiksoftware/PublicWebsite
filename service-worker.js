@@ -1,4 +1,4 @@
-const CACHE_NAME = 'irsiksoftware-v3';
+const CACHE_NAME = 'irsiksoftware-v4';
 const RUNTIME_CACHE = 'runtime-cache';
 
 const STATIC_ASSETS = [
