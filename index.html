@@ -16,9 +16,12 @@ additional_css:
   - testimonials.css
   - technologies.css
   - arvr-showcase.css
+  - social-media.css
 additional_scripts_body:
   - src: "js/lazy-load-images.js"
   - src: "js/hero-carousel.js"
+  - src: "js/social-media-share.js"
+  - src: "js/social-media-feed.js"
 theme_toggle: true
 ---
 
@@ -445,6 +448,13 @@ theme_toggle: true
             <h3>Kubernetes</h3>
         </div>
     </div>
+</section>
+
+{% include social-media-share.html %}
+
+<section id="social-feed" aria-labelledby="social-feed-heading">
+    <h2 id="social-feed-heading" style="display: none;">Social Media Updates</h2>
+    {% include social-media-feed.html %}
 </section>
 
 <aside>
