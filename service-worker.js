@@ -1,5 +1,6 @@
-const CACHE_NAME = 'irsiksoftware-v5';
-const RUNTIME_CACHE = 'runtime-cache-v5';
+const CACHE_VERSION = '__CACHE_VERSION__'; // Replaced by CI/CD with git commit hash
+const CACHE_NAME = `irsiksoftware-${CACHE_VERSION}`;
+const RUNTIME_CACHE = `runtime-cache-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [
   './',

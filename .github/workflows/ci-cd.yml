@@ -145,6 +145,13 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      - name: Inject cache version into service worker
+        run: |
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+          sed -i "s/__CACHE_VERSION__/$COMMIT_HASH/g" _site/service-worker.js
+          echo "✓ Injected cache version: $COMMIT_HASH"
+          grep "const CACHE_VERSION" _site/service-worker.js
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
