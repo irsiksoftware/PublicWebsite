@@ -50,14 +50,14 @@ class LiveChatManager {
         const appId = this.config.intercom.appId;
 
         window.intercomSettings = {
-            api_base: "https://api-iam.intercom.io",
+            api_base: 'https://api-iam.intercom.io',
             app_id: appId
         };
 
         (function(){
             var w=window;
             var ic=w.Intercom;
-            if(typeof ic==="function"){
+            if(typeof ic==='function'){
                 ic('reattach_activator');
                 ic('update',w.intercomSettings);
             }else{
@@ -104,8 +104,8 @@ class LiveChatManager {
         !function() {
             var t = window.driftt = window.drift = window.driftt || [];
             if (!t.init) {
-                if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-                t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+                if (t.invoked) return void (window.console && console.error && console.error('Drift snippet included twice.'));
+                t.invoked = !0, t.methods = [ 'identify', 'config', 'track', 'reset', 'debug', 'show', 'ping', 'page', 'hide', 'off', 'on' ],
                 t.factory = function(e) {
                     return function() {
                         var n = Array.prototype.slice.call(arguments);
@@ -114,15 +114,15 @@ class LiveChatManager {
                 }, t.methods.forEach(function(e) {
                     t[e] = t.factory(e);
                 }), t.load = function(t) {
-                    var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-                    o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-                    var i = document.getElementsByTagName("script")[0];
+                    var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement('script');
+                    o.type = 'text/javascript', o.async = !0, o.crossorigin = 'anonymous', o.src = 'https://js.driftt.com/include/' + n + '/' + t + '.js';
+                    var i = document.getElementsByTagName('script')[0];
                     i.parentNode.insertBefore(o, i);
                 };
             }
         }();
-        drift.SNIPPET_VERSION = '0.3.1';
-        drift.load(appId);
+        window.drift.SNIPPET_VERSION = '0.3.1';
+        window.drift.load(appId);
 
         this.platform = 'drift';
         this.initialized = true;
@@ -138,13 +138,13 @@ class LiveChatManager {
         const key = this.config.zendeskChat.key;
 
         window.$zopim||(function(d,s){
-            var z=$zopim=function(c){z._.push(c)},$=z.s=
+            var z=window.$zopim=function(c){z._.push(c);},$=z.s=
             d.createElement(s),e=d.getElementsByTagName(s)[0];
-            z.set=function(o){z.set._.push(o)};z._=[];z.set._=[];
-            $.async=!0;$.setAttribute("charset","utf-8");
-            $.src="https://v2.zopim.com/?"+key;z.t=+new Date;$.
-            type="text/javascript";e.parentNode.insertBefore($,e)
-        })(document,"script");
+            z.set=function(o){z.set._.push(o);};z._=[];z.set._=[];
+            $.async=!0;$.setAttribute('charset','utf-8');
+            $.src='https://v2.zopim.com/?'+key;z.t=+new Date;$.
+                type='text/javascript';e.parentNode.insertBefore($,e);
+        })(document,'script');
 
         this.platform = 'zendeskChat';
         this.initialized = true;
@@ -161,21 +161,21 @@ class LiveChatManager {
         }
 
         switch(this.platform) {
-            case 'intercom':
-                if (window.Intercom) {
-                    window.Intercom('show');
-                }
-                break;
-            case 'drift':
-                if (window.drift) {
-                    window.drift.api.openChat();
-                }
-                break;
-            case 'zendeskChat':
-                if (window.$zopim) {
-                    window.$zopim.livechat.window.show();
-                }
-                break;
+        case 'intercom':
+            if (window.Intercom) {
+                window.Intercom('show');
+            }
+            break;
+        case 'drift':
+            if (window.drift) {
+                window.drift.api.openChat();
+            }
+            break;
+        case 'zendeskChat':
+            if (window.$zopim) {
+                window.$zopim.livechat.window.show();
+            }
+            break;
         }
     }
 
@@ -188,21 +188,21 @@ class LiveChatManager {
         }
 
         switch(this.platform) {
-            case 'intercom':
-                if (window.Intercom) {
-                    window.Intercom('hide');
-                }
-                break;
-            case 'drift':
-                if (window.drift) {
-                    window.drift.api.toggleChat();
-                }
-                break;
-            case 'zendeskChat':
-                if (window.$zopim) {
-                    window.$zopim.livechat.window.hide();
-                }
-                break;
+        case 'intercom':
+            if (window.Intercom) {
+                window.Intercom('hide');
+            }
+            break;
+        case 'drift':
+            if (window.drift) {
+                window.drift.api.toggleChat();
+            }
+            break;
+        case 'zendeskChat':
+            if (window.$zopim) {
+                window.$zopim.livechat.window.hide();
+            }
+            break;
         }
     }
 
@@ -216,29 +216,29 @@ class LiveChatManager {
         }
 
         switch(this.platform) {
-            case 'intercom':
-                if (window.Intercom) {
-                    window.Intercom('update', userData);
+        case 'intercom':
+            if (window.Intercom) {
+                window.Intercom('update', userData);
+            }
+            break;
+        case 'drift':
+            if (window.drift) {
+                window.drift.identify(userData.userId, {
+                    email: userData.email,
+                    name: userData.name
+                });
+            }
+            break;
+        case 'zendeskChat':
+            if (window.$zopim) {
+                if (userData.name) {
+                    window.$zopim.livechat.setName(userData.name);
                 }
-                break;
-            case 'drift':
-                if (window.drift) {
-                    window.drift.identify(userData.userId, {
-                        email: userData.email,
-                        name: userData.name
-                    });
+                if (userData.email) {
+                    window.$zopim.livechat.setEmail(userData.email);
                 }
-                break;
-            case 'zendeskChat':
-                if (window.$zopim) {
-                    if (userData.name) {
-                        window.$zopim.livechat.setName(userData.name);
-                    }
-                    if (userData.email) {
-                        window.$zopim.livechat.setEmail(userData.email);
-                    }
-                }
-                break;
+            }
+            break;
         }
     }
 
@@ -253,20 +253,20 @@ class LiveChatManager {
         }
 
         switch(this.platform) {
-            case 'intercom':
-                if (window.Intercom) {
-                    window.Intercom('trackEvent', eventName, metadata);
-                }
-                break;
-            case 'drift':
-                if (window.drift) {
-                    window.drift.track(eventName, metadata);
-                }
-                break;
-            case 'zendeskChat':
-                // Zendesk Chat doesn't have a native event tracking API
-                console.log('Event tracked:', eventName, metadata);
-                break;
+        case 'intercom':
+            if (window.Intercom) {
+                window.Intercom('trackEvent', eventName, metadata);
+            }
+            break;
+        case 'drift':
+            if (window.drift) {
+                window.drift.track(eventName, metadata);
+            }
+            break;
+        case 'zendeskChat':
+            // Zendesk Chat doesn't have a native event tracking API
+            console.log('Event tracked:', eventName, metadata);
+            break;
         }
     }
 }
