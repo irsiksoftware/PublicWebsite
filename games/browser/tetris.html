@@ -92,8 +92,50 @@ scripts_body:
                     <li><kbd>Space</kbd> - Hard Drop</li>
                     <li><kbd>C</kbd> - Hold Piece</li>
                     <li><kbd>P</kbd> - Pause/Resume</li>
+                    <li><kbd>M</kbd> - Mute/Unmute Music</li>
                 </ul>
+                <div class="music-controls">
+                    <button id="music-toggle" class="music-btn" aria-label="Toggle background music">🔊 Music</button>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="/sounds/chip_loop_chill_120bpm_12s.wav" type="audio/wav">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+// Background music controls
+(function() {
+    const music = document.getElementById('bgMusic');
+    const toggleBtn = document.getElementById('music-toggle');
+    let isMuted = true; // Start muted for better UX
+
+    music.volume = 0.3; // Set volume to 30%
+
+    toggleBtn.addEventListener('click', function() {
+        if (isMuted) {
+            music.play();
+            toggleBtn.textContent = '🔊 Music';
+            toggleBtn.setAttribute('aria-label', 'Mute background music');
+            isMuted = false;
+        } else {
+            music.pause();
+            toggleBtn.textContent = '🔇 Music';
+            toggleBtn.setAttribute('aria-label', 'Unmute background music');
+            isMuted = true;
+        }
+    });
+
+    // Keyboard shortcut: M key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'm' || e.key === 'M') {
+            toggleBtn.click();
+        }
+    });
+})();
+</script>
