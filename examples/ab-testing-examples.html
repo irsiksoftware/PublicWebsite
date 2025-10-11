@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/B Testing Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .example {
+            background: #f5f5f5;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .example h3 {
+            margin-top: 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            color: white;
+        }
+        .control {
+            background-color: #28a745;
+        }
+        .variant {
+            background-color: #007bff;
+        }
+        .test-info {
+            background: #fff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .headline {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>A/B Testing Framework - Examples</h1>
+    <p>This page demonstrates various use cases of the A/B Testing Framework.</p>
+
+    <div class="test-info" id="active-tests">
+        <h3>Your Active Tests</h3>
+        <div id="test-assignments"></div>
+        <button onclick="resetAllTests()" class="button control">Reset All Tests</button>
+    </div>
+
+    <!-- Example 1: Button Color Test -->
+    <div class="example">
+        <h3>Example 1: CTA Button Color Test</h3>
+        <p>This test compares two button colors to see which performs better.</p>
+        <button id="cta-button-1" class="button">Click Me!</button>
+        <p id="button-result-1"></p>
+    </div>
+
+    <!-- Example 2: Headline Copy Test -->
+    <div class="example">
+        <h3>Example 2: Headline Copy Test</h3>
+        <p>Testing different headline variations.</p>
+        <h2 id="test-headline" class="headline">Default Headline</h2>
+        <p id="headline-variant"></p>
+    </div>
+
+    <!-- Example 3: Pricing Display Test -->
+    <div class="example">
+        <h3>Example 3: Pricing Display Test</h3>
+        <p>Test which pricing format users prefer.</p>
+        <div id="pricing-container">
+            <div id="pricing-display"></div>
+        </div>
+        <button id="pricing-cta" class="button control">View Pricing</button>
+        <p id="pricing-result"></p>
+    </div>
+
+    <!-- Example 4: Layout Test -->
+    <div class="example">
+        <h3>Example 4: Image Position Test</h3>
+        <p>Testing different image positions in a content block.</p>
+        <div id="content-block" style="display: flex; gap: 20px; align-items: center;">
+            <div style="flex: 1; background: #ddd; height: 150px; display: flex; align-items: center; justify-content: center;">
+                Image Placeholder
+            </div>
+            <div style="flex: 2;">
+                <h4>Content Title</h4>
+                <p>This is some sample content that goes alongside the image.</p>
+            </div>
+        </div>
+        <p id="layout-variant"></p>
+    </div>
+
+    <!-- Example 5: Form Button Text Test -->
+    <div class="example">
+        <h3>Example 5: Form Submit Button Text</h3>
+        <p>Testing different call-to-action text on form buttons.</p>
+        <form id="test-form" style="max-width: 400px;">
+            <input type="email" placeholder="Enter your email" style="width: 100%; padding: 10px; margin: 10px 0;">
+            <button id="form-submit" type="submit" class="button control">Submit</button>
+        </form>
+        <p id="form-result"></p>
+    </div>
+
+    <!-- Debug Panel -->
+    <div class="example" style="background: #fff3cd; border-left-color: #ffc107;">
+        <h3>Debug Panel</h3>
+        <button onclick="showTestData()" class="button variant">Show Test Data</button>
+        <button onclick="resetTest('button-color')" class="button variant">Reset Button Test</button>
+        <pre id="debug-output" style="background: #fff; padding: 10px; border-radius: 4px; overflow-x: auto;"></pre>
+    </div>
+
+    <!-- Include A/B Testing Framework -->
+    <script src="../js/ab-testing.js"></script>
+
+    <script>
+        // Example 1: Button Color Test
+        ABTesting.createTest('button-color', {
+            description: 'Test CTA button color',
+            variants: [
+                { name: 'green', weight: 50 },
+                { name: 'blue', weight: 50 }
+            ]
+        });
+
+        ABTesting.applyVariant('button-color', {
+            green: () => {
+                document.getElementById('cta-button-1').className = 'button control';
+                document.getElementById('button-result-1').textContent = 'Variant: Green Button';
+            },
+            blue: () => {
+                document.getElementById('cta-button-1').className = 'button variant';
+                document.getElementById('button-result-1').textContent = 'Variant: Blue Button';
+            }
+        });
+
+        document.getElementById('cta-button-1').addEventListener('click', () => {
+            ABTesting.trackConversion('button-color', 'button_click');
+            alert('Button click tracked! Check console for details.');
+        });
+
+        // Example 2: Headline Test
+        ABTesting.createTest('headline-copy', {
+            description: 'Test headline variations',
+            variants: [
+                { name: 'control', weight: 33.33 },
+                { name: 'benefit-focused', weight: 33.33 },
+                { name: 'question-format', weight: 33.34 }
+            ]
+        });
+
+        ABTesting.applyVariant('headline-copy', {
+            control: () => {
+                document.getElementById('test-headline').textContent = 'Welcome to Our Platform';
+                document.getElementById('headline-variant').textContent = 'Variant: Control - Direct welcome';
+            },
+            'benefit-focused': () => {
+                document.getElementById('test-headline').textContent = 'Grow Your Business with Our Tools';
+                document.getElementById('headline-variant').textContent = 'Variant: Benefit-focused - Emphasizes value';
+            },
+            'question-format': () => {
+                document.getElementById('test-headline').textContent = 'Ready to Transform Your Workflow?';
+                document.getElementById('headline-variant').textContent = 'Variant: Question format - Engages curiosity';
+            }
+        });
+
+        // Example 3: Pricing Display Test
+        ABTesting.createTest('pricing-format', {
+            description: 'Test pricing display format',
+            variants: [
+                { name: 'monthly', weight: 50 },
+                { name: 'annual', weight: 50 }
+            ]
+        });
+
+        ABTesting.applyVariant('pricing-format', {
+            monthly: () => {
+                document.getElementById('pricing-display').innerHTML =
+                    '<h4>$29/month</h4><p>Billed monthly</p>';
+                document.getElementById('pricing-result').textContent = 'Variant: Monthly pricing emphasized';
+            },
+            annual: () => {
+                document.getElementById('pricing-display').innerHTML =
+                    '<h4>$290/year</h4><p>Save $58 vs monthly</p>';
+                document.getElementById('pricing-result').textContent = 'Variant: Annual pricing with savings';
+            }
+        });
+
+        document.getElementById('pricing-cta').addEventListener('click', () => {
+            ABTesting.trackConversion('pricing-format', 'pricing_click');
+            alert('Pricing click tracked!');
+        });
+
+        // Example 4: Layout Test
+        ABTesting.createTest('image-position', {
+            description: 'Test image position in content block',
+            variants: [
+                { name: 'left', weight: 50 },
+                { name: 'right', weight: 50 }
+            ]
+        });
+
+        const variant = ABTesting.getVariant('image-position');
+        if (variant.name === 'right') {
+            document.getElementById('content-block').style.flexDirection = 'row-reverse';
+            document.getElementById('layout-variant').textContent = 'Variant: Image on right';
+        } else {
+            document.getElementById('layout-variant').textContent = 'Variant: Image on left (control)';
+        }
+
+        // Example 5: Form Button Text Test
+        ABTesting.createTest('form-button-text', {
+            description: 'Test form submit button text',
+            variants: [
+                { name: 'submit', weight: 33.33 },
+                { name: 'get-started', weight: 33.33 },
+                { name: 'join-now', weight: 33.34 }
+            ]
+        });
+
+        ABTesting.applyVariant('form-button-text', {
+            submit: () => {
+                document.getElementById('form-submit').textContent = 'Submit';
+                document.getElementById('form-result').textContent = 'Variant: "Submit"';
+            },
+            'get-started': () => {
+                document.getElementById('form-submit').textContent = 'Get Started';
+                document.getElementById('form-result').textContent = 'Variant: "Get Started"';
+            },
+            'join-now': () => {
+                document.getElementById('form-submit').textContent = 'Join Now';
+                document.getElementById('form-result').textContent = 'Variant: "Join Now"';
+            }
+        });
+
+        document.getElementById('test-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            ABTesting.trackConversion('form-button-text', 'form_submit');
+            alert('Form submission tracked!');
+        });
+
+        // Display active test assignments
+        function updateTestAssignments() {
+            const tests = ABTesting.getActiveTests();
+            const container = document.getElementById('test-assignments');
+
+            if (Object.keys(tests).length === 0) {
+                container.innerHTML = '<p>No active test assignments yet.</p>';
+            } else {
+                let html = '<ul>';
+                for (const [testId, assignment] of Object.entries(tests)) {
+                    html += `<li><strong>${testId}:</strong> ${assignment.variant}</li>`;
+                }
+                html += '</ul>';
+                container.innerHTML = html;
+            }
+        }
+
+        // Reset all tests
+        function resetAllTests() {
+            if (confirm('Are you sure you want to reset all test assignments?')) {
+                ABTesting.resetAllTests();
+                location.reload();
+            }
+        }
+
+        // Reset specific test
+        function resetTest(testId) {
+            ABTesting.resetTest(testId);
+            location.reload();
+        }
+
+        // Show debug data
+        function showTestData() {
+            const data = {
+                activeTests: ABTesting.getActiveTests(),
+                allTests: ABTesting.tests
+            };
+            document.getElementById('debug-output').textContent =
+                JSON.stringify(data, null, 2);
+        }
+
+        // Initialize
+        updateTestAssignments();
+    </script>
+</body>
+</html>
