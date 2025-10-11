@@ -1,3 +1,25 @@
+/**
+ * @fileoverview Agent Success Rate Chart
+ * Visualizes agent success rates using a bar chart rendered on canvas.
+ * Combines data from agents.json and performance.json to calculate success percentages.
+ * Bars are color-coded based on success rate thresholds.
+ *
+ * @module success-rate-chart
+ * @requires data/agents.json
+ * @requires data/performance.json
+ *
+ * @example
+ * // Chart automatically loads on DOMContentLoaded
+ * // Requires canvas element:
+ * // <canvas id="success-rate-chart"></canvas>
+ */
+
+/**
+ * Loads and renders the success rate bar chart
+ * @async
+ * @function
+ * @throws {Error} When required data files cannot be loaded
+ */
 async function loadSuccessRateChart() {
     try {
         const [agentsResponse, performanceResponse] = await Promise.all([

@@ -1,4 +1,11 @@
-// Lazy loading for images with IntersectionObserver
+/**
+ * Lazy loading for images with IntersectionObserver
+ * Loads images only when they enter the viewport
+ *
+ * @example
+ * // Use data-src attribute for lazy loading
+ * <img data-src="/images/photo.jpg" alt="Photo">
+ */
 
 document.addEventListener('DOMContentLoaded', function() {
     // Check if IntersectionObserver is supported
@@ -28,6 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+/**
+ * Loads a single lazy image by setting its src attribute
+ * @param {HTMLImageElement} img - The image element to load
+ */
 function loadImage(img) {
     const src = img.getAttribute('data-src');
     if (!src) return;
@@ -48,6 +59,10 @@ function loadImage(img) {
     img.removeAttribute('data-src');
 }
 
+/**
+ * Fallback function to load all lazy images immediately
+ * Used when IntersectionObserver is not supported
+ */
 function loadAllImages() {
     const lazyImages = document.querySelectorAll('img[data-src]');
     lazyImages.forEach(img => {

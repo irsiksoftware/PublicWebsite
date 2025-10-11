@@ -1,5 +1,29 @@
-// DOOM-style raycasting game engine
+/**
+ * @fileoverview DOOM-Style Raycasting Game Engine
+ * A browser-based first-person shooter inspired by DOOM, built using raycasting techniques.
+ * Features include wall rendering, enemy AI, shooting mechanics, and mobile touch controls.
+ *
+ * @module doom
+ *
+ * @example
+ * // Game auto-initializes on DOMContentLoaded
+ * // Controls:
+ * // WASD or Arrow Keys - Movement
+ * // Space/Ctrl - Shoot
+ * // E - Use/Interact
+ * // P - Pause
+ */
+
+/**
+ * Main DOOM game class implementing raycasting engine
+ * @class
+ */
 class DoomGame {
+    /**
+     * Initializes the DOOM game engine
+     * Sets up canvas, game state, player, map, and enemies
+     * @constructor
+     */
     constructor() {
         this.canvas = document.getElementById('doom-game');
         this.ctx = this.canvas.getContext('2d');
@@ -58,12 +82,20 @@ class DoomGame {
         this.init();
     }
 
+    /**
+     * Initializes game controls, UI, and starts the game loop
+     * @method
+     */
     init() {
         this.setupControls();
         this.updateUI();
         this.gameLoop();
     }
 
+    /**
+     * Sets up keyboard and mobile touch controls
+     * @method
+     */
     setupControls() {
         // Keyboard controls
         document.addEventListener('keydown', (e) => {
@@ -124,10 +156,19 @@ class DoomGame {
         }
     }
 
+    /**
+     * Toggles game pause state
+     * @method
+     */
     togglePause() {
         this.paused = !this.paused;
     }
 
+    /**
+     * Fires weapon at enemies in crosshair
+     * Reduces ammo and damages/kills enemies
+     * @method
+     */
     shoot() {
         if (this.paused || this.gameOver || this.ammo <= 0) return;
 
@@ -236,6 +277,12 @@ class DoomGame {
         return this.map[mapY][mapX] === 1;
     }
 
+    /**
+     * Casts a ray from player position at given angle to detect walls
+     * @method
+     * @param {number} angle - Angle to cast ray in radians
+     * @returns {number} Distance to nearest wall
+     */
     castRay(angle) {
         const stepSize = 0.1;
         let distance = 0;
@@ -254,6 +301,11 @@ class DoomGame {
         return this.maxDepth;
     }
 
+    /**
+     * Renders the 3D view using raycasting
+     * Draws ceiling, floor, walls, and crosshair
+     * @method
+     */
     render() {
         // Clear canvas
         this.ctx.fillStyle = '#000000';

@@ -1,3 +1,23 @@
+/**
+ * @fileoverview Token Usage Chart
+ * Visualizes token usage over time using a line chart rendered on canvas.
+ * Aggregates session data by date and calculates estimated token counts.
+ *
+ * @module token-usage-chart
+ * @requires data/audit-sessions-sample.json
+ *
+ * @example
+ * // Chart automatically loads on DOMContentLoaded
+ * // Requires canvas element:
+ * // <canvas id="token-usage-chart"></canvas>
+ */
+
+/**
+ * Loads and renders the token usage line chart
+ * @async
+ * @function
+ * @throws {Error} When audit-sessions-sample.json cannot be loaded
+ */
 async function loadTokenUsageChart() {
     try {
         const response = await fetch('./data/audit-sessions-sample.json');

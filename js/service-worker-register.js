@@ -1,4 +1,19 @@
-// Service Worker Registration
+/**
+ * @fileoverview Service Worker Registration
+ * Registers the service worker for PWA functionality and offline support.
+ * Handles automatic updates and controller changes.
+ *
+ * @module service-worker-register
+ * @requires /service-worker.js
+ *
+ * @example
+ * // Service worker automatically registers on page load
+ * // Checks for updates every minute
+ */
+
+/**
+ * Register service worker if supported by browser
+ */
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js')

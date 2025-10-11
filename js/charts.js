@@ -1,8 +1,21 @@
 /**
- * Chart.js initialization and example charts
- * Demonstrates Chart.js v4 integration
+ * @fileoverview Chart.js Initialization and Examples
+ * Demonstrates Chart.js v4 integration with example bar charts.
+ * Provides sample implementation for creating responsive charts.
+ *
+ * @module charts
+ * @requires chart.js
+ *
+ * @example
+ * // Chart automatically initializes on DOMContentLoaded
+ * // Ensure canvas element exists:
+ * // <canvas id="exampleBarChart"></canvas>
  */
 
+/**
+ * Initializes example bar chart
+ * @function
+ */
 document.addEventListener('DOMContentLoaded', function() {
     // Example bar chart
     const ctx = document.getElementById('exampleBarChart');

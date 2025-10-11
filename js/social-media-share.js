@@ -1,15 +1,35 @@
 /**
- * Social Media Share Module
- * Handles social media sharing functionality across the website
+ * @fileoverview Social Media Share Module
+ * Handles social media sharing functionality for Twitter, Facebook, LinkedIn, email, and clipboard.
+ * Includes analytics tracking and visual feedback for share actions.
+ *
+ * @module social-media-share
+ *
+ * @example
+ * // Auto-initializes on DOMContentLoaded
+ * // Add share buttons with data-platform attribute:
+ * // <button class="social-share-btn" data-platform="twitter">Share on Twitter</button>
  */
 
+/**
+ * Social media share handler class
+ * @class
+ */
 class SocialMediaShare {
+    /**
+     * Initializes social media share functionality
+     * @constructor
+     */
     constructor() {
         this.shareButtons = document.querySelectorAll('.social-share-btn');
         this.successMessage = document.querySelector('.share-success-message');
         this.init();
     }
 
+    /**
+     * Initializes event listeners for share buttons
+     * @method
+     */
     init() {
         if (!this.shareButtons.length) return;
 
@@ -21,6 +41,11 @@ class SocialMediaShare {
         this.trackShareEvents();
     }
 
+    /**
+     * Handles share button click events
+     * @method
+     * @param {Event} event - Click event
+     */
     handleShare(event) {
         const button = event.currentTarget;
         const platform = button.dataset.platform;
@@ -74,6 +99,12 @@ class SocialMediaShare {
         this.showSuccessMessage('Email client opened');
     }
 
+    /**
+     * Copies text to clipboard with fallback support
+     * @method
+     * @async
+     * @param {string} text - Text to copy
+     */
     async copyToClipboard(text) {
         try {
             if (navigator.clipboard && navigator.clipboard.writeText) {

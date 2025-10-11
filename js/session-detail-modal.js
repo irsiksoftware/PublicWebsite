@@ -1,20 +1,54 @@
 /**
- * Session Detail Modal
- * Displays full session details in an overlay modal
+ * @fileoverview Session Detail Modal
+ * Displays full session details in an accessible overlay modal.
+ * Includes focus trapping, keyboard navigation, and ARIA attributes.
+ *
+ * @module session-detail-modal
+ *
+ * @example
+ * // Initialize modal
+ * const modal = new SessionDetailModal();
+ *
+ * // Open with session data
+ * modal.open({
+ *   file: 'path/to/file.py',
+ *   target_repo: 'my-repo',
+ *   timeout_minutes: 30,
+ *   has_error: false,
+ *   is_timeout: false,
+ *   signals: { pr_created: true, issue_claimed: false },
+ *   content: 'Session content...'
+ * });
  */
 
+/**
+ * Session detail modal class
+ * @class
+ */
 class SessionDetailModal {
+    /**
+     * Initializes modal component
+     * @constructor
+     */
     constructor() {
         this.modal = null;
         this.isOpen = false;
         this.init();
     }
 
+    /**
+     * Initializes modal by creating DOM elements and attaching event listeners
+     * @method
+     */
     init() {
         this.createModal();
         this.attachEventListeners();
     }
 
+    /**
+     * Creates modal HTML structure and inserts into DOM
+     * @method
+     */
     createModal() {
         const modalHTML = `
             <div id="session-detail-modal" class="session-modal" style="display: none;" role="dialog" aria-labelledby="modal-title" aria-modal="true">
@@ -62,6 +96,11 @@ class SessionDetailModal {
         this.modal = document.getElementById('session-detail-modal');
     }
 
+    /**
+     * Attaches event listeners for modal interaction
+     * Handles close actions, ESC key, and focus trapping
+     * @method
+     */
     attachEventListeners() {
         const closeBtn = this.modal.querySelector('.session-modal-close');
         const overlay = this.modal.querySelector('.session-modal-overlay');
@@ -107,6 +146,18 @@ class SessionDetailModal {
         });
     }
 
+    /**
+     * Opens modal with session data
+     * @method
+     * @param {Object} sessionData - Session data to display
+     * @param {string} sessionData.file - File path
+     * @param {string} sessionData.target_repo - Target repository
+     * @param {number} sessionData.timeout_minutes - Timeout duration
+     * @param {boolean} sessionData.has_error - Whether session has error
+     * @param {boolean} sessionData.is_timeout - Whether session timed out
+     * @param {Object} sessionData.signals - Productivity signals
+     * @param {string} sessionData.content - Session content
+     */
     open(sessionData) {
         if (!sessionData) return;
 
@@ -153,6 +204,10 @@ class SessionDetailModal {
         }, 50);
     }
 
+    /**
+     * Closes modal and restores page state
+     * @method
+     */
     close() {
         this.modal.style.display = 'none';
         this.isOpen = false;

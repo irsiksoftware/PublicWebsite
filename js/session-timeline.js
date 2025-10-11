@@ -1,3 +1,23 @@
+/**
+ * @fileoverview Session Timeline Display
+ * Creates a chronological timeline view of audit sessions grouped by date.
+ * Shows session time, role, duration, and status indicators.
+ *
+ * @module session-timeline
+ * @requires data/audit-sessions-sample.json
+ *
+ * @example
+ * // Timeline automatically loads on DOMContentLoaded
+ * // Requires HTML element:
+ * // <div id="timeline-container"></div>
+ */
+
+/**
+ * Loads audit sessions and renders timeline display
+ * @async
+ * @function
+ * @throws {Error} When audit sessions data cannot be loaded
+ */
 async function loadSessionTimeline() {
     const container = document.getElementById('timeline-container');
 
@@ -73,6 +93,12 @@ async function loadSessionTimeline() {
     }
 }
 
+/**
+ * Formats date string for display
+ * @param {string} dateString - Date string to format
+ * @returns {string} Formatted date string
+ * @function
+ */
 function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -83,6 +109,12 @@ function formatDate(dateString) {
     });
 }
 
+/**
+ * Formats timestamp for display
+ * @param {string} timestamp - Timestamp to format
+ * @returns {string} Formatted time string
+ * @function
+ */
 function formatTime(timestamp) {
     // Format timestamp like "072501" to "07:25:01"
     if (timestamp.length === 6) {
@@ -91,6 +123,12 @@ function formatTime(timestamp) {
     return timestamp;
 }
 
+/**
+ * Determines CSS class for session status
+ * @param {Object} session - Session object
+ * @returns {string} CSS class name
+ * @function
+ */
 function getStatusClass(session) {
     if (session.is_timeout) return 'status-timeout';
     if (session.has_error) return 'status-error';
@@ -98,6 +136,12 @@ function getStatusClass(session) {
     return 'status-unproductive';
 }
 
+/**
+ * Determines status text for session
+ * @param {Object} session - Session object
+ * @returns {string} Status text
+ * @function
+ */
 function getStatusText(session) {
     if (session.is_timeout) return 'Timeout';
     if (session.has_error) return 'Error';

@@ -1,10 +1,29 @@
-// Table Keyboard Navigation Component
-// Implements keyboard navigation for all tables in the application
+/**
+ * @fileoverview Table Keyboard Navigation Component
+ * Implements accessible keyboard navigation for all tables in the application.
+ * Supports arrow keys, Home/End navigation, and Enter/Space for row selection.
+ * Automatically observes DOM for dynamically added tables.
+ *
+ * @module table-keyboard-navigation
+ *
+ * @example
+ * // Auto-initializes on DOMContentLoaded and dynamically observes new tables
+ * // All <table> elements automatically get keyboard navigation
+ * // Arrow keys navigate, Enter/Space activate rows
+ */
 
+/**
+ * Initializes keyboard navigation for existing tables
+ * @function
+ */
 document.addEventListener('DOMContentLoaded', function() {
     initializeTableKeyboardNavigation();
 });
 
+/**
+ * Initializes keyboard navigation for all tables on page
+ * @function
+ */
 function initializeTableKeyboardNavigation() {
     const tables = document.querySelectorAll('table');
 
@@ -13,6 +32,11 @@ function initializeTableKeyboardNavigation() {
     });
 }
 
+/**
+ * Makes a table navigable with keyboard controls
+ * @function
+ * @param {HTMLTableElement} table - Table element to enhance
+ */
 function makeTableNavigable(table) {
     const tbody = table.querySelector('tbody');
     if (!tbody) return;
@@ -40,6 +64,14 @@ function makeTableNavigable(table) {
     });
 }
 
+/**
+ * Handles keyboard events for table navigation
+ * @function
+ * @param {KeyboardEvent} event - Keyboard event
+ * @param {HTMLTableElement} table - Table element
+ * @param {HTMLTableRowElement} currentRow - Currently focused row
+ * @param {number} currentIndex - Index of current row
+ */
 function handleTableKeyboardNavigation(event, table, currentRow, currentIndex) {
     const tbody = table.querySelector('tbody');
     const rows = Array.from(tbody.querySelectorAll('tr'));

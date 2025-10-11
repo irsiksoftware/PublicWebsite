@@ -1,9 +1,29 @@
 /**
- * Tetromino shape definitions for Tetris game
- * Each shape has 4 rotation states represented as 2D arrays
- * Binary notation: 0 = empty, 1 = filled
+ * @fileoverview Tetromino Shape Definitions
+ * Defines all 7 standard Tetris piece shapes (I, O, T, S, Z, J, L) with their rotation states.
+ * Each piece has 4 rotation states represented as 2D arrays where 1 indicates a filled block
+ * and 0 indicates an empty space. Colors are assigned based on the design system.
+ *
+ * @module tetromino-shapes
+ *
+ * @example
+ * // Access a tetromino shape
+ * const IShape = TETROMINO_SHAPES.I;
+ * console.log(IShape.color); // '#667eea'
+ * console.log(IShape.rotations[0]); // First rotation state
  */
 
+/**
+ * Tetromino shape definitions
+ * @constant {Object<string, Object>}
+ * @property {Object} I - I-shaped tetromino (straight line)
+ * @property {Object} O - O-shaped tetromino (square)
+ * @property {Object} T - T-shaped tetromino
+ * @property {Object} S - S-shaped tetromino
+ * @property {Object} Z - Z-shaped tetromino
+ * @property {Object} J - J-shaped tetromino
+ * @property {Object} L - L-shaped tetromino
+ */
 const TETROMINO_SHAPES = {
     I: {
         color: '#667eea', // primary-blue
