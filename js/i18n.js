@@ -420,9 +420,17 @@ class I18n {
     }
 
     detectBrowserLanguage() {
-        const browserLang = navigator.language || navigator.userLanguage;
-        const langCode = browserLang.split('-')[0];
-        return this.translations[langCode] ? langCode : 'en';
+        try {
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (!browserLang) {
+                return 'en';
+            }
+            const langCode = browserLang.split('-')[0];
+            return this.translations[langCode] ? langCode : 'en';
+        } catch (e) {
+            console.warn('Could not detect browser language, defaulting to English');
+            return 'en';
+        }
     }
 
     setLanguage(lang) {
