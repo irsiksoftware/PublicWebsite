@@ -14,22 +14,22 @@
 <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
 
 <!-- Preload critical resources -->
-<link rel="preload" href="css/variables.css" as="style">
-<link rel="preload" href="css/styles.css" as="style">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icons/icon-192x192.png">
-<link rel="stylesheet" href="css/variables.css">
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/nav.css">
-<link rel="stylesheet" href="css/accessibility.css">
-<link rel="stylesheet" href="css/responsive.css">
-<link rel="stylesheet" href="css/theme-toggle.css">
-<link rel="stylesheet" href="css/footer.css">
-<link rel="stylesheet" href="css/cookie-consent.css">
+<link rel="preload" href="/css/variables.css" as="style">
+<link rel="preload" href="/css/styles.css" as="style">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+<link rel="stylesheet" href="/css/variables.css">
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/accessibility.css">
+<link rel="stylesheet" href="/css/responsive.css">
+<link rel="stylesheet" href="/css/theme-toggle.css">
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="/css/cookie-consent.css">
 {% if page.additional_css %}
   {% for css_file in page.additional_css %}
-<link rel="stylesheet" href="css/{{ css_file }}">
+<link rel="stylesheet" href="/css/{{ css_file }}">
   {% endfor %}
 {% endif %}
 <title>{{ page.title | default: site.title }}</title>
