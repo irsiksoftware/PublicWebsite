@@ -23,7 +23,9 @@
     "a11y:audit": "node js/accessibility-audit.js",
     "a11y:test": "node js/accessibility-audit.js",
     "sandbox": "node sandbox/server.js",
-    "sandbox:start": "node sandbox/server.js"
+    "sandbox:start": "node sandbox/server.js",
+    "cdn:deploy": "node build-scripts/deploy-to-cdn.js",
+    "cdn:info": "node -e \"const {CDN_CONFIG} = require('./config/cdn.config.js'); console.log('CDN Config:', JSON.stringify(CDN_CONFIG, null, 2))\""
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",

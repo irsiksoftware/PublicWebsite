@@ -3,9 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const { CDN_CONFIG, getCDNUrl } = require('./cdn.config.js');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
+  const useCDN = CDN_CONFIG.enabled && isProduction;
 
   return {
     mode: isProduction ? 'production' : 'development',
@@ -45,7 +47,7 @@ module.exports = (env, argv) => {
       filename: isProduction ? 'js/[name].[contenthash].js' : 'js/[name].js',
       chunkFilename: isProduction ? 'js/[name].[contenthash].chunk.js' : 'js/[name].chunk.js',
       clean: true,
-      publicPath: '/'
+      publicPath: useCDN ? `https://${CDN_CONFIG.domain}/` : '/'
     },
     devtool: isProduction ? 'source-map' : 'eval-source-map',
     devServer: {
