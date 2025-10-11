@@ -1,0 +1,22 @@
+<!-- iOS Smart App Banner -->
+<meta name="apple-itunes-app" content="app-id=YOUR_APP_ID, app-argument={{ page.url | absolute_url }}">
+
+<!-- Android App Install Banner (Native) -->
+<link rel="manifest" href="/manifest.json">
+
+<!-- Custom Mobile App Install Banner -->
+<div id="app-install-banner" class="app-install-banner" style="display: none;">
+  <div class="app-install-banner-content">
+    <div class="app-install-banner-icon">
+      <img src="/icons/icon-72x72.png" alt="App Icon" width="48" height="48">
+    </div>
+    <div class="app-install-banner-text">
+      <div class="app-install-banner-title">Install Our App</div>
+      <div class="app-install-banner-subtitle">Get the best experience with our mobile app</div>
+    </div>
+    <div class="app-install-banner-actions">
+      <button id="app-install-button" class="app-install-banner-btn-primary">Install</button>
+      <button id="app-install-close" class="app-install-banner-btn-close" aria-label="Close banner">&times;</button>
+    </div>
+  </div>
+</div>
