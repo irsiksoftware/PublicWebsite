@@ -1,0 +1,16 @@
+# Live Chat Configuration Example
+# Copy this file to _config.yml and update with your settings
+
+# Enable live chat support
+live_chat:
+  enabled: true
+  platform: intercom  # Options: intercom, drift, zendesk
+
+  # Intercom configuration
+  intercom_app_id: YOUR_INTERCOM_APP_ID
+
+  # Drift configuration
+  drift_app_id: YOUR_DRIFT_APP_ID
+
+  # Zendesk Chat configuration
+  zendesk_key: YOUR_ZENDESK_KEY

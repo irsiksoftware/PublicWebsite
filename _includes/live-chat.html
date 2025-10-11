@@ -1,0 +1,21 @@
+<!-- Live Chat Integration -->
+{% if site.live_chat.enabled %}
+<script>
+    // Live chat configuration
+    window.LIVE_CHAT_CONFIG = {
+        intercom: {
+            enabled: {% if site.live_chat.platform == 'intercom' %}true{% else %}false{% endif %},
+            appId: '{{ site.live_chat.intercom_app_id }}'
+        },
+        drift: {
+            enabled: {% if site.live_chat.platform == 'drift' %}true{% else %}false{% endif %},
+            appId: '{{ site.live_chat.drift_app_id }}'
+        },
+        zendeskChat: {
+            enabled: {% if site.live_chat.platform == 'zendesk' %}true{% else %}false{% endif %},
+            key: '{{ site.live_chat.zendesk_key }}'
+        }
+    };
+</script>
+<script src="{{ '/js/live-chat.js' | relative_url }}"></script>
+{% endif %}
