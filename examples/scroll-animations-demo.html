@@ -1,0 +1,91 @@
+---
+layout: default
+title: "Scroll Animations Demo"
+description: "Demonstration of scroll-triggered animations including fade-in, parallax, and number counters"
+hero:
+  title: "Scroll Animations Demo"
+  subtitle: "Experience smooth animations triggered by scroll"
+theme_toggle: true
+---
+
+<section id="demo-intro" aria-labelledby="demo-intro-heading">
+    <h2 id="demo-intro-heading">Animation Features</h2>
+    <p>This page demonstrates the scroll-triggered animations implemented for the website:</p>
+    <ul>
+        <li><strong>Fade-in animations:</strong> Elements smoothly appear as you scroll</li>
+        <li><strong>Parallax effects:</strong> Background elements move at different speeds</li>
+        <li><strong>Number counters:</strong> Animated counting to show statistics</li>
+    </ul>
+</section>
+
+<section id="stats-demo" aria-labelledby="stats-demo-heading" style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
+    <h2 id="stats-demo-heading">Our Impact</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+        <div>
+            <div data-counter="500" data-counter-suffix="+" style="color: white;">0</div>
+            <p>Projects Completed</p>
+        </div>
+        <div>
+            <div data-counter="1000" data-counter-suffix="+" style="color: white;">0</div>
+            <p>Happy Clients</p>
+        </div>
+        <div>
+            <div data-counter="50" data-counter-suffix="+" style="color: white;">0</div>
+            <p>Team Members</p>
+        </div>
+        <div>
+            <div data-counter="15" data-counter-suffix=" Years" style="color: white;">0</div>
+            <p>Experience</p>
+        </div>
+    </div>
+</section>
+
+<section id="fade-demo" aria-labelledby="fade-demo-heading" style="min-height: 100vh; padding: 4rem 0;">
+    <h2 id="fade-demo-heading">Fade-In Animation</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+        <div style="padding: 2rem; background: #f0f0f0; border-radius: 8px;">
+            <h3>Card 1</h3>
+            <p>This card will fade in as you scroll to it.</p>
+        </div>
+        <div style="padding: 2rem; background: #f0f0f0; border-radius: 8px;">
+            <h3>Card 2</h3>
+            <p>Each card has a staggered animation delay.</p>
+        </div>
+        <div style="padding: 2rem; background: #f0f0f0; border-radius: 8px;">
+            <h3>Card 3</h3>
+            <p>Creating a smooth cascading effect.</p>
+        </div>
+    </div>
+</section>
+
+<section id="parallax-demo" aria-labelledby="parallax-demo-heading" style="min-height: 60vh; padding: 4rem 0; position: relative; overflow: hidden;">
+    <div data-parallax="0.3" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, #e0c3fc 0%, #8ec5fc 100%); z-index: -1;"></div>
+    <div style="position: relative; z-index: 1;">
+        <h2 id="parallax-demo-heading">Parallax Effect</h2>
+        <p>The background moves at a different speed than the content as you scroll.</p>
+    </div>
+</section>
+
+<section id="more-counters" aria-labelledby="more-counters-heading" style="padding: 4rem 0;">
+    <h2 id="more-counters-heading">More Statistics</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; text-align: center;">
+        <div>
+            <div data-counter="99" data-counter-suffix="%" data-counter-duration="1500">0</div>
+            <p>Customer Satisfaction</p>
+        </div>
+        <div>
+            <div data-counter="10000" data-counter-suffix="+" data-counter-duration="2500">0</div>
+            <p>Lines of Code</p>
+        </div>
+        <div>
+            <div data-counter="247" data-counter-suffix="/7" data-counter-duration="1000">0</div>
+            <p>Support Available</p>
+        </div>
+    </div>
+</section>
+
+<section id="final-demo" aria-labelledby="final-demo-heading" style="min-height: 50vh; padding: 4rem 0; background: #f9f9f9;">
+    <h2 id="final-demo-heading">Accessibility First</h2>
+    <p>All animations respect the <code>prefers-reduced-motion</code> setting for users who prefer minimal animation.</p>
+    <p>This ensures a comfortable experience for everyone, including users with motion sensitivity.</p>
+</section>
