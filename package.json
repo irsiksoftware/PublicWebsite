@@ -21,7 +21,9 @@
     "images:optimize": "node ./build-scripts/optimize-images.js",
     "accessibility:audit": "node js/accessibility-audit.js",
     "a11y:audit": "node js/accessibility-audit.js",
-    "a11y:test": "node js/accessibility-audit.js"
+    "a11y:test": "node js/accessibility-audit.js",
+    "sandbox": "node sandbox/server.js",
+    "sandbox:start": "node sandbox/server.js"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
