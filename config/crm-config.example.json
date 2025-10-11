@@ -1,0 +1,10 @@
+{
+  "provider": "hubspot",
+  "apiKey": "YOUR_API_KEY_HERE",
+  "formSelector": "#contact-form",
+  "options": {
+    "autoSync": true,
+    "validateEmail": true,
+    "showIndicator": true
+  }
+}
