@@ -1,9 +1,17 @@
 /**
  * Main entry point for common functionality
  * Implements code splitting and lazy loading for optimal performance
+ *
+ * @example
+ * // Include this script as the main entry point
+ * <script type="module" src="/js/main.js"></script>
  */
 
-// Initialize lazy loading
+/**
+ * Initializes lazy loading for components
+ * Dynamically imports component-loader module
+ * @returns {Promise<void>}
+ */
 import('./component-loader.js')
     .then(module => {
         if (module.initializeLazyComponents) {
@@ -16,7 +24,10 @@ import('./component-loader.js')
 
 // Lazy loading enabled for non-critical modules
 
-// Lazy load back-to-top button when user scrolls
+/**
+ * Lazy loads the back-to-top button module when user scrolls
+ * Only loads once when scroll position exceeds 300px
+ */
 let backToTopLoaded = false;
 const loadBackToTop = () => {
     if (!backToTopLoaded && window.scrollY > 300) {
@@ -29,7 +40,10 @@ const loadBackToTop = () => {
 };
 window.addEventListener('scroll', loadBackToTop, { passive: true });
 
-// Lazy load sticky header on scroll
+/**
+ * Lazy loads the sticky header module on first scroll
+ * Only loads once when user starts scrolling
+ */
 let stickyHeaderLoaded = false;
 const loadStickyHeader = () => {
     if (!stickyHeaderLoaded) {
@@ -42,7 +56,10 @@ const loadStickyHeader = () => {
 };
 window.addEventListener('scroll', loadStickyHeader, { once: true, passive: true });
 
-// Lazy load data refresh module when needed
+/**
+ * Lazy loads data refresh module if refresh elements exist on page
+ * Checks for elements with [data-refresh] attribute
+ */
 const loadDataRefresh = () => {
     const refreshElements = document.querySelectorAll('[data-refresh]');
     if (refreshElements.length > 0) {
@@ -59,7 +76,10 @@ if (document.readyState === 'loading') {
     loadDataRefresh();
 }
 
-// Lazy load spy activity module
+/**
+ * Lazy loads spy activity module if spy elements exist on page
+ * Checks for elements with [data-component="spy-activity"] attribute
+ */
 const loadSpyActivity = () => {
     const spyElements = document.querySelectorAll('[data-component="spy-activity"]');
     if (spyElements.length > 0) {
@@ -75,7 +95,10 @@ if (document.readyState === 'loading') {
     loadSpyActivity();
 }
 
-// Load privacy compliance modules
+/**
+ * Loads privacy compliance modules
+ * Includes cookie consent and privacy compliance functionality
+ */
 import('./cookie-consent.js').catch(error => {
     console.error('Failed to load cookie-consent:', error);
 });

@@ -1,11 +1,37 @@
 /**
- * Audit Sessions Display
- * Loads and displays audit session data with modal integration
+ * @fileoverview Audit Sessions Display
+ * Loads and displays audit session data in a table format with modal integration.
+ * Shows session details including timestamp, role, file, errors, timeouts, productivity,
+ * and productivity signals.
+ *
+ * @module audit-sessions
+ * @requires data/audit-sessions-sample.json
+ * @requires ./session-detail-modal.js
+ *
+ * @example
+ * // Table automatically loads on DOMContentLoaded
+ * // Requires HTML elements:
+ * // <tbody id="audit-sessions-tbody"></tbody>
  */
 
+/**
+ * Session detail modal instance
+ * @type {SessionDetailModal|null}
+ */
 let sessionModal;
+
+/**
+ * Array of loaded session data
+ * @type {Array<Object>}
+ */
 let sessionsData = [];
 
+/**
+ * Loads audit sessions from JSON and renders table
+ * @async
+ * @function
+ * @throws {Error} When audit-sessions-sample.json cannot be loaded
+ */
 async function loadAuditSessions() {
     const tbody = document.getElementById('audit-sessions-tbody');
 
@@ -87,6 +113,11 @@ async function loadAuditSessions() {
     }
 }
 
+/**
+ * Renders sessions data into the table
+ * @param {Array<Object>} sessions - Array of session objects to render
+ * @function
+ */
 function renderSessionsTable(sessions) {
     const tbody = document.getElementById('audit-sessions-tbody');
     if (!tbody) return;
@@ -111,11 +142,24 @@ function renderSessionsTable(sessions) {
     attachSessionClickHandlers();
 }
 
+/**
+ * Truncates text to specified length with ellipsis
+ * @param {string} text - Text to truncate
+ * @param {number} maxLength - Maximum length before truncation
+ * @returns {string} Truncated text
+ * @function
+ */
 function truncateText(text, maxLength) {
     if (text.length <= maxLength) return text;
     return text.substring(0, maxLength) + '...';
 }
 
+/**
+ * Renders productivity signal badges
+ * @param {Object} signals - Object containing signal flags
+ * @returns {string} HTML string of signal badges
+ * @function
+ */
 function renderSignalBadges(signals) {
     if (!signals) return '<span class="signal-badges unproductive">-</span>';
 
@@ -157,6 +201,12 @@ function attachSessionClickHandlers() {
     });
 }
 
+/**
+ * Displays skeleton loading state in table
+ * @param {HTMLElement} tbody - Table body element
+ * @param {number} columnCount - Number of columns to create
+ * @function
+ */
 function showTableSkeleton(tbody, columnCount) {
     tbody.innerHTML = '';
 

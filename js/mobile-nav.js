@@ -1,4 +1,11 @@
-// Mobile navigation functionality
+/**
+ * Mobile navigation functionality
+ * Handles responsive navigation menu with hamburger toggle and keyboard support
+ *
+ * @example
+ * // Automatically initializes when DOM is ready
+ * // Requires <nav> element with nested <ul> for menu items
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('nav');
     const navUl = nav.querySelector('ul');

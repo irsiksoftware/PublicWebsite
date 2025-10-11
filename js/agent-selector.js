@@ -1,7 +1,42 @@
+/**
+ * @fileoverview Agent Selector Component
+ * Provides searchable dropdown functionality for selecting agents.
+ * Supports real-time filtering by name, alias, or role with debounced search.
+ *
+ * @module agent-selector
+ * @requires data/agents.json
+ *
+ * @example
+ * // Auto-initializes on DOMContentLoaded
+ * // Requires HTML elements:
+ * // <select id="agent-selector"></select>
+ * // <input id="agent-search" type="text" />
+ */
+
+/**
+ * Currently selected agent name
+ * @type {string|null}
+ */
 let selectedAgent = null;
+
+/**
+ * Array of enabled agents loaded from JSON
+ * @type {Array<Object>}
+ */
 let allEnabledAgents = [];
+
+/**
+ * Debounce timer for search input
+ * @type {number|null}
+ */
 let debounceTimer = null;
 
+/**
+ * Filters agents based on search term
+ * @param {string} searchTerm - Search query to filter agents
+ * @example
+ * filterAgents('task'); // Filters agents matching 'task' in name, alias, or role
+ */
 function filterAgents(searchTerm) {
     const select = document.getElementById('agent-selector');
     if (!select) return;
@@ -30,6 +65,11 @@ function filterAgents(searchTerm) {
     });
 }
 
+/**
+ * Sets up debounced search functionality for agent filtering
+ * Delays filtering until user stops typing (300ms delay)
+ * @function
+ */
 function setupSearchDebounce() {
     const searchInput = document.getElementById('agent-search');
     if (!searchInput) return;
@@ -45,6 +85,12 @@ function setupSearchDebounce() {
     });
 }
 
+/**
+ * Loads agents from JSON file and initializes the selector
+ * @async
+ * @function
+ * @throws {Error} When agents.json cannot be loaded
+ */
 async function loadAgents() {
     try {
         const response = await fetch('./data/agents.json');

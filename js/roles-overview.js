@@ -1,6 +1,20 @@
-// Roles Overview Grid Component
+/**
+ * @fileoverview Roles Overview Grid Component
+ * Displays agent roles in an interactive grid with expandable details.
+ * Shows role information including responsibilities, Anthropic patterns, and team composition.
+ *
+ * @module roles-overview
+ *
+ * @example
+ * // Auto-initializes on DOMContentLoaded
+ * // Requires HTML element:
+ * // <div id="roles-overview-grid"></div>
+ */
 
-// Role data with icons, descriptions, and gradients
+/**
+ * Role data with icons, descriptions, and gradients
+ * @constant {Array<Object>}
+ */
 const roles = [
     {
         name: 'Orchestrator',
@@ -92,6 +106,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 800);
 });
 
+/**
+ * Creates a role card DOM element
+ * @function
+ * @param {Object} role - Role data object
+ * @returns {HTMLElement} Role card element
+ */
 function createRoleCard(role) {
     const card = document.createElement('div');
     card.className = 'role-card';
@@ -139,13 +159,23 @@ function createRoleCard(role) {
     return card;
 }
 
-// Utility function to escape HTML and prevent XSS
+/**
+ * Escapes HTML to prevent XSS attacks
+ * @function
+ * @param {string} text - Text to escape
+ * @returns {string} HTML-safe text
+ */
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
 }
 
+/**
+ * Displays skeleton loading state for roles grid
+ * @function
+ * @param {HTMLElement} container - Container element
+ */
 function showRolesSkeleton(container) {
     container.classList.add('loading');
     container.innerHTML = '';

@@ -1,9 +1,17 @@
 /**
  * Accessible Form Validation - WCAG 2.1 AA Compliant
  * Provides real-time validation feedback with proper ARIA support and keyboard navigation
+ *
+ * @example
+ * // Initialize validator for a form
+ * const validator = new AccessibleFormValidator('.contact-form');
  */
 
 class AccessibleFormValidator {
+    /**
+     * Creates a new form validator instance
+     * @param {string} formSelector - CSS selector for the form element
+     */
     constructor(formSelector) {
         this.form = document.querySelector(formSelector);
         if (!this.form) return;
@@ -11,6 +19,10 @@ class AccessibleFormValidator {
         this.init();
     }
 
+    /**
+     * Initializes the form validation system
+     * Sets up error containers, keyboard navigation, and event listeners
+     */
     init() {
         // Add aria-live region for form-level errors
         this.createErrorSummary();
@@ -35,6 +47,10 @@ class AccessibleFormValidator {
         this.form.addEventListener('submit', (e) => this.validateForm(e));
     }
 
+    /**
+     * Sets up keyboard navigation for the form
+     * Enables Enter key to move between form fields
+     */
     setupKeyboardNavigation() {
         const formGroups = Array.from(this.form.querySelectorAll('.form-group'));
         const submitBtn = this.form.querySelector('button[type="submit"]');
@@ -61,6 +77,9 @@ class AccessibleFormValidator {
         });
     }
 
+    /**
+     * Creates an ARIA live region for form-level error messages
+     */
     createErrorSummary() {
         const summary = document.createElement('div');
         summary.id = 'form-error-summary';
@@ -71,6 +90,10 @@ class AccessibleFormValidator {
         this.form.insertBefore(summary, this.form.firstChild);
     }
 
+    /**
+     * Creates an error message container for an input field
+     * @param {HTMLElement} input - The input element
+     */
     createErrorContainer(input) {
         const errorId = `${input.id}-error`;
 
@@ -94,6 +117,11 @@ class AccessibleFormValidator {
         }
     }
 
+    /**
+     * Validates a single form field
+     * @param {HTMLElement} input - The input element to validate
+     * @returns {boolean} True if valid, false if invalid
+     */
     validateField(input) {
         const value = input.value.trim();
         const type = input.type;
@@ -131,6 +159,11 @@ class AccessibleFormValidator {
         }
     }
 
+    /**
+     * Displays an error message for a field
+     * @param {HTMLElement} input - The input element
+     * @param {string} message - The error message to display
+     */
     showFieldError(input, message) {
         const errorId = `${input.id}-error`;
         const errorContainer = document.getElementById(errorId);
@@ -151,6 +184,10 @@ class AccessibleFormValidator {
         }
     }
 
+    /**
+     * Clears the error message for a field
+     * @param {HTMLElement} input - The input element
+     */
     clearFieldError(input) {
         const errorId = `${input.id}-error`;
         const errorContainer = document.getElementById(errorId);
@@ -171,6 +208,11 @@ class AccessibleFormValidator {
         }
     }
 
+    /**
+     * Validates the entire form on submission
+     * @param {Event} e - The form submit event
+     * @returns {boolean} True if form is valid, false otherwise
+     */
     validateForm(e) {
         const inputs = this.form.querySelectorAll('input, textarea, select');
         const errors = [];
@@ -210,6 +252,10 @@ class AccessibleFormValidator {
         return true;
     }
 
+    /**
+     * Handles successful form submission
+     * @param {Event} e - The form submit event
+     */
     handleFormSubmit(e) {
         e.preventDefault();
         const submitBtn = this.form.querySelector('button[type="submit"]');
@@ -247,6 +293,10 @@ class AccessibleFormValidator {
         }, 1000);
     }
 
+    /**
+     * Displays a summary of all form validation errors
+     * @param {Array} errors - Array of error objects with field and label properties
+     */
     showErrorSummary(errors) {
         const summary = document.getElementById('form-error-summary');
         if (!summary) return;
@@ -274,6 +324,9 @@ class AccessibleFormValidator {
         summary.style.display = 'block';
     }
 
+    /**
+     * Clears the error summary display
+     */
     clearErrorSummary() {
         const summary = document.getElementById('form-error-summary');
         if (summary) {
@@ -282,11 +335,21 @@ class AccessibleFormValidator {
         }
     }
 
+    /**
+     * Gets the label text for an input field
+     * @param {HTMLElement} input - The input element
+     * @returns {string} The label text or field name
+     */
     getFieldLabel(input) {
         const label = this.form.querySelector(`label[for="${input.id}"]`);
         return label ? label.textContent.replace('*', '').trim() : input.name;
     }
 
+    /**
+     * Validates an email address format
+     * @param {string} email - The email address to validate
+     * @returns {boolean} True if email format is valid
+     */
     isValidEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email);
@@ -300,6 +363,9 @@ if (document.readyState === 'loading') {
     initFormValidation();
 }
 
+/**
+ * Initializes form validation for all forms on the page
+ */
 function initFormValidation() {
     // Validate contact form
     const contactForm = document.querySelector('.contact-form');

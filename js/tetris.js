@@ -1,11 +1,40 @@
 /**
- * Tetris Game - Movement Controls
- * Implements left, right, and down piece movement
+ * @fileoverview Tetris Game Implementation
+ * A complete Tetris game with piece movement, rotation, line clearing, scoring, and hold functionality.
+ * Features include keyboard and touch controls, level progression, high score tracking,
+ * and Super Rotation System (SRS) for piece rotation with wall kicks.
+ *
+ * @module tetris
+ * @requires ./tetromino-shapes.js
+ *
+ * @example
+ * // Game auto-initializes on DOMContentLoaded
+ * // Controls:
+ * // Arrow Keys/WASD - Move and rotate
+ * // Space - Hard drop
+ * // C - Hold piece
+ * // P - Pause
  */
 
-// Game constants
+/**
+ * Number of columns in the game board
+ * @constant {number}
+ * @default
+ */
 const COLS = 10;
+
+/**
+ * Number of rows in the game board
+ * @constant {number}
+ * @default
+ */
 const ROWS = 20;
+
+/**
+ * Size of each tetromino block in pixels
+ * @constant {number}
+ * @default
+ */
 const BLOCK_SIZE = 32;
 
 // Game state
@@ -31,7 +60,11 @@ let gameState = {
 let gameInterval = null;
 let dropSpeed = 1000;
 
-// Initialize game
+/**
+ * Initializes the Tetris game
+ * Sets up canvas, board, pieces, controls, and starts the game loop
+ * @function
+ */
 function init() {
     canvas = document.getElementById('tetris-game');
     ctx = canvas.getContext('2d');
@@ -381,7 +414,10 @@ function setupTouchControls() {
     });
 }
 
-// Move piece left
+/**
+ * Moves the current piece one column to the left if possible
+ * @function
+ */
 function moveLeft() {
     if (canMove(currentPiece.x - 1, currentPiece.y)) {
         currentPiece.x--;
@@ -389,7 +425,10 @@ function moveLeft() {
     }
 }
 
-// Move piece right
+/**
+ * Moves the current piece one column to the right if possible
+ * @function
+ */
 function moveRight() {
     if (canMove(currentPiece.x + 1, currentPiece.y)) {
         currentPiece.x++;
@@ -397,7 +436,11 @@ function moveRight() {
     }
 }
 
-// Move piece down
+/**
+ * Moves the current piece down one row
+ * Locks piece if it cannot move further down
+ * @function
+ */
 function moveDown() {
     if (canMove(currentPiece.x, currentPiece.y + 1)) {
         currentPiece.y++;
@@ -411,7 +454,11 @@ function moveDown() {
     }
 }
 
-// Rotate piece with wall kicks (SRS standard)
+/**
+ * Rotates the current piece clockwise with Super Rotation System (SRS) wall kicks
+ * Attempts rotation at current position first, then tries offset positions
+ * @function
+ */
 function rotatePiece() {
     if (gameState.isPaused || gameState.isGameOver || !currentPiece) {
         return;
@@ -766,7 +813,11 @@ function hidePauseOverlay() {
     }
 }
 
-// Hard drop - instantly drop piece to bottom
+/**
+ * Instantly drops the piece to the lowest possible position
+ * Awards bonus points based on drop distance
+ * @function
+ */
 function hardDrop() {
     if (gameState.isPaused || gameState.isGameOver || !currentPiece) {
         return;

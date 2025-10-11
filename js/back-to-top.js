@@ -1,6 +1,16 @@
-// Back to Top button functionality
+/**
+ * Back to Top button functionality
+ * Creates and manages a floating button that scrolls to page top
+ *
+ * @example
+ * // Automatically initializes on module load
+ * // Button appears when user scrolls past 500px
+ */
 (function() {
-    // Create button element
+    /**
+     * Creates the back to top button element with inline styles
+     * @returns {HTMLButtonElement} The created button element
+     */
     const button = document.createElement('button');
     button.id = 'back-to-top';
     button.setAttribute('aria-label', 'Back to top');
@@ -35,7 +45,10 @@
     // Append button to body
     document.body.appendChild(button);
 
-    // Show/hide button based on scroll position
+    /**
+     * Toggles button visibility based on scroll position
+     * Shows button when scrolled past 500px
+     */
     function toggleButtonVisibility() {
         if (window.scrollY > 500) {
             button.style.opacity = '1';
@@ -46,7 +59,9 @@
         }
     }
 
-    // Scroll to top on click
+    /**
+     * Scrolls to top of page with smooth animation
+     */
     button.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });

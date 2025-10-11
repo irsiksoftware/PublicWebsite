@@ -1,10 +1,32 @@
 /**
- * Scroll-triggered animations module
- * Provides fade-in, parallax effects, and number counters
+ * @fileoverview Scroll-Triggered Animations Module
+ * Provides fade-in animations, parallax effects, and animated number counters
+ * triggered by scroll position using Intersection Observer API.
+ *
+ * @module scroll-animations
+ *
+ * @example
+ * // Auto-initializes on DOMContentLoaded
+ * // Add data attributes to elements:
+ * // <div class="scroll-fade-in">Content</div>
+ * // <div data-parallax="0.5">Parallax content</div>
+ * // <span data-counter="1000" data-counter-suffix="+">1000+</span>
  */
 
+/**
+ * Scroll animations class implementing fade-in, parallax, and counter animations
+ * @class
+ */
 class ScrollAnimations {
+    /**
+     * Initializes the scroll animations controller
+     * @constructor
+     */
     constructor() {
+        /**
+         * Intersection Observer options
+         * @type {Object}
+         */
         this.observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -17,6 +39,10 @@ class ScrollAnimations {
         this.initialized = false;
     }
 
+    /**
+     * Initializes all scroll animations
+     * @method
+     */
     init() {
         if (this.initialized) return;
 
@@ -109,6 +135,11 @@ class ScrollAnimations {
         });
     }
 
+    /**
+     * Animates a number counter from 0 to target value
+     * @method
+     * @param {HTMLElement} element - Element containing counter data attributes
+     */
     animateCounter(element) {
         // Prevent re-animation
         if (this.counters.has(element)) return;

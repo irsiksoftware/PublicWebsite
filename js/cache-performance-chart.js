@@ -1,3 +1,23 @@
+/**
+ * @fileoverview Cache Performance Chart
+ * Visualizes build cache hit/miss ratios using a pie chart rendered on canvas.
+ * Loads data from spy-activity.json and displays cache performance metrics.
+ *
+ * @module cache-performance-chart
+ * @requires data/spy-activity.json
+ *
+ * @example
+ * // Chart automatically loads on DOMContentLoaded
+ * // Requires canvas element:
+ * // <canvas id="cache-performance-chart"></canvas>
+ */
+
+/**
+ * Loads and renders the cache performance pie chart
+ * @async
+ * @function
+ * @throws {Error} When spy-activity.json cannot be loaded
+ */
 async function loadCachePerformanceChart() {
     try {
         const response = await fetch('./data/spy-activity.json');

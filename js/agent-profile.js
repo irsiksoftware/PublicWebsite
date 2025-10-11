@@ -1,8 +1,30 @@
-// Agent Profile Card Component
+/**
+ * @fileoverview Agent Profile Card Component
+ * Displays detailed information about agents including their name, role, description, and capabilities.
+ * Provides an interactive dropdown to select different agents and view their profiles.
+ *
+ * @module agent-profile
+ * @requires data/agents.json
+ *
+ * @example
+ * // The component auto-initializes on DOMContentLoaded
+ * // Ensure the following HTML elements exist:
+ * // <select id="agent-dropdown"></select>
+ * // <div id="agent-profile-card"></div>
+ */
 
+/**
+ * Array to store loaded agent data
+ * @type {Array<Object>}
+ */
 let agents = [];
 
-// Initialize the component
+/**
+ * Initializes the agent profile component
+ * Loads agent data from JSON, populates dropdown, and sets up event listeners
+ * @async
+ * @function
+ */
 document.addEventListener('DOMContentLoaded', async function() {
     const dropdown = document.getElementById('agent-dropdown');
     const profileCard = document.getElementById('agent-profile-card');
@@ -96,6 +118,38 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 });
 
+/**
+ * Displays the selected agent's profile in the profile card
+ * @param {Object} agent - The agent object to display
+ * @param {string} agent.name - Agent's name
+ * @param {string} agent.full_name - Agent's full name
+ * @param {string} agent.alias - Agent's alias/nickname
+ * @param {string} agent.role - Agent's role description
+ * @param {string} agent.description - Detailed description of the agent
+ * @param {string} agent.anthropic_pattern - Anthropic pattern classification
+ * @param {string} agent.email - Agent's email address
+ * @param {Object} agent.prompt_design - Prompt design feature flags
+ * @param {boolean} agent.prompt_design.context_injection - Context injection enabled
+ * @param {boolean} agent.prompt_design.worktree_support - Worktree support enabled
+ * @param {boolean} agent.prompt_design.discord_notifications - Discord notifications enabled
+ * @param {boolean} agent.prompt_design.audit_logging - Audit logging enabled
+ * @example
+ * displayAgentProfile({
+ *   name: 'Task Agent',
+ *   full_name: 'Task Execution Agent',
+ *   alias: 'TaskMaster',
+ *   role: 'Executes tasks',
+ *   description: 'Handles task execution',
+ *   anthropic_pattern: 'Orchestrator',
+ *   email: 'task@example.com',
+ *   prompt_design: {
+ *     context_injection: true,
+ *     worktree_support: false,
+ *     discord_notifications: true,
+ *     audit_logging: true
+ *   }
+ * });
+ */
 function displayAgentProfile(agent) {
     const profileCard = document.getElementById('agent-profile-card');
 
@@ -154,7 +208,14 @@ function displayAgentProfile(agent) {
     profileCard.className = `agent-profile-card ${patternClass}`;
 }
 
-// Utility function to escape HTML and prevent XSS
+/**
+ * Escapes HTML characters to prevent XSS attacks
+ * @param {string} text - Text to escape
+ * @returns {string} Escaped HTML-safe text
+ * @example
+ * const safe = escapeHtml('<script>alert("xss")</script>');
+ * // Returns: "&lt;script&gt;alert("xss")&lt;/script&gt;"
+ */
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;

@@ -1,4 +1,21 @@
-// Unity WebGL Loader Script
+/**
+ * @fileoverview Unity WebGL Loader Script
+ * Manages loading and initialization of Unity WebGL games with fallback demo mode.
+ * Provides fullscreen functionality, game restart, and responsive canvas handling.
+ *
+ * @module unity-loader
+ * @global gameConfig
+ *
+ * @example
+ * // Loader automatically initializes on DOMContentLoaded
+ * // Configure via global gameConfig object:
+ * // window.gameConfig = {
+ * //   dataUrl: 'path/to/unity/build.data',
+ * //   frameworkUrl: 'path/to/unity/build.framework.js',
+ * //   codeUrl: 'path/to/unity/build.wasm'
+ * // };
+ */
+
 /* global gameConfig */
 (function() {
     'use strict';
@@ -11,7 +28,12 @@
     const fullscreenButton = document.querySelector('#fullscreen-button');
     const restartButton = document.querySelector('#restart-button');
 
-    // Check if Unity build files exist (for demo purposes)
+    /**
+     * Displays warning/info banner message
+     * @param {string} msg - Message to display
+     * @param {string} type - Banner type ('error' or 'info')
+     * @function
+     */
     function showWarningBanner(msg, type) {
         const warningBanner = document.querySelector('#unity-warning');
         if (!warningBanner) return;
@@ -28,7 +50,10 @@
         }
     }
 
-    // Initialize Unity loader
+    /**
+     * Initializes Unity WebGL loader or demo mode
+     * @function
+     */
     function initUnityLoader() {
         if (typeof gameConfig === 'undefined') {
             showWarningBanner('Game configuration not found. Please check the setup.', 'error');
@@ -46,6 +71,10 @@
         simulateLoading();
     }
 
+    /**
+     * Simulates Unity game loading progress for demo mode
+     * @function
+     */
     function simulateLoading() {
         let progress = 0;
         const interval = setInterval(() => {
@@ -66,6 +95,10 @@
         }, 50);
     }
 
+    /**
+     * Displays demo placeholder canvas with grid and instructions
+     * @function
+     */
     function displayDemoCanvas() {
         if (!canvas) return;
 
@@ -107,7 +140,10 @@
         ctx.fillText('Place build files in: ' + (gameConfig.dataUrl || 'unity-builds/'), canvas.width / 2, canvas.height / 2 + 40);
     }
 
-    // Fullscreen functionality
+    /**
+     * Toggles fullscreen mode for Unity game container
+     * @function
+     */
     function toggleFullscreen() {
         if (!document.fullscreenElement) {
             if (container.requestFullscreen) {
@@ -132,7 +168,10 @@
         }
     }
 
-    // Restart/reload game
+    /**
+     * Restarts or reloads the Unity game instance
+     * @function
+     */
     function restartGame() {
         if (unityInstance) {
             unityInstance.Quit().then(() => {
