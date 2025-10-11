@@ -4,7 +4,13 @@
         <li><a href="/index.html#services" aria-label="Navigate to Services section">Services</a></li>
         <li><a href="/index.html#portfolio" aria-label="Navigate to Portfolio section">Portfolio</a></li>
         <li><a href="/index.html#team" aria-label="Navigate to Team section">Team</a></li>
-        <li><a href="/games/browser/tetris.html" {% if page.url == '/games/browser/tetris.html' %}class="active"{% endif %} aria-label="Navigate to Tetris game">Tetris</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" aria-label="Games menu" aria-haspopup="true" aria-expanded="false">Games</a>
+            <ul class="dropdown-menu" role="menu">
+                <li role="none"><a href="/portfolio/candy-rush-game.html" role="menuitem" {% if page.url == '/portfolio/candy-rush-game.html' %}class="active"{% endif %} aria-label="Navigate to Candy Rush Unity game">Candy Rush</a></li>
+                <li role="none"><a href="/games/browser/tetris.html" role="menuitem" {% if page.url == '/games/browser/tetris.html' %}class="active"{% endif %} aria-label="Navigate to Tetris browser game">Tetris</a></li>
+            </ul>
+        </li>
         <li><a href="/pages/contact.html" {% if page.url == '/pages/contact.html' %}class="active"{% endif %} aria-label="Navigate to Contact Us section">Contact Us</a></li>
     </ul>
 </nav>
