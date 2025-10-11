@@ -21,10 +21,12 @@ module.exports = (env, argv) => {
       'charts': './js/charts.js',
       'data-loader': './js/data-loader.js',
       'data-refresh': './js/data-refresh.js',
+      'error-tracking': './js/error-tracking.js',
       'hero-carousel': './js/hero-carousel.js',
       'lazy-load-images': './js/lazy-load-images.js',
       'micro-interactions': './js/micro-interactions.js',
       'mobile-nav': './js/mobile-nav.js',
+      'performance-monitor': './js/performance-monitor.js',
       'roles-overview': './js/roles-overview.js',
       'service-worker-register': './js/service-worker-register.js',
       'session-detail-modal': './js/session-detail-modal.js',
@@ -81,7 +83,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './index.html',
         filename: 'index.html',
-        chunks: ['main', 'mobile-nav', 'theme-toggle', 'hero-carousel', 'micro-interactions', 'analytics-events']
+        chunks: ['main', 'mobile-nav', 'theme-toggle', 'hero-carousel', 'micro-interactions', 'analytics-events', 'error-tracking', 'performance-monitor']
       }),
       new HtmlWebpackPlugin({
         template: './pages/contact.html',
@@ -171,6 +173,13 @@ module.exports = (env, argv) => {
             test: /[\\/]js[\\/](lazy-.*|data-.*|theme-toggle|mobile-nav)\.js$/,
             name: 'util-components',
             priority: 7,
+            reuseExistingChunk: true
+          },
+          // Monitoring components
+          monitoringComponents: {
+            test: /[\\/]js[\\/](error-tracking|performance-monitor)\.js$/,
+            name: 'monitoring-components',
+            priority: 8,
             reuseExistingChunk: true
           }
         }
