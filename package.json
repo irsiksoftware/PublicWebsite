@@ -8,7 +8,7 @@
     "build:dev": "webpack --config config/webpack.config.cjs --mode development",
     "start": "webpack serve --config config/webpack.config.cjs --mode development",
     "watch": "webpack --config config/webpack.config.cjs --mode development --watch",
-    "lint": "eslint --config config/eslint.config.js js/**/*.js",
+    "lint": "eslint --config config/eslint.config.cjs js/**/*.js",
     "test": "jest --config config/jest.config.cjs",
     "test:watch": "jest --config config/jest.config.cjs --watch",
     "test:coverage": "jest --config config/jest.config.cjs --coverage",
