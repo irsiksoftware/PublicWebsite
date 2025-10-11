@@ -179,7 +179,7 @@ async function purgeCDNCache(paths) {
   return Promise.resolve();
 }
 
-module.exports = {
+export {
   CDN_CONFIG,
   getCDNUrl,
   getCacheHeaders,

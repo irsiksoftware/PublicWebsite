@@ -1,0 +1,237 @@
+/* Blog styles for IrsikSoftware */
+
+#blog {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+#blog-heading {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.blog-intro {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+/* Blog grid layout */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Individual blog post card */
+.blog-post {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Blog post header */
+.blog-post-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    line-height: 1.3;
+}
+
+.blog-post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.blog-post-meta time {
+    font-weight: 500;
+}
+
+.blog-post-meta .author {
+    font-style: italic;
+}
+
+.blog-post-meta .category {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/* Blog post content */
+.blog-post-content {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.blog-post-content h3 {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0.75rem;
+    color: var(--primary-color);
+}
+
+.blog-post-content p {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+/* Blog post footer */
+.blog-post-footer {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.read-more {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.read-more:hover {
+    background: var(--primary-color-dark);
+}
+
+/* Blog sidebar */
+.blog-sidebar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.blog-sidebar section {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.blog-sidebar h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* Blog categories */
+.blog-categories ul {
+    list-style: none;
+    padding: 0;
+}
+
+.blog-categories li {
+    margin-bottom: 0.5rem;
+}
+
+.blog-categories a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.blog-categories a:hover {
+    color: var(--primary-color);
+}
+
+/* Blog newsletter */
+.blog-newsletter p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+/* Blog recent posts */
+.blog-recent ul {
+    list-style: none;
+    padding: 0;
+}
+
+.blog-recent li {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.blog-recent li:last-child {
+    border-bottom: none;
+}
+
+.blog-recent a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    line-height: 1.4;
+}
+
+.blog-recent a:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #blog-heading {
+        font-size: 2rem;
+    }
+
+    .blog-intro {
+        font-size: 1rem;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-post-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .blog-sidebar {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Dark theme support */
+[data-theme="dark"] .blog-post,
+[data-theme="dark"] .blog-sidebar section {
+    background: var(--dark-card-bg);
+    border-color: var(--dark-border-color);
+}
+
+[data-theme="dark"] .blog-post:hover {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .blog-post-header h2,
+[data-theme="dark"] .blog-post-content,
+[data-theme="dark"] .blog-categories a,
+[data-theme="dark"] .blog-recent a {
+    color: var(--dark-text-color);
+}
+
+[data-theme="dark"] .blog-post-meta,
+[data-theme="dark"] .blog-newsletter p {
+    color: var(--dark-text-secondary);
+}
