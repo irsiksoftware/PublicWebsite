@@ -109,20 +109,20 @@ class CRMIntegration {
         };
 
         switch (this.provider) {
-            case 'hubspot':
-                return {
-                    ...baseHeaders,
-                    'Authorization': `Bearer ${this.apiKey}`
-                };
-            case 'salesforce':
-                return {
-                    ...baseHeaders,
-                    'Authorization': `Bearer ${this.apiKey}`
-                };
-            case 'pipedrive':
-                return baseHeaders;
-            default:
-                return baseHeaders;
+        case 'hubspot':
+            return {
+                ...baseHeaders,
+                'Authorization': `Bearer ${this.apiKey}`
+            };
+        case 'salesforce':
+            return {
+                ...baseHeaders,
+                'Authorization': `Bearer ${this.apiKey}`
+            };
+        case 'pipedrive':
+            return baseHeaders;
+        default:
+            return baseHeaders;
         }
     }
 
@@ -139,14 +139,14 @@ class CRMIntegration {
         const payload = this.formatLeadData(leadData);
 
         switch (this.provider) {
-            case 'hubspot':
-                return await this.createHubSpotContact(payload);
-            case 'salesforce':
-                return await this.createSalesforceContact(payload);
-            case 'pipedrive':
-                return await this.createPipedriveContact(payload);
-            default:
-                throw new Error(`Unsupported CRM provider: ${this.provider}`);
+        case 'hubspot':
+            return await this.createHubSpotContact(payload);
+        case 'salesforce':
+            return await this.createSalesforceContact(payload);
+        case 'pipedrive':
+            return await this.createPipedriveContact(payload);
+        default:
+            throw new Error(`Unsupported CRM provider: ${this.provider}`);
         }
     }
 
@@ -167,38 +167,38 @@ class CRMIntegration {
         } = leadData;
 
         switch (this.provider) {
-            case 'hubspot':
-                return {
-                    properties: {
-                        firstname: firstName,
-                        lastname: lastName,
-                        email,
-                        phone,
-                        company,
-                        website,
-                        notes
-                    }
-                };
-            case 'salesforce':
-                return {
-                    FirstName: firstName,
-                    LastName: lastName,
-                    Email: email,
-                    Phone: phone,
-                    Company: company,
-                    Website: website,
-                    Description: notes
-                };
-            case 'pipedrive':
-                return {
-                    name: `${firstName} ${lastName}`,
-                    email: [{ value: email, primary: true }],
-                    phone: [{ value: phone, primary: true }],
-                    org_name: company,
-                    visible_to: 3
-                };
-            default:
-                return leadData;
+        case 'hubspot':
+            return {
+                properties: {
+                    firstname: firstName,
+                    lastname: lastName,
+                    email,
+                    phone,
+                    company,
+                    website,
+                    notes
+                }
+            };
+        case 'salesforce':
+            return {
+                FirstName: firstName,
+                LastName: lastName,
+                Email: email,
+                Phone: phone,
+                Company: company,
+                Website: website,
+                Description: notes
+            };
+        case 'pipedrive':
+            return {
+                name: `${firstName} ${lastName}`,
+                email: [{ value: email, primary: true }],
+                phone: [{ value: phone, primary: true }],
+                org_name: company,
+                visible_to: 3
+            };
+        default:
+            return leadData;
         }
     }
 
@@ -246,14 +246,14 @@ class CRMIntegration {
         const payload = this.formatLeadData(updateData);
 
         switch (this.provider) {
-            case 'hubspot':
-                return await this.makeRequest('PATCH', `/crm/v3/objects/contacts/${leadId}`, payload);
-            case 'salesforce':
-                return await this.makeRequest('PATCH', `/services/data/v58.0/sobjects/Contact/${leadId}`, payload);
-            case 'pipedrive':
-                return await this.makeRequest('PUT', `/persons/${leadId}?api_token=${this.apiKey}`, payload);
-            default:
-                throw new Error(`Unsupported CRM provider: ${this.provider}`);
+        case 'hubspot':
+            return await this.makeRequest('PATCH', `/crm/v3/objects/contacts/${leadId}`, payload);
+        case 'salesforce':
+            return await this.makeRequest('PATCH', `/services/data/v58.0/sobjects/Contact/${leadId}`, payload);
+        case 'pipedrive':
+            return await this.makeRequest('PUT', `/persons/${leadId}?api_token=${this.apiKey}`, payload);
+        default:
+            throw new Error(`Unsupported CRM provider: ${this.provider}`);
         }
     }
 
@@ -268,14 +268,14 @@ class CRMIntegration {
         }
 
         switch (this.provider) {
-            case 'hubspot':
-                return await this.makeRequest('GET', `/crm/v3/objects/contacts/${leadId}`);
-            case 'salesforce':
-                return await this.makeRequest('GET', `/services/data/v58.0/sobjects/Contact/${leadId}`);
-            case 'pipedrive':
-                return await this.makeRequest('GET', `/persons/${leadId}?api_token=${this.apiKey}`);
-            default:
-                throw new Error(`Unsupported CRM provider: ${this.provider}`);
+        case 'hubspot':
+            return await this.makeRequest('GET', `/crm/v3/objects/contacts/${leadId}`);
+        case 'salesforce':
+            return await this.makeRequest('GET', `/services/data/v58.0/sobjects/Contact/${leadId}`);
+        case 'pipedrive':
+            return await this.makeRequest('GET', `/persons/${leadId}?api_token=${this.apiKey}`);
+        default:
+            throw new Error(`Unsupported CRM provider: ${this.provider}`);
         }
     }
 
@@ -290,14 +290,14 @@ class CRMIntegration {
         }
 
         switch (this.provider) {
-            case 'hubspot':
-                return await this.searchHubSpotContacts(searchCriteria);
-            case 'salesforce':
-                return await this.searchSalesforceContacts(searchCriteria);
-            case 'pipedrive':
-                return await this.searchPipedriveContacts(searchCriteria);
-            default:
-                throw new Error(`Unsupported CRM provider: ${this.provider}`);
+        case 'hubspot':
+            return await this.searchHubSpotContacts(searchCriteria);
+        case 'salesforce':
+            return await this.searchSalesforceContacts(searchCriteria);
+        case 'pipedrive':
+            return await this.searchPipedriveContacts(searchCriteria);
+        default:
+            throw new Error(`Unsupported CRM provider: ${this.provider}`);
         }
     }
 
