@@ -1,0 +1,814 @@
+---
+layout: default
+title: "API Documentation - IrsikSoftware"
+description: "Comprehensive API documentation portal for IrsikSoftware services and integrations"
+additional_css:
+  - api-docs.css
+additional_scripts_body:
+  - src: "js/api-docs.js"
+---
+
+<section id="api-overview" aria-labelledby="api-overview-heading">
+    <h2 id="api-overview-heading">API Documentation Portal</h2>
+    <p class="api-intro">Welcome to the IrsikSoftware API Documentation Portal. Our comprehensive APIs enable you to integrate our enterprise solutions into your applications. This portal provides detailed documentation, interactive examples, and code samples for all available endpoints.</p>
+
+    <div class="api-quick-links">
+        <a href="#getting-started" class="quick-link-card">
+            <h3>Getting Started</h3>
+            <p>Authentication and basic setup</p>
+        </a>
+        <a href="#api-reference" class="quick-link-card">
+            <h3>API Reference</h3>
+            <p>Complete endpoint documentation</p>
+        </a>
+        <a href="#code-samples" class="quick-link-card">
+            <h3>Code Samples</h3>
+            <p>Implementation examples</p>
+        </a>
+        <a href="#webhooks" class="quick-link-card">
+            <h3>Webhooks</h3>
+            <p>Event notifications</p>
+        </a>
+    </div>
+</section>
+
+<section id="getting-started" aria-labelledby="getting-started-heading">
+    <h2 id="getting-started-heading">Getting Started</h2>
+
+    <div class="documentation-section">
+        <h3>Authentication</h3>
+        <p>All API requests require authentication using API keys. Include your API key in the request header:</p>
+
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-language">HTTP Header</span>
+                <button class="copy-button" data-copy-target="auth-header">Copy</button>
+            </div>
+            <pre id="auth-header"><code>Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json</code></pre>
+        </div>
+
+        <div class="info-box">
+            <strong>Note:</strong> To obtain an API key, contact our support team or visit your account dashboard.
+        </div>
+    </div>
+
+    <div class="documentation-section">
+        <h3>Base URL</h3>
+        <p>All API endpoints are relative to the base URL:</p>
+        <div class="code-block">
+            <pre><code>https://api.irsik.software/v1</code></pre>
+        </div>
+    </div>
+
+    <div class="documentation-section">
+        <h3>Rate Limiting</h3>
+        <p>API requests are rate-limited to ensure service quality:</p>
+        <ul>
+            <li><strong>Standard tier:</strong> 1,000 requests per hour</li>
+            <li><strong>Professional tier:</strong> 10,000 requests per hour</li>
+            <li><strong>Enterprise tier:</strong> Custom limits available</li>
+        </ul>
+        <p>Rate limit headers are included in all responses:</p>
+        <div class="code-block">
+            <pre><code>X-RateLimit-Limit: 1000
+X-RateLimit-Remaining: 987
+X-RateLimit-Reset: 1699564800</code></pre>
+        </div>
+    </div>
+</section>
+
+<section id="api-reference" aria-labelledby="api-reference-heading">
+    <h2 id="api-reference-heading">API Reference</h2>
+
+    <div class="api-category">
+        <h3>User Management</h3>
+
+        <div class="endpoint-card">
+            <div class="endpoint-header">
+                <span class="http-method get">GET</span>
+                <span class="endpoint-path">/users</span>
+            </div>
+            <p class="endpoint-description">Retrieve a list of users</p>
+
+            <div class="endpoint-details">
+                <h4>Query Parameters</h4>
+                <table class="params-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>page</code></td>
+                            <td>integer</td>
+                            <td>No</td>
+                            <td>Page number for pagination (default: 1)</td>
+                        </tr>
+                        <tr>
+                            <td><code>limit</code></td>
+                            <td>integer</td>
+                            <td>No</td>
+                            <td>Items per page (default: 20, max: 100)</td>
+                        </tr>
+                        <tr>
+                            <td><code>search</code></td>
+                            <td>string</td>
+                            <td>No</td>
+                            <td>Search users by name or email</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Response Example</h4>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-language">JSON</span>
+                        <button class="copy-button" data-copy-target="users-response">Copy</button>
+                    </div>
+                    <pre id="users-response"><code>{
+  "data": [
+    {
+      "id": "usr_1234567890",
+      "email": "user@example.com",
+      "name": "John Doe",
+      "role": "developer",
+      "created_at": "2025-01-15T10:30:00Z",
+      "updated_at": "2025-01-20T14:45:00Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 20,
+    "total": 150,
+    "pages": 8
+  }
+}</code></pre>
+                </div>
+
+                <button class="try-button" data-endpoint="get-users">Try It</button>
+            </div>
+        </div>
+
+        <div class="endpoint-card">
+            <div class="endpoint-header">
+                <span class="http-method post">POST</span>
+                <span class="endpoint-path">/users</span>
+            </div>
+            <p class="endpoint-description">Create a new user</p>
+
+            <div class="endpoint-details">
+                <h4>Request Body</h4>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-language">JSON</span>
+                        <button class="copy-button" data-copy-target="create-user-request">Copy</button>
+                    </div>
+                    <pre id="create-user-request"><code>{
+  "email": "newuser@example.com",
+  "name": "Jane Smith",
+  "role": "developer",
+  "password": "SecureP@ssw0rd"
+}</code></pre>
+                </div>
+
+                <h4>Response Example</h4>
+                <div class="code-block">
+                    <pre><code>{
+  "id": "usr_0987654321",
+  "email": "newuser@example.com",
+  "name": "Jane Smith",
+  "role": "developer",
+  "created_at": "2025-10-11T09:00:00Z"
+}</code></pre>
+                </div>
+
+                <button class="try-button" data-endpoint="post-users">Try It</button>
+            </div>
+        </div>
+
+        <div class="endpoint-card">
+            <div class="endpoint-header">
+                <span class="http-method get">GET</span>
+                <span class="endpoint-path">/users/{id}</span>
+            </div>
+            <p class="endpoint-description">Retrieve a specific user by ID</p>
+
+            <div class="endpoint-details">
+                <h4>Path Parameters</h4>
+                <table class="params-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>id</code></td>
+                            <td>string</td>
+                            <td>User ID</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button class="try-button" data-endpoint="get-user-id">Try It</button>
+            </div>
+        </div>
+
+        <div class="endpoint-card">
+            <div class="endpoint-header">
+                <span class="http-method put">PUT</span>
+                <span class="endpoint-path">/users/{id}</span>
+            </div>
+            <p class="endpoint-description">Update a user</p>
+
+            <div class="endpoint-details">
+                <h4>Request Body</h4>
+                <div class="code-block">
+                    <pre><code>{
+  "name": "Jane Doe",
+  "role": "admin"
+}</code></pre>
+                </div>
+
+                <button class="try-button" data-endpoint="put-user-id">Try It</button>
+            </div>
+        </div>
+
+        <div class="endpoint-card">
+            <div class="endpoint-header">
+                <span class="http-method delete">DELETE</span>
+                <span class="endpoint-path">/users/{id}</span>
+            </div>
+            <p class="endpoint-description">Delete a user</p>
+
+            <div class="endpoint-details">
+                <button class="try-button" data-endpoint="delete-user-id">Try It</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="api-category">
+        <h3>Projects</h3>
+
+        <div class="endpoint-card">
+            <div class="endpoint-header">
+                <span class="http-method get">GET</span>
+                <span class="endpoint-path">/projects</span>
+            </div>
+            <p class="endpoint-description">Retrieve all projects</p>
+
+            <div class="endpoint-details">
+                <h4>Query Parameters</h4>
+                <table class="params-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>status</code></td>
+                            <td>string</td>
+                            <td>No</td>
+                            <td>Filter by status (active, completed, archived)</td>
+                        </tr>
+                        <tr>
+                            <td><code>owner_id</code></td>
+                            <td>string</td>
+                            <td>No</td>
+                            <td>Filter by project owner</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Response Example</h4>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-language">JSON</span>
+                        <button class="copy-button" data-copy-target="projects-response">Copy</button>
+                    </div>
+                    <pre id="projects-response"><code>{
+  "data": [
+    {
+      "id": "prj_abc123",
+      "name": "E-Commerce Platform",
+      "description": "Modern e-commerce solution",
+      "status": "active",
+      "owner_id": "usr_1234567890",
+      "created_at": "2025-08-01T00:00:00Z",
+      "updated_at": "2025-10-10T18:30:00Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 20,
+    "total": 45
+  }
+}</code></pre>
+                </div>
+
+                <button class="try-button" data-endpoint="get-projects">Try It</button>
+            </div>
+        </div>
+
+        <div class="endpoint-card">
+            <div class="endpoint-header">
+                <span class="http-method post">POST</span>
+                <span class="endpoint-path">/projects</span>
+            </div>
+            <p class="endpoint-description">Create a new project</p>
+
+            <div class="endpoint-details">
+                <h4>Request Body</h4>
+                <div class="code-block">
+                    <pre><code>{
+  "name": "Mobile App Development",
+  "description": "iOS and Android app",
+  "owner_id": "usr_1234567890",
+  "status": "active"
+}</code></pre>
+                </div>
+
+                <button class="try-button" data-endpoint="post-projects">Try It</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="api-category">
+        <h3>Analytics</h3>
+
+        <div class="endpoint-card">
+            <div class="endpoint-header">
+                <span class="http-method get">GET</span>
+                <span class="endpoint-path">/analytics/metrics</span>
+            </div>
+            <p class="endpoint-description">Retrieve analytics metrics</p>
+
+            <div class="endpoint-details">
+                <h4>Query Parameters</h4>
+                <table class="params-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>start_date</code></td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>Start date (ISO 8601 format)</td>
+                        </tr>
+                        <tr>
+                            <td><code>end_date</code></td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>End date (ISO 8601 format)</td>
+                        </tr>
+                        <tr>
+                            <td><code>metric</code></td>
+                            <td>string</td>
+                            <td>No</td>
+                            <td>Specific metric (users, requests, errors)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Response Example</h4>
+                <div class="code-block">
+                    <pre><code>{
+  "metrics": {
+    "total_requests": 125000,
+    "total_users": 3420,
+    "error_rate": 0.02,
+    "avg_response_time": 145
+  },
+  "period": {
+    "start": "2025-10-01T00:00:00Z",
+    "end": "2025-10-11T23:59:59Z"
+  }
+}</code></pre>
+                </div>
+
+                <button class="try-button" data-endpoint="get-analytics">Try It</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="code-samples" aria-labelledby="code-samples-heading">
+    <h2 id="code-samples-heading">Code Samples</h2>
+
+    <div class="code-samples-nav">
+        <button class="language-tab active" data-language="javascript">JavaScript</button>
+        <button class="language-tab" data-language="python">Python</button>
+        <button class="language-tab" data-language="curl">cURL</button>
+        <button class="language-tab" data-language="go">Go</button>
+    </div>
+
+    <div class="code-sample" data-language="javascript" style="display: block;">
+        <h3>JavaScript Example</h3>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-language">JavaScript</span>
+                <button class="copy-button" data-copy-target="js-sample">Copy</button>
+            </div>
+            <pre id="js-sample"><code>// Initialize the API client
+const IrsikAPI = require('@irsik/api-client');
+
+const client = new IrsikAPI({
+  apiKey: 'YOUR_API_KEY',
+  baseURL: 'https://api.irsik.software/v1'
+});
+
+// Fetch users with pagination
+async function getUsers() {
+  try {
+    const response = await client.users.list({
+      page: 1,
+      limit: 20,
+      search: 'john'
+    });
+
+    console.log('Users:', response.data);
+    console.log('Total:', response.pagination.total);
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+// Create a new user
+async function createUser() {
+  try {
+    const newUser = await client.users.create({
+      email: 'developer@example.com',
+      name: 'New Developer',
+      role: 'developer'
+    });
+
+    console.log('Created user:', newUser.id);
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+getUsers();
+createUser();</code></pre>
+        </div>
+    </div>
+
+    <div class="code-sample" data-language="python" style="display: none;">
+        <h3>Python Example</h3>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-language">Python</span>
+                <button class="copy-button" data-copy-target="py-sample">Copy</button>
+            </div>
+            <pre id="py-sample"><code># Initialize the API client
+from irsik_api import IrsikClient
+
+client = IrsikClient(
+    api_key='YOUR_API_KEY',
+    base_url='https://api.irsik.software/v1'
+)
+
+# Fetch users with pagination
+def get_users():
+    try:
+        response = client.users.list(
+            page=1,
+            limit=20,
+            search='john'
+        )
+
+        print(f"Users: {response['data']}")
+        print(f"Total: {response['pagination']['total']}")
+    except Exception as error:
+        print(f"Error: {error}")
+
+# Create a new user
+def create_user():
+    try:
+        new_user = client.users.create(
+            email='developer@example.com',
+            name='New Developer',
+            role='developer'
+        )
+
+        print(f"Created user: {new_user['id']}")
+    except Exception as error:
+        print(f"Error: {error}")
+
+get_users()
+create_user()</code></pre>
+        </div>
+    </div>
+
+    <div class="code-sample" data-language="curl" style="display: none;">
+        <h3>cURL Example</h3>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-language">bash</span>
+                <button class="copy-button" data-copy-target="curl-sample">Copy</button>
+            </div>
+            <pre id="curl-sample"><code># Fetch users
+curl -X GET "https://api.irsik.software/v1/users?page=1&limit=20" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+
+# Create a new user
+curl -X POST "https://api.irsik.software/v1/users" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "developer@example.com",
+    "name": "New Developer",
+    "role": "developer"
+  }'
+
+# Get specific user
+curl -X GET "https://api.irsik.software/v1/users/usr_1234567890" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+
+# Update user
+curl -X PUT "https://api.irsik.software/v1/users/usr_1234567890" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Updated Name",
+    "role": "admin"
+  }'
+
+# Delete user
+curl -X DELETE "https://api.irsik.software/v1/users/usr_1234567890" \
+  -H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+        </div>
+    </div>
+
+    <div class="code-sample" data-language="go" style="display: none;">
+        <h3>Go Example</h3>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-language">Go</span>
+                <button class="copy-button" data-copy-target="go-sample">Copy</button>
+            </div>
+            <pre id="go-sample"><code>package main
+
+import (
+    "fmt"
+    "github.com/irsik/api-client-go"
+)
+
+func main() {
+    // Initialize the API client
+    client := irsikapi.NewClient(&irsikapi.Config{
+        APIKey:  "YOUR_API_KEY",
+        BaseURL: "https://api.irsik.software/v1",
+    })
+
+    // Fetch users with pagination
+    users, err := client.Users.List(&irsikapi.UserListParams{
+        Page:   1,
+        Limit:  20,
+        Search: "john",
+    })
+    if err != nil {
+        fmt.Printf("Error: %v\n", err)
+        return
+    }
+
+    fmt.Printf("Users: %+v\n", users.Data)
+    fmt.Printf("Total: %d\n", users.Pagination.Total)
+
+    // Create a new user
+    newUser, err := client.Users.Create(&irsikapi.UserCreateParams{
+        Email: "developer@example.com",
+        Name:  "New Developer",
+        Role:  "developer",
+    })
+    if err != nil {
+        fmt.Printf("Error: %v\n", err)
+        return
+    }
+
+    fmt.Printf("Created user: %s\n", newUser.ID)
+}</code></pre>
+        </div>
+    </div>
+</section>
+
+<section id="webhooks" aria-labelledby="webhooks-heading">
+    <h2 id="webhooks-heading">Webhooks</h2>
+
+    <div class="documentation-section">
+        <h3>Overview</h3>
+        <p>Webhooks allow you to receive real-time notifications when specific events occur in your account. Configure webhook endpoints to listen for events such as user creation, project updates, or system alerts.</p>
+    </div>
+
+    <div class="documentation-section">
+        <h3>Event Types</h3>
+        <table class="params-table">
+            <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>user.created</code></td>
+                    <td>Triggered when a new user is created</td>
+                </tr>
+                <tr>
+                    <td><code>user.updated</code></td>
+                    <td>Triggered when a user is updated</td>
+                </tr>
+                <tr>
+                    <td><code>user.deleted</code></td>
+                    <td>Triggered when a user is deleted</td>
+                </tr>
+                <tr>
+                    <td><code>project.created</code></td>
+                    <td>Triggered when a new project is created</td>
+                </tr>
+                <tr>
+                    <td><code>project.updated</code></td>
+                    <td>Triggered when a project is updated</td>
+                </tr>
+                <tr>
+                    <td><code>project.completed</code></td>
+                    <td>Triggered when a project is marked as completed</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="documentation-section">
+        <h3>Webhook Payload Example</h3>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-language">JSON</span>
+                <button class="copy-button" data-copy-target="webhook-payload">Copy</button>
+            </div>
+            <pre id="webhook-payload"><code>{
+  "event": "user.created",
+  "timestamp": "2025-10-11T12:00:00Z",
+  "id": "evt_1234567890",
+  "data": {
+    "id": "usr_0987654321",
+    "email": "newuser@example.com",
+    "name": "Jane Smith",
+    "role": "developer",
+    "created_at": "2025-10-11T12:00:00Z"
+  }
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="documentation-section">
+        <h3>Webhook Security</h3>
+        <p>All webhook requests include a signature in the <code>X-Webhook-Signature</code> header. Verify this signature to ensure the request is from IrsikSoftware:</p>
+
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-language">JavaScript</span>
+                <button class="copy-button" data-copy-target="webhook-verify">Copy</button>
+            </div>
+            <pre id="webhook-verify"><code>const crypto = require('crypto');
+
+function verifyWebhookSignature(payload, signature, secret) {
+  const hmac = crypto.createHmac('sha256', secret);
+  const digest = hmac.update(payload).digest('hex');
+
+  return crypto.timingSafeEqual(
+    Buffer.from(signature),
+    Buffer.from(digest)
+  );
+}</code></pre>
+        </div>
+    </div>
+</section>
+
+<section id="sdks" aria-labelledby="sdks-heading">
+    <h2 id="sdks-heading">Official SDKs</h2>
+
+    <div class="sdks-grid">
+        <div class="sdk-card">
+            <h3>JavaScript/TypeScript</h3>
+            <p>Full-featured SDK for Node.js and browser environments</p>
+            <div class="code-block">
+                <pre><code>npm install @irsik/api-client</code></pre>
+            </div>
+            <a href="https://github.com/irsik/api-client-js" class="sdk-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+
+        <div class="sdk-card">
+            <h3>Python</h3>
+            <p>Comprehensive Python SDK with async support</p>
+            <div class="code-block">
+                <pre><code>pip install irsik-api</code></pre>
+            </div>
+            <a href="https://github.com/irsik/api-client-python" class="sdk-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+
+        <div class="sdk-card">
+            <h3>Go</h3>
+            <p>Idiomatic Go client for IrsikSoftware APIs</p>
+            <div class="code-block">
+                <pre><code>go get github.com/irsik/api-client-go</code></pre>
+            </div>
+            <a href="https://github.com/irsik/api-client-go" class="sdk-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+
+        <div class="sdk-card">
+            <h3>Ruby</h3>
+            <p>Ruby gem for seamless API integration</p>
+            <div class="code-block">
+                <pre><code>gem install irsik-api</code></pre>
+            </div>
+            <a href="https://github.com/irsik/api-client-ruby" class="sdk-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+</section>
+
+<section id="support" aria-labelledby="support-heading">
+    <h2 id="support-heading">Support & Resources</h2>
+
+    <div class="support-grid">
+        <div class="support-card">
+            <h3>API Status</h3>
+            <p>Check real-time API status and incident reports</p>
+            <a href="https://status.irsik.software" class="support-link" target="_blank" rel="noopener noreferrer">status.irsik.software</a>
+        </div>
+
+        <div class="support-card">
+            <h3>Community Forum</h3>
+            <p>Connect with other developers and get help</p>
+            <a href="https://community.irsik.software" class="support-link" target="_blank" rel="noopener noreferrer">community.irsik.software</a>
+        </div>
+
+        <div class="support-card">
+            <h3>API Support</h3>
+            <p>Contact our API support team</p>
+            <a href="pages/contact.html?subject=api-support" class="support-link">Contact Support</a>
+        </div>
+
+        <div class="support-card">
+            <h3>Changelog</h3>
+            <p>Stay updated with API changes and new features</p>
+            <a href="https://changelog.irsik.software" class="support-link" target="_blank" rel="noopener noreferrer">changelog.irsik.software</a>
+        </div>
+    </div>
+</section>
+
+<div id="api-playground" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>API Playground</h2>
+
+        <div class="playground-form">
+            <div class="form-group">
+                <label for="api-key-input">API Key</label>
+                <input type="password" id="api-key-input" placeholder="Enter your API key">
+            </div>
+
+            <div class="form-group">
+                <label for="endpoint-input">Endpoint</label>
+                <input type="text" id="endpoint-input" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="method-input">Method</label>
+                <input type="text" id="method-input" readonly>
+            </div>
+
+            <div class="form-group" id="body-group" style="display: none;">
+                <label for="body-input">Request Body (JSON)</label>
+                <textarea id="body-input" rows="10"></textarea>
+            </div>
+
+            <button id="send-request" class="primary-button">Send Request</button>
+
+            <div id="response-output" style="display: none;">
+                <h3>Response</h3>
+                <div class="code-block">
+                    <pre id="response-content"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
