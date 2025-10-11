@@ -222,13 +222,17 @@
          * Handles form submission
          */
         function handleFormSubmit() {
-            // In a real implementation, this would send data to a server
-            // For now, we'll show a success message
+            // Disable submit button during processing
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
 
-            console.log('Form submitted');
+            // Form will be submitted to Formspree
+            // Show loading state
+            console.log('Form submitted to Formspree');
 
-            // Show success message
-            showSuccessMessage();
+            // The form will actually submit to Formspree
+            // On success, user will be redirected to success page
+            form.submit();
         }
 
         /**

@@ -28,6 +28,8 @@ scripts_head:
     defer: true
   - src: js/multi-step-form.js
     defer: true
+  - src: js/form-success-handler.js
+    defer: true
 theme_toggle: true
 skip_to_content: true
 hero:
@@ -89,13 +91,13 @@ nav:
                 </div>
             </div>
 
-            <form class="contact-form multi-step-form" action="#" method="post">
+            <form class="contact-form multi-step-form" action="https://formspree.io/f/xdkovojo" method="POST">
                 <!-- Step 1: Contact Reason -->
                 <div class="form-step active" data-step="1">
                     <h4>What can we help you with?</h4>
                     <div class="form-group">
                         <label for="contact-reason">Select Contact Reason</label>
-                        <select id="contact-reason" name="contact-reason" required aria-required="true">
+                        <select id="contact-reason" name="contact_reason" required aria-required="true">
                             <option value="">-- Please select --</option>
                             <option value="new-project">New Project</option>
                             <option value="consultation">Consultation</option>
@@ -142,15 +144,15 @@ nav:
                     <h4>Project Information</h4>
                     <div class="form-group">
                         <label for="project-title">Project Title</label>
-                        <input type="text" id="project-title" name="project-title" required aria-required="true">
+                        <input type="text" id="project-title" name="project_title" required aria-required="true">
                     </div>
                     <div class="form-group">
                         <label for="project-description">Project Description</label>
-                        <textarea id="project-description" name="project-description" rows="6" required aria-required="true" placeholder="Please describe your project, goals, and requirements..."></textarea>
+                        <textarea id="project-description" name="message" rows="6" required aria-required="true" placeholder="Please describe your project, goals, and requirements..."></textarea>
                     </div>
                     <div class="form-group">
                         <label for="project-type">Project Type</label>
-                        <select id="project-type" name="project-type" required aria-required="true">
+                        <select id="project-type" name="project_type" required aria-required="true">
                             <option value="">-- Please select --</option>
                             <option value="web-development">Web Development</option>
                             <option value="mobile-app">Mobile Application</option>
@@ -192,7 +194,7 @@ nav:
                     </div>
                     <div class="form-group">
                         <label for="start-date">Preferred Start Date (Optional)</label>
-                        <input type="date" id="start-date" name="start-date">
+                        <input type="date" id="start-date" name="start_date">
                     </div>
                 </div>
 
@@ -227,10 +229,12 @@ nav:
                     </div>
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" id="terms-accept" name="terms-accept" required aria-required="true">
+                            <input type="checkbox" id="terms-accept" name="terms_accept" required aria-required="true">
                             I agree to be contacted regarding my inquiry
                         </label>
                     </div>
+                    <input type="hidden" name="_subject" value="New Contact Form Submission from Swarm Showcase">
+                    <input type="hidden" name="_next" value="https://irsiksoftware.github.io/PublicWebsite/pages/contact.html?success=true">
                 </div>
 
                 <!-- Form Navigation -->
