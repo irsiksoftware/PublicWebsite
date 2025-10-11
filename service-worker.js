@@ -1,11 +1,11 @@
-const CACHE_NAME = 'irsiksoftware-v2';
+const CACHE_NAME = 'irsiksoftware-v3';
 const RUNTIME_CACHE = 'runtime-cache';
 
 const STATIC_ASSETS = [
   './',
   './index.html',
   './pages/contact.html',
-  './games/tetris.html',
+  './games/browser/tetris.html',
   './pages/legal/terms-of-service.html',
   './pages/legal/privacy-policy.html',
   './pages/session-timeline.html',

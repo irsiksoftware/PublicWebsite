@@ -2,24 +2,6 @@
 <html lang="en">
 <head>
     {% include head.html %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ page.description | default: site.description }}">
-    {% if page.stylesheets %}
-    {% for stylesheet in page.stylesheets %}
-    <link rel="stylesheet" href="{{ stylesheet }}">
-    {% endfor %}
-    {% endif %}
-    <title>{{ page.title | default: site.title }}</title>
-    {% if page.scripts_head %}
-    {% for script in page.scripts_head %}
-    {% if script.type %}
-    <script type="{{ script.type }}" src="{{ script.src }}"{% if script.defer %} defer{% endif %}></script>
-    {% else %}
-    <script src="{{ script.src }}"{% if script.defer %} defer{% endif %}></script>
-    {% endif %}
-    {% endfor %}
-    {% endif %}
 </head>
 <body>
     {% if page.theme_toggle %}
@@ -48,15 +30,6 @@
     </header>
     {% endif %}
 
-    {% if page.nav %}
-    <nav role="navigation" aria-label="Main navigation">
-        <ul>
-            {% for item in page.nav %}
-            <li><a href="{{ item.url }}"{% if item.active %} class="active"{% endif %} aria-label="{{ item.aria }}">{{ item.text }}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
-    {% endif %}
     {% include header.html %}
     {% include nav.html %}
 
@@ -67,20 +40,6 @@
     {% include footer.html %}
     {% include cookie-consent.html %}
     {% include scripts.html %}
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 IrsikSoftware. All rights reserved.</p>
-            <nav class="footer-nav">
-                <a href="pages/legal/privacy-policy.html">Privacy Policy</a>
-                <a href="pages/legal/terms-of-service.html">Terms of Service</a>
-            </nav>
-            <address>
-                123 Innovation Drive, Suite 400<br>
-                Tech Valley, CA 94000
-            </address>
-        </div>
-    </footer>
 
     {% if page.scripts_body %}
     {% for script in page.scripts_body %}
