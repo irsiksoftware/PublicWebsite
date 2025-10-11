@@ -1,0 +1,407 @@
+/* Micro-interactions for better UX */
+
+/* Button hover effects with ripple */
+button:not(.no-micro-interaction),
+.btn,
+.cta-button,
+input[type="submit"],
+input[type="button"] {
+    position: relative;
+    overflow: hidden;
+}
+
+button:not(.no-micro-interaction)::before,
+.btn::before,
+.cta-button::before,
+input[type="submit"]::before,
+input[type="button"]::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:not(.no-micro-interaction):active::before,
+.btn:active::before,
+.cta-button:active::before,
+input[type="submit"]:active::before,
+input[type="button"]:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Link hover underline animation */
+a:not(.no-micro-interaction) {
+    position: relative;
+    text-decoration: none;
+}
+
+a:not(.no-micro-interaction)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+
+a:not(.no-micro-interaction):hover::after {
+    width: 100%;
+}
+
+/* Input focus animations */
+input[type="text"]:not(.no-micro-interaction),
+input[type="email"]:not(.no-micro-interaction),
+input[type="tel"]:not(.no-micro-interaction),
+input[type="password"]:not(.no-micro-interaction),
+input[type="search"]:not(.no-micro-interaction),
+input[type="url"]:not(.no-micro-interaction),
+textarea:not(.no-micro-interaction),
+select:not(.no-micro-interaction) {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+input[type="text"]:not(.no-micro-interaction):focus,
+input[type="email"]:not(.no-micro-interaction):focus,
+input[type="tel"]:not(.no-micro-interaction):focus,
+input[type="password"]:not(.no-micro-interaction):focus,
+input[type="search"]:not(.no-micro-interaction):focus,
+input[type="url"]:not(.no-micro-interaction):focus,
+textarea:not(.no-micro-interaction):focus,
+select:not(.no-micro-interaction):focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Checkbox and radio animations */
+input[type="checkbox"]:not(.no-micro-interaction),
+input[type="radio"]:not(.no-micro-interaction) {
+    transition: transform 0.2s ease;
+}
+
+input[type="checkbox"]:not(.no-micro-interaction):checked,
+input[type="radio"]:not(.no-micro-interaction):checked {
+    animation: checkBounce 0.3s ease;
+}
+
+@keyframes checkBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Card hover effects */
+.card:not(.no-micro-interaction),
+.service-card:not(.no-micro-interaction),
+.portfolio-item:not(.no-micro-interaction),
+.game-card:not(.no-micro-interaction) {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:not(.no-micro-interaction):hover,
+.service-card:not(.no-micro-interaction):hover,
+.portfolio-item:not(.no-micro-interaction):hover,
+.game-card:not(.no-micro-interaction):hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon rotation on hover */
+.icon-interactive:not(.no-micro-interaction) {
+    transition: transform 0.3s ease;
+}
+
+.icon-interactive:not(.no-micro-interaction):hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* Smooth loading state */
+.loading:not(.no-micro-interaction) {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Skeleton loading animation */
+.skeleton:not(.no-micro-interaction) {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 25%,
+        #e0e0e0 50%,
+        #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Tooltip animations */
+[data-tooltip]:not(.no-micro-interaction) {
+    position: relative;
+}
+
+[data-tooltip]:not(.no-micro-interaction)::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+[data-tooltip]:not(.no-micro-interaction):hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+}
+
+/* Badge pulse on update */
+.badge-update:not(.no-micro-interaction) {
+    animation: badgePulse 0.5s ease;
+}
+
+@keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* Notification slide-in */
+.notification:not(.no-micro-interaction) {
+    animation: slideInRight 0.4s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Table row highlight on hover */
+table:not(.no-micro-interaction) tbody tr {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+table:not(.no-micro-interaction) tbody tr:hover {
+    background-color: rgba(102, 126, 234, 0.05);
+    transform: scale(1.01);
+}
+
+/* Toggle switch animation */
+.toggle-switch:not(.no-micro-interaction) input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-switch:not(.no-micro-interaction) label {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    background: #ccc;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.toggle-switch:not(.no-micro-interaction) label::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.toggle-switch:not(.no-micro-interaction) input[type="checkbox"]:checked + label {
+    background: var(--primary-blue, #667eea);
+}
+
+.toggle-switch:not(.no-micro-interaction) input[type="checkbox"]:checked + label::after {
+    transform: translateX(26px);
+}
+
+/* Scroll reveal animation */
+.scroll-reveal:not(.no-micro-interaction) {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.revealed:not(.no-micro-interaction) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Image zoom on hover */
+.image-zoom:not(.no-micro-interaction) {
+    overflow: hidden;
+}
+
+.image-zoom:not(.no-micro-interaction) img {
+    transition: transform 0.4s ease;
+}
+
+.image-zoom:not(.no-micro-interaction):hover img {
+    transform: scale(1.1);
+}
+
+/* Progress bar animation */
+.progress-bar:not(.no-micro-interaction) {
+    position: relative;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar-fill:not(.no-micro-interaction) {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-blue, #667eea), #764ba2);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+/* Count-up animation */
+.count-up:not(.no-micro-interaction) {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Fade in animation */
+.fade-in:not(.no-micro-interaction) {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Bounce on entry */
+.bounce-in:not(.no-micro-interaction) {
+    animation: bounceIn 0.6s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Shake animation for errors */
+.shake:not(.no-micro-interaction) {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+/* Success checkmark animation */
+.success-checkmark:not(.no-micro-interaction) {
+    animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Drawer slide animations */
+.drawer-left:not(.no-micro-interaction) {
+    animation: slideInLeft 0.3s ease;
+}
+
+.drawer-right:not(.no-micro-interaction) {
+    animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Modal backdrop fade */
+.modal-backdrop:not(.no-micro-interaction) {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Stagger children animation */
+.stagger-children:not(.no-micro-interaction) > * {
+    animation: fadeInUp 0.5s ease backwards;
+}
+
+.stagger-children:not(.no-micro-interaction) > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children:not(.no-micro-interaction) > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children:not(.no-micro-interaction) > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children:not(.no-micro-interaction) > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children:not(.no-micro-interaction) > *:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

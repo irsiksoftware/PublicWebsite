@@ -23,6 +23,7 @@ module.exports = (env, argv) => {
       'data-refresh': './js/data-refresh.js',
       'hero-carousel': './js/hero-carousel.js',
       'lazy-load-images': './js/lazy-load-images.js',
+      'micro-interactions': './js/micro-interactions.js',
       'mobile-nav': './js/mobile-nav.js',
       'roles-overview': './js/roles-overview.js',
       'service-worker-register': './js/service-worker-register.js',
@@ -80,12 +81,12 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './index.html',
         filename: 'index.html',
-        chunks: ['main', 'mobile-nav', 'theme-toggle', 'hero-carousel', 'analytics-events']
+        chunks: ['main', 'mobile-nav', 'theme-toggle', 'hero-carousel', 'micro-interactions', 'analytics-events']
       }),
       new HtmlWebpackPlugin({
-        template: './contact.html',
+        template: './pages/contact.html',
         filename: 'contact.html',
-        chunks: ['main', 'mobile-nav', 'theme-toggle', 'analytics-events']
+        chunks: ['main', 'mobile-nav', 'theme-toggle', 'micro-interactions', 'analytics-events']
       }),
       new HtmlWebpackPlugin({
         template: './offline.html',
@@ -93,24 +94,9 @@ module.exports = (env, argv) => {
         chunks: ['main']
       }),
       new HtmlWebpackPlugin({
-        template: './privacy-policy.html',
-        filename: 'privacy-policy.html',
-        chunks: ['main', 'mobile-nav', 'theme-toggle', 'analytics-events']
-      }),
-      new HtmlWebpackPlugin({
-        template: './session-timeline.html',
+        template: './pages/session-timeline.html',
         filename: 'session-timeline.html',
-        chunks: ['main', 'mobile-nav', 'theme-toggle', 'session-timeline', 'analytics-events']
-      }),
-      new HtmlWebpackPlugin({
-        template: './terms-of-service.html',
-        filename: 'terms-of-service.html',
-        chunks: ['main', 'mobile-nav', 'theme-toggle', 'analytics-events']
-      }),
-      new HtmlWebpackPlugin({
-        template: './tetris.html',
-        filename: 'tetris.html',
-        chunks: ['main', 'tetris', 'tetromino-shapes', 'analytics-events']
+        chunks: ['main', 'mobile-nav', 'theme-toggle', 'session-timeline', 'micro-interactions', 'analytics-events']
       }),
       ...(isProduction ? [
         new MiniCssExtractPlugin({
