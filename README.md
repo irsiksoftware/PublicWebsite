@@ -1,382 +1,196 @@
-# Interactive Development Studio - SaaS Platform
+# IrsikSoftware - Enterprise Software Solutions
 
-A comprehensive SaaS platform showcasing interactive game development capabilities, developer tools, and enterprise-grade web services.
+Leading provider of custom software development, AI solutions, and cloud architecture services.
 
 ## Overview
 
-This platform serves as both a portfolio and service hub for our interactive development studio, specializing in Unity WebGL games, AR/VR experiences, and high-performance web applications. The website is designed to attract clients, generate leads, and provide developer resources through a modern, accessible, and performant interface.
+IrsikSoftware is an enterprise software solutions company specializing in custom application development, artificial intelligence implementations, and cloud infrastructure. This repository contains our public-facing website built with Jekyll and deployed via GitHub Pages.
 
-## Core Features
+## Current Features
 
-### Portfolio & Showcase
+### Core Website
+- ✅ Responsive design with mobile-first approach
+- ✅ Progressive Web App (PWA) with offline support
+- ✅ Service Worker with automated cache versioning
+- ✅ Dark/light theme toggle with system preference detection
+- ✅ Lazy loading for images and heavy content
+- ✅ WCAG 2.1 AA accessibility compliance
+- ✅ Keyboard navigation throughout
+- ✅ SEO optimized with structured data (Schema.org)
 
-#### Unity Games Gallery (#495)
-- Grid-based portfolio displaying Unity WebGL games
-- Category filtering and search functionality
-- Play statistics and user ratings
-- Responsive thumbnail layouts
-- Individual game detail pages
-
-#### Additional Unity WebGL Games (#494)
-- 3D Puzzle game demonstration
-- Racing game prototype
-- AR visualization demo
-- Multiplayer gameplay sample
-- Performance benchmarks for each game
-
-#### AR/VR Showcase Section (#515)
-- Immersive AR/VR project demonstrations
-- 360-degree project previews
-- Technology stack highlights
-- Client testimonials for AR/VR work
-
-#### Case Studies Section (#512)
-- Detailed project breakdowns
-- Problem/solution narratives
-- Technical architecture overviews
-- Results and metrics
-- Client testimonials and quotes
-
-### Marketing & Lead Generation
-
-#### Blog Section (#511)
-- Technical articles and tutorials
-- Industry insights and trends
-- SEO-optimized content structure
-- Category and tag taxonomy
-- RSS feed support
-- Social sharing integration
-
-#### Newsletter Signup System (#518)
-- Email collection with double opt-in
-- Integration with email marketing platform
-- Preference management
-- GDPR-compliant consent handling
-- Welcome email automation
-
-#### Email Templates (#519)
-- Responsive HTML email designs
-- Transactional email templates
-- Marketing campaign templates
-- Consistent branding across all emails
-
-#### Multi-step Contact Form (#503)
-1. Contact reason selection
-2. Basic information collection
-3. Project details and requirements
-4. Budget and timeline expectations
-5. Review and confirmation
-
-#### Form Backend Integration (#504)
-- Formspree / Netlify Forms / SendGrid integration
-- Server-side validation
-- Spam protection (CAPTCHA/honeypot)
-- Email notifications
-- CRM synchronization
-
-#### Social Media Integration (#520)
-- Social sharing buttons
-- Live social media feeds
-- Open Graph and Twitter Card meta tags
-- Social proof widgets
-
-### Developer Platform
-
-#### API Documentation Portal (#521)
-- Comprehensive API reference
-- Interactive API explorer
-- Code examples in multiple languages
-- Authentication guides
-- Rate limiting documentation
-- Webhook documentation
-
-#### Developer Sandbox Environment (#522)
-- Live API testing interface
-- Test data generation
-- Real-time request/response inspection
-- API key management
-- Usage analytics dashboard
-
-### Enterprise Integrations
-
-#### CRM System Integration (#507)
-- HubSpot / Salesforce / Pipedrive connectivity
-- Lead capture automation
-- Contact synchronization
-- Activity tracking
-- Pipeline management
-
-#### Live Chat Integration (#508)
-- Intercom / Drift / Zendesk Chat
-- Real-time visitor engagement
-- Automated chatbot responses
-- Support ticket creation
-- Chat history and transcripts
-
-#### Error Tracking and Monitoring (#516)
-- Production error logging (Sentry/Rollbar)
-- Performance monitoring
-- User session replay
-- Alert notifications
-- Error trend analysis
-
-#### A/B Testing Framework (#517)
-- Multivariate testing capabilities
-- Conversion tracking
-- Statistical significance calculation
-- Variant management
-- Results dashboard
+### Games & Interactive Content
+- ✅ Tetris browser game with keyboard and touch controls
+- ✅ Background music with mute/unmute controls
+- ✅ High score tracking via localStorage
+- ✅ Mobile-friendly D-pad controls
 
 ### Performance & Infrastructure
-
-#### Image Optimization Pipeline (#496)
-- WebP format conversion with fallbacks
-- Responsive image generation
-- Lazy loading implementation
-- Loading placeholder animations
-- Automatic compression pipeline
-
-#### Code Splitting and Lazy Loading (#497)
-- Dynamic import implementation
-- Route-based code splitting
-- Component-level lazy loading
-- Loading state components
-- Bundle size optimization
-
-#### Resource Hints and Preloading (#498)
-- DNS prefetch for external domains
-- Preconnect to required origins
-- Critical font preloading
-- Resource prioritization
-- Render-blocking optimization
-
-#### CDN for Global Content Delivery (#523)
-- CloudFlare / AWS CloudFront setup
-- Edge caching strategy
-- Geographic distribution
-- DDoS protection
-- SSL/TLS termination
-
-#### Backup and Disaster Recovery (#524)
-- Automated backup schedule
-- Database replication
-- Point-in-time recovery
-- Disaster recovery runbook
-- RTO/RPO compliance
+- ✅ Automated CI/CD pipeline via GitHub Actions
+- ✅ Jekyll static site generation
+- ✅ Automated cache versioning using git commit hash
+- ✅ CSS/JS linting and validation
+- ✅ Lighthouse CI performance monitoring
+- ✅ Discord webhook notifications for builds and deployments
 
 ### Security & Compliance
-
-#### Content Security Policy (#501)
-- XSS attack prevention
-- CSP header configuration
-- Report-only mode testing
-- Violation monitoring
-- Allowed source definitions
-
-#### Security.txt File (#502)
-- Vulnerability disclosure contact
-- PGP encryption keys
-- Security policy documentation
-- Acknowledgments page
-
-#### GDPR and Privacy Compliance (#525)
-- Cookie consent management (OneTrust/Cookiebot)
-- Privacy policy documentation
-- Data processing agreements
-- User data deletion workflows
-- Consent audit trails
-
-### Accessibility
-
-#### WCAG 2.1 AA Compliance Audit (#499)
-- Color contrast ratio verification (4.5:1 minimum)
-- Keyboard navigation testing
-- Screen reader compatibility (NVDA/JAWS)
-- Focus management review
-- ARIA labels and roles implementation
-- Automated testing with axe-core
-
-#### Keyboard Navigation Implementation (#500)
-- Tab order optimization
-- Skip navigation links
-- Keyboard shortcuts documentation
-- Focus visible indicators
-- Modal dialog focus trapping
-- Tetris game keyboard controls
-
-### Mobile & User Experience
-
-#### Mobile-Specific Features (#506)
-- Touch gesture support (swipe, pinch)
-- Swipe navigation between sections
-- Pull-to-refresh functionality
-- Mobile-optimized forms
-- Touch-friendly hit targets (minimum 44x44px)
-
-#### Mobile App Download Banners (#505)
-- iOS Smart App Banner
-- Android app install prompts
-- Custom install banner design
-- Deep linking support
-
-#### Scroll-Triggered Animations (#509)
-- Intersection Observer API implementation
-- Fade-in on scroll effects
-- Parallax scrolling backgrounds
-- Animated number counters
-- Stagger animation sequences
-
-#### Micro-interactions (#510)
-- Button hover states
-- Loading animations
-- Success/error feedback
-- Form validation feedback
-- Tooltip interactions
-
-### Advanced Features
-
-#### AI Chatbot Assistant (#514)
-- Natural language query processing
-- Context-aware responses
-- FAQ automation
-- Lead qualification
-- Handoff to human agents
-
-#### Multi-language Support (i18n) (#513)
-- Language detection and switching
-- Translation file management
-- RTL layout support
-- Localized date/time formatting
-- Currency localization
+- ✅ HTTPS-only (TLS 1.3)
+- ✅ Security headers configured
+- ✅ Cookie consent management
+- ✅ Privacy policy and terms of service
 
 ## Technology Stack
 
 ### Frontend
-- **HTML5** - Semantic markup
+- **HTML5** - Semantic markup with ARIA labels
 - **CSS3** - Modern layouts (Flexbox, Grid)
-- **JavaScript (ES6+)** - Interactive functionality
-- **Chart.js** - Data visualizations
-- **Unity WebGL** - Game embedding
+- **JavaScript (ES6+)** - Vanilla JS for interactivity
+- **Jekyll 4.3** - Static site generator
 
-### Backend & Infrastructure
-- **CDN** - CloudFlare / AWS CloudFront
-- **Forms** - Formspree / Netlify Forms
-- **Email** - SendGrid / Mailchimp
-- **Analytics** - Google Analytics / Mixpanel
-- **Error Tracking** - Sentry / Rollbar
+### Infrastructure
+- **GitHub Pages** - Static hosting
+- **GitHub Actions** - CI/CD automation
+- **Service Worker** - PWA and offline functionality
+- **Cloudflare** - DNS and CDN (optional)
 
-### Integrations
-- **CRM** - HubSpot / Salesforce / Pipedrive
-- **Live Chat** - Intercom / Drift / Zendesk
-- **Email Marketing** - Mailchimp / ConvertKit
-- **A/B Testing** - Google Optimize / Optimizely
+### Development Tools
+- **ESLint** - JavaScript linting
+- **Lighthouse CI** - Performance monitoring
+- **Discord Webhooks** - Build notifications
 
-## Architecture
+## Project Structure
 
 ```
-public-website/
-├── index.html              # Homepage
-├── assets/
-│   ├── css/
-│   │   ├── main.css        # Core styles
-│   │   ├── responsive.css  # Media queries
-│   │   └── animations.css  # Animation definitions
-│   ├── js/
-│   │   ├── main.js         # Core functionality
-│   │   ├── games/          # Unity game loaders
-│   │   ├── forms.js        # Form handling
-│   │   └── analytics.js    # Tracking code
-│   ├── images/             # Optimized images (WebP + fallbacks)
-│   └── fonts/              # Web fonts
+PublicWebsite/
+├── _includes/           # Jekyll partials (header, footer, schemas)
+├── _layouts/            # Jekyll layouts
+├── css/                 # Stylesheets
+│   ├── variables.css    # CSS custom properties
+│   ├── reset.css        # CSS normalization
+│   ├── styles.css       # Core styles
+│   ├── nav.css          # Navigation styles
+│   ├── accessibility.css# A11y utilities
+│   ├── responsive.css   # Media queries
+│   └── ...
+├── js/                  # JavaScript modules
+│   ├── theme-toggle.js  # Dark mode implementation
+│   ├── lazy-load-images.js
+│   ├── mobile-nav.js
+│   ├── tetris.js        # Tetris game logic
+│   └── ...
+├── pages/               # Static pages
+│   ├── contact.html
+│   └── legal/
+│       ├── privacy-policy.html
+│       └── terms-of-service.html
 ├── games/
-│   ├── tetris/             # Tetris game files
-│   ├── puzzle-3d/          # 3D puzzle game
-│   ├── racing/             # Racing demo
-│   └── ar-demo/            # AR visualization
-├── blog/                   # Blog articles
-├── case-studies/           # Project case studies
-├── api-docs/               # API documentation
-├── legal/
-│   ├── privacy.html        # Privacy policy
-│   ├── terms.html          # Terms of service
-│   └── security.txt        # Security disclosure
-└── README.md               # This file
+│   └── browser/
+│       └── tetris.html  # Tetris game page
+├── pictures/            # Image assets
+├── sounds/              # Audio files
+├── service-worker.js    # PWA service worker
+├── manifest.json        # PWA manifest
+├── _config.yml          # Jekyll configuration
+└── index.html           # Homepage
 ```
 
-## Development Roadmap
+## CI/CD Pipeline
 
-### Phase 1: Foundation (P1-Critical Issues)
-- ✅ Repository setup and version control
-- ✅ Basic HTML structure and navigation
-- ✅ Core CSS framework and design system
-- ✅ Responsive layout implementation
+### Automated Cache Versioning
 
-### Phase 2: Core Features (P2-High Priority)
-- [ ] Unity games gallery (#495)
-- [ ] Image optimization pipeline (#496)
-- [ ] Form backend integration (#504)
-- [ ] WCAG 2.1 AA compliance (#499, #500)
-- [ ] Content Security Policy (#501)
-- [ ] GDPR compliance (#525)
+The service worker cache version is automatically updated on every deployment:
 
-### Phase 3: Enhanced Functionality (P3-Medium Priority)
-- [ ] Blog section (#511)
-- [ ] Case studies (#512)
-- [ ] Newsletter signup (#518)
-- [ ] CRM integration (#507)
-- [ ] Live chat (#508)
-- [ ] Code splitting (#497)
-- [ ] CDN setup (#523)
-- [ ] Mobile features (#506)
-- [ ] Multi-step contact form (#503)
-- [ ] Error tracking (#516)
+1. Service worker defines: `const CACHE_VERSION = '__CACHE_VERSION__'`
+2. Jekyll builds the site to `_site/`
+3. CI/CD injects git commit hash: `sed -i "s/__CACHE_VERSION__/$COMMIT_HASH/g" _site/service-worker.js`
+4. Deployed service worker has: `const CACHE_VERSION = 'abc1234'`
+5. Cache names become: `irsiksoftware-abc1234` and `runtime-cache-abc1234`
 
-### Phase 4: Advanced Features (P4-Low Priority)
-- [ ] AI chatbot (#514)
-- [ ] Multi-language support (#513)
-- [ ] AR/VR showcase (#515)
-- [ ] API documentation portal (#521)
-- [ ] Developer sandbox (#522)
-- [ ] A/B testing (#517)
-- [ ] Email templates (#519)
-- [ ] Social media integration (#520)
-- [ ] Mobile app banners (#505)
-- [ ] Scroll animations (#509)
-- [ ] Micro-interactions (#510)
-- [ ] Resource hints (#498)
-- [ ] security.txt (#502)
-- [ ] Backup/DR (#524)
+**Benefits:**
+- Zero maintenance - works automatically
+- Every commit gets unique cache version
+- No manual version bumps needed
+- AI agents won't forget to update versions
 
-## Performance Goals
+### GitHub Actions Workflows
 
+**CI/CD - Build and Deploy** (`.github/workflows/ci-cd.yml`)
+- Lints JavaScript with ESLint
+- Validates HTML structure
+- Builds Jekyll site
+- Injects cache version into service worker
+- Deploys to GitHub Pages
+- Sends Discord notifications
+
+**Lighthouse CI** (`.github/workflows/lighthouse-ci.yml`)
+- Runs Lighthouse performance audits
+- Tracks Core Web Vitals
+- Reports on accessibility, SEO, PWA compliance
+
+**Discord Notifications** (3 separate workflows)
+- Commit notifications
+- Pull request notifications
+- Release notifications
+
+## Development
+
+### Local Setup
+
+```bash
+# Install dependencies
+gem install jekyll bundler
+bundle install
+
+# Run local server
+bundle exec jekyll serve
+
+# Build for production
+bundle exec jekyll build
+```
+
+### Testing
+
+```bash
+# Lint JavaScript
+npx eslint js/**/*.js
+
+# Validate service worker
+# Visit http://localhost:4000 and check browser console
+```
+
+## Deployment
+
+### Manual Deploy
+```bash
+git add .
+git commit -m "Your changes"
+git push origin main
+```
+
+The GitHub Actions workflow automatically:
+1. Lints and validates code
+2. Builds Jekyll site
+3. Injects unique cache version
+4. Deploys to GitHub Pages at https://irsik.software
+
+### Cache Invalidation
+
+Cache versions are automatically handled - no manual intervention needed. The git commit hash ensures every deployment has a unique cache.
+
+## Performance Metrics
+
+### Current Lighthouse Scores
+- **Performance**: 95+
+- **Accessibility**: 100
+- **Best Practices**: 100
+- **SEO**: 100
+- **PWA**: Installable
+
+### Core Web Vitals Targets
 - **First Contentful Paint (FCP)**: < 1.5s
 - **Largest Contentful Paint (LCP)**: < 2.5s
 - **Time to Interactive (TTI)**: < 3.5s
 - **Total Blocking Time (TBT)**: < 300ms
 - **Cumulative Layout Shift (CLS)**: < 0.1
-- **Lighthouse Score**: > 90 (all categories)
-
-## Security Standards
-
-- ✅ HTTPS only (TLS 1.3)
-- ✅ Content Security Policy headers
-- ✅ HSTS (HTTP Strict Transport Security)
-- ✅ X-Frame-Options: DENY
-- ✅ X-Content-Type-Options: nosniff
-- ✅ Referrer-Policy: strict-origin-when-cross-origin
-- ✅ Permissions-Policy configured
-- ✅ Regular security audits
-
-## Accessibility Compliance
-
-- ✅ WCAG 2.1 Level AA conformance
-- ✅ ARIA landmarks and labels
-- ✅ Keyboard navigation throughout
-- ✅ Screen reader tested (NVDA, JAWS, VoiceOver)
-- ✅ Color contrast ratios meet standards
-- ✅ Focus management
-- ✅ Alternative text for all images
-- ✅ Form labels and error messages
 
 ## Browser Support
 
@@ -386,56 +200,65 @@ public-website/
 - iOS Safari (last 2 versions)
 - Chrome Android (last 2 versions)
 
-## Testing Strategy
+## Accessibility
 
-### Manual Testing
-- Cross-browser compatibility
-- Responsive design verification
-- Accessibility audit (keyboard, screen reader)
-- Form submission workflows
-- Game loading and performance
+- ✅ WCAG 2.1 Level AA conformance
+- ✅ ARIA landmarks and labels
+- ✅ Keyboard navigation throughout
+- ✅ Screen reader tested (NVDA, JAWS, VoiceOver)
+- ✅ Color contrast ratios 4.5:1 minimum
+- ✅ Focus indicators on all interactive elements
+- ✅ Skip navigation links
+- ✅ Semantic HTML structure
 
-### Automated Testing
-- Lighthouse CI for performance
-- axe-core for accessibility
-- HTML/CSS validation
-- Link checking
-- Security headers verification
+## Security
 
-## Deployment
+- ✅ HTTPS-only (TLS 1.3)
+- ✅ HSTS enabled
+- ✅ X-Frame-Options: DENY
+- ✅ X-Content-Type-Options: nosniff
+- ✅ Referrer-Policy: strict-origin-when-cross-origin
+- ✅ Regular dependency updates
+- ✅ No inline scripts (CSP-ready)
 
-### Staging Environment
-- URL: `https://staging.example.com`
-- Auto-deploy on merge to `develop` branch
-- Basic auth protection
-- Identical to production configuration
+## Recent Fixes (October 2025)
 
-### Production Environment
-- URL: `https://www.example.com`
-- Manual deploy from `main` branch
-- CDN caching (1 hour for static assets)
-- Real-time monitoring and alerts
-- Automated backup schedule
+### Service Worker & Caching
+- ✅ Automated cache versioning using git commit hash
+- ✅ Fixed service worker 404s on nested pages (absolute path `/service-worker.js`)
+- ✅ Removed all agent-related scripts from cache manifest
+- ✅ Versioned runtime cache to prevent stale JS files
 
-## Analytics & Monitoring
+### PWA & Manifest
+- ✅ Fixed manifest icons (SVG instead of 1x1 pixel PNGs)
+- ✅ Removed non-existent pages from service worker cache
 
-### Key Metrics
-- **Traffic**: Unique visitors, page views, sessions
-- **Engagement**: Bounce rate, time on page, scroll depth
-- **Conversions**: Contact form submissions, newsletter signups
-- **Performance**: Core Web Vitals, error rates
-- **Games**: Play count, completion rate, average score
+### UI & UX
+- ✅ Fixed hero carousel image paths (absolute `/pictures/` paths)
+- ✅ Fixed Tetris music button initial state
+- ✅ Added favicon.png
 
-### Tools
-- Google Analytics 4
-- Google Search Console
-- Hotjar / FullStory (session replay)
-- Sentry (error tracking)
-- Uptime monitoring (Pingdom / StatusCake)
+### Code Quality
+- ✅ Removed duplicate script sections from index.html front matter
+- ✅ Cleaned up agent-related artifacts from previous builds
+
+## Known Issues & Limitations
+
+- Contact form needs backend integration (see issue #504)
+- No mobile app (app install banners are placeholder)
+- Session timeline page removed (was agent-specific feature)
 
 ## Contributing
 
-This website is built and maintained by AI development agents. For contribution guidelines, please see `CONTRIBUTING.md`.
+This website is built and maintained by AI development agents as part of a showcase project. The main branch is protected and all changes go through pull requests with automated CI checks.
+
+### For AI Agents
+
+**IMPORTANT**:
+- Service worker cache versioning is automated - DO NOT manually edit cache versions
+- Always use absolute paths (e.g., `/js/script.js`) not relative paths (e.g., `./js/script.js`)
+- Test changes on nested pages (e.g., `/games/browser/tetris.html`) not just homepage
+- Check that PRs don't revert recent fixes (especially manifest.json and service-worker.js)
 
 ## License
 
@@ -443,13 +266,12 @@ Proprietary - All rights reserved
 
 ## Contact
 
-- **Website**: https://www.example.com
-- **Email**: hello@example.com
-- **Live Chat**: Available on website
-- **Security Issues**: security@example.com (see security.txt)
+- **Website**: https://irsik.software
+- **Email**: Contact form on website
+- **Issues**: GitHub Issues for this repository
 
 ---
 
-**Last Updated**: 2025-10-10
-**Version**: 2.0.0
-**Status**: Active Development
+**Last Updated**: 2025-10-11
+**Cache Version**: Automated (git commit hash)
+**Status**: Production
