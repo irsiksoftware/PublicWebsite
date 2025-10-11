@@ -75,6 +75,15 @@ if (document.readyState === 'loading') {
     loadSpyActivity();
 }
 
+// Load privacy compliance modules
+import('./cookie-consent.js').catch(error => {
+    console.error('Failed to load cookie-consent:', error);
+});
+
+import('./privacy-compliance.js').catch(error => {
+    console.error('Failed to load privacy-compliance:', error);
+});
+
 // Performance logging
 if (window.performance && window.performance.mark) {
     window.performance.mark('main-js-loaded');

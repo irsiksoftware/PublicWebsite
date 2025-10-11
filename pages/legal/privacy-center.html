@@ -1,0 +1,223 @@
+---
+layout: default
+title: "Privacy Center - Swarm Showcase"
+description: "Manage your privacy preferences and data"
+stylesheets:
+  - css/variables.css
+  - css/reset.css
+  - css/styles.css
+  - css/nav.css
+  - css/accessibility.css
+  - css/responsive.css
+  - css/theme-toggle.css
+  - css/footer.css
+scripts_head:
+  - src: js/theme-toggle.js
+  - src: js/cookie-consent.js
+    type: module
+  - src: js/privacy-compliance.js
+    type: module
+theme_toggle: true
+skip_to_content: true
+header:
+  title: Swarm Showcase
+  subtitle: AI Development Team Metrics
+nav:
+  - text: Home
+    url: ../../index.html
+  - text: Privacy Policy
+    url: privacy-policy.html
+  - text: Contact Us
+    url: ../contact.html
+---
+
+<section id="privacy-center" aria-labelledby="privacy-center-heading">
+    <h2 id="privacy-center-heading">Privacy Center</h2>
+    <p>Manage your privacy preferences and exercise your rights under GDPR and other privacy regulations.</p>
+
+    <div class="privacy-center-container">
+        <div class="privacy-card">
+            <h3>Cookie Preferences</h3>
+            <p>Control which cookies and tracking technologies we use on our website.</p>
+            <button id="manage-cookies" class="btn btn-primary">Manage Cookie Preferences</button>
+        </div>
+
+        <div class="privacy-card">
+            <h3>Your Data</h3>
+            <p>View, download, or delete all the personal data we have stored about you.</p>
+            <button id="view-privacy-dashboard" class="btn btn-primary">Open Privacy Dashboard</button>
+        </div>
+
+        <div class="privacy-card">
+            <h3>Export Your Data</h3>
+            <p>Download a copy of all your personal data in a machine-readable format.</p>
+            <button id="export-data" class="btn btn-secondary">Export My Data</button>
+        </div>
+
+        <div class="privacy-card">
+            <h3>Delete Your Data</h3>
+            <p>Exercise your right to be forgotten by deleting all your personal data from our system.</p>
+            <button id="delete-all-data" class="btn btn-danger">Delete All My Data</button>
+        </div>
+
+        <div class="privacy-card">
+            <h3>Data Processing</h3>
+            <p>Learn about third-party processors who handle your data on our behalf.</p>
+            <a href="data-processing.html" class="btn btn-link">View Data Processors</a>
+        </div>
+
+        <div class="privacy-card">
+            <h3>Privacy Policy</h3>
+            <p>Read our complete privacy policy and understand how we protect your data.</p>
+            <a href="privacy-policy.html" class="btn btn-link">Read Privacy Policy</a>
+        </div>
+
+        <div class="privacy-card">
+            <h3>Contact Us</h3>
+            <p>Have questions about your privacy? Contact our Data Protection Officer.</p>
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:dpo@irsik.software">dpo@irsik.software</a></p>
+                <p><strong>Privacy inquiries:</strong> <a href="mailto:privacy@irsik.software">privacy@irsik.software</a></p>
+            </div>
+        </div>
+
+        <div class="privacy-card">
+            <h3>Lodge a Complaint</h3>
+            <p>If you're not satisfied with how we handle your data, you can file a complaint with your local supervisory authority.</p>
+            <p class="small-text">For EU residents, visit <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener noreferrer">EDPB members list</a> to find your local authority.</p>
+        </div>
+    </div>
+
+    <style>
+        .privacy-center-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .privacy-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .privacy-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            color: #007bff;
+            font-size: 1.25rem;
+        }
+
+        .privacy-card p {
+            flex: 1;
+            margin-bottom: 1rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .privacy-card .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .privacy-card .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+
+        .privacy-card .btn-primary:hover {
+            background: #0056b3;
+        }
+
+        .privacy-card .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .privacy-card .btn-secondary:hover {
+            background: #545b62;
+        }
+
+        .privacy-card .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .privacy-card .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .privacy-card .btn-link {
+            background: transparent;
+            color: #007bff;
+            border: 1px solid #007bff;
+        }
+
+        .privacy-card .btn-link:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+        }
+
+        .small-text {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .privacy-center-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Manage Cookies
+            document.getElementById('manage-cookies')?.addEventListener('click', function() {
+                if (window.cookieConsentManager) {
+                    window.cookieConsentManager.openPreferences();
+                }
+            });
+
+            // Privacy Dashboard
+            document.getElementById('view-privacy-dashboard')?.addEventListener('click', function() {
+                if (window.privacyCompliance) {
+                    window.privacyCompliance.showPrivacyDashboard();
+                }
+            });
+
+            // Export Data
+            document.getElementById('export-data')?.addEventListener('click', function() {
+                if (window.privacyCompliance) {
+                    window.privacyCompliance.downloadUserData();
+                }
+            });
+
+            // Delete All Data
+            document.getElementById('delete-all-data')?.addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete all your personal data? This action cannot be undone.')) {
+                    if (window.privacyCompliance) {
+                        const result = window.privacyCompliance.deleteAllUserData();
+                        alert(result.message);
+                        window.location.reload();
+                    }
+                }
+            });
+        });
+    </script>
+</section>
