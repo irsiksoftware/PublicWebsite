@@ -1,4 +1,4 @@
-/* DOOM Game Styles */
+/* Pac-Man Game Styles */
 
 .game-container {
     display: flex;
@@ -6,9 +6,9 @@
     align-items: center;
     gap: 2rem;
     padding: 2rem;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 32px rgba(255, 255, 0, 0.3);
 }
 
 .game-and-controls {
@@ -18,24 +18,22 @@
     gap: 1rem;
 }
 
-#doom-game {
-    width: 800px;
-    min-width: 800px;
-    max-width: 800px;
-    height: 600px;
-    min-height: 600px;
-    max-height: 600px;
-    border: 3px solid #ff0000;
+#pac-man-game {
+    width: 560px;
+    min-width: 560px;
+    max-width: 560px;
+    height: 620px;
+    min-height: 620px;
+    max-height: 620px;
+    border: 3px solid #ffff00;
     border-radius: 8px;
     background: #000;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-    image-rendering: pixelated;
-    cursor: crosshair;
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
     display: block;
     margin: 0 auto;
 }
 
-#doom-game:focus {
+#pac-man-game:focus {
     outline: none;
 }
 
@@ -46,11 +44,10 @@
     padding: 1rem;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 8px;
-    border: 2px solid #ff0000;
+    border: 2px solid #ffff00;
 }
 
-.movement-controls,
-.action-controls {
+.movement-controls {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -63,35 +60,28 @@
     justify-content: center;
 }
 
-.control-btn,
-.action-btn {
+.control-btn {
     min-width: 60px;
     min-height: 60px;
     font-size: 1.5rem;
     font-weight: bold;
-    border: 2px solid #ff0000;
+    border: 2px solid #ffff00;
     border-radius: 8px;
-    background: linear-gradient(135deg, #4a0000, #8a0000);
-    color: #ffffff;
+    background: linear-gradient(135deg, #333300, #666600);
+    color: #ffff00;
     cursor: pointer;
     transition: all 0.2s;
     touch-action: manipulation;
     user-select: none;
 }
 
-.control-btn:active,
-.action-btn:active {
-    background: linear-gradient(135deg, #8a0000, #ff0000);
+.control-btn:active {
+    background: linear-gradient(135deg, #666600, #ffff00);
     transform: scale(0.95);
 }
 
-.action-btn {
-    padding: 0.75rem 1.5rem;
-    min-width: 100px;
-}
-
 .ui-panel {
-    max-width: 800px;
+    max-width: 560px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -102,15 +92,15 @@
     flex: 0 0 auto;
     min-width: 150px;
     padding: 1rem;
-    background: linear-gradient(135deg, #1a0000, #2a0000);
-    border: 2px solid #ff0000;
+    background: linear-gradient(135deg, #0a0a00, #1a1a00);
+    border: 2px solid #ffff00;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .stats-display h3 {
     margin: 0 0 0.5rem 0;
-    color: #ff6b6b;
+    color: #ffff00;
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -124,38 +114,16 @@
     font-family: 'Courier New', monospace;
 }
 
-.stat-bar {
-    width: 100%;
-    height: 20px;
-    background: #000;
-    border: 2px solid #333;
-    border-radius: 4px;
-    overflow: hidden;
-    margin: 0.5rem 0;
-}
-
-.health-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #ff0000, #ff6b6b);
-    transition: width 0.3s ease;
-}
-
-.armor-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #0066ff, #66b3ff);
-    transition: width 0.3s ease;
-}
-
 .controls-help {
     padding: 1rem;
     background: rgba(0, 0, 0, 0.5);
-    border: 2px solid #ff0000;
+    border: 2px solid #ffff00;
     border-radius: 8px;
 }
 
 .controls-help h3 {
     margin: 0 0 1rem 0;
-    color: #ff6b6b;
+    color: #ffff00;
     font-size: 1rem;
     text-transform: uppercase;
 }
@@ -176,11 +144,11 @@
     display: inline-block;
     padding: 0.2rem 0.5rem;
     background: #333;
-    border: 1px solid #ff0000;
+    border: 1px solid #ffff00;
     border-radius: 4px;
     font-family: monospace;
     font-size: 0.85rem;
-    color: #ff6b6b;
+    color: #ffff00;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -191,9 +159,9 @@
 .music-btn {
     width: 100%;
     padding: 0.75rem;
-    background: linear-gradient(135deg, #4a0000, #8a0000);
-    color: #ffffff;
-    border: 2px solid #ff0000;
+    background: linear-gradient(135deg, #333300, #666600);
+    color: #ffff00;
+    border: 2px solid #ffff00;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
@@ -202,21 +170,22 @@
 }
 
 .music-btn:hover {
-    background: linear-gradient(135deg, #8a0000, #ff0000);
+    background: linear-gradient(135deg, #666600, #ffff00);
+    color: #000;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(255, 255, 0, 0.3);
 }
 
 .game-info {
     padding: 1rem;
     background: rgba(0, 0, 0, 0.5);
-    border: 2px solid #ff0000;
+    border: 2px solid #ffff00;
     border-radius: 8px;
 }
 
 .game-info h3 {
     margin: 0 0 0.5rem 0;
-    color: #ff6b6b;
+    color: #ffff00;
     font-size: 1rem;
     text-transform: uppercase;
 }
@@ -242,18 +211,17 @@
         flex: 1;
     }
 
-    #doom-game {
+    #pac-man-game {
         max-width: 100%;
     }
 }
 
 @media (max-width: 480px) {
     .game-container {
-        padding: 0 0.5rem;
+        padding: 0.5rem;
     }
 
-    .control-btn,
-    .action-btn {
+    .control-btn {
         min-width: 50px;
         min-height: 50px;
         font-size: 1.2rem;
@@ -280,7 +248,7 @@
 /* Dark theme specific adjustments */
 @media (prefers-color-scheme: dark) {
     .stats-display {
-        background: linear-gradient(135deg, #1a0000, #2a0000);
+        background: linear-gradient(135deg, #0a0a00, #1a1a00);
     }
 
     .controls-help {

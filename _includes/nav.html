@@ -1,17 +1,20 @@
 <nav role="navigation" aria-label="Main navigation">
     <ul>
-        <li><a href="/index.html" {% if page.url == '/' or page.url == '/index.html' %}class="active"{% endif %} aria-label="Navigate to Home section">Home</a></li>
-        <li><a href="/index.html#services" aria-label="Navigate to Services section">Services</a></li>
-        <li><a href="/index.html#portfolio" aria-label="Navigate to Portfolio section">Portfolio</a></li>
-        <li><a href="/index.html#team" aria-label="Navigate to Team section">Team</a></li>
-        <li><a href="/pages/blog.html" {% if page.url == '/pages/blog.html' %}class="active"{% endif %} aria-label="Navigate to Blog section">Blog</a></li>
+        <li><a href="/index.html" {% if page.url == '/' or page.url == '/index.html' %}class="active"{% endif %} aria-label="Navigate to Home">Home</a></li>
+        <li><a href="/services/" {% if page.url contains '/services/' %}class="active"{% endif %} aria-label="Navigate to Services">Services</a></li>
+        <li><a href="/portfolio/" {% if page.url contains '/portfolio/' %}class="active"{% endif %} aria-label="Navigate to Portfolio">Portfolio</a></li>
+        <li><a href="/pages/about.html" {% if page.url == '/pages/about.html' %}class="active"{% endif %} aria-label="Navigate to About Us">About</a></li>
+        <li><a href="/pages/team.html" {% if page.url == '/pages/team.html' %}class="active"{% endif %} aria-label="Navigate to Our Team">Team</a></li>
+        <li><a href="/pages/blog.html" {% if page.url == '/pages/blog.html' %}class="active"{% endif %} aria-label="Navigate to Blog">Blog</a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" aria-label="Games menu" aria-haspopup="true" aria-expanded="false">Games</a>
             <ul class="dropdown-menu" role="menu">
-                <li role="none"><a href="/portfolio/candy-rush-game.html" role="menuitem" {% if page.url == '/portfolio/candy-rush-game.html' %}class="active"{% endif %} aria-label="Navigate to Candy Rush Unity game">Candy Rush</a></li>
+                <li role="none"><a href="https://unity.irsik.software/games/candyrush/" role="menuitem" target="_blank" rel="noopener noreferrer" aria-label="Navigate to Candy Rush Unity game">Candy Rush</a></li>
                 <li role="none"><a href="/games/browser/tetris.html" role="menuitem" {% if page.url == '/games/browser/tetris.html' %}class="active"{% endif %} aria-label="Navigate to Tetris browser game">Tetris</a></li>
+                <li role="none"><a href="/games/browser/doom.html" role="menuitem" {% if page.url == '/games/browser/doom.html' %}class="active"{% endif %} aria-label="Navigate to DOOM browser game">DOOM</a></li>
+                <li role="none"><a href="/games/browser/pac-man.html" role="menuitem" {% if page.url == '/games/browser/pac-man.html' %}class="active"{% endif %} aria-label="Navigate to Pac-Man browser game">Pac-Man</a></li>
             </ul>
         </li>
-        <li><a href="/pages/contact.html" {% if page.url == '/pages/contact.html' %}class="active"{% endif %} aria-label="Navigate to Contact Us section">Contact Us</a></li>
+        <li><a href="/pages/contact.html" {% if page.url == '/pages/contact.html' %}class="active"{% endif %} aria-label="Navigate to Contact Us">Contact Us</a></li>
     </ul>
 </nav>
