@@ -8,6 +8,22 @@
  */
 
 /**
+ * Load internationalization first to enable language detection
+ * This is critical functionality that should load immediately
+ */
+import('./i18n.js').catch(error => {
+    console.error('Failed to load i18n:', error);
+});
+
+/**
+ * Load language selector after i18n
+ * This provides the UI for users to change languages
+ */
+import('./language-selector.js').catch(error => {
+    console.error('Failed to load language-selector:', error);
+});
+
+/**
  * Initializes lazy loading for components
  * Dynamically imports component-loader module
  * @returns {Promise<void>}

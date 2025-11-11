@@ -421,14 +421,28 @@ class I18n {
 
     detectBrowserLanguage() {
         try {
-            const browserLang = navigator.language || navigator.userLanguage;
+            // Try multiple methods to detect user's preferred language
+            const browserLang = navigator.language || navigator.userLanguage || navigator.browserLanguage;
+
             if (!browserLang) {
+                console.info('Could not detect browser language, defaulting to English');
                 return 'en';
             }
-            const langCode = browserLang.split('-')[0];
-            return this.translations[langCode] ? langCode : 'en';
+
+            // Extract ISO language code (e.g., 'en' from 'en-US')
+            const langCode = browserLang.toLowerCase().split('-')[0];
+
+            // Check if we have translations for this language
+            if (this.translations[langCode]) {
+                console.info(`Detected browser language: ${langCode}`);
+                return langCode;
+            }
+
+            // Default to English if language not supported
+            console.info(`Language '${langCode}' not supported, defaulting to English`);
+            return 'en';
         } catch (e) {
-            console.warn('Could not detect browser language, defaulting to English');
+            console.warn('Error detecting browser language, defaulting to English:', e);
             return 'en';
         }
     }
@@ -515,6 +529,11 @@ class I18n {
 
 // Initialize i18n
 const i18n = new I18n();
+
+// Set the initial language on page load
+document.addEventListener('DOMContentLoaded', () => {
+    i18n.setLanguage(i18n.getCurrentLanguage());
+});
 
 // Export for use in other modules
 if (typeof module !== 'undefined' && module.exports) {
