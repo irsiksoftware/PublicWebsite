@@ -468,25 +468,39 @@ class I18n {
     // Update navigation
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
-            element.textContent = this.t(key);
+            const translation = this.t(key);
+
+            // Only update if translation is found (not the key itself)
+            if (translation !== key) {
+                element.textContent = translation;
+            }
         });
 
         // Update placeholders
         document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
             const key = element.getAttribute('data-i18n-placeholder');
-            element.placeholder = this.t(key);
+            const translation = this.t(key);
+            if (translation !== key) {
+                element.placeholder = translation;
+            }
         });
 
         // Update aria-labels
         document.querySelectorAll('[data-i18n-aria]').forEach(element => {
             const key = element.getAttribute('data-i18n-aria');
-            element.setAttribute('aria-label', this.t(key));
+            const translation = this.t(key);
+            if (translation !== key) {
+                element.setAttribute('aria-label', translation);
+            }
         });
 
         // Update title attributes
         document.querySelectorAll('[data-i18n-title]').forEach(element => {
             const key = element.getAttribute('data-i18n-title');
-            element.title = this.t(key);
+            const translation = this.t(key);
+            if (translation !== key) {
+                element.title = translation;
+            }
         });
     }
 
@@ -509,3 +523,14 @@ if (typeof module !== 'undefined' && module.exports) {
 
 // Make available globally
 window.i18n = i18n;
+
+// Apply initial language on page load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        i18n.updatePageContent();
+        document.documentElement.lang = i18n.getCurrentLanguage();
+    });
+} else {
+    i18n.updatePageContent();
+    document.documentElement.lang = i18n.getCurrentLanguage();
+}

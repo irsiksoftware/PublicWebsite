@@ -13,10 +13,10 @@
     {% if page.hero %}
     <section class="hero-section" data-parallax="0.5">
         <div class="hero-content">
-            <h1>{{ page.hero.title }}</h1>
-            <p>{{ page.hero.description }}</p>
+            <h1 data-i18n="hero.title">{{ page.hero.title }}</h1>
+            <p data-i18n="hero.subtitle">{{ page.hero.subtitle }}</p>
             {% if page.hero.cta %}
-            <a href="{{ page.hero.cta.link }}" class="cta-button">{{ page.hero.cta.text }}</a>
+            <a href="{{ page.hero.cta.link }}" class="cta-button" data-i18n="hero.cta">{{ page.hero.cta.text }}</a>
             {% endif %}
         </div>
     </section>
