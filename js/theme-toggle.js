@@ -49,11 +49,18 @@
     function updateToggleButton(theme) {
         const button = document.getElementById('theme-toggle');
         if (button) {
+            const sunIcon = button.querySelector('.sun-icon');
+            const moonIcon = button.querySelector('.moon-icon');
+
             if (theme === DARK_THEME) {
-                button.innerHTML = '☀️';
+                // Show sun icon for light mode switch
+                if (sunIcon) sunIcon.style.display = 'block';
+                if (moonIcon) moonIcon.style.display = 'none';
                 button.setAttribute('aria-label', 'Switch to light theme');
             } else {
-                button.innerHTML = '🌙';
+                // Show moon icon for dark mode switch
+                if (sunIcon) sunIcon.style.display = 'none';
+                if (moonIcon) moonIcon.style.display = 'block';
                 button.setAttribute('aria-label', 'Switch to dark theme');
             }
         }
