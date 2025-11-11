@@ -17,6 +17,21 @@
     align-items: center;
     justify-content: center;
     z-index: 1100;
+    position: relative;
+}
+
+.theme-toggle .sun-icon,
+.theme-toggle .moon-icon {
+    position: absolute;
+    transition: opacity 0.3s ease;
+}
+
+.theme-toggle .sun-icon {
+    display: none;
+}
+
+.theme-toggle .moon-icon {
+    display: block;
 }
 
 .theme-toggle:hover {
